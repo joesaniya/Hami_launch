@@ -1,0 +1,256 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '/models/newly-listed.dart';
+
+import '../theme/appcolor.dart';
+
+class NewlyListed extends StatelessWidget {
+  NewlyListed({Key? key}) : super(key: key);
+
+  List<NewlyListedModel> newlyListedModel = getNewlyListedModel();
+
+  List<Widget> buildLastJobs1(){
+    List<Widget> list = [];
+    for (var i = newlyListedModel.length - 1; i > -1; i--) {
+      list.add(buildLastJob1(newlyListedModel[i]));
+    }
+    return list;
+  }
+
+  //demo
+  Widget buildLastJob1(NewlyListedModel newlyListedModel){
+    return ListView
+    (
+      shrinkWrap: true,
+      children: 
+      [
+        Container
+        (
+          decoration: BoxDecoration
+            (
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              color: Appcolor.background
+            ),
+          child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  // SizedBox
+                  // (
+                  //   height: 10,
+                  // ),
+                  Row
+                  (
+                    children: 
+                    [
+                      // SizedBox(width: 10,),
+                      CircleAvatar
+                      (
+                        backgroundImage: NetworkImage(newlyListedModel.image),
+                      ),
+                      SizedBox
+                      (
+                        width: 10,
+                      ),
+                      Text
+                      (
+                        newlyListedModel.heading,
+                        style: TextStyle
+                        (
+                          color: Colors.white
+                        ),
+                      ),
+                    
+                      Spacer(),
+                      Text
+                      (
+                        newlyListedModel.trailing,
+                        style: TextStyle
+                        (
+                          color: Colors.white
+                        ),
+                      ),
+                    ],
+                  ),
+                  // SizedBox
+                  // (
+                  //   width: 60,
+                  // ),
+                  Container(
+                    // height: 40,
+                    width: double.infinity,
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:50.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text
+                                (
+                                  newlyListedModel.subheading,
+                                  style: TextStyle
+                                  (
+                                    // color: Colors.white
+                                    color: Colors.grey
+                                  ),
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ),
+        SizedBox
+        (
+          height: 10,
+        )
+      ],
+    );
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.only(left:20.0,right: 20),
+        child: Column(
+          children: [
+            SizedBox
+            (
+              height: 50,
+            ),
+            // Container
+            // (
+            //   height: MediaQuery.of(context).size.height*0.30,
+            //   decoration: BoxDecoration
+            //   (
+            //     borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            //     color: Colors.red
+            //   ),
+            //   child: buildLastJob1(),
+            // ),
+            Container
+            (
+              width: MediaQuery.of(context).size.width,
+              height: 50,
+              child: Card
+              (
+                color: Appcolor.background,
+                child: Row
+                (
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: 
+                  [
+                    // SizedBox
+                    // (
+                    //   width: 10,
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(left:8.0),
+                      child: Text
+                      (
+                        'Newly Listed Models',
+                        style: TextStyle
+                        (
+                          color: Colors.white
+                        ),
+                      ),
+                    ),
+                    PopupMenuButton<int>
+                    (
+                      itemBuilder: (context) => 
+                      [
+                        PopupMenuItem
+                        (
+                          value: 1,
+                          child: Text
+                          (
+                            'Edit',
+                            style: TextStyle
+                            (
+                              color: Colors.black
+                            ),
+                          )
+                        ),
+                        PopupMenuItem
+                        (
+                          value: 2,
+                          child: Text
+                          (
+                            'Delete',
+                            style: TextStyle
+                            (
+                              color: Colors.black
+                            ),
+                          )
+                        )
+                      ],
+                      // icon: Icon(Icons.library_add),
+                      icon: Icon
+                      (
+                        FontAwesomeIcons.ellipsis,
+                        color: Colors.white,
+                      ),
+                      offset: Offset(0, 50),
+                      onCanceled: ()
+                      {
+                        log('cancelled');
+                      },
+                      onSelected: (value)
+                      {
+                        log('value: $value');
+                      },
+                    )
+                    // IconButton
+                    // (
+                    //   onPressed: (){}, 
+                    //   icon: Icon
+                    //   (
+                    //     Icons.person
+                    //   ),
+                    //   color: Colors.white,
+                    // )
+                  ],
+                ),
+              ),
+            ),
+
+            newlyListedModel.isEmpty?Container
+                    (
+                      height: MediaQuery.of(context).size.height*0.3,
+                      width: double.infinity,
+                      child: Card
+                      (
+                        // color: Colors.pink,
+                        color: Appcolor.background,
+                        child:Center(
+                          child: Text
+                          (
+                            'No Records Found!!',
+                            style: TextStyle
+                            (
+                              color: Colors.grey
+                            ),
+                          ),
+                        )
+                      ),
+                    ):
+                    SizedBox
+                    (
+                      height: 20,
+                    ),
+            ...buildLastJobs1()
+            
+          ],
+        ),
+      ),
+    );
+  }
+}
