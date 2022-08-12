@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hami_launch/models/banner.dart';
 import '/models/company.dart';
 
 class CompanyHelper
@@ -11,7 +12,32 @@ class CompanyHelper
         number: data['number'].toString()
       ))
       .toList();
+
+  // static List<HomeBanner> banner=bannerData
+  //     .map((data)=>HomeBanner(
+  //       title: data['title'].toString(),
+  //       photo: data['photo'].toString(),
+  //       Companiess: Companies.toList(data['Companies']) ,
+  //     ))
+  //     .toList();
+  
+  
 }
+
+// var bannerData=
+// [
+//   {
+//     'title':'spotlight',
+//     'photo':'',
+//     'Companies':
+//     [
+//       {
+//         'name': 'chopped tomato',
+//         'size': '3',
+//       },
+//     ] 
+//   }
+// ];
 
 var CompanySearchResultRawData=
 [
