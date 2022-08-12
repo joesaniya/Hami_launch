@@ -55,7 +55,8 @@ class _CompanyDialogState extends State<CompanyDialog> {
                 (
                   width: 10,
                 ),
-                Image(image: NetworkImage('https://app.hami.live/static/media/meta-mask.908a7bd02e43908895d8.png')),
+                // Image(image: NetworkImage('https://app.hami.live/static/media/meta-mask.908a7bd02e43908895d8.png')),
+                Image(image: AssetImage('assets/images/lion_meta.png')),
                 SizedBox
                 (
                   width: 10,
