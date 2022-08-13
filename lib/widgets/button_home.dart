@@ -223,11 +223,12 @@ class _ButtonHomeState extends State<ButtonHome> {
                   )
                 ),
               ),
-              SizedBox
-              (
-                width: 80,
-                // width:100
-              ),
+              // SizedBox
+              // (
+              //   width: 80,
+              //   // width:100
+              // ),
+              Spacer(),
               Container(
                 height: 20,
                 width: 40,
@@ -481,10 +482,11 @@ class _ButtonHomeState extends State<ButtonHome> {
                           color: Colors.grey
                         ),
                       ),
-                      Spacer
-                      (
+                      // Spacer
+                      // (
 
-                      ),
+                      // ),
+                      Spacer(),
                       Text
                       (
                         'LIQUIDITY %',
@@ -493,10 +495,11 @@ class _ButtonHomeState extends State<ButtonHome> {
                           color: Colors.grey
                         ),
                       ),
-                      SizedBox
-                    (
-                      width: 10,
-                    ),
+                    //   SizedBox
+                    // (
+                    //   width: 10,
+                    // ),
+                    Spacer(),
                       Text
                       (
                         'LOCKUP TIME',
