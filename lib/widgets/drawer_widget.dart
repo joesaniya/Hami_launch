@@ -109,7 +109,8 @@ class MyWidget extends StatelessWidget {
                                             backgroundColor: Appcolor.background,
                                             child: Image
                                             (
-                                              image: NetworkImage('https://app.hami.live/static/media/logo.fa40f84cc28cef735cc2.png'),
+                                              image: AssetImage('assets/images/logo.png'),
+                                              // image: NetworkImage('https://app.hami.live/static/media/logo.fa40f84cc28cef735cc2.png'),
                                             )
                                           ),
                                       ),

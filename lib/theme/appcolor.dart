@@ -11,4 +11,9 @@ class Appcolor
   // static Color darkviolte5=Color.fromARGB(255, 36, 0, 70);
   static Color darkviolte6=Color.fromARGB(255, 16, 0, 43);
   static Color secondary=Color.fromARGB(255, 145, 90, 221);
+  static Color darkgreen=Color.fromARGB(255,20,131,61);
+  static Color lightgreen=Color.fromARGB(255,33,192,90);
+  static Color deepOrange=Color.fromARGB(255,196,67,12);
+  static Color lightOrange=Color.fromARGB(255,246,113,22);
 }
+

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import '/profile_page/profile-screen.dart';
 import '/screen/AlertScreen.dart';
@@ -45,9 +44,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Hami App',
       theme: ThemeData(
-          textTheme: GoogleFonts.latoTextTheme(
-            Theme.of(context).textTheme
-          ),
+          // textTheme: GoogleFonts.latoTextTheme(
+          //   Theme.of(context).textTheme
+          // ),
           scaffoldBackgroundColor: Appcolor.darkviolte6
         ),
       home: RootPage(),

@@ -150,7 +150,7 @@ class Shift1{
   String amount;
   String status;
   Shift1(
-    this.heading,this.subheading,this.supply,this.Ltime,this.date,this.time,this.amount,this.status
+    this.heading,this.subheading,this.supply,this.Ltime,this.date,this.time,this.amount,this.status,
   );
 }
 
@@ -167,8 +167,8 @@ List<Shift1> getShift1()
       "9 days",
       "Jul 29",
       "3pm-11pm",
-      "15.00",
-      "Accepted"
+      "0.2 HMITEST",
+      "Live",
     ),
     Shift1
     (
@@ -179,8 +179,9 @@ List<Shift1> getShift1()
       "0 days",
       "Jul 29",
       "3pm-11pm",
-      "15.00",
-      'Accepted'
+      "0.2 HMITEST",
+      'Ended',
+
     ),
     Shift1
     (
@@ -191,8 +192,9 @@ List<Shift1> getShift1()
       "0 days",
       "Jul 29",
       "3pm-11pm",
-      "15.00",
-      'Accepted'
+      "0.2 HMITEST",
+      'Upcoming',
+
     ),
     Shift1
     (
@@ -203,8 +205,8 @@ List<Shift1> getShift1()
       "23449869 days",
       "Jul 29",
       "3pm-11pm",
-      "15.00",
-      'pending'
+      "0.2 HMITEST",
+      'Live',
     ),
     Shift1
     (
@@ -215,8 +217,9 @@ List<Shift1> getShift1()
       "0 days",
       "Jul 29",
       "3pm-11pm",
-      "15.00",
-      'pending'
+      "0.2 HMITEST",
+      'Ended',
+
     ),
     Shift1
     (
@@ -227,8 +230,9 @@ List<Shift1> getShift1()
       "1 days",
       "Jul 29",
       "3pm-11pm",
-      "15.00",
-      'pending'
+      "0.2 HMITEST",
+      'Upcoming',
+
     ),
     Shift1
     (
@@ -239,8 +243,9 @@ List<Shift1> getShift1()
       "0 days",
       "Jul 29",
       "3pm-11pm",
-      "15.00",
-      'pending'
+      "0.2 HMITEST",
+      'Live',
+ 
     ),
     
   ];
