@@ -35,8 +35,9 @@ class _ButtonHomeState extends State<ButtonHome> {
         GestureDetector(
           onTap: ()
                 {
-                  Navigator.push(context, MaterialPageRoute(builder: ((context) => ToenDetail()
-                  // ToenDetail('name':shift.heading)
+                  Navigator.push(context, MaterialPageRoute(builder: ((context) => 
+                  // ToenDetail()
+                  ToenDetail(name:shift.heading)
                   )
                   
                   ));

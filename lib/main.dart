@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:iconsax/iconsax.dart';
 import '/profile_page/profile-screen.dart';
 import '/screen/AlertScreen.dart';
@@ -49,7 +50,8 @@ class MyApp extends StatelessWidget {
           // ),
           scaffoldBackgroundColor: Appcolor.darkviolte6
         ),
-      home: RootPage(),
+        home: VerifyKYC(),
+      // home: RootPage(),
     );
   }
 }

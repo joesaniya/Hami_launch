@@ -3,27 +3,38 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hami_launch/models/job.dart';
+import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:hami_launch/theme/appcolor.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:timelines/timelines.dart';
+import 'package:underline_indicator/underline_indicator.dart';
 
 import '../Dialogbox/dialog_helper.dart';
 import '../profile_page/profile-screen.dart';
 
 class ToenDetail extends StatefulWidget {
-  // final String name;
+   String? name;
   // const ToenDetail
-  // (
-  //   this.name,
-  // );
+ ToenDetail ({
+    this.name,}
+  );
 
   @override
   State<ToenDetail> createState() => _ToenDetailState();
 }
 
-class _ToenDetailState extends State<ToenDetail> {
+class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateMixin {
   final _advancedDrawerController = AdvancedDrawerController();
+  TabController? _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = new TabController(length: 1, vsync: this);
+  }
+
 
    void _handleMenuButtonPressed() {
     _advancedDrawerController.showDrawer();
@@ -112,10 +123,23 @@ class _ToenDetailState extends State<ToenDetail> {
       (
         elevation: 0.0,
         backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
+        leading: IconButton
+        (
+          onPressed:()
+          {
+            Navigator.pop(context);
+          }, 
+          icon: Icon
+          (
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          )
+        ),
         title: Text
         (
-          'Token Detail',
+          // 'Token Detail',
+          widget.name!,
           style: TextStyle
           (
             color: Colors.white
@@ -177,7 +201,8 @@ class _ToenDetailState extends State<ToenDetail> {
                                 [
                                   Text
                                   (
-                                    'ABCD',
+                                    widget.name!,
+                                    // 'ABCD',
                                     style: TextStyle
                                     (
                                       color: Colors.white,
@@ -224,7 +249,7 @@ class _ToenDetailState extends State<ToenDetail> {
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: 
                                     [
-                                      Image.asset('assets/images/logo.png',height: 40,width: 50,),
+                                      Image.asset('assets/images/lion_meta.png',height: 40,width: 50,),
                                       SizedBox
                                       (
                                         width: 10,
@@ -256,7 +281,8 @@ class _ToenDetailState extends State<ToenDetail> {
               Container
               (
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height*0.30,
+                height: MediaQuery.of(context).size.height*0.50,
+                // height: MediaQuery.of(context).size.height*0.20,
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -267,14 +293,15 @@ class _ToenDetailState extends State<ToenDetail> {
                     padding: const EdgeInsets.only(left:10.0,right: 10),
                     child: Column
                     (
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: 
                       [
-                        SizedBox
-                        (
-                          height: 20,
-                        ),
+                        // SizedBox
+                        // (
+                        //   height: 20,
+                        // ),
                         Align(
-                          alignment: Alignment.centerLeft,
+                          alignment: Alignment.center,
                           child: Text
                           (
                             'Journey Towards Spotlight',
@@ -286,7 +313,525 @@ class _ToenDetailState extends State<ToenDetail> {
                             )
                             ,
                           ),
+                        ),
+
+                        Row
+                        (
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: 
+                          [
+                            CircleAvatar
+                             (
+                              radius: 10,
+                              backgroundColor: Colors.grey,
+                              child: Center
+                                (
+                                  child: Icon
+                                    (
+                                      Icons.done,
+                                      size: 15,
+                                      color: Colors.white,
+                                    )
+                                ),
+                            ),
+                             SizedBox
+                              (
+                                width: 15,
+                              ),
+                             Column
+                              (
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: 
+                                  [
+                                    GestureDetector(
+                                      onTap: ()
+                                      {
+                                        log('kyc verification');
+      
+                                        Navigator.push
+                                        (
+                                          context, MaterialPageRoute(builder:(context)=>VerifyKYC())
+                                        );
+                                      },
+                                      child: Container(
+                                        child: Text
+                                          (
+                                           'KYC verification',
+                                            style: TextStyle
+                                            (
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w700
+                                            ),
+                                          ),
+                                      ),
+                                    ),
+                                    Text
+                                      (
+                                       'pending',
+                                        style: TextStyle
+                                        (
+                                          color: Colors.grey,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500
+                                        ),
+                                  )
+                               ],
+                             )
+                          ],
+                        ),
+
+                        //2
+                        Row
+                        (
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: 
+                          [
+                            CircleAvatar
+                             (
+                              radius: 10,
+                              backgroundColor: Colors.grey,
+                              child: Center
+                                (
+                                  child: Icon
+                                    (
+                                      Icons.done,
+                                      size: 15,
+                                      color: Colors.white,
+                                    )
+                                ),
+                            ),
+                             SizedBox
+                              (
+                                width: 15,
+                              ),
+                             Column
+                              (
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: 
+                                  [
+                                    Text
+                                      (
+                                       'Smartcontract Audit',
+                                        style: TextStyle
+                                        (
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700
+                                        ),
+                                      ),
+                                    Text
+                                      (
+                                       'pending',
+                                        style: TextStyle
+                                        (
+                                          color: Colors.grey,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500
+                                        ),
+                                  )
+                               ],
+                             )
+                          ],
+                        ),
+
+
+                        //3
+                        Row
+                        (
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: 
+                          [
+                            CircleAvatar
+                             (
+                              radius: 10,
+                              backgroundColor: Colors.grey,
+                              child: Center
+                                (
+                                  child: Icon
+                                    (
+                                      Icons.done,
+                                      size: 15,
+                                      color: Colors.white,
+                                    )
+                                ),
+                            ),
+                             SizedBox
+                              (
+                                width: 15,
+                              ),
+                             Column
+                              (
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: 
+                                  [
+                                    Text
+                                      (
+                                       'Presale Creation',
+                                        style: TextStyle
+                                        (
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700
+                                        ),
+                                      ),
+                                    Text
+                                      (
+                                       'pending',
+                                        style: TextStyle
+                                        (
+                                          color: Colors.grey,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500
+                                        ),
+                                  )
+                               ],
+                             )
+                          ],
+                        ),
+
+                        //4
+                        Row
+                        (
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: 
+                          [
+                            Icon
+                              (
+                                Icons.rocket,
+                                size: 25,
+                                color: Colors.grey,
+                              ),
+                             SizedBox
+                              (
+                                width: 15,
+                              ),
+                             Column
+                              (
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: 
+                                  [
+                                    Text
+                                      (
+                                       'Spotlight',
+                                        style: TextStyle
+                                        (
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700
+                                        ),
+                                      ),
+                                    Text
+                                      (
+                                       'pending',
+                                        style: TextStyle
+                                        (
+                                          color: Colors.grey,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500
+                                        ),
+                                  )
+                               ],
+                             )
+                          ],
                         )
+
+
+                        //steps
+                        // Row
+                        // (
+                        //   children: 
+                        //   [
+                        //     Expanded(
+                        //       child: Container
+                        //       (
+                        //         width: double.infinity,
+                        //         height: MediaQuery.of(context).size.height*0.10,
+                        //         color: Colors.transparent,
+                        //         child: FittedBox(
+                        //           child: Row
+                        //           (
+                        //             mainAxisAlignment: MainAxisAlignment.start,
+                        //             crossAxisAlignment: CrossAxisAlignment.start,
+                        //             children: 
+                        //             [
+                        //               CircleAvatar
+                        //               (
+                        //                 radius: 10,
+                        //                 backgroundColor: Colors.grey,
+                        //                 child: Center
+                        //                 (
+                        //                   child: Icon
+                        //                   (
+                        //                     Icons.done,
+                        //                     size: 15,
+                        //                     color: Colors.white,
+                        //                   )
+                        //                 ),
+                        //               ),
+                        //               SizedBox
+                        //               (
+                        //                 width: 15,
+                        //               ),
+                        //               Column
+                        //               (
+                        //                 children: 
+                        //                 [
+                        //                   Text
+                        //                   (
+                        //                     'KYC verification',
+                        //                     style: TextStyle
+                        //                     (
+                        //                       color: Colors.white,
+                        //                       fontSize: 18,
+                        //                       fontWeight: FontWeight.w700
+                        //                     ),
+                        //                   ),
+                        //                   Text
+                        //                   (
+                        //                     'pending',
+                        //                     style: TextStyle
+                        //                     (
+                        //                       color: Colors.white,
+                        //                       fontSize: 16,
+                        //                       fontWeight: FontWeight.w500
+                        //                     ),
+                        //                   )
+                        //                 ],
+                        //               )
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+
+                        //     SizedBox
+                        //     (
+                        //       width: 10,
+                        //     ),
+
+                        //     //2
+                        //     Expanded(
+                        //       child: Container
+                        //       (
+                        //         width: double.infinity,
+                        //         height: MediaQuery.of(context).size.height*0.10,
+                        //         color: Colors.transparent,
+                        //         child: FittedBox(
+                        //           child: Row
+                        //           (
+                        //             mainAxisAlignment: MainAxisAlignment.start,
+                        //             crossAxisAlignment: CrossAxisAlignment.start,
+                        //             children: 
+                        //             [
+                        //               CircleAvatar
+                        //               (
+                        //                 radius: 10,
+                        //                 backgroundColor: Colors.grey,
+                        //                 child: Center
+                        //                 (
+                        //                   child: Icon
+                        //                   (
+                        //                     Icons.done,
+                        //                     size: 15,
+                        //                     color: Colors.white,
+                        //                   )
+                        //                 ),
+                        //               ),
+                        //               SizedBox
+                        //               (
+                        //                 width: 15,
+                        //               ),
+                        //               Column
+                        //               (
+                        //                 children: 
+                        //                 [
+                        //                   Text
+                        //                   (
+                        //                     'Smartcontract Audit',
+                        //                     style: TextStyle
+                        //                     (
+                        //                       color: Colors.white,
+                        //                       fontSize: 18,
+                        //                       fontWeight: FontWeight.w700
+                        //                     ),
+                        //                   ),
+                        //                   Text
+                        //                   (
+                        //                     'pending',
+                        //                     style: TextStyle
+                        //                     (
+                        //                       color: Colors.white,
+                        //                       fontSize: 16,
+                        //                       fontWeight: FontWeight.w500
+                        //                     ),
+                        //                   )
+                        //                 ],
+                        //               )
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+
+                        //     SizedBox
+                        //     (
+                        //       width: 10,
+                        //     ),
+
+                        //     //3
+                        //     Expanded(
+                        //       child: Container
+                        //       (
+                        //         width: double.infinity,
+                        //         height: MediaQuery.of(context).size.height*0.10,
+                        //         color: Colors.transparent,
+                        //         child: FittedBox(
+                        //           child: Row
+                        //           (
+                        //             mainAxisAlignment: MainAxisAlignment.start,
+                        //             crossAxisAlignment: CrossAxisAlignment.start,
+                        //             children: 
+                        //             [
+                        //               CircleAvatar
+                        //               (
+                        //                 radius: 10,
+                        //                 backgroundColor: Colors.grey,
+                        //                 child: Center
+                        //                 (
+                        //                   child: Icon
+                        //                   (
+                        //                     Icons.done,
+                        //                     size: 15,
+                        //                     color: Colors.white,
+                        //                   )
+                        //                 ),
+                        //               ),
+                        //               SizedBox
+                        //               (
+                        //                 width: 15,
+                        //               ),
+                        //               Column
+                        //               (
+                        //                 children: 
+                        //                 [
+                        //                   Text
+                        //                   (
+                        //                     'Presale Creation',
+                        //                     style: TextStyle
+                        //                     (
+                        //                       color: Colors.white,
+                        //                       fontSize: 18,
+                        //                       fontWeight: FontWeight.w700
+                        //                     ),
+                        //                   ),
+                        //                   Text
+                        //                   (
+                        //                     'pending',
+                        //                     style: TextStyle
+                        //                     (
+                        //                       color: Colors.white,
+                        //                       fontSize: 16,
+                        //                       fontWeight: FontWeight.w500
+                        //                     ),
+                        //                   )
+                        //                 ],
+                        //               )
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+
+                        //     SizedBox
+                        //     (
+                        //       width: 10,
+                        //     ),
+
+                        //     //4
+                        //     Expanded(
+                        //       child: Container
+                        //       (
+                        //         width: double.infinity,
+                        //         height: MediaQuery.of(context).size.height*0.10,
+                        //         color: Colors.transparent,
+                        //         child: FittedBox(
+                        //           child: Row
+                        //           (
+                        //             mainAxisAlignment: MainAxisAlignment.start,
+                        //             crossAxisAlignment: CrossAxisAlignment.start,
+                        //             children: 
+                        //             [
+                        //               CircleAvatar
+                        //               (
+                        //                 radius: 10,
+                        //                 backgroundColor: Colors.grey,
+                        //                 child: Center
+                        //                 (
+                        //                   child: Icon
+                        //                   (
+                        //                     Icons.done,
+                        //                     size: 15,
+                        //                     color: Colors.white,
+                        //                   )
+                        //                 ),
+                        //               ),
+                        //               SizedBox
+                        //               (
+                        //                 width: 15,
+                        //               ),
+                        //               Column
+                        //               (
+                        //                 children: 
+                        //                 [
+                        //                   Text
+                        //                   (
+                        //                     'KYC verification',
+                        //                     style: TextStyle
+                        //                     (
+                        //                       color: Colors.white,
+                        //                       fontSize: 18,
+                        //                       fontWeight: FontWeight.w700
+                        //                     ),
+                        //                   ),
+                        //                   Text
+                        //                   (
+                        //                     'pending',
+                        //                     style: TextStyle
+                        //                     (
+                        //                       color: Colors.white,
+                        //                       fontSize: 16,
+                        //                       fontWeight: FontWeight.w500
+                        //                     ),
+                        //                   )
+                        //                 ],
+                        //               )
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+
+
+
+
+
+
+
+
+
+
+                            
+                        //   ],
+                        // )
                       ],
                     ),
                   ),
@@ -481,6 +1026,781 @@ class _ToenDetailState extends State<ToenDetail> {
                   // ),
                 ),
               ),
+
+              SizedBox
+              (
+                height: 15,
+              ),
+
+              Container
+              (
+                height: MediaQuery.of(context).size.height*0.64,
+                width: double.infinity,
+                
+                decoration: BoxDecoration
+                (
+                  color: Appcolor.background,
+                  borderRadius: BorderRadius.all(Radius.circular(15))
+                ),
+                child: Card
+                (
+                  color: Appcolor.background,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left:15.0),
+                    child: Column
+                    (
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: 
+                      [
+                        // SizedBox
+                        // (
+                        //   height: 10,
+                        // ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Smart Contract Address',
+                            style: TextStyle
+                            (
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+                        // SizedBox
+                        // (
+                        //   height: 10,
+                        // ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Smart Contract Address',
+                            style: TextStyle
+                            (
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500
+                            ),
+                          ),
+                        ),
+
+                        // SizedBox
+                        // (
+                        //   height: 40,
+                        // ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Informations',
+                            style: TextStyle
+                            (
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+
+                        Row
+                        (
+                          children: 
+                          [
+                          Text
+                            (
+                              'Token Type :',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              width: 20,
+                            ),
+
+                            Text
+                            (
+                              '',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900
+                              ),
+                            ),
+                          ],
+                        ),
+
+
+                        //2
+                        Row
+                        (
+                          children: 
+                          [
+                          Text
+                            (
+                              'Token Name :',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              width: 20,
+                            ),
+
+                            Text
+                            (
+                              'JOJO INU',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        //3
+                        Row
+                        (
+                          children: 
+                          [
+                          Text
+                            (
+                              'Token Symbol :',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              width: 10,
+                            ),
+
+                            Text
+                            (
+                              'JOJO',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        //4
+                        Row
+                        (
+                          children: 
+                          [
+                          Text
+                            (
+                              'Decimal:',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              width: 55,
+                            ),
+
+                            Text
+                            (
+                              '9',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        //5
+                        Row
+                        (
+                          children: 
+                          [
+                          Text
+                            (
+                              'Total Supply :',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w500
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              width: 30,
+                            ),
+
+                            Text
+                            (
+                              '1000000000000000000000',
+                              style: TextStyle
+                              (
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900
+                              ),
+                            ),
+                          ],
+                        )
+
+
+                        // SizedBox
+                        // (
+                        //   height: 20,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     'Token Type',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 18,
+                        //       color: Colors.grey,
+                        //       fontWeight: FontWeight.w500
+                        //     ),
+                        //   ),
+                        // ),
+                        // //
+                        // SizedBox
+                        // (
+                        //   height: 20,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     'Token Name',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 18,
+                        //       color: Colors.grey,
+                        //       fontWeight: FontWeight.w500
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox
+                        // (
+                        //   height: 5,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     'JOJO INU',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 18,
+                        //       color: Colors.white,
+                        //       fontWeight: FontWeight.w900
+                        //     ),
+                        //   ),
+                        // ),
+
+                        // //symbol
+                        // SizedBox
+                        // (
+                        //   height: 20,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     'Token Symbol',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 18,
+                        //       color: Colors.grey,
+                        //       fontWeight: FontWeight.w500
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox
+                        // (
+                        //   height: 5,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     'JOJO',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 18,
+                        //       color: Colors.white,
+                        //       fontWeight: FontWeight.w900
+                        //     ),
+                        //   ),
+                        // ),
+
+                        // //deci
+                        // SizedBox
+                        // (
+                        //   height: 20,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     'Decimal',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 18,
+                        //       color: Colors.grey,
+                        //       fontWeight: FontWeight.w500
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox
+                        // (
+                        //   height: 5,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     '9',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 18,
+                        //       color: Colors.white,
+                        //       fontWeight: FontWeight.w900
+                        //     ),
+                        //   ),
+                        // ),
+
+                        // //su
+                        // SizedBox
+                        // (
+                        //   height: 20,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     'Total Supply',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 18,
+                        //       color: Colors.grey,
+                        //       fontWeight: FontWeight.w500
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox
+                        // (
+                        //   height: 5,
+                        // ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text
+                        //   (
+                        //     '',
+                        //     style: TextStyle
+                        //     (
+                        //       fontSize: 20,
+                        //       color: Colors.white,
+                        //       fontWeight: FontWeight.w900
+                        //     ),
+                        //   ),
+                        // )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox
+              (
+                height: 40,
+              ),
+
+              //post
+
+              Container
+              (
+                height: MediaQuery.of(context).size.height*0.30,
+                width: double.infinity,
+                decoration: BoxDecoration
+                (
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  color: Appcolor.background
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left:20.0,right: 20),
+                  child: Column
+                  (
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: 
+                    [
+                      Row
+                      (
+                        children: 
+                        [
+                          Icon
+                          (
+                            FontAwesomeIcons.edit,
+                            color: Colors.white
+                          ),
+                          SizedBox
+                          (
+                            width: 4,
+                          ),
+                          Text
+                          (
+                            'Posts',
+                            style: TextStyle
+                            (
+                              color: Colors.white,
+                              fontSize: 18
+                            ),
+                          )
+                        ],
+                      ),
+                      Container
+                      (
+                        height: MediaQuery.of(context).size.height*0.005,
+                        width: double.infinity,
+                        color: Appcolor.darkviolte,
+                        child: Row
+                        (
+                          children: 
+                          [
+                            Container
+                            (
+                              height: MediaQuery.of(context).size.height*0.005,
+                              // width: 100,
+                              width: MediaQuery.of(context).size.width*0.20,
+                              color: Appcolor.darkviolte4,
+                            )
+                          ],
+                        ),
+                      ),
+                      Container
+                      (
+                        height: MediaQuery.of(context).size.height*0.20,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: Center(
+                          child: Text
+                          (
+                            'No Posts Found',
+                            style: TextStyle
+                            (
+                              fontSize: 18,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+
+              //tabb
+              // Container
+              // (
+              //   height: MediaQuery.of(context).size.height*0.20,
+              //   width: double.infinity,
+              //   decoration: BoxDecoration
+              //   (
+              //     borderRadius: BorderRadius.all(Radius.circular(15)),
+              //     color: Appcolor.background
+              //   ),
+              //   child: Padding
+              //   (
+              //     padding: const EdgeInsets.only(left:15.0,right: 15),
+              //     child: Column(
+              //       children: [
+              //         Container
+              //               (
+              //                 height: MediaQuery.of(context).size.height*0.10,
+              //                 width: double.infinity,
+              //                 child: new TabBar
+              //                 (
+              //                   controller: _controller,
+              //                   tabs: 
+              //                   [
+              //                     new Tab(
+              //                       icon: const Icon(Icons.home),
+              //                       text: 'Address',
+              //                     ),
+              //                   ]
+              //                 ),
+              //               ),
+
+
+              //               Container
+              //               (
+              //                 height: 80,
+              //                 child: TabBarView
+              //                 (
+              //                   controller: _controller,
+              //                   children: 
+              //                   [
+              //                     Text('data')
+              //                   ]
+              //                 ),
+              //               )
+              //       ],
+              //     ),
+
+                       
+
+              //     // child: Stack
+              //     // (
+              //     //   fit: StackFit.passthrough,
+              //     //   alignment: Alignment.bottomCenter,
+              //     //   children: 
+              //     //   [
+              //     //     Container
+              //     //     (
+              //     //       decoration: BoxDecoration
+              //     //       (
+              //     //         border: Border
+              //     //         (
+              //     //           bottom: BorderSide
+              //     //           (
+              //     //             color: Colors.white,
+              //     //             width: 4
+              //     //           )
+              //     //         )
+              //     //       ),
+              //     //     ),
+              //     //     Container
+              //     //     (
+              //     //       height: MediaQuery.of(context).size.height*0.10,
+              //     //       width: double.infinity,
+              //     //       child: new TabBar
+              //     //       (
+              //     //         controller: _controller,
+              //     //         tabs: 
+              //     //         [
+              //     //           new Tab(
+              //     //             icon: const Icon(Icons.home),
+              //     //             text: 'Address',
+              //     //           ),
+              //     //         ]
+              //     //       ),
+              //     //     )
+              //     //   ],
+              //     // ),
+              //   ),
+              // ),
+
+              SizedBox
+              (
+                height: 20,
+              ),
+
+              //or
+              Container
+              (
+                height: MediaQuery.of(context).size.height*0.10,
+                width: double.infinity,
+                decoration: BoxDecoration
+                (
+                  // borderRadius: BorderRadius.all
+                  // (
+                  //   Radius.circular(15)
+                  // ),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(15),
+                    topLeft: Radius.circular(15)
+                  ),
+                  
+                  gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Appcolor.deepOrange,
+                        Appcolor.lightOrange
+                      ],
+                    ),
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left:20.0),
+                    child: Text
+                    (
+                      'Quick Links',
+                      style: TextStyle
+                        (
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w900
+                        ),
+                    ),
+                  ),
+                )
+              ),
+              Container
+              (
+                height: MediaQuery.of(context).size.height*0.40,
+                width: double.infinity,
+                decoration: BoxDecoration
+                (
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(15),
+                    bottomLeft: Radius.circular(15)
+                  ),
+                  color: Appcolor.background
+                ),
+                child: Column
+                (
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: 
+                  [
+                    // SizedBox
+                    // (
+                    //   height: 20,
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(left:20.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text
+                        (
+                          'Verify KYC',
+                          style: TextStyle
+                          (
+                            color: Colors.white,
+                            fontSize: 18
+                            
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Divider
+                    (
+                      color: Colors.white,
+                    ),
+
+                    //2
+                    Padding(
+                      padding: const EdgeInsets.only(left:20.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text
+                        (
+                          'Submit For Spotlight',
+                          style: TextStyle
+                          (
+                            color: Colors.white,
+                            fontSize: 18
+                            
+                          ),
+                        ),
+                      ),
+                    ),
+                    Divider
+                    (
+                      color: Colors.white,
+                    ),
+
+                    //3
+                    Padding(
+                      padding: const EdgeInsets.only(left:20.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text
+                        (
+                          'Create Presale',
+                          style: TextStyle
+                          (
+                            color: Colors.white,
+                            fontSize: 18
+                            
+                          ),
+                        ),
+                      ),
+                    ),
+                    Divider
+                    (
+                      color: Colors.white,
+                    ),
+
+                    //4
+                    Padding(
+                      padding: const EdgeInsets.only(left:20.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text
+                        (
+                          'Create Lock',
+                          style: TextStyle
+                          (
+                            color: Colors.white,
+                            fontSize: 18
+                            
+                          ),
+                        ),
+                      ),
+                    ),
+                    Divider
+                    (
+                      color: Colors.white,
+                    ),
+
+                    //5
+                    Padding(
+                      padding: const EdgeInsets.only(left:20.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text
+                        (
+                          'Create Ad',
+                          style: TextStyle
+                          (
+                            color: Colors.white,
+                            fontSize: 18
+                            
+                          ),
+                        ),
+                      ),
+                    ),
+                    
+                  ],
+                ),
+              )
 
               
 
