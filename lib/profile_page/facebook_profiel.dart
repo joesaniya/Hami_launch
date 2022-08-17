@@ -20,6 +20,12 @@ class _Profile1State extends State<Profile1> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
+      // appBar: AppBar
+      // (
+      //   automaticallyImplyLeading: false,
+      //   leading: Icon(Icons.arrow_back_ios_new,color: Colors.white,),
+      //   backgroundColor: Colors.transparent,
+      // ),
       body: SingleChildScrollView(
         child: Stack(
           children: <Widget>[
@@ -192,6 +198,10 @@ class _Profile1State extends State<Profile1> {
 
                     ],
                   ),
+                ),
+                SizedBox
+                (
+                  height: 20,
                 ),
 
                 // Material(
@@ -566,6 +576,7 @@ class _Profile1State extends State<Profile1> {
               left: 16,
               child: GestureDetector(
                 onTap: () {
+                  Navigator.pop(context);
                   // Navigator.push(
                   //   context,
                   //   MaterialPageRoute(builder: (context) => Profile2()),

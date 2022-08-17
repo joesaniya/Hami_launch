@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hami_launch/profile_page/facebook1.dart';
 import 'package:hami_launch/profile_page/facebook_profiel.dart';
 import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:iconsax/iconsax.dart';
@@ -266,7 +267,10 @@ class _RootPageState extends State<RootPage> {
                 // DialogHelper.exit(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Profile1())
+                  MaterialPageRoute(builder: (context) =>
+                  //  FbCloneProfileStful()
+                  Profile1()
+                  )
                   // ProfileScreen()),
                 );
               }, 
