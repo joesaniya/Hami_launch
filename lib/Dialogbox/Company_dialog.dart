@@ -91,7 +91,12 @@ class _CompanyDialogState extends State<CompanyDialog> {
                 (
                   width: 10,
                 ),
-                Image(image: NetworkImage('assets/images/walletconnect.png')),
+                Image(image: AssetImage('assets/images/walletconnect.png')),
+                // Image(image: NetworkImage
+                // (
+                //   'assets/images/lion_meta.png'
+                //   // 'assets/images/walletconnect.png'
+                // )),
                 SizedBox
                 (
                   width: 10,

@@ -50,8 +50,8 @@ class MyApp extends StatelessWidget {
           // ),
           scaffoldBackgroundColor: Appcolor.darkviolte6
         ),
-        home: VerifyKYC(),
-      // home: RootPage(),
+        // home: VerifyKYC(),
+      home: RootPage(),
     );
   }
 }

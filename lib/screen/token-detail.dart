@@ -345,29 +345,16 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: 
                                   [
-                                    GestureDetector(
-                                      onTap: ()
-                                      {
-                                        log('kyc verification');
-      
-                                        Navigator.push
+                                    Text
+                                      (
+                                       'KYC verification',
+                                        style: TextStyle
                                         (
-                                          context, MaterialPageRoute(builder:(context)=>VerifyKYC())
-                                        );
-                                      },
-                                      child: Container(
-                                        child: Text
-                                          (
-                                           'KYC verification',
-                                            style: TextStyle
-                                            (
-                                              color: Colors.white,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w700
-                                            ),
-                                          ),
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700
+                                        ),
                                       ),
-                                    ),
                                     Text
                                       (
                                        'pending',
@@ -1694,16 +1681,27 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     // ),
                     Padding(
                       padding: const EdgeInsets.only(left:20.0),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text
-                        (
-                          'Verify KYC',
-                          style: TextStyle
+                      child: GestureDetector(
+                        onTap: ()
+                                      {
+                                        log('kyc verification');
+  
+                                        Navigator.push
+                                        (
+                                          context, MaterialPageRoute(builder:(context)=>VerifyKYC())
+                                        );
+                                      },
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
                           (
-                            color: Colors.white,
-                            fontSize: 18
-                            
+                            'Verify KYC',
+                            style: TextStyle
+                            (
+                              color: Colors.white,
+                              fontSize: 18
+                              
+                            ),
                           ),
                         ),
                       ),
