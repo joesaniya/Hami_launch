@@ -18,7 +18,8 @@ class NetworkDialog extends StatelessWidget {
   _buildChild(BuildContext context) => Container(
     // height: 430,
     // height: 500,
-    height: MediaQuery.of(context).size.height*0.570,
+    // height: MediaQuery.of(context).size.height*0.570,-->a10
+    height: MediaQuery.of(context).size.height*0.640,
     decoration: BoxDecoration(
       // color: Colors.white,
       color: Appcolor.background,

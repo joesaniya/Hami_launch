@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/models/job.dart';
+import 'package:hami_launch/screen/spotlight_screen.dart';
 import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:hami_launch/theme/appcolor.dart';
 import 'package:iconsax/iconsax.dart';
@@ -1715,16 +1716,27 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     //2
                     Padding(
                       padding: const EdgeInsets.only(left:20.0),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text
-                        (
-                          'Submit For Spotlight',
-                          style: TextStyle
+                      child: GestureDetector(
+                        onTap: ()
+                          {
+                            log('Spotlight Clicked');
+  
+                            Navigator.push
+                              (
+                                context, MaterialPageRoute(builder:(context)=>SpotLightScreen())
+                              );
+                          },
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
                           (
-                            color: Colors.white,
-                            fontSize: 18
-                            
+                            'Submit For Spotlight',
+                            style: TextStyle
+                            (
+                              color: Colors.white,
+                              fontSize: 18
+                              
+                            ),
                           ),
                         ),
                       ),

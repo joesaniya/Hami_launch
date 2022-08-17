@@ -1,18 +1,19 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../Dialogbox/dialog_helper.dart';
 import '../theme/appcolor.dart';
 
-class VerifyKYC extends StatefulWidget {
-  const VerifyKYC({Key? key}) : super(key: key);
+class SpotLightScreen extends StatefulWidget {
+  const SpotLightScreen({Key? key}) : super(key: key);
 
   @override
-  State<VerifyKYC> createState() => _VerifyKYCState();
+  State<SpotLightScreen> createState() => _SpotLightScreenState();
 }
 
-class _VerifyKYCState extends State<VerifyKYC> {
+class _SpotLightScreenState extends State<SpotLightScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold
@@ -37,7 +38,7 @@ class _VerifyKYCState extends State<VerifyKYC> {
         ),
         title: Text
         (
-          'Verify KYC',
+          'Submit For Spotlight',
           style: TextStyle
           (
             color: Colors.white
@@ -75,7 +76,7 @@ class _VerifyKYCState extends State<VerifyKYC> {
                         [
                           Icon
                           (
-                            Icons.verified_outlined,
+                            FontAwesomeIcons.lightbulb,
                             color: Appcolor.darkviolte3,
                           ),
                           SizedBox
@@ -84,7 +85,7 @@ class _VerifyKYCState extends State<VerifyKYC> {
                           ),
                           Text
                           (
-                            'Verify KYC',
+                            'Submit For Spotlight',
                             style: TextStyle
                             (
                               color: Colors.white,
@@ -105,7 +106,7 @@ class _VerifyKYCState extends State<VerifyKYC> {
                       ),
                       Text
                           (
-                            'Verify KYC',
+                            'This is Submit For Spotlight',
                             style: TextStyle
                             (
                               color: Colors.white,
