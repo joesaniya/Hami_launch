@@ -24,6 +24,10 @@ class _LaunchpadState extends State<Launchpad> {
   TextEditingController address = TextEditingController();
   TextEditingController pincode = TextEditingController();
 
+
+  //
+  TextEditingController _address = TextEditingController();
+
   List<Step> getPresale()=>
   [
     Step
@@ -83,7 +87,7 @@ class _LaunchpadState extends State<Launchpad> {
                         color: Colors.white, width: 1.0
                       ),
                   ),
-                  labelText: 'Your name',
+                  labelText: 'Smartcontract Address',
                   labelStyle: TextStyle
                   (
                     color: Colors.white
@@ -94,6 +98,20 @@ class _LaunchpadState extends State<Launchpad> {
             SizedBox
             (
               height: 20,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: FlatButton(
+                // onPressed: _stepContinue,
+                onPressed: ()
+                {
+                  log('wallet connect');
+                  DialogHelper2.exit(context);
+                },
+                child: const Text('Connect',
+                style: TextStyle(color: Colors.white)),
+                color: Appcolor.darkviolte,
+              ),
             ),
         ],
       ),
@@ -512,24 +530,24 @@ class _LaunchpadState extends State<Launchpad> {
                      controlsBuilder: (BuildContext context, ControlsDetails details) {
                       return Row(
                     children: <Widget>[
-                      FlatButton(
-                        onPressed: _stepContinue,
-                        child: const Text('Connect',
-                            style: TextStyle(color: Colors.white)),
-                        color: Appcolor.darkviolte,
-                      ),
-                      new Padding(
-                        padding: new EdgeInsets.all(10),
-                      ),
-                      FlatButton(
-                        onPressed: _stepCancel,
-                        child: Text(hide == true ? '' :'Cancel'),
-                        // child: const Text(
-                        //   'Zurück',
-                        //   style: TextStyle(color: Colors.white),
-                        // ),
-                        color: hide == true ? Colors.transparent : Colors.amber,
-                      ),
+                      // FlatButton(
+                      //   onPressed: _stepContinue,
+                      //   child: const Text('Connect',
+                      //       style: TextStyle(color: Colors.white)),
+                      //   color: Appcolor.darkviolte,
+                      // ),
+                      // new Padding(
+                      //   padding: new EdgeInsets.all(10),
+                      // ),
+                      // FlatButton(
+                      //   onPressed: _stepCancel,
+                      //   child: Text(hide == true ? '' :'Cancel'),
+                      //   // child: const Text(
+                      //   //   'Zurück',
+                      //   //   style: TextStyle(color: Colors.white),
+                      //   // ),
+                      //   color: hide == true ? Colors.transparent : Colors.amber,
+                      // ),
                     ],
                   );
                       
