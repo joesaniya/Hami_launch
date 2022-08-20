@@ -1,14 +1,18 @@
-import 'package:flutter/material.dart';
-import '/theme/appcolor.dart';
+import 'dart:developer';
 
-class CompanyDialog extends StatefulWidget {
-  const CompanyDialog({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:hami_launch/Dialogbox/dialog_helper.dart';
+
+import '../theme/appcolor.dart';
+
+class WalletSElect extends StatefulWidget {
+  const WalletSElect({Key? key}) : super(key: key);
 
   @override
-  State<CompanyDialog> createState() => _CompanyDialogState();
+  State<WalletSElect> createState() => _WalletSElectState();
 }
 
-class _CompanyDialogState extends State<CompanyDialog> {
+class _WalletSElectState extends State<WalletSElect> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -68,7 +72,10 @@ class _CompanyDialogState extends State<CompanyDialog> {
         ),
 
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            log('walletchoose');
+             DialogHelper2.exit(context);
+          },
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Container

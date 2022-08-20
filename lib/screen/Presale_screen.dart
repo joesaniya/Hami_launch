@@ -106,7 +106,7 @@ class _LaunchpadState extends State<Launchpad> {
                 onPressed: ()
                 {
                   log('wallet connect');
-                  DialogHelper2.exit(context);
+                  DialogHelper3.exit(context);
                 },
                 child: const Text('Connect',
                 style: TextStyle(color: Colors.white)),

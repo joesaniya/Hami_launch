@@ -16,13 +16,13 @@ class SearchWallet extends StatefulWidget {
 class _SearchWalletState extends State<SearchWallet> {
 
   TextEditingController searchInputController = TextEditingController();
-  List<Company> searchResult = CompanyHelper.SarchResultCompany;
-  List<Company>? foundCompany;
+  List<Company> searchDesktop = CompanyHelper.SarchResultDesktop;
+  List<Company>? foundDesktop;
 
 @override
   initState() {
     print('init');
-    foundCompany = searchResult;
+    foundDesktop = searchDesktop;
     super.initState();
   }
 
@@ -31,10 +31,10 @@ class _SearchWalletState extends State<SearchWallet> {
     List results = [];
     if (enteredKeyword.isEmpty) {
       print('runFilters if');
-      results = searchResult.cast<Map<String, dynamic>>();
+      results = searchDesktop.cast<Map<String, dynamic>>();
     } else {
       print('runFilters else');
-      results = searchResult
+      results = searchDesktop
           .where((Company) =>
               Company.title.toLowerCase().contains(enteredKeyword.toLowerCase()))
           .toList();
@@ -43,7 +43,7 @@ class _SearchWalletState extends State<SearchWallet> {
 
      setState(() {
       print('set state');
-      foundCompany = results.cast<Company>();
+      foundDesktop = results.cast<Company>();
       // foundrecipe = searchResult;
     });
   }
@@ -123,33 +123,81 @@ class _SearchWalletState extends State<SearchWallet> {
               ],
             ),
           ),
-           foundCompany!.isNotEmpty
+           foundDesktop!.isNotEmpty
                ? Container(
                  padding: EdgeInsets.all(16.0),
                  width: MediaQuery.of(context).size.width,
-                 child: SingleChildScrollView(
-                   child: Column(
-                     mainAxisAlignment: MainAxisAlignment.start,
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-                       
-                       ListView.separated(
-                           shrinkWrap: true,
-                           physics: NeverScrollableScrollPhysics(),
-                           separatorBuilder: (context,index)
-                           {
-                             return SizedBox(height: 16,);
-                           },
-                           itemCount: foundCompany!.length,
-                           itemBuilder: (context,index){
-                             return RecipeTile
-                             (
-                               data: foundCompany![index],
-                             );
-                           }
-                         ),
-                     ],
-                   ),
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.start,
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     GridView.builder
+                      (
+                        
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(  
+                        crossAxisCount: 4,  
+                        crossAxisSpacing: 10.0,  
+                        mainAxisSpacing: 4.0  
+                        ),
+                        itemCount: foundDesktop!.length,
+                        itemBuilder:(context,index)
+                        {
+                        return RecipeTile
+                                (
+                                  data: foundDesktop![index],
+                                );
+                        // return Container
+                        // (
+                        //   // child: Image.network(network[index].image)
+                          
+                        //     height: MediaQuery.of(context).size.height*0.20,
+                        //     // width: double.infinity,
+                        //     decoration: BoxDecoration
+                        //     (
+                        //       borderRadius: BorderRadius.all(Radius.circular(5)),
+                        //       color: Colors.grey.shade300
+                        //     ),
+                        //     child: Column(
+                        //       mainAxisAlignment: MainAxisAlignment.center,
+                        //       crossAxisAlignment: CrossAxisAlignment.center,
+                        //       children: [
+                        //         Image
+                        //         (
+                        //           height: 50,
+                        //           image: NetworkImage
+                        //           (test[index].image)),
+                        //         SizedBox
+                        //         (
+                        //           height: 10,
+                        //         ),
+                        //         Text(test[index].title),
+                        //         SizedBox
+                        //         (
+                        //           height: 10,
+                        //         ),
+                        //         Text(test[index].subtitle),
+                        //       ],
+                        //     ),
+                        // );
+                        }
+                      ),
+                    //  ListView.separated(
+                    //      shrinkWrap: true,
+                    //      physics: NeverScrollableScrollPhysics(),
+                    //      separatorBuilder: (context,index)
+                    //      {
+                    //        return SizedBox(height: 16,);
+                    //      },
+                    //      itemCount: foundCompany!.length,
+                    //      itemBuilder: (context,index){
+                    //        return RecipeTile
+                    //        (
+                    //          data: foundCompany![index],
+                    //        );
+                    //      }
+                    //    ),
+                   ],
                  ),
                )
                : Container(
@@ -159,7 +207,7 @@ class _SearchWalletState extends State<SearchWallet> {
                  // height: double.infinity,
                  child: Center(
                    child: const Text(
-                       'Oops!!,Sorry No recipe\'s Found',
+                       'Oops!!,Sorry No Desktop\'s Found',
                        style: TextStyle(fontSize: 17,fontFamily: 'inter',fontWeight: FontWeight.bold),
                      ),
                  ),

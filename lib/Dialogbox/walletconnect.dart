@@ -79,7 +79,7 @@ class _WalletConnectState extends State<WalletConnect> {
                               // width: 150,
                               child: Center
                               (
-                                child: Text('Accepted Shifts',
+                                child: Text('Qr Code',
                                   style: TextStyle(
                                     fontFamily: 'PT Sans',
                                     fontSize: 16,
@@ -115,7 +115,7 @@ class _WalletConnectState extends State<WalletConnect> {
                               (
                                 child: Text
                                 (
-                                  'Completed Shifts',
+                                  'Desktop',
                                   style: TextStyle(
                                     fontFamily: 'PT Sans',
                                     fontSize: 16,
