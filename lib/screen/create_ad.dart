@@ -480,15 +480,29 @@ class _CreateAdState extends State<CreateAd> {
               ),
             ),
             Expanded(
-              child: const Text(
-                'I have read and accept terms and conditions',
-                style: TextStyle
-                (
-                  color: Colors.white,
-                  fontSize: 15
+              child: RichText(
+                textAlign: TextAlign.justify,
+                text: TextSpan(
+                    style: TextStyle(color: Colors.black, fontSize: 15),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Before Creating, you agree to the', style: TextStyle(color: Colors.white)),
+                      TextSpan(text: 'Terms of Service',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900)),
+                      TextSpan(text: ' and',style: TextStyle(color: Colors.white,)),
+                      TextSpan(text: ' Advertisement Policy',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900)),
+                      TextSpan(text: '.*',style: TextStyle(color: Colors.white,)),
+                    ],
                 ),
-                // overflow: TextOverflow.ellipsis,
+                // textScaleFactor: 0.5,
               ),
+              // child: const Text(
+              //   'I have read and accept terms and conditions',
+              //   style: TextStyle
+              //   (
+              //     color: Colors.white,
+              //     fontSize: 15
+              //   ),
+              //   // overflow: TextOverflow.ellipsis,
+              // ),
             )
           ],
                 ),
