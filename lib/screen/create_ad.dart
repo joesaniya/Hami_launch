@@ -460,25 +460,38 @@ class _CreateAdState extends State<CreateAd> {
             (
               height: 20,
             ),
-            Row(
+          Row(
           children: [
             Material(
-              child: Checkbox(
-                activeColor: Appcolor.darkviolte1,
-                value: agree,
-                onChanged: (value) {
-                  setState(() {
-                    agree = value ?? false;
-                  });
-                },
+              child: Theme(
+                data: ThemeData(
+                    unselectedWidgetColor: Colors.white
+                ),
+                child: Checkbox(
+                  
+                  activeColor: Appcolor.darkviolte1,
+                  value: agree,
+                  onChanged: (value) {
+                    setState(() {
+                      agree = value ?? false;
+                    });
+                  },
+                ),
               ),
             ),
-            const Text(
-              'I have read and accept terms and conditions',
-              overflow: TextOverflow.ellipsis,
+            Expanded(
+              child: const Text(
+                'I have read and accept terms and conditions',
+                style: TextStyle
+                (
+                  color: Colors.white,
+                  fontSize: 15
+                ),
+                // overflow: TextOverflow.ellipsis,
+              ),
             )
           ],
-        ),
+                ),
 
         SizedBox
         (
