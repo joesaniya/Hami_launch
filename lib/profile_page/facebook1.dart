@@ -8,6 +8,11 @@ class _FbCloneProfileState extends State<FbCloneProfileStful> {
   Widget build(BuildContext cx) {
     return new Scaffold(
         appBar: null,
+        // appBar: AppBar
+        // (
+        //   backgroundColor: Colors.transparent,
+        //   leading: Ico,
+        // ),
         body: new ListView(
           children: <Widget>[
             new Column(

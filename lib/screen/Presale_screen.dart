@@ -396,7 +396,7 @@ class _LaunchpadState extends State<Launchpad> {
           children: [
             Container
                 (
-                  height: MediaQuery.of(context).size.height*0.30,
+                  height: MediaQuery.of(context).size.height*0.20,
                   width: double.infinity,
                   decoration: BoxDecoration
                   (
@@ -503,80 +503,77 @@ class _LaunchpadState extends State<Launchpad> {
               height: 20,
             ),
 
-            Expanded(
-              // the Stepper widget
-              child: Container(
-                height: MediaQuery.of(context).size.height*0.40,
-                // height: 900,
-                decoration: BoxDecoration
+            Container(
+              height: MediaQuery.of(context).size.height*0.50,
+              // height: 900,
+              decoration: BoxDecoration
+              (
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                color: Appcolor.background,
+              ),
+              child: Theme(
+                data: ThemeData
                 (
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  color: Appcolor.background,
+                  accentColor: Colors.orange,
+                  primarySwatch: Colors.orange,
+                  canvasColor: Appcolor.background,
+                  colorScheme: Theme.of(context).colorScheme.copyWith(
+                    primary: Colors.green,
+                    onPrimary: Colors.pink
+                    // background: Appcolor.darkviolte,
+                    // secondary: Colors.green,
+                  ),
                 ),
-                child: Theme(
-                  data: ThemeData
-                  (
-                    accentColor: Colors.orange,
-                    primarySwatch: Colors.orange,
-                    canvasColor: Appcolor.background,
-                    colorScheme: Theme.of(context).colorScheme.copyWith(
-                      primary: Colors.green,
-                      onPrimary: Colors.pink
-                      // background: Appcolor.darkviolte,
-                      // secondary: Colors.green,
-                    ),
-                  ),
-                  child: Stepper(
-                     controlsBuilder: (BuildContext context, ControlsDetails details) {
-                      return Row(
-                    children: <Widget>[
-                      // FlatButton(
-                      //   onPressed: _stepContinue,
-                      //   child: const Text('Connect',
-                      //       style: TextStyle(color: Colors.white)),
-                      //   color: Appcolor.darkviolte,
-                      // ),
-                      // new Padding(
-                      //   padding: new EdgeInsets.all(10),
-                      // ),
-                      // FlatButton(
-                      //   onPressed: _stepCancel,
-                      //   child: Text(hide == true ? '' :'Cancel'),
-                      //   // child: const Text(
-                      //   //   'Zurück',
-                      //   //   style: TextStyle(color: Colors.white),
-                      //   // ),
-                      //   color: hide == true ? Colors.transparent : Colors.amber,
-                      // ),
-                    ],
-                  );
-                      
-                      // return Row(
-                      //   children: <Widget>[
-                      //     TextButton(
-                      //       onPressed: details.onStepContinue,
-                      //       child: Text(hide == false ? '' : 'Confirm'),
-                      //     ),
-                      //     TextButton(
-                      //       onPressed: details.onStepCancel,
-                      //       child: Text(hide == true ? '' :'Cancel'),
-                      //     ),
-                      //   ],
-                      // );
-                    },
-                    elevation: 0.0,
-                    // vertical or horizontial
-                    type: StepperType.vertical,
-                    // type: _isVerticalStepper
-                    //     ? StepperType.vertical
-                    //     : StepperType.horizontal,
-                    physics: const ScrollPhysics(),
-                    currentStep: _currentStep,
-                    onStepTapped: (step) => _stepTapped(step),
-                    onStepContinue: _stepContinue,
-                    onStepCancel: _stepCancel,
-                    steps: getPresale()
-                  ),
+                child: Stepper(
+                   controlsBuilder: (BuildContext context, ControlsDetails details) {
+                    return Row(
+                  children: <Widget>[
+                    // FlatButton(
+                    //   onPressed: _stepContinue,
+                    //   child: const Text('Connect',
+                    //       style: TextStyle(color: Colors.white)),
+                    //   color: Appcolor.darkviolte,
+                    // ),
+                    // new Padding(
+                    //   padding: new EdgeInsets.all(10),
+                    // ),
+                    // FlatButton(
+                    //   onPressed: _stepCancel,
+                    //   child: Text(hide == true ? '' :'Cancel'),
+                    //   // child: const Text(
+                    //   //   'Zurück',
+                    //   //   style: TextStyle(color: Colors.white),
+                    //   // ),
+                    //   color: hide == true ? Colors.transparent : Colors.amber,
+                    // ),
+                  ],
+                );
+                    
+                    // return Row(
+                    //   children: <Widget>[
+                    //     TextButton(
+                    //       onPressed: details.onStepContinue,
+                    //       child: Text(hide == false ? '' : 'Confirm'),
+                    //     ),
+                    //     TextButton(
+                    //       onPressed: details.onStepCancel,
+                    //       child: Text(hide == true ? '' :'Cancel'),
+                    //     ),
+                    //   ],
+                    // );
+                  },
+                  elevation: 0.0,
+                  // vertical or horizontial
+                  type: StepperType.vertical,
+                  // type: _isVerticalStepper
+                  //     ? StepperType.vertical
+                  //     : StepperType.horizontal,
+                  physics: const ScrollPhysics(),
+                  currentStep: _currentStep,
+                  onStepTapped: (step) => _stepTapped(step),
+                  onStepContinue: _stepContinue,
+                  onStepCancel: _stepCancel,
+                  steps: getPresale()
                 ),
               ),
             ),

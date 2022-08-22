@@ -5,6 +5,8 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/models/job.dart';
 import 'package:hami_launch/screen/Presale_screen.dart';
+import 'package:hami_launch/screen/create_ad.dart';
+import 'package:hami_launch/screen/lock.dart';
 import 'package:hami_launch/screen/spotlight_screen.dart';
 import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:hami_launch/theme/appcolor.dart';
@@ -283,7 +285,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               Container
               (
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height*0.50,
+                height: MediaQuery.of(context).size.height*0.40,
                 // height: MediaQuery.of(context).size.height*0.20,
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -1023,7 +1025,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
 
               Container
               (
-                height: MediaQuery.of(context).size.height*0.64,
+                // height: MediaQuery.of(context).size.height*0.64,
+                height: MediaQuery.of(context).size.height*0.54,
                 width: double.infinity,
                 
                 decoration: BoxDecoration
@@ -1621,7 +1624,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               //or
               Container
               (
-                height: MediaQuery.of(context).size.height*0.10,
+                height: MediaQuery.of(context).size.height*0.07,
                 width: double.infinity,
                 decoration: BoxDecoration
                 (
@@ -1662,7 +1665,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               ),
               Container
               (
-                height: MediaQuery.of(context).size.height*0.40,
+                // height: MediaQuery.of(context).size.height*0.40,
+                height: MediaQuery.of(context).size.height*0.35,
                 width: double.infinity,
                 decoration: BoxDecoration
                 (
@@ -1783,16 +1787,27 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     //4
                     Padding(
                       padding: const EdgeInsets.only(left:20.0),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text
-                        (
-                          'Create Lock',
-                          style: TextStyle
+                      child: GestureDetector(
+                        onTap: ()
+                        {
+                          log('Lockscreen Clicked');
+  
+                            Navigator.push
+                              (
+                                context, MaterialPageRoute(builder:(context)=>CreateLock())
+                              );
+                        },
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
                           (
-                            color: Colors.white,
-                            fontSize: 18
-                            
+                            'Create Lock',
+                            style: TextStyle
+                            (
+                              color: Colors.white,
+                              fontSize: 18
+                              
+                            ),
                           ),
                         ),
                       ),
@@ -1805,16 +1820,27 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     //5
                     Padding(
                       padding: const EdgeInsets.only(left:20.0),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text
-                        (
-                          'Create Ad',
-                          style: TextStyle
+                      child: GestureDetector(
+                        onTap: ()
+                        {
+                          log('Ad Clicked');
+  
+                          Navigator.push
+                            (
+                              context, MaterialPageRoute(builder:(context)=>CreateAd())
+                            );
+                        },
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
                           (
-                            color: Colors.white,
-                            fontSize: 18
-                            
+                            'Create Ad',
+                            style: TextStyle
+                            (
+                              color: Colors.white,
+                              fontSize: 18
+                              
+                            ),
                           ),
                         ),
                       ),

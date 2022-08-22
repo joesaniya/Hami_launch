@@ -54,7 +54,7 @@ class _VerifyKYCState extends State<VerifyKYC> {
             [
               Container
               (
-                height: MediaQuery.of(context).size.height*0.30,
+                height: MediaQuery.of(context).size.height*0.20,
                 width: double.infinity,
                 decoration: BoxDecoration
                 (

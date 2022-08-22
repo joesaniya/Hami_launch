@@ -6,6 +6,8 @@ import 'package:hami_launch/profile_page/projects.dart';
 import 'package:hami_launch/profile_page/token.dart';
 import 'package:hami_launch/theme/appcolor.dart';
 
+import 'facebook1.dart';
+
 
 class Profile1 extends StatefulWidget {
   @override
@@ -35,168 +37,181 @@ class _Profile1State extends State<Profile1> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
 
-                Container(
-                  height: size.height * 0.40,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/background1.jpg"), 
-                      fit: BoxFit.cover,
+                GestureDetector(
+                  onTap:(){
+                    Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>
+                   FbCloneProfileStful()
+                  // Profile1()
+                  )
+                  // ProfileScreen()),
+                );
+                  },
+                  child: Container(
+                    height: size.height * 0.40,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/profile_bg.jpg'),
+                        // ("assets/images/background1.jpg"), 
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-
-                      SizedBox(
-                        height: 36,
-                      ),
-
-                      CircleAvatar(
-                        radius: 48,
-                        backgroundImage: AssetImage("assets/images/lion_meta.png"),
-                      ),
-
-                      SizedBox(
-                        height: 16,
-                      ),
-
-                      Text(
-                        "Hami Launch",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
+                    child: Column(
+                      children: <Widget>[
+                
+                        SizedBox(
+                          height: 36,
                         ),
-                      ),
-
-                      SizedBox(
-                        height: 4,
-                      ),
-
-                      Text(
-                        "Hami",
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 14,
+                
+                        CircleAvatar(
+                          radius: 48,
+                          backgroundImage: AssetImage("assets/images/lion_meta.png"),
                         ),
-                      ),
-
-                      Expanded(
-                        child: Container(),
-                      ),
-
-                      Container(
-                        height: 64,
-                        color: Colors.black.withOpacity(0.4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-
-                            Expanded(
-                              child: Container(),
-                            ),
-
-                            Container(
-                              width: 110,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-
-                                  Text(
-                                    "FRIENDS", 
-                                    style: TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-
-                                  Text(
-                                    "2307", 
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-
-                                ],
-                              ),
-                            ),
-
-                            Container(
-                              width: 110,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-
-                                  Text(
-                                    "FOLLOWING", 
-                                    style: TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-
-                                  Text(
-                                    "364", 
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-
-                                ],
-                              ),
-                            ),
-
-                            Container(
-                              width: 110,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-
-                                  Text(
-                                    "FOLLOWER", 
-                                    style: TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-
-                                  Text(
-                                    "175", 
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-
-                                ],
-                              ),
-                            ),
-
-                            Expanded(
-                              child: Container(),
-                            ),
-
-                          ],
+                
+                        SizedBox(
+                          height: 16,
                         ),
-                      ),
-
-                    ],
+                
+                        Text(
+                          "Hami Launch",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
+                        ),
+                
+                        SizedBox(
+                          height: 4,
+                        ),
+                
+                        Text(
+                          "Hami",
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                          ),
+                        ),
+                
+                        Expanded(
+                          child: Container(),
+                        ),
+                
+                        Container(
+                          height: 64,
+                          color: Colors.black.withOpacity(0.4),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                
+                              Expanded(
+                                child: Container(),
+                              ),
+                
+                              Container(
+                                width: 110,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                
+                                    Text(
+                                      "FRIENDS", 
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                
+                                    Text(
+                                      "2307", 
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                
+                                  ],
+                                ),
+                              ),
+                
+                              Container(
+                                width: 110,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                
+                                    Text(
+                                      "FOLLOWING", 
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                
+                                    Text(
+                                      "364", 
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                
+                                  ],
+                                ),
+                              ),
+                
+                              Container(
+                                width: 110,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                
+                                    Text(
+                                      "FOLLOWER", 
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                
+                                    Text(
+                                      "175", 
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                
+                                  ],
+                                ),
+                              ),
+                
+                              Expanded(
+                                child: Container(),
+                              ),
+                
+                            ],
+                          ),
+                        ),
+                
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox
