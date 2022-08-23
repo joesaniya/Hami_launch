@@ -18,9 +18,13 @@ class CreateAd extends StatefulWidget {
 class _CreateAdState extends State<CreateAd> {
   bool agree = false;
   File? _image;
+
+  String? imgpath;
   File? _image1;//square
   final imagePicker = ImagePicker();
   String _description = "";
+  TextEditingController _img=TextEditingController(text: "No file chosen");
+  String initialValue='No file choosen';
 
   onDescriptionChange(String newValue)
   {
@@ -40,7 +44,14 @@ class _CreateAdState extends State<CreateAd> {
     setState(() {
       log("printing path to the gallery");
       _image = File(image!.path);
+    
+      // _img.text=_image!.path.toString();
+      // log(_img.text);
+      imgpath=_image!.path.split('/').last;//path spliting
       log(_image.toString());
+      log(imgpath.toString());
+      _img.text=imgpath.toString();
+      log(_img.text);
     });
   }
 
@@ -114,7 +125,14 @@ class _CreateAdState extends State<CreateAd> {
               FlatButton
               (
                 color: Colors.white,
-                onPressed: getImagegallery, 
+                onPressed: getImagegallery,
+                // onPressed: ()
+                // {
+                //   getImagegallery().then((value) {setState(() {
+                //     _img.text=_image!.path.toString();
+                //     log(_img.text);
+                //   });});
+                // }, 
                 child: Text
                 (
                   'Choose File',
@@ -129,8 +147,19 @@ class _CreateAdState extends State<CreateAd> {
                 child: SizedBox(
                   height: 38,
                   child: TextFormField(
-                  initialValue: _image.toString(),
-                  onChanged: onDescriptionChange,
+                    controller: _img,
+                    // initialValue: initialValue.toString(),->wrong
+                  // initialValue: _image.toString(),
+                  style: TextStyle(color: Colors.white),
+                  // onChanged: onDescriptionChange,
+                  // onChanged: (String newValue)
+                  // {
+                  //   setState(() {
+                  //     log('des');
+                  //     _image = newValue as File?; 
+                  //     log(_image!.path);
+                  //   });
+                  // },
                   decoration:const InputDecoration
                   (
                     // labelText: 'No File Chosen',
@@ -311,7 +340,8 @@ class _CreateAdState extends State<CreateAd> {
                 child: SizedBox(
                   height: 38,
                   child: TextFormField(
-                  initialValue: _image1.toString(),
+                  // initialValue: _image1.toString(),
+                  controller:_img,
                   onChanged: onDescriptionChange,
                   decoration:const InputDecoration
                   (
@@ -540,9 +570,204 @@ class _CreateAdState extends State<CreateAd> {
                         ),
                         content: Column(
                           children: [
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'You mobile number'),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text
+                              (
+                                'Contact Person Name *',
+                                style: TextStyle
+                                (
+                                  fontSize: 15,
+                                  color: Colors.white
+                                ),
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              height: 10,
+                            ),
+                        
+                            TextFormField
+                              (
+                                decoration:const InputDecoration
+                                  (
+                                    focusedBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    errorBorder: OutlineInputBorder
+                                    (
+                                      borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    labelText: 'Contact Person Name*',
+                                    labelStyle: TextStyle
+                                    (
+                                      color: Colors.grey
+                                    )
+                                  )
+                              ),
+
+                            SizedBox
+                            (
+                              height: 20,
+                            ),
+
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text
+                              (
+                                'Telegram *',
+                                style: TextStyle
+                                (
+                                  fontSize: 15,
+                                  color: Colors.white
+                                ),
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              height: 10,
+                            ),
+                        
+                            TextFormField
+                              (
+                                decoration:const InputDecoration
+                                  (
+                                    focusedBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    errorBorder: OutlineInputBorder
+                                    (
+                                      borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    labelText: 'Telegram*',
+                                    labelStyle: TextStyle
+                                    (
+                                      color: Colors.grey
+                                    )
+                                  )
+                              ),
+
+                            SizedBox(
+                              height: 20,
+                            ),
+
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text
+                              (
+                                'Email Address *',
+                                style: TextStyle
+                                (
+                                  fontSize: 15,
+                                  color: Colors.white
+                                ),
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              height: 10,
+                            ),
+                        
+                            TextFormField
+                              (
+                                decoration:const InputDecoration
+                                  (
+                                    focusedBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    errorBorder: OutlineInputBorder
+                                    (
+                                      borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    labelText: 'Email Address*',
+                                    labelStyle: TextStyle
+                                    (
+                                      color: Colors.grey
+                                    )
+                                  )
+                              ),
+
+                            SizedBox(
+                              height: 20,
+                            ),
+
+                            Row
+                            (
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: 
+                              [
+                                FlatButton(
+                                  onPressed: _stepCancel,
+                                  child: const Text('Back',
+                                  style: TextStyle(color: Colors.white)),
+                                  color: Colors.transparent,
+                                ),
+                                SizedBox
+                                (
+                                  width: 20,
+                                ),
+                                FlatButton(
+                                  onPressed: _stepContinue,
+                                  child: const Text('Next',
+                                  style: TextStyle(color: Colors.white)),
+                                  color: Appcolor.darkviolte,
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -565,9 +790,302 @@ class _CreateAdState extends State<CreateAd> {
                         ),
                         content: Column(
                           children: <Widget>[
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'Verification code'),
+                            // Align(
+                            //   alignment: Alignment.centerLeft,
+                            //   child: Text
+                            //   (
+                            //     'Amount *',
+                            //     style: TextStyle
+                            //     (
+                            //       fontSize: 15,
+                            //       color: Colors.white
+                            //     ),
+                            //   ),
+                            // ),
+
+                            // SizedBox
+                            // (
+                            //   height: 10,
+                            // ),
+                        
+                            // TextFormField
+                            //   (
+                            //     decoration:const InputDecoration
+                            //       (
+                            //         focusedBorder: OutlineInputBorder
+                            //         (
+                            //             borderSide: BorderSide
+                            //             (
+                            //               color: Colors.grey, 
+                            //               width: 1.0
+                            //             ),
+                            //         ),
+                            //         enabledBorder: OutlineInputBorder
+                            //         (
+                            //             borderSide: BorderSide
+                            //             (
+                            //               color: Colors.grey, 
+                            //               width: 1.0
+                            //             ),
+                            //         ),
+                            //         errorBorder: OutlineInputBorder
+                            //         (
+                            //           borderSide: BorderSide
+                            //             (
+                            //               color: Colors.grey, 
+                            //               width: 1.0
+                            //             ),
+                            //         ),
+                            //         labelText: 'Amount *',
+                            //         labelStyle: TextStyle
+                            //         (
+                            //           color: Colors.grey
+                            //         )
+                            //       )
+                            //   ),
+
+                            // SizedBox
+                            // (
+                            //   height: 20,
+                            // ),
+
+                            // Align(
+                            //   alignment: Alignment.centerLeft,
+                            //   child: Text
+                            //   (
+                            //     'Transaction Id',
+                            //     style: TextStyle
+                            //     (
+                            //       fontSize: 15,
+                            //       color: Colors.white
+                            //     ),
+                            //   ),
+                            // ),
+
+                            // SizedBox
+                            // (
+                            //   height: 10,
+                            // ),
+                        
+                            // TextFormField
+                            //   (
+                            //     decoration:const InputDecoration
+                            //       (
+                            //         focusedBorder: OutlineInputBorder
+                            //         (
+                            //             borderSide: BorderSide
+                            //             (
+                            //               color: Colors.grey, 
+                            //               width: 1.0
+                            //             ),
+                            //         ),
+                            //         enabledBorder: OutlineInputBorder
+                            //         (
+                            //             borderSide: BorderSide
+                            //             (
+                            //               color: Colors.grey, 
+                            //               width: 1.0
+                            //             ),
+                            //         ),
+                            //         errorBorder: OutlineInputBorder
+                            //         (
+                            //           borderSide: BorderSide
+                            //             (
+                            //               color: Colors.grey, 
+                            //               width: 1.0
+                            //             ),
+                            //         ),
+                            //         labelText: 'Transaction Id*',
+                            //         labelStyle: TextStyle
+                            //         (
+                            //           color: Colors.grey
+                            //         )
+                            //       )
+                            //   ),
+
+                            // SizedBox(
+                            //   height: 20,
+                            // ),
+
+                            Container
+                            (
+                              height: MediaQuery.of(context).size.height*0.24,//->a10
+                              // height: MediaQuery.of(context).size.height*0.40,
+                              width: double.infinity,
+                              color: Colors.transparent,
+                              child: Row
+                              (
+                                children: 
+                                [
+                                  Expanded(
+                                    child: Container
+                                    (
+                                      height: MediaQuery.of(context).size.height*0.20,
+                                      // height: MediaQuery.of(context).size.height*0.40,
+                                      color: Colors.transparent,
+                                      child: Image(image: AssetImage('assets/images/qr.png'),fit: BoxFit.fill,),
+                                    ),
+                                  ),
+
+                                  SizedBox(width: 10,),
+                                  Expanded(child: Container
+                                  (
+                                    child: Column
+                                    (
+                                      children: 
+                                      [
+                                        Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text
+                              (
+                                'Amount *',
+                                style: TextStyle
+                                (
+                                  fontSize: 15,
+                                  color: Colors.white
+                                ),
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              height: 10,
+                            ),
+                        
+                            TextFormField
+                              (
+                                decoration:const InputDecoration
+                                  (
+                                    focusedBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    errorBorder: OutlineInputBorder
+                                    (
+                                      borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    labelText: 'Amount *',
+                                    labelStyle: TextStyle
+                                    (
+                                      color: Colors.grey
+                                    )
+                                  )
+                              ),
+
+                            SizedBox
+                            (
+                              height: 20,
+                            ),
+
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text
+                              (
+                                'Transaction Id',
+                                style: TextStyle
+                                (
+                                  fontSize: 15,
+                                  color: Colors.white
+                                ),
+                              ),
+                            ),
+
+                            SizedBox
+                            (
+                              height: 10,
+                            ),
+                        
+                            TextFormField
+                              (
+                                decoration:const InputDecoration
+                                  (
+                                    focusedBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder
+                                    (
+                                        borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    errorBorder: OutlineInputBorder
+                                    (
+                                      borderSide: BorderSide
+                                        (
+                                          color: Colors.grey, 
+                                          width: 1.0
+                                        ),
+                                    ),
+                                    labelText: 'Transaction Id*',
+                                    labelStyle: TextStyle
+                                    (
+                                      color: Colors.grey
+                                    )
+                                  )
+                              ),
+
+                            // SizedBox(
+                            //   height: 20,
+                            // ),
+
+                                      ],
+                                    ),
+                                  ))
+                                ],
+                              ),
+                            ),
+                            
+                            SizedBox
+                            (
+                              height: 20,
+                            ),
+
+                            Row
+                            (
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: 
+                              [
+                                FlatButton(
+                                  onPressed: _stepCancel,
+                                  child: const Text('Back',
+                                  style: TextStyle(color: Colors.white)),
+                                  color: Colors.transparent,
+                                ),
+                                SizedBox
+                                (
+                                  width: 20,
+                                ),
+                                FlatButton(
+                                  onPressed: _stepContinue,
+                                  child: const Text('Connect',
+                                  style: TextStyle(color: Colors.white)),
+                                  color: Appcolor.darkviolte,
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -687,7 +1205,7 @@ class _CreateAdState extends State<CreateAd> {
                             decoration: BoxDecoration
                             (
                               borderRadius: BorderRadius.all(Radius.circular(10)),
-                              color: Appcolor.darkviolte6
+                              color: Appcolor.darkviolte
                             ),
                             child: Center(
                               child: Text
@@ -713,7 +1231,8 @@ class _CreateAdState extends State<CreateAd> {
                 height: 20,
               ),
               Container(
-              height: MediaQuery.of(context).size.height*0.90,
+                // width: double.infinity,
+              // height: MediaQuery.of(context).size.height*0.90,
               // height: 900,
               decoration: BoxDecoration
               (

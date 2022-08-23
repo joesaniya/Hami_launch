@@ -122,7 +122,7 @@ class _SpotLightScreenState extends State<SpotLightScreen> {
                         decoration: BoxDecoration
                         (
                           borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Appcolor.darkviolte6
+                          color: Appcolor.darkviolte
                         ),
                         child: Center(
                           child: Text
@@ -172,7 +172,7 @@ class _SpotLightScreenState extends State<SpotLightScreen> {
                         decoration: BoxDecoration
                           (
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Appcolor.darkviolte6
+                            color: Appcolor.darkviolte
                           ),
                           child: Center(
                             child: Text

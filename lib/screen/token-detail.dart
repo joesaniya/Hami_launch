@@ -1849,7 +1849,11 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     
                   ],
                 ),
-              )
+              ),
+              SizedBox
+                    (
+                      height: 20,
+                    ),
 
               
 
