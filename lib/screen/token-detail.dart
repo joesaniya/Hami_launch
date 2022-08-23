@@ -54,75 +54,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      // appBar:
-      // PreferredSize(
-      //   preferredSize: Size(double.infinity, 50),
-      //   child: AppBar(
-      //     centerTitle: false,
-
-      //     leading: IconButton
-      //     (
-      //       color:Colors.white,
-      //       onPressed: _handleMenuButtonPressed,
-      //       icon: ValueListenableBuilder(
-      //         valueListenable:  _advancedDrawerController,
-      //         builder: (_, value, __ )
-      //         {
-      //           return AnimatedSwitcher
-      //           (
-      //             duration: Duration(microseconds: 250),
-      //             child: Icon
-      //             (
-      //               value.visible ?Iconsax.close_square : Iconsax.menu,
-      //                     key: ValueKey<bool>(value!.visible),
-      //             ),
-      //           );
-      //         }
-      //       ),
-                    
-      //     ),
       
-      //      backgroundColor: Colors.transparent,
-      //      elevation: 0.0,
-      //      actions: 
-      //     [
-      //       SizedBox(width: 20,),
-      //       IconButton
-      //       (
-      //         onPressed: ()
-      //         {
-      //           log('networkicon');
-      //           DialogHelper1.exit(context);
-      //         }, 
-      //         icon: Icon(FontAwesomeIcons.globe)
-      //       ),
-      //       // SizedBox(width: 20,),
-      //       IconButton
-      //       (
-      //         onPressed: ()
-      //         {
-      //           log('companyicon');
-      //           DialogHelper.exit(context);
-      //         }, 
-      //         icon: Icon(FontAwesomeIcons.wallet)
-      //       ),
-            
-      //       IconButton
-      //       (
-      //         onPressed: ()
-      //         {
-      //           log('Profile Page Clicked');
-      //           // DialogHelper.exit(context);
-      //           Navigator.push(
-      //             context,
-      //             MaterialPageRoute(builder: (context) => ProfileScreen()),
-      //           );
-      //         }, 
-      //         icon: Icon(LineIcons.user)
-      //       ),
-      //      ],
-      //   ),
-      // ),
       appBar: AppBar
       (
         elevation: 0.0,
@@ -167,8 +99,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               ),
               Container(
                 width: double.infinity,
-                // height: MediaQuery.of(context).size.height*0.24,->a10
-                height: MediaQuery.of(context).size.height*0.30,
+                height: MediaQuery.of(context).size.height*0.24,//->a10
+                // height: MediaQuery.of(context).size.height*0.30,
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),

@@ -98,8 +98,10 @@ class RecipeTile extends StatelessWidget {
           Image
           (
             height: 40,
-            image: NetworkImage
-            (data.image)),
+            // image: NetworkImage
+            // (data.image)
+            image: AssetImage(data.image),
+          ),
           SizedBox
           (
             height: 10,
