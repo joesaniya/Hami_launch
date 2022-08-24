@@ -285,7 +285,12 @@ class _LaunchPadListState extends State<LaunchPadList> {
                   :items==1?Container(height: 300,width: double.infinity,color: Colors.blue,)
                   :items==2?Container(height: 300,width: double.infinity,color: Colors.green,)
                   :items==3?Container(height: 300,width: double.infinity,color: Colors.yellow,)
-                  :Container(height: 300,width: double.infinity,color: Colors.pink,)
+                  :Container
+                  (
+                    height: 300,
+                    width: double.infinity,
+                    color: Colors.pink,
+                  )
                   // child: Column
                   // (
                   //   children: 
