@@ -1,4 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:hami_launch/screen/launchpad_list.dart';
+import 'package:hami_launch/screen/spotlight_sidemenu.dart';
 
 import '../theme/appcolor.dart';
 
@@ -178,6 +183,79 @@ class MyWidget extends StatelessWidget {
                     [
                       ListTile
                         (
+                          onTap: (){
+                            log('Spotlight clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SideMenuSpotLight())
+                            );
+                          },
+                          leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
+                          title: Text('Spotlight',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                        ),
+                        SizedBox
+                        (
+                          width: 4,
+                        ),
+                      ListTile
+                        (
+                          onTap: ()
+                          {
+                            log('launchpad list clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => LaunchPadList())
+                            );
+                          },
+                          leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
+                          title: Text('Launchpad List',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                        ),
+                        SizedBox
+                        (
+                          width: 4,
+                        ),
+                        ListTile
+                        (
+                          leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
+                          title: Text('Create Launchpad',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                        ),
+                        SizedBox
+                        (
+                          width: 4,
+                        ),
+                        ListTile
+                        (
+                          leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
+                          title: Text('Verify KYC',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                        ),
+                        SizedBox
+                        (
+                          width: 4,
+                        ),
+                        ListTile
+                        (
+                          leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
+                          title: Text('Submit for Spotlight',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                        ),
+                        
+                    ],
+                    // trailing: ,
+                  ),
+
+                  //2
+                  ExpansionTile
+                  (
+                    leading: Icon
+                    (
+                      FontAwesome.dollar,color: Colors.white,
+                    ),
+                    iconColor: Colors.white,
+                    collapsedIconColor: Colors.white,
+                    title: Text('Tokens',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900),),
+                    children: 
+                    [
+                      ListTile
+                        (
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Tokens List',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
@@ -197,7 +275,7 @@ class MyWidget extends StatelessWidget {
                         ListTile
                         (
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
-                          title: Text('Add Token',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                          title: Text('Import Token',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
                         
                     ],

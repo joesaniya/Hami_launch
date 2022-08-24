@@ -250,3 +250,59 @@ List<Shift1> getShift1()
     
   ];
 }
+
+
+//spotLight
+class SpotLight{
+  String image;
+  String name;
+  String liquidity;
+  String lockuptime;
+  String listingprice;
+  String presaleprice;
+  String status;
+  SpotLight(
+    this.image,this.name,this.liquidity,this.lockuptime,this.listingprice,this.presaleprice,this.status,
+  );
+}
+
+List<SpotLight> getSpotLight()
+{
+  return<SpotLight>
+  [
+    SpotLight
+    (
+      // role1, role2, hramt, totalamt, location, date, time, trust
+      "assets/images/logo.png",
+      'HAMI',
+      '100%',
+      '1092 days',
+      '0.0004916 HAMI',
+      '0.00003457 HAMI',
+      'Live'
+    ),
+    SpotLight
+    (
+      // role1, role2, hramt, totalamt, location, date, time, trust
+      "assets/images/logo.png",
+      'HAMI',
+      '100%',
+      '1092 days',
+      '0.0004916 HAMI',
+      '0.00003457 HAMI',
+      'Ended'
+    ),
+    SpotLight
+    (
+      // role1, role2, hramt, totalamt, location, date, time, trust
+      "assets/images/logo.png",
+      'HAMI',
+      '100%',
+      '1092 days',
+      '0.0004916 HAMI',
+      '0.00003457 HAMI',
+      'Upcoming'
+    ),
+    
+  ];
+}
