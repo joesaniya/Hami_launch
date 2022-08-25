@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:hami_launch/widgets/appbar_widget.dart';
 
 import '../Dialogbox/dialog_helper.dart';
 import '../theme/appcolor.dart';
@@ -44,6 +45,7 @@ class _VerifyKYCState extends State<VerifyKYC> {
           ),
         ),
       ),
+      // appBar: MyAppBar(title: 'Verify KYC',),
       body: SingleChildScrollView
       (
         child: Padding(
@@ -197,3 +199,5 @@ class _VerifyKYCState extends State<VerifyKYC> {
     );
   }
 }
+
+

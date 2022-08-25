@@ -2,9 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:hami_launch/screen/Presale_screen.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
 
+import '../screen/spotlight_screen.dart';
+import '../screen/verifykyc_screen.dart';
 import '../theme/appcolor.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -216,6 +219,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('presale clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Launchpad())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Create Launchpad',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
@@ -225,6 +236,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('Verify kyc clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => VerifyKYC())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Verify KYC',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
@@ -234,6 +253,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('spotlight clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SpotLightScreen())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Submit for Spotlight',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
