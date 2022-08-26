@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import '../screen/token-detail.dart';
 import '/theme/appcolor.dart';
@@ -33,6 +36,21 @@ class _ButtonHomeState extends State<ButtonHome> {
     return Column(
       children: [
         GestureDetector(
+          // onTap: ()
+          // {
+          //   log('animation');
+          //   Navigator.of(context).push(
+          //     PageRouteBuilder(
+          //       pageBuilder: (context, animation, secondaryAnimation) {
+          //         return ToenDetail(
+          //           transitionAnimation: animation,
+          //           name:shift.heading
+          //         );
+          //       },
+          //       transitionDuration: Duration(seconds: 1),
+          //     ),
+          //   );
+          // },
           onTap: ()
                 {
                   Navigator.push(context, MaterialPageRoute(builder: ((context) => 
@@ -40,7 +58,8 @@ class _ButtonHomeState extends State<ButtonHome> {
                   ToenDetail(name:shift.heading)
                   )
                   
-                  ));
+                  )
+                  );
                 },
           child: Container
           (

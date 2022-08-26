@@ -92,7 +92,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
             
             children: 
             [
-
+        
               SizedBox
               (
                 height: 5,
@@ -167,7 +167,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                           ],
                         ),
                       ),
-
+        
                       //
                       Padding(
                         padding: const EdgeInsets.all(30.0),
@@ -208,12 +208,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                   ),
                 ),
               ),
-
+        
               SizedBox
               (
                 height: 20,
               ),
-
+        
               //2
               Container
               (
@@ -251,7 +251,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                             ,
                           ),
                         ),
-
+        
                         Row
                         (
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -306,7 +306,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                              )
                           ],
                         ),
-
+        
                         //2
                         Row
                         (
@@ -362,8 +362,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                              )
                           ],
                         ),
-
-
+        
+        
                         //3
                         Row
                         (
@@ -419,7 +419,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                              )
                           ],
                         ),
-
+        
                         //4
                         Row
                         (
@@ -467,8 +467,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                              )
                           ],
                         )
-
-
+        
+        
                         //steps
                         // Row
                         // (
@@ -536,12 +536,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         //         ),
                         //       ),
                         //     ),
-
+        
                         //     SizedBox
                         //     (
                         //       width: 10,
                         //     ),
-
+        
                         //     //2
                         //     Expanded(
                         //       child: Container
@@ -605,12 +605,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         //         ),
                         //       ),
                         //     ),
-
+        
                         //     SizedBox
                         //     (
                         //       width: 10,
                         //     ),
-
+        
                         //     //3
                         //     Expanded(
                         //       child: Container
@@ -674,12 +674,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         //         ),
                         //       ),
                         //     ),
-
+        
                         //     SizedBox
                         //     (
                         //       width: 10,
                         //     ),
-
+        
                         //     //4
                         //     Expanded(
                         //       child: Container
@@ -743,16 +743,16 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         //         ),
                         //       ),
                         //     ),
-
-
-
-
-
-
-
-
-
-
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
                             
                         //   ],
                         // )
@@ -761,12 +761,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                   ),
               ),
               ),
-
+        
               SizedBox
               (
                 height: 20,
               ),
-
+        
               //3
                Container
               (
@@ -825,13 +825,13 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                   ),
               ),
               ),
-
+        
               //4
               SizedBox
               (
                 height: 20,
               ),
-
+        
               //3
                GestureDetector(
                 onTap: ()
@@ -950,12 +950,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                   // ),
                 ),
               ),
-
+        
               SizedBox
               (
                 height: 15,
               ),
-
+        
               Container
               (
                 // height: MediaQuery.of(context).size.height*0.64,
@@ -1014,7 +1014,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                             ),
                           ),
                         ),
-
+        
                         // SizedBox
                         // (
                         //   height: 40,
@@ -1032,7 +1032,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                             ),
                           ),
                         ),
-
+        
                         Row
                         (
                           children: 
@@ -1047,12 +1047,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                                 fontWeight: FontWeight.w500
                               ),
                             ),
-
+        
                             SizedBox
                             (
                               width: 20,
                             ),
-
+        
                             Text
                             (
                               '',
@@ -1065,8 +1065,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                             ),
                           ],
                         ),
-
-
+        
+        
                         //2
                         Row
                         (
@@ -1082,12 +1082,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                                 fontWeight: FontWeight.w500
                               ),
                             ),
-
+        
                             SizedBox
                             (
                               width: 20,
                             ),
-
+        
                             Text
                             (
                               'JOJO INU',
@@ -1100,7 +1100,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                             ),
                           ],
                         ),
-
+        
                         //3
                         Row
                         (
@@ -1116,12 +1116,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                                 fontWeight: FontWeight.w500
                               ),
                             ),
-
+        
                             SizedBox
                             (
                               width: 10,
                             ),
-
+        
                             Text
                             (
                               'JOJO',
@@ -1134,7 +1134,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                             ),
                           ],
                         ),
-
+        
                         //4
                         Row
                         (
@@ -1150,12 +1150,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                                 fontWeight: FontWeight.w500
                               ),
                             ),
-
+        
                             SizedBox
                             (
                               width: 55,
                             ),
-
+        
                             Text
                             (
                               '9',
@@ -1168,7 +1168,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                             ),
                           ],
                         ),
-
+        
                         //5
                         Row
                         (
@@ -1184,12 +1184,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                                 fontWeight: FontWeight.w500
                               ),
                             ),
-
+        
                             SizedBox
                             (
                               width: 30,
                             ),
-
+        
                             Text
                             (
                               '1000000000000000000000',
@@ -1202,8 +1202,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                             ),
                           ],
                         )
-
-
+        
+        
                         // SizedBox
                         // (
                         //   height: 20,
@@ -1256,7 +1256,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         //     ),
                         //   ),
                         // ),
-
+        
                         // //symbol
                         // SizedBox
                         // (
@@ -1292,7 +1292,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         //     ),
                         //   ),
                         // ),
-
+        
                         // //deci
                         // SizedBox
                         // (
@@ -1328,7 +1328,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         //     ),
                         //   ),
                         // ),
-
+        
                         // //su
                         // SizedBox
                         // (
@@ -1369,14 +1369,14 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                   ),
                 ),
               ),
-
+        
               SizedBox
               (
                 height: 40,
               ),
-
+        
               //post
-
+        
               Container
               (
                 height: MediaQuery.of(context).size.height*0.30,
@@ -1457,7 +1457,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                   ),
                 ),
               ),
-
+        
               //tabb
               // Container
               // (
@@ -1489,8 +1489,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               //                   ]
               //                 ),
               //               ),
-
-
+        
+        
               //               Container
               //               (
               //                 height: 80,
@@ -1505,9 +1505,9 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               //               )
               //       ],
               //     ),
-
+        
                        
-
+        
               //     // child: Stack
               //     // (
               //     //   fit: StackFit.passthrough,
@@ -1548,12 +1548,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               //     // ),
               //   ),
               // ),
-
+        
               SizedBox
               (
                 height: 20,
               ),
-
+        
               //or
               Container
               (
@@ -1624,7 +1624,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         onTap: ()
                                       {
                                         log('kyc verification');
-  
+        
                                         Navigator.push
                                         (
                                           context, MaterialPageRoute(builder:(context)=>VerifyKYC())
@@ -1645,12 +1645,12 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         ),
                       ),
                     ),
-
+        
                     Divider
                     (
                       color: Colors.white,
                     ),
-
+        
                     //2
                     Padding(
                       padding: const EdgeInsets.only(left:20.0),
@@ -1658,7 +1658,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         onTap: ()
                           {
                             log('Spotlight Clicked');
-  
+        
                             Navigator.push
                               (
                                 context, MaterialPageRoute(builder:(context)=>SpotLightScreen())
@@ -1683,7 +1683,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     (
                       color: Colors.white,
                     ),
-
+        
                     //3
                     Padding(
                       padding: const EdgeInsets.only(left:20.0),
@@ -1691,7 +1691,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         onTap: ()
                           {
                             log('Launchpad Clicked');
-  
+        
                             Navigator.push
                               (
                                 context, MaterialPageRoute(builder:(context)=>Launchpad())
@@ -1716,7 +1716,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     (
                       color: Colors.white,
                     ),
-
+        
                     //4
                     Padding(
                       padding: const EdgeInsets.only(left:20.0),
@@ -1724,7 +1724,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         onTap: ()
                         {
                           log('Lockscreen Clicked');
-  
+        
                             Navigator.push
                               (
                                 context, MaterialPageRoute(builder:(context)=>CreateLock())
@@ -1749,7 +1749,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     (
                       color: Colors.white,
                     ),
-
+        
                     //5
                     Padding(
                       padding: const EdgeInsets.only(left:20.0),
@@ -1757,7 +1757,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         onTap: ()
                         {
                           log('Ad Clicked');
-  
+        
                           Navigator.push
                             (
                               context, MaterialPageRoute(builder:(context)=>CreateAd())
@@ -1786,9 +1786,9 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     (
                       height: 20,
                     ),
-
+        
               
-
+        
               //cardexpan
       //       Container(
       //         decoration: BoxDecoration
@@ -1816,15 +1816,15 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
       //       expansionCallback: (panelIndex, isExpanded) {
       //         _expanded = !_expanded;
       //         setState(() {
- 
+         
       //         });
       //       },
       //   ),
       //  ),
-
-
-
-
+        
+        
+        
+        
               // SizedBox
               // (
               //   height: 5,
@@ -1862,8 +1862,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               //       ),
               //     ],
               //   )
-
-
+        
+        
               // //demostepper
               // Container(
               //   height: 120,
@@ -1894,7 +1894,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               //         );
               //       },
               //       indicatorBuilder: (_, index) {    
-
+        
               //         if (index <= 10) {
               //           return DotIndicator(
               //             size: 30.0,

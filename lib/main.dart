@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/profile_page/facebook1.dart';
 import 'package:hami_launch/profile_page/facebook_profiel.dart';
 import 'package:hami_launch/screen/verifykyc_screen.dart';
+import 'package:hami_launch/skeleton_widget/reuseSkeleton.dart';
 import 'package:iconsax/iconsax.dart';
 import '/profile_page/profile-screen.dart';
 import '/screen/AlertScreen.dart';
@@ -108,6 +109,19 @@ class _RootPageState extends State<RootPage> {
     // AlertScreen()
     AlertPage()
   ];
+
+   bool _isLoading;
+
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 10), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
 
   final _advancedDrawerController = AdvancedDrawerController();
 
@@ -287,7 +301,21 @@ class _RootPageState extends State<RootPage> {
           // sets the background color of the `BottomNavigationBar`
           canvasColor: Appcolor.darkviolte6,
         ),
-        child: BottomNavigationBar(
+        child: _isLoading?
+        Center
+        (
+          child: CircularProgressIndicator
+          (
+            color: Colors.pinkAccent,
+          ),
+        )
+        // ListView.separated(
+        //         itemCount: 5,
+        //         itemBuilder: (context, index) => ReuseSkelton(),
+        //         separatorBuilder: (context, index) =>
+        //             const SizedBox(height: 16),
+        //       )
+        :BottomNavigationBar(
           elevation: 0.0,
           selectedItemColor:Colors.pinkAccent.shade200,
           backgroundColor: Appcolor.darkviolte6,
