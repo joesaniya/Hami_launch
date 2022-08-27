@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/profile_page/facebook1.dart';
@@ -304,11 +305,13 @@ class _RootPageState extends State<RootPage> {
         child: _isLoading?
         Center
         (
-          child: CircularProgressIndicator
+          child: SpinKitHourGlass
           (
-            color: Colors.pinkAccent,
+            color: Colors.pinkAccent.shade200,
+            size: 50,
           ),
         )
+
         // ListView.separated(
         //         itemCount: 5,
         //         itemBuilder: (context, index) => ReuseSkelton(),

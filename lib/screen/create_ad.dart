@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -1252,56 +1253,65 @@ class _CreateAdState extends State<CreateAd> {
                     // secondary: Colors.green,
                   ),
                 ),
-                child: Stepper(
-                   controlsBuilder: (BuildContext context, ControlsDetails details) {
-                    return Row(
-                  children: <Widget>[
-                    // FlatButton(
-                    //   onPressed: _stepContinue,
-                    //   child: const Text('Connect',
-                    //       style: TextStyle(color: Colors.white)),
-                    //   color: Appcolor.darkviolte,
-                    // ),
-                    // new Padding(
-                    //   padding: new EdgeInsets.all(10),
-                    // ),
-                    // FlatButton(
-                    //   onPressed: _stepCancel,
-                    //   child: Text(hide == true ? '' :'Cancel'),
-                    //   // child: const Text(
-                    //   //   'Zurück',
-                    //   //   style: TextStyle(color: Colors.white),
-                    //   // ),
-                    //   color: hide == true ? Colors.transparent : Colors.amber,
-                    // ),
-                  ],
-                );
-                    
-                    // return Row(
-                    //   children: <Widget>[
-                    //     TextButton(
-                    //       onPressed: details.onStepContinue,
-                    //       child: Text(hide == false ? '' : 'Confirm'),
-                    //     ),
-                    //     TextButton(
-                    //       onPressed: details.onStepCancel,
-                    //       child: Text(hide == true ? '' :'Cancel'),
-                    //     ),
-                    //   ],
-                    // );
-                  },
-                  elevation: 0.0,
-                  // vertical or horizontial
-                  type: StepperType.vertical,
-                  // type: _isVerticalStepper
-                  //     ? StepperType.vertical
-                  //     : StepperType.horizontal,
-                  physics: const ScrollPhysics(),
-                  currentStep: _currentStep,
-                  onStepTapped: (step) => _stepTapped(step),
-                  onStepContinue: _stepContinue,
-                  onStepCancel: _stepCancel,
-                  steps: getPresale()
+                child: PageTransitionSwitcher(
+                  duration: const Duration(seconds: 10),
+        transitionBuilder: (child, anim, sec) => SharedAxisTransition(
+          transitionType: SharedAxisTransitionType.horizontal,
+          animation: anim,
+          secondaryAnimation: sec,
+          child: child,
+        ),
+                  child: Stepper(
+                     controlsBuilder: (BuildContext context, ControlsDetails details) {
+                      return Row(
+                    children: <Widget>[
+                      // FlatButton(
+                      //   onPressed: _stepContinue,
+                      //   child: const Text('Connect',
+                      //       style: TextStyle(color: Colors.white)),
+                      //   color: Appcolor.darkviolte,
+                      // ),
+                      // new Padding(
+                      //   padding: new EdgeInsets.all(10),
+                      // ),
+                      // FlatButton(
+                      //   onPressed: _stepCancel,
+                      //   child: Text(hide == true ? '' :'Cancel'),
+                      //   // child: const Text(
+                      //   //   'Zurück',
+                      //   //   style: TextStyle(color: Colors.white),
+                      //   // ),
+                      //   color: hide == true ? Colors.transparent : Colors.amber,
+                      // ),
+                    ],
+                  );
+                      
+                      // return Row(
+                      //   children: <Widget>[
+                      //     TextButton(
+                      //       onPressed: details.onStepContinue,
+                      //       child: Text(hide == false ? '' : 'Confirm'),
+                      //     ),
+                      //     TextButton(
+                      //       onPressed: details.onStepCancel,
+                      //       child: Text(hide == true ? '' :'Cancel'),
+                      //     ),
+                      //   ],
+                      // );
+                    },
+                    elevation: 0.0,
+                    // vertical or horizontial
+                    type: StepperType.vertical,
+                    // type: _isVerticalStepper
+                    //     ? StepperType.vertical
+                    //     : StepperType.horizontal,
+                    physics: const ScrollPhysics(),
+                    currentStep: _currentStep,
+                    onStepTapped: (step) => _stepTapped(step),
+                    onStepContinue: _stepContinue,
+                    onStepCancel: _stepCancel,
+                    steps: getPresale()
+                  ),
                 ),
               ),
                         ),
