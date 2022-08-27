@@ -11,6 +11,7 @@ import 'package:hami_launch/profile_page/facebook1.dart';
 import 'package:hami_launch/profile_page/facebook_profiel.dart';
 import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:hami_launch/skeleton_widget/reuseSkeleton.dart';
+import 'package:hami_launch/skeleton_widget/shimmer_skeleton.dart';
 import 'package:iconsax/iconsax.dart';
 import '/profile_page/profile-screen.dart';
 import '/screen/AlertScreen.dart';
@@ -303,12 +304,14 @@ class _RootPageState extends State<RootPage> {
           canvasColor: Appcolor.darkviolte6,
         ),
         child: _isLoading?
+        
+        // ShimmerSkeleton()->shimmer
+
         Center
         (
-          child: SpinKitHourGlass
+          child: SpinKitDualRing
           (
             color: Colors.pinkAccent.shade200,
-            size: 50,
           ),
         )
 
