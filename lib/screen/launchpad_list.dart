@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -238,6 +240,7 @@ class _LaunchPadListState extends State<LaunchPadList> {
                                 onChanged: (String? newValue) {
                                   setState(() {
                                     dropdownValue = newValue!;
+                                    log(newValue);
                                   });
                                 },
                                 // items: <String>['All','Trending','Recent','Upcoming','Featured',]
@@ -280,11 +283,11 @@ class _LaunchPadListState extends State<LaunchPadList> {
                 SizedBox
                 (
                   height: MediaQuery.of(context).size.height*0.90,
-                  child: items==0?
+                  child: dropdownValue=='All'?
                   Container(height: 300,width: double.infinity,color: Colors.red,)
-                  :items==1?Container(height: 300,width: double.infinity,color: Colors.blue,)
-                  :items==2?Container(height: 300,width: double.infinity,color: Colors.green,)
-                  :items==3?Container(height: 300,width: double.infinity,color: Colors.yellow,)
+                  :dropdownValue=='Trending'?Container(height: 300,width: double.infinity,color: Colors.blue,)
+                  :dropdownValue=='Recent'?Container(height: 300,width: double.infinity,color: Colors.green,)
+                  :dropdownValue=='Upcoming'?Container(height: 300,width: double.infinity,color: Colors.yellow,)
                   :Container
                   (
                     height: 300,
