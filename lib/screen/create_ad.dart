@@ -21,10 +21,12 @@ class _CreateAdState extends State<CreateAd> {
   File? _image;
 
   String? imgpath;
+  String? imgpath1;
   File? _image1;//square
   final imagePicker = ImagePicker();
   String _description = "";
   TextEditingController _img=TextEditingController(text: "No file chosen");
+  TextEditingController _img1=TextEditingController(text: "No file chosen");
   String initialValue='No file choosen';
 
   onDescriptionChange(String newValue)
@@ -62,7 +64,11 @@ class _CreateAdState extends State<CreateAd> {
     setState(() {
       log("squarre path to the gallery");
       _image1 = File(image1!.path);
+      imgpath1=_image1!.path.split('/').last;//path spliting
       log(_image1.toString());
+      log(imgpath1.toString());
+      _img1.text=imgpath.toString();
+      log(_img1.text);
     });
   }
 
@@ -119,82 +125,167 @@ class _CreateAdState extends State<CreateAd> {
               ),
             ),
           ),
-          Row
-          (
-            children: 
-            [
-              FlatButton
-              (
-                color: Colors.white,
-                onPressed: getImagegallery,
-                // onPressed: ()
-                // {
-                //   getImagegallery().then((value) {setState(() {
-                //     _img.text=_image!.path.toString();
-                //     log(_img.text);
-                //   });});
-                // }, 
-                child: Text
-                (
-                  'Choose File',
-                  style: TextStyle
-                  (
-                    color: Colors.black,
-                  ),
-                )
-              ),
-              Expanded
-              (
-                child: SizedBox(
-                  height: 38,
-                  child: TextFormField(
-                    controller: _img,
-                    // initialValue: initialValue.toString(),->wrong
-                  // initialValue: _image.toString(),
-                  style: TextStyle(color: Colors.white),
-                  // onChanged: onDescriptionChange,
-                  // onChanged: (String newValue)
-                  // {
-                  //   setState(() {
-                  //     log('des');
-                  //     _image = newValue as File?; 
-                  //     log(_image!.path);
-                  //   });
-                  // },
-                  decoration:const InputDecoration
-                  (
-                    // labelText: 'No File Chosen',
-                    // labelStyle: TextStyle(
+          // Row
+          // (
+          //   children: 
+          //   [
+          //     FlatButton
+          //     (
+          //       color: Colors.white,
+          //       onPressed: getImagegallery,
+          //       // onPressed: ()
+          //       // {
+          //       //   getImagegallery().then((value) {setState(() {
+          //       //     _img.text=_image!.path.toString();
+          //       //     log(_img.text);
+          //       //   });});
+          //       // }, 
+          //       child: Text
+          //       (
+          //         'Choose File',
+          //         style: TextStyle
+          //         (
+          //           color: Colors.black,
+          //         ),
+          //       )
+          //     ),
+          //     Expanded
+          //     (
+          //       child: SizedBox(
+          //         height: 38,
+          //         child: TextFormField(
+          //           controller: _img,
+          //           // initialValue: initialValue.toString(),->wrong
+          //         // initialValue: _image.toString(),
+          //         style: TextStyle(color: Colors.white),
+          //         // onChanged: onDescriptionChange,
+          //         // onChanged: (String newValue)
+          //         // {
+          //         //   setState(() {
+          //         //     log('des');
+          //         //     _image = newValue as File?; 
+          //         //     log(_image!.path);
+          //         //   });
+          //         // },
+          //         decoration:const InputDecoration
+          //         (
+          //           // labelText: 'No File Chosen',
+          //           // labelStyle: TextStyle(
                       
-                    // ),
-                    focusedBorder: OutlineInputBorder
-                    (
-                        borderSide: BorderSide
-                        (
-                          color: Colors.white, width: 1.0
+          //           // ),
+          //           focusedBorder: OutlineInputBorder
+          //           (
+          //               borderSide: BorderSide
+          //               (
+          //                 color: Colors.white, width: 1.0
+          //               ),
+          //           ),
+          //           enabledBorder: OutlineInputBorder
+          //           (
+          //               borderSide: BorderSide
+          //               (
+          //                 color: Colors.white, width: 1.0
+          //               ),
+          //           ),
+          //           errorBorder: OutlineInputBorder
+          //           (
+          //             borderSide: BorderSide
+          //               (
+          //                 color: Colors.white, width: 1.0
+          //               ),
+          //           ),
+          //         )
+          //         // decoration: InputDecoration(labelText: "Description"),
+          //        ),
+          //       ),
+          //     )
+          //   ],
+          // ),
+          Container
+                      (
+                        height: MediaQuery.of(context).size.height*0.06,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey,
+                          ),
+                          borderRadius: BorderRadius.all
+                          (
+                            Radius.circular(5)
+                          )
                         ),
-                    ),
-                    enabledBorder: OutlineInputBorder
-                    (
-                        borderSide: BorderSide
-                        (
-                          color: Colors.white, width: 1.0
+                        child: Padding(
+                          padding: const EdgeInsets.only(left:5.0,right: 10.0,top: 5.0,bottom: 5.0),
+                          child: Row
+                          (
+                            children: 
+                            [
+                              FlatButton
+                              (
+                                splashColor: Colors.pinkAccent,
+                                hoverColor: Colors.purpleAccent,
+                                color: Colors.white,
+                                onPressed: getImagegallery,
+                                // onPressed: ()
+                                // {
+                                //   getImagegallery().then((value) {setState(() {
+                                //     _img.text=_image!.path.toString();
+                                //     log(_img.text);
+                                //   });});
+                                // }, 
+                                child: Text
+                                (
+                                  'Choose File',
+                                  style: TextStyle
+                                  (
+                                    color: Colors.black,
+                                  ),
+                                )
+                              ),
+
+                              SizedBox
+                              (
+                                width: 5,
+                              ),
+
+                              Expanded
+                              (
+                                child: SizedBox(
+                                  height: 38,
+                                  child: TextFormField(
+                                    controller: _img,
+                                    // initialValue: initialValue.toString(),->wrong
+                                  // initialValue: _image.toString(),
+                                  style: TextStyle(color: Colors.white),
+                                  // onChanged: onDescriptionChange,
+                                  // onChanged: (String newValue)
+                                  // {
+                                  //   setState(() {
+                                  //     log('des');
+                                  //     _image = newValue as File?; 
+                                  //     log(_image!.path);
+                                  //   });
+                                  // },
+                                  decoration:const InputDecoration
+                                  (
+                                    // contentPadding:
+                                    //         EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                  )
+                                  // decoration: InputDecoration(labelText: "Description"),
+                                ),
+                                ),
+                              )
+
+                              
+                            ],
+                          ),
                         ),
-                    ),
-                    errorBorder: OutlineInputBorder
-                    (
-                      borderSide: BorderSide
-                        (
-                          color: Colors.white, width: 1.0
-                        ),
-                    ),
-                  )
-                  // decoration: InputDecoration(labelText: "Description"),
-                 ),
-                ),
-              )
-            ],
-          ),
+                      ),
           SizedBox
           (
             height: 20,
@@ -319,65 +410,150 @@ class _CreateAdState extends State<CreateAd> {
               ),
             ),
           ),
-          Row
-          (
-            children: 
-            [
-              FlatButton
-              (
-                color: Colors.white,
-                onPressed: SquareImagegallery, 
-                child: Text
-                (
-                  'Choose File',
-                  style: TextStyle
-                  (
-                    color: Colors.black,
-                  ),
-                )
-              ),
-              Expanded
-              (
-                child: SizedBox(
-                  height: 38,
-                  child: TextFormField(
-                  // initialValue: _image1.toString(),
-                  controller:_img,
-                  onChanged: onDescriptionChange,
-                  decoration:const InputDecoration
-                  (
-                    // labelText: 'No File Chosen',
-                    // labelStyle: TextStyle(
+          // Row
+          // (
+          //   children: 
+          //   [
+          //     FlatButton
+          //     (
+          //       color: Colors.white,
+          //       onPressed: SquareImagegallery, 
+          //       child: Text
+          //       (
+          //         'Choose File',
+          //         style: TextStyle
+          //         (
+          //           color: Colors.black,
+          //         ),
+          //       )
+          //     ),
+          //     Expanded
+          //     (
+          //       child: SizedBox(
+          //         height: 38,
+          //         child: TextFormField(
+          //         // initialValue: _image1.toString(),
+          //         controller:_img,
+          //         onChanged: onDescriptionChange,
+          //         decoration:const InputDecoration
+          //         (
+          //           // labelText: 'No File Chosen',
+          //           // labelStyle: TextStyle(
                       
-                    // ),
-                    focusedBorder: OutlineInputBorder
-                    (
-                        borderSide: BorderSide
-                        (
-                          color: Colors.white, width: 1.0
+          //           // ),
+          //           focusedBorder: OutlineInputBorder
+          //           (
+          //               borderSide: BorderSide
+          //               (
+          //                 color: Colors.white, width: 1.0
+          //               ),
+          //           ),
+          //           enabledBorder: OutlineInputBorder
+          //           (
+          //               borderSide: BorderSide
+          //               (
+          //                 color: Colors.white, width: 1.0
+          //               ),
+          //           ),
+          //           errorBorder: OutlineInputBorder
+          //           (
+          //             borderSide: BorderSide
+          //               (
+          //                 color: Colors.white, width: 1.0
+          //               ),
+          //           ),
+          //         )
+          //         // decoration: InputDecoration(labelText: "Description"),
+          //        ),
+          //       ),
+          //     )
+          //   ],
+          // ),
+          Container
+                      (
+                        height: MediaQuery.of(context).size.height*0.06,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey,
+                          ),
+                          borderRadius: BorderRadius.all
+                          (
+                            Radius.circular(5)
+                          )
                         ),
-                    ),
-                    enabledBorder: OutlineInputBorder
-                    (
-                        borderSide: BorderSide
-                        (
-                          color: Colors.white, width: 1.0
+                        child: Padding(
+                          padding: const EdgeInsets.only(left:5.0,right: 10.0,top: 5.0,bottom: 5.0),
+                          child: Row
+                          (
+                            children: 
+                            [
+                              FlatButton
+                              (
+                                splashColor: Colors.pinkAccent,
+                                hoverColor: Colors.purpleAccent,
+                                color: Colors.white,
+                                onPressed: SquareImagegallery,
+                                // onPressed: ()
+                                // {
+                                //   getImagegallery().then((value) {setState(() {
+                                //     _img.text=_image!.path.toString();
+                                //     log(_img.text);
+                                //   });});
+                                // }, 
+                                child: Text
+                                (
+                                  'Choose File',
+                                  style: TextStyle
+                                  (
+                                    color: Colors.black,
+                                  ),
+                                )
+                              ),
+
+                              SizedBox
+                              (
+                                width: 5,
+                              ),
+
+                              Expanded
+                              (
+                                child: SizedBox(
+                                  height: 38,
+                                  child: TextFormField(
+                                    controller: _img1,
+                                    // initialValue: initialValue.toString(),->wrong
+                                  // initialValue: _image.toString(),
+                                  style: TextStyle(color: Colors.white),
+                                  // onChanged: onDescriptionChange,
+                                  // onChanged: (String newValue)
+                                  // {
+                                  //   setState(() {
+                                  //     log('des');
+                                  //     _image = newValue as File?; 
+                                  //     log(_image!.path);
+                                  //   });
+                                  // },
+                                  decoration:const InputDecoration
+                                  (
+                                    // contentPadding:
+                                    //         EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                  )
+                                  // decoration: InputDecoration(labelText: "Description"),
+                                ),
+                                ),
+                              )
+
+                              
+                            ],
+                          ),
                         ),
-                    ),
-                    errorBorder: OutlineInputBorder
-                    (
-                      borderSide: BorderSide
-                        (
-                          color: Colors.white, width: 1.0
-                        ),
-                    ),
-                  )
-                  // decoration: InputDecoration(labelText: "Description"),
-                 ),
-                ),
-              )
-            ],
-          ),
+                      ),
           SizedBox
           (
             height: 20,

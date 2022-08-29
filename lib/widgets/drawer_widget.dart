@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hami_launch/screen/Presale_screen.dart';
+import 'package:hami_launch/screen/create_token.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
 
@@ -292,6 +293,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('Create Token clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CreateToken())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Create Token',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
