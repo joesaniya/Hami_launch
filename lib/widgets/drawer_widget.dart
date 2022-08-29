@@ -6,6 +6,7 @@ import 'package:hami_launch/screen/Presale_screen.dart';
 import 'package:hami_launch/screen/create_token.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
+import 'package:hami_launch/screen/token_list.dart';
 
 import '../screen/spotlight_screen.dart';
 import '../screen/verifykyc_screen.dart';
@@ -284,6 +285,14 @@ class MyWidget extends StatelessWidget {
                     [
                       ListTile
                         (
+                          onTap: ()
+                          {
+                            log('Tokens List clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TokenSList())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Tokens List',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),

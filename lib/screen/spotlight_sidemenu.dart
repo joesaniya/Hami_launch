@@ -34,8 +34,10 @@ class _SideMenuSpotLightState extends State<SideMenuSpotLight> {
           color: Colors.transparent,
           child: Row
                 (
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: 
                   [
                     // Container

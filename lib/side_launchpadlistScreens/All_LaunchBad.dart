@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../models/job.dart';
 
-class AllLaunch extends StatelessWidget {
+class AllLaunch extends StatefulWidget {
   AllLaunch({Key? key}) : super(key: key);
 
+  @override
+  State<AllLaunch> createState() => _AllLaunchState();
+}
+
+class _AllLaunchState extends State<AllLaunch> {
+
+  late bool _isLoading;
+
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
   List<SpotLight> spotlight = getSpotLight();
 
   List<Widget> buildLastJobs1(){
@@ -25,8 +44,10 @@ class AllLaunch extends StatelessWidget {
           color: Colors.transparent,
           child: Row
                 (
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: 
                   [
                     // Container
@@ -243,139 +264,146 @@ class AllLaunch extends StatelessWidget {
       ],
     );
   }
-  
 
   @override
   Widget build(BuildContext context) {
-    return Column
-    (
-      children: 
-      [
-         Row
-                (
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: 
-                  const [
-              
-
-                    Expanded(
-                      child: Text
-                      (
-                        'NAME',
-                         style: TextStyle
-                          (
-                            color: Colors.grey,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w900
-                          ),
+    return SizedBox(
+      child: _isLoading
+      ?
+      SpinKitDualRing
+      (
+        color: Colors.pinkAccent.shade200,
+      )
+      :Column
+      (
+        children: 
+        [
+           Row
+                  (
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: 
+                    const [
+                
+    
+                      Expanded(
+                        child: Text
+                        (
+                          'NAME',
+                           style: TextStyle
+                            (
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w900
+                            ),
+                        ),
                       ),
-                    ),
-
-                    // SizedBox
-                    // (
-                    //   width: 20,
-                    // ),
-
-                    Expanded(
-                      child: Text
-                      (
-                        'LIQUIDITY %',
-                         style: TextStyle
-                          (
-                            color: Colors.grey,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w900
-                          ),
+    
+                      // SizedBox
+                      // (
+                      //   width: 20,
+                      // ),
+    
+                      Expanded(
+                        child: Text
+                        (
+                          'LIQUIDITY %',
+                           style: TextStyle
+                            (
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w900
+                            ),
+                        ),
                       ),
-                    ),
-
-                    SizedBox
-                    (
-                      width: 10,
-                    ),
-
-                    Expanded(
-                      child: Text
+    
+                      SizedBox
                       (
-                        'LOCUP TIME',
-                         style: TextStyle
-                          (
-                            color: Colors.grey,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w900
-                          ),
+                        width: 10,
                       ),
-                    ),
-
-                    SizedBox
-                    (
-                      width: 10,
-                    ),
-
-
-                    // Expanded(
-                    //   child: Text
-                    //   (
-                    //     'LISTING PRICE',
-                    //      style: TextStyle
-                    //       (
-                    //         color: Colors.white,
-                    //         fontSize: 15,
-                    //         fontWeight: FontWeight.w900
-                    //       ),
-                    //   ),
-                    // ),
-
-                    // SizedBox
-                    // (
-                    //   width: 20,
-                    // ),
-
-
-                    Expanded(
-                      child: Text
+    
+                      Expanded(
+                        child: Text
+                        (
+                          'LOCUP TIME',
+                           style: TextStyle
+                            (
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w900
+                            ),
+                        ),
+                      ),
+    
+                      SizedBox
                       (
-                        'PRICE',
-                         style: TextStyle
-                          (
-                            color: Colors.grey,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w900
-                          ),
-                          // overflow: TextOverflow.ellipsis,
+                        width: 10,
                       ),
-                    ),
-
-                    // SizedBox
-                    // (
-                    //   width: 20,
-                    // ),
-
-
-                    Expanded(
-                      child: Text
-                      (
-                        'STATUS',
-                         style: TextStyle
-                          (
-                            color: Colors.grey,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w900
-                          ),
+    
+    
+                      // Expanded(
+                      //   child: Text
+                      //   (
+                      //     'LISTING PRICE',
+                      //      style: TextStyle
+                      //       (
+                      //         color: Colors.white,
+                      //         fontSize: 15,
+                      //         fontWeight: FontWeight.w900
+                      //       ),
+                      //   ),
+                      // ),
+    
+                      // SizedBox
+                      // (
+                      //   width: 20,
+                      // ),
+    
+    
+                      Expanded(
+                        child: Text
+                        (
+                          'PRICE',
+                           style: TextStyle
+                            (
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w900
+                            ),
+                            // overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-
-                SizedBox
-                (
-                  height: 20,
-                ),
-
-                ...buildLastJobs1()
-
-      ],
+    
+                      // SizedBox
+                      // (
+                      //   width: 20,
+                      // ),
+    
+    
+                      Expanded(
+                        child: Text
+                        (
+                          'STATUS',
+                           style: TextStyle
+                            (
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w900
+                            ),
+                        ),
+                      ),
+                    ],
+                  ),
+    
+                  SizedBox
+                  (
+                    height: 20,
+                  ),
+    
+                  ...buildLastJobs1()
+    
+        ],
+      ),
     );
   }
 }

@@ -6,6 +6,7 @@ import '../screen/token-detail.dart';
 import '/theme/appcolor.dart';
 
 import '../models/job.dart';
+import 'Glowing_button.dart';
 
 class ButtonHome extends StatefulWidget {
   const ButtonHome({Key? key}) : super(key: key);
@@ -142,33 +143,81 @@ class _ButtonHomeState extends State<ButtonHome> {
                 // ),
                 // SizedBox
                 // (
-                //   width: 30,
+                //   width: 41,
                 // ),
                 Spacer(),
-                Container(
-                  height: 30,
-                  width: 40,
-                  decoration: BoxDecoration
-                  (
-                    // color: Colors.pinkAccent,
-                    color: shift.status=='Standard'?Colors.pinkAccent: Colors.grey,
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    border: Border.all
-                    (
-                      color: Appcolor.darkviolte3
-                    )
-                  ),
-                  child: Center(
-                    child: Text
-                    (
-                      'View',
-                      style: TextStyle
-                      (
-                        color: Colors.white
-                      ),
+
+                Material(
+        elevation: 10,
+        borderRadius: BorderRadius.circular(8.0),
+        child: InkWell(
+          onTap: () {},
+          child: Container(
+            padding: EdgeInsets.all(0.0),
+            height: 30.0,//MediaQuery.of(context).size.width * .08,
+            width: 80.0,//MediaQuery.of(context).size.width * .3,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0)
+            ),
+            child: Row(
+              children: <Widget>[
+                LayoutBuilder(builder: (context, constraints) {
+                  print(constraints);
+                  return Container(
+                    height: constraints.maxHeight,
+                    width: constraints.maxHeight,
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Icon(
+                      Icons.remove_red_eye_outlined,
+                      color: Colors.white,
+                    ),
+                  );
+                }),
+                Expanded(
+                  child: Text(
+                    'View',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 15,
                     ),
                   ),
                 ),
+              ],
+            ),
+          ),
+        ),
+      ),
+                // Container(
+                //   height: 30,
+                //   width: 40,
+                //   decoration: BoxDecoration
+                //   (
+                //     // color: Colors.pinkAccent,
+                //     color: shift.status=='Standard'?Colors.pinkAccent: Colors.grey,
+                //     borderRadius: BorderRadius.all(Radius.circular(30)),
+                //     border: Border.all
+                //     (
+                //       color: Appcolor.darkviolte3
+                //     )
+                //   ),
+                //   child: Center(
+                //     child: Text
+                //     (
+                //       'View',
+                //       style: TextStyle
+                //       (
+                //         color: Colors.white
+                //       ),
+                //     ),
+                //   ),
+                // ),
+            //      GlowingButton(
+            //   color1: Colors.orange,
+            //   color2: Colors.red,
+            // ),
               ],
             ),
           ),
@@ -496,7 +545,7 @@ class _ButtonHomeState extends State<ButtonHome> {
                     [
                       Text
                       (
-                        'TPROJECT NAME',
+                        'PROJECT NAME',
                         style: TextStyle
                         (
                           color: Colors.grey

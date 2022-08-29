@@ -67,7 +67,7 @@ class _CreateAdState extends State<CreateAd> {
       imgpath1=_image1!.path.split('/').last;//path spliting
       log(_image1.toString());
       log(imgpath1.toString());
-      _img1.text=imgpath.toString();
+      _img1.text=imgpath1.toString();
       log(_img1.text);
     });
   }

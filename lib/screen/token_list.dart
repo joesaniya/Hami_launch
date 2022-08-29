@@ -1,52 +1,32 @@
 import 'dart:developer';
 
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:hami_launch/alertScreen/NewlyListed.dart';
-import 'package:hami_launch/alertScreen/currentlylisted.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../side_launchpadlistScreens/All_LaunchBad.dart';
+import '../models/job.dart';
+import '../side_launchpadlistScreens/side_Token.dart';
 import '../theme/appcolor.dart';
 
-class LaunchPadList extends StatefulWidget {
-  const LaunchPadList({Key? key}) : super(key: key);
+class TokenSList extends StatefulWidget {
+  const TokenSList({Key? key}) : super(key: key);
 
   @override
-  State<LaunchPadList> createState() => _LaunchPadListState();
+  State<TokenSList> createState() => _TokenSListState();
 }
 
-class _LaunchPadListState extends State<LaunchPadList> {
-
-
-
-   final List<String> items = [
-    'All',
+class _TokenSListState extends State<TokenSList> {
+    final List<String> items = [
+    'All Tokens',
     'Trending',
-    'Recent',
-    'Upcoming',
-    'Featured',
+    'Recently Created',
   ];
 
 
-  String? selectedValue;
 
   String dropdownValue = 'ALL';
 
-  late bool _isLoading;
-
-  @override
-  void initState() {
-    _isLoading = true;
-    Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        _isLoading = false;
-      });
-    });
-    super.initState();
-  }
-
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold
@@ -71,7 +51,7 @@ class _LaunchPadListState extends State<LaunchPadList> {
         ),
         title: Text
         (
-          'Launchpad List',
+          'Tokens List',
           style: TextStyle
           (
             color: Colors.white
@@ -109,8 +89,8 @@ class _LaunchPadListState extends State<LaunchPadList> {
                           [
                             Icon
                             (
-                              FontAwesome.rocket,
-                              color: Appcolor.darkviolte4,
+                              FontAwesomeIcons.lightbulb,
+                              color: Appcolor.darkviolte3,
                             ),
                             SizedBox
                             (
@@ -118,7 +98,7 @@ class _LaunchPadListState extends State<LaunchPadList> {
                             ),
                             Text
                             (
-                              'Launchpad List',
+                              'Tokens List',
                               style: TextStyle
                               (
                                 color: Colors.white,
@@ -139,7 +119,7 @@ class _LaunchPadListState extends State<LaunchPadList> {
                         ),
                         Text
                             (
-                              'This is Launchpad List',
+                              'This is Tokens List',
                               style: TextStyle
                               (
                                 color: Colors.white,
@@ -309,35 +289,36 @@ class _LaunchPadListState extends State<LaunchPadList> {
                   ),
                 ),
 
+                // SizedBox
+                // (
+                //   height: 20,
+                // ),
+
+                // dropdownValue==''?
+
                 SizedBox
                 (
                   height: 20,
                 ),
-                
+
                 SizedBox
                 (
                   height: MediaQuery.of(context).size.height*0.90,
-                  child: dropdownValue=='All'?
-                  AllLaunch()
+                  child: dropdownValue=='All Tokens'?
+                  SideToken()
                   // Container(height: 300,width: double.infinity,color: Colors.red,)
-                  :dropdownValue=='Trending'?AllLaunch()
+                  :dropdownValue=='Trending'?
+                  SideToken()
                   // Container(height: 300,width: double.infinity,color: Colors.blue,)
-                  :dropdownValue=='Recent'?AllLaunch()
-                  // Container(height: 300,width: double.infinity,color: Colors.green,)
-                  :dropdownValue=='Upcoming'?AllLaunch()
-                  // Container(height: 300,width: double.infinity,color: Colors.yellow,)
-                  :AllLaunch()
+                  :
+                  SideToken()
                   // Container
                   // (
                   //   height: 300,
                   //   width: double.infinity,
                   //   color: Colors.pink,
                   // )
-                  
                 )
-                
-                
-              
                 
             ],
           ),
@@ -345,9 +326,4 @@ class _LaunchPadListState extends State<LaunchPadList> {
       ),
     );
   }
-}
-
-class Item {
-  const Item(this.name);
-  final String name;
 }
