@@ -25,17 +25,17 @@ class _SideTokenState extends State<SideToken> {
     super.initState();
   }
 
-  List<SpotLight> spotlight = getSpotLight();
+  List<Token> token = getToken();
 
   List<Widget> buildLastJobs1(){
     List<Widget> list = [];
-    for (var i = spotlight.length - 1; i > -1; i--) {
-      list.add(buildLastJob1(spotlight[i]));
+    for (var i = token.length - 1; i > -1; i--) {
+      list.add(buildLastJob1(token[i]));
     }
     return list;
   }
 
-  Widget buildLastJob1(SpotLight spotLight)
+  Widget buildLastJob1(Token token)
   {
     return Column
     (
@@ -85,34 +85,54 @@ class _SideTokenState extends State<SideToken> {
                     // ),
                     Expanded(
                       child: 
-                          Text
-                          (
-                            spotLight.name,
-                             style: TextStyle
+                          Row(
+                            children: [
+                              Text
                               (
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500
+                                token.title,
+                                 style: TextStyle
+                                  (
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500
+                                  ),
+                                  // textAlign: TextAlign.center,
                               ),
-                              // textAlign: TextAlign.center,
+                              SizedBox
+                              (
+                                width: 5,
+                              ),
+                              Text
+                              (
+                                token.subtitle,
+                                 style: TextStyle
+                                  (
+                                    color: Colors.grey,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400
+                                  ),
+                                  // textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                     ),
 
-                    // SizedBox
-                    // (
-                    //   width: 20,
-                    // ),
+                    SizedBox
+                    (
+                      width: 10,
+                    ),
 
                     Expanded(
                       child: Text
                         (
-                          spotLight.liquidity,
+                          token.supply,
                            style: TextStyle
                             (
                               color: Colors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.w500
                             ),
+                            overflow: TextOverflow.ellipsis,
                         ),
                     ),
 
@@ -124,7 +144,7 @@ class _SideTokenState extends State<SideToken> {
                     Expanded(
                       child: Text
                       (
-                        spotLight.lockuptime,
+                        token.address,
                          style: TextStyle
                           (
                             color: Colors.white,
@@ -135,10 +155,10 @@ class _SideTokenState extends State<SideToken> {
                       ),
                     ),
 
-                    // SizedBox
-                    // (
-                    //   width: 10,
-                    // ),
+                    SizedBox
+                    (
+                      width: 10,
+                    ),
 
 
                   
@@ -309,6 +329,10 @@ class _SideTokenState extends State<SideToken> {
                             ),
                       )
                     ),
+                    SizedBox
+                    (
+                      width: 10,
+                    ),
                     Expanded
                     (
                       child: Text
@@ -321,6 +345,10 @@ class _SideTokenState extends State<SideToken> {
                               fontWeight: FontWeight.w900
                             ),
                       )
+                    ),
+                    SizedBox
+                    (
+                      width: 10,
                     ),
                     Expanded
                     (

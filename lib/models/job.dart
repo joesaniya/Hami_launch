@@ -306,3 +306,50 @@ List<SpotLight> getSpotLight()
     
   ];
 }
+
+
+class Token{
+  String title;
+  String subtitle;
+  String supply;
+  String address;
+  String status;
+  Token(
+    this.title,
+    this.subtitle,
+    this.supply,
+    this.address,
+    this.status
+  );
+}
+
+List<Token> getToken()
+{
+  return<Token>
+  [
+    Token
+    (
+      'Corgi', 
+      'CRG', 
+      '100000000', 
+      '0xCd0cb0FB6FFd21Ba22d7650fCa640b672EfAA28A', 
+      'Live'
+    ),
+    Token
+    (
+      'Spin Ape', 
+      'SAPE', 
+      '10000000099', 
+      '0xCd0cb0FB6FFd21Ba22d7650fCa640b672EfAA28A', 
+      'Upcoming'
+    ),
+    Token
+    (
+      'Collie Coin', 
+      'CLL', 
+      '9010000000099', 
+      '0xCd0cb0FB6FFd21Ba22d7650fCa640b672EfAA28A', 
+      'Ended'
+    )
+  ];
+}
