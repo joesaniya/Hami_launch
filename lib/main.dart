@@ -299,9 +299,13 @@ class _RootPageState extends State<RootPage> {
     
       body: getBody(),
       bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
+        data: Theme.of(context).copyWith
+        (
           // sets the background color of the `BottomNavigationBar`
           canvasColor: Appcolor.darkviolte6,
+          splashColor: Colors.pinkAccent,
+          highlightColor: Colors.purpleAccent,
+          hoverColor: Colors.deepPurple,
         ),
         child: _isLoading?
         

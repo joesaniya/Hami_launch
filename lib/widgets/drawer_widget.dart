@@ -5,8 +5,11 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hami_launch/screen/Presale_screen.dart';
 import 'package:hami_launch/screen/create_token.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
+import 'package:hami_launch/screen/lock.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
 import 'package:hami_launch/screen/token_list.dart';
+import 'package:hami_launch/side_launchpadlistScreens/add_token.dart';
+import 'package:hami_launch/side_launchpadlistScreens/locked_lp_tokens.dart';
 
 import '../screen/spotlight_screen.dart';
 import '../screen/verifykyc_screen.dart';
@@ -319,6 +322,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('Import token clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => AddToken())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Import Token',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
@@ -347,6 +358,13 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: (){
+                            log('LockedIp clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => LockedLPTokens())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Locked IP Tokens',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
@@ -356,6 +374,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('Create lock clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CreateLock())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Create Lock',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),

@@ -72,7 +72,8 @@ class _CreateLockState extends State<CreateLock> {
         ),
         title: Text
         (
-          'Create Launchpad',
+          'Create Lock',
+          // 'Create Launchpad',
           style: TextStyle
           (
             color: Colors.white
