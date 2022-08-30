@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../theme/appcolor.dart';
@@ -14,6 +15,16 @@ class CreateToken extends StatefulWidget {
 }
 
 class _CreateTokenState extends State<CreateToken> {
+
+    //dropdown
+  final List<String> items = [
+    'Standard Token',
+    'Liquidity Generator Token',
+    'Reward Token',
+  ];
+
+
+  String dropdownValue = 'Standard Token';
 
   File? _image;
 
@@ -104,7 +115,7 @@ class _CreateTokenState extends State<CreateToken> {
                             [
                               Icon
                               (
-                                FontAwesome.rocket,
+                                FontAwesomeIcons.coins,
                                 color: Appcolor.darkviolte4,
                               ),
                               SizedBox
@@ -177,8 +188,8 @@ class _CreateTokenState extends State<CreateToken> {
                  
                  Container
                  (
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height*0.50,
+                  // width: double.infinity,
+                  // height: MediaQuery.of(context).size.height*0.50,
                   decoration: BoxDecoration
                     (
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -191,6 +202,433 @@ class _CreateTokenState extends State<CreateToken> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: 
                       [
+                        SizedBox
+                        (
+                          height: 20,
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Token Type *',
+                            style: TextStyle
+                            (
+                              fontSize: 15,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 10,
+                        ),
+
+                        DropdownButtonFormField
+                        (
+                            style: TextStyle
+                            (
+                              color: Colors.white
+                            ),
+                                    decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder( //<-- SEE HERE
+                                        borderSide: BorderSide(color: Colors.grey, width: 1),
+                                      ),
+                                      focusedBorder: OutlineInputBorder( //<-- SEE HERE
+                                        borderSide: BorderSide(color: Colors.grey, width: 1),
+                                      ),
+                                      filled: false,
+                                      fillColor: Colors.transparent,
+                                    ),
+                                    icon: Icon(Icons.arrow_drop_down,color: Colors.grey,),
+                                    dropdownColor: Appcolor.background,
+                                    // value: dropdownValue,
+                                    value: items[0],
+                                    onChanged: (String? newValue) {
+                                      setState(() {
+                                        dropdownValue = newValue!;
+                                        log(newValue);
+                                      });
+                                    },
+                                    // items: <String>['All','Trending','Recent','Upcoming','Featured',]
+                                    // .map<DropdownMenuItem<String>>((String value) {
+                                    //   return DropdownMenuItem<String>(
+                                    //     value: value,
+                                    //     child: Text(
+                                    //       value,
+                                    //       style: TextStyle
+                                    //       (
+                                    //         fontSize: 15,
+                                    //         color: Colors.white
+                                    //       ),
+                                    //     ),
+                                    //   );
+                                    // }).toList(),
+                                      items: items
+                          .map((item) =>
+                          DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.white
+                                // color: Color.fromARGB(115, 230, 224, 224),
+                              ),
+                            ),
+                          ))
+                          .toList(),
+                              ),
+                        SizedBox
+                        (
+                          height: 20
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Token Name *',
+                            style: TextStyle
+                            (
+                              fontSize: 15,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 10,
+                        ),
+
+                        TextFormField(
+                          // controller: _desccontroller,
+                          // minLines: 1,
+                          // maxLines: 7,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            hintText: 'Token Name',
+                            hintStyle: TextStyle(
+                              color: Colors.grey
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            ),
+                            
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            )
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 20,
+                        ),
+
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Token Description *',
+                            style: TextStyle
+                            (
+                              fontSize: 15,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 10,
+                        ),
+
+                        TextFormField(
+                          // controller: _desccontroller,
+                          minLines: 1,
+                          maxLines: 7,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            hintText: 'Token Description',
+                            hintStyle: TextStyle(
+                              color: Colors.grey
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, width: 1.0
+                                ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, width: 1.0
+                                ),
+                            ),
+                            
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, width: 1.0
+                                ),
+                            )
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 20
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Token Symbol *',
+                            style: TextStyle
+                            (
+                              fontSize: 15,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 10,
+                        ),
+
+                        TextFormField(
+                          // controller: _desccontroller,
+                          // minLines: 1,
+                          // maxLines: 7,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            hintText: 'Token Symbol',
+                            hintStyle: TextStyle(
+                              color: Colors.grey
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            ),
+                            
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            )
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 20
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Decimal *',
+                            style: TextStyle
+                            (
+                              fontSize: 15,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 10,
+                        ),
+
+                        TextFormField(
+                          // controller: _desccontroller,
+                          // minLines: 1,
+                          // maxLines: 7,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            hintText: 'Decimal',
+                            hintStyle: TextStyle(
+                              color: Colors.grey
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            ),
+                            
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            )
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 20
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text
+                          (
+                            'Token Supply *',
+                            style: TextStyle
+                            (
+                              fontSize: 15,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+
+                        SizedBox
+                        (
+                          height: 10,
+                        ),
+
+                        TextFormField(
+                          // controller: _desccontroller,
+                          // minLines: 1,
+                          // maxLines: 7,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            hintText: 'Token Supply',
+                            hintStyle: TextStyle(
+                              color: Colors.grey
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            ),
+                            
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all
+                              (
+                                Radius.circular(4)
+                              ),
+                              borderSide: BorderSide
+                                (
+                                  color: Colors.grey, 
+                                  width: 1.0
+                                ),
+                            )
+                          ),
+                        ),
+
+
+                        //img
+                              SizedBox
+                              (
+                                height: 20,
+                              ),
+                        
                         Align(
                         alignment: Alignment.centerLeft,
                         child: Text
@@ -203,6 +641,11 @@ class _CreateTokenState extends State<CreateToken> {
                           ),
                         ),
                       ),
+
+                      SizedBox
+                        (
+                          height: 10,
+                        ),
 
                       Container
                       (
@@ -290,6 +733,11 @@ class _CreateTokenState extends State<CreateToken> {
                         ),
                       ),
 
+                      SizedBox
+                        (
+                          height: 20,
+                        ),
+
 
                       Align(
                         alignment: Alignment.centerLeft,
@@ -303,6 +751,11 @@ class _CreateTokenState extends State<CreateToken> {
                           ),
                         ),
                       ),
+
+                      SizedBox
+                        (
+                          height: 10,
+                        ),
 
 
                       Container
@@ -324,10 +777,21 @@ class _CreateTokenState extends State<CreateToken> {
                         ),
                       ),
 
+                      SizedBox
+                        (
+                          height: 20,
+                        ),
+
+                        //router
+
                       ],
                     ),
                   ),
-                 )
+                 ),
+                 SizedBox
+                 (
+                  height: 30,
+                 ),
             ],
           ),
         ),
