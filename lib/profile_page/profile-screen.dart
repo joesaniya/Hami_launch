@@ -21,6 +21,7 @@ class ProfileScreen extends StatelessWidget {
         [
           SliverAppBar
           (
+            // backgroundColor: Colors.white,
             backgroundColor: Appcolor.darkviolte,
             flexibleSpace: FlexibleSpaceBar
             (

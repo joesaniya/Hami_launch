@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../theme/appcolor.dart';
+import '../widgets/animated_button.dart';
 
 class LockedLPTokens extends StatelessWidget {
   const LockedLPTokens({Key? key}) : super(key: key);
@@ -108,29 +109,31 @@ class LockedLPTokens extends StatelessWidget {
                           ),
                         ),
 
-                        Container
-                        (
-                          height: 40,
-                          width: 80,
-                          decoration: BoxDecoration
-                          (
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Appcolor.darkviolte
-                          ),
-                          child: Center
-                          (
-                            child: Text
-                              (
-                                'Help',
-                                style: TextStyle
-                                (
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500
-                            ),
-                          ),
-                        ),
-                      )
+                        AnimatedButton()
+
+                      //   Container
+                      //   (
+                      //     height: 40,
+                      //     width: 80,
+                      //     decoration: BoxDecoration
+                      //     (
+                      //       borderRadius: BorderRadius.all(Radius.circular(10)),
+                      //       color: Appcolor.darkviolte
+                      //     ),
+                      //     child: Center
+                      //     (
+                      //       child: Text
+                      //         (
+                      //           'Help',
+                      //           style: TextStyle
+                      //           (
+                      //             color: Colors.white,
+                      //             fontSize: 18,
+                      //             fontWeight: FontWeight.w500
+                      //       ),
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                 ),

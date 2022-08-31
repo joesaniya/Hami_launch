@@ -4,6 +4,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import '../models/job.dart';
 import '../theme/appcolor.dart';
+import '../widgets/animated_button.dart';
 
 class SideMenuSpotLight extends StatefulWidget {
   const SideMenuSpotLight({Key? key}) : super(key: key);
@@ -390,8 +391,8 @@ class _SideMenuSpotLightState extends State<SideMenuSpotLight> {
             [
               Container
                 (
-                  height: MediaQuery.of(context).size.height*0.20,
-                  width: double.infinity,
+                  // height: MediaQuery.of(context).size.height*0.20,
+                  // width: double.infinity,
                   decoration: BoxDecoration
                   (
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -405,6 +406,10 @@ class _SideMenuSpotLightState extends State<SideMenuSpotLight> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: 
                       [
+                        SizedBox
+                        (
+                          height: 20,
+                        ),
                         Row
                         (
                           children: 
@@ -441,6 +446,11 @@ class _SideMenuSpotLightState extends State<SideMenuSpotLight> {
                             )
                           ],
                         ),
+
+                        SizedBox
+                        (
+                          height: 10,
+                        ),
                         Text
                             (
                               'This is SpotLight Page',
@@ -451,32 +461,41 @@ class _SideMenuSpotLightState extends State<SideMenuSpotLight> {
                                 fontWeight: FontWeight.w500
                               ),
                             ),
-
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Container
+                          SizedBox
                           (
-                            height: 40,
-                            width: 80,
-                            decoration: BoxDecoration
-                            (
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              color: Appcolor.darkviolte
-                            ),
-                            child: Center(
-                              child: Text
-                                (
-                                  'Help',
-                                  style: TextStyle
-                                  (
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500
-                                  ),
-                                ),
-                            ),
+                            height: 10,
                           ),
-                        )
+
+                        // Align(
+                        //   alignment: Alignment.centerRight,
+                        //   child: Container
+                        //   (
+                        //     height: 40,
+                        //     width: 80,
+                        //     decoration: BoxDecoration
+                        //     (
+                        //       borderRadius: BorderRadius.all(Radius.circular(10)),
+                        //       color: Appcolor.darkviolte
+                        //     ),
+                        //     child: Center(
+                        //       child: Text
+                        //         (
+                        //           'Help',
+                        //           style: TextStyle
+                        //           (
+                        //             color: Colors.white,
+                        //             fontSize: 18,
+                        //             fontWeight: FontWeight.w500
+                        //           ),
+                        //         ),
+                        //     ),
+                        //   ),
+                        // )
+                        AnimatedButton(),
+                        SizedBox
+                        (
+                          height: 20,
+                        ),
                       ],
                     ),
                   ),

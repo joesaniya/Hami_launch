@@ -9,6 +9,7 @@ import 'package:hami_launch/alertScreen/currentlylisted.dart';
 
 import '../side_launchpadlistScreens/All_LaunchBad.dart';
 import '../theme/appcolor.dart';
+import '../widgets/animated_button.dart';
 
 class LaunchPadList extends StatefulWidget {
   const LaunchPadList({Key? key}) : super(key: key);
@@ -148,28 +149,30 @@ class _LaunchPadListState extends State<LaunchPadList> {
                               ),
                             ),
 
-                        Container
-                        (
-                          height: 40,
-                          width: 80,
-                          decoration: BoxDecoration
-                          (
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Appcolor.darkviolte
-                          ),
-                          child: Center(
-                            child: Text
-                              (
-                                'Help',
-                                style: TextStyle
-                                (
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500
-                                ),
-                              ),
-                          ),
-                        )
+                        AnimatedButton()
+
+                        // Container
+                        // (
+                        //   height: 40,
+                        //   width: 80,
+                        //   decoration: BoxDecoration
+                        //   (
+                        //     borderRadius: BorderRadius.all(Radius.circular(10)),
+                        //     color: Appcolor.darkviolte
+                        //   ),
+                        //   child: Center(
+                        //     child: Text
+                        //       (
+                        //         'Help',
+                        //         style: TextStyle
+                        //         (
+                        //           color: Colors.white,
+                        //           fontSize: 18,
+                        //           fontWeight: FontWeight.w500
+                        //         ),
+                        //       ),
+                        //   ),
+                        // )
                       ],
                     ),
                   ),

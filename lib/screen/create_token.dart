@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/side_launchpadlistScreens/add_token.dart';
+import 'package:hami_launch/widgets/animated_button.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../Dialogbox/dialog_helper.dart';
 import '../profile_page/profile-screen.dart';
 import '../theme/appcolor.dart';
+import '../widgets/animated_app.dart';
 
 class CreateToken extends StatefulWidget {
   const CreateToken({Key? key}) : super(key: key);
@@ -158,41 +160,43 @@ class _CreateTokenState extends State<CreateToken> {
                                 ),
                               ),
 
-                          GestureDetector(
-                            onTap: ()
-                              {
-                                log('message');
-                                Navigator.push(context, MaterialPageRoute(builder: ((context) => 
-                                 ProfileScreen()
+                          // GestureDetector(
+                          //   onTap: ()
+                          //     {
+                          //       log('message');
+                          //       Navigator.push(context, MaterialPageRoute(builder: ((context) => 
+                          //        ProfileScreen()
+                          //       // AnimatedApp()
                                 
-                                )
+                          //       )
                                 
-                                )
-                                );
-                              },
-                            child: Container
-                            (
-                              height: 40,
-                              width: 80,
-                              decoration: BoxDecoration
-                              (
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                color: Appcolor.darkviolte
-                              ),
-                              child: Center(
-                                child: Text
-                                  (
-                                    'Help',
-                                    style: TextStyle
-                                    (
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500
-                                    ),
-                                  ),
-                              ),
-                            ),
-                          )
+                          //       )
+                          //       );
+                          //     },
+                          //   child: Container
+                          //   (
+                          //     height: 40,
+                          //     width: 80,
+                          //     decoration: BoxDecoration
+                          //     (
+                          //       borderRadius: BorderRadius.all(Radius.circular(10)),
+                          //       color: Appcolor.darkviolte
+                          //     ),
+                          //     child: Center(
+                          //       child: Text
+                          //         (
+                          //           'Help',
+                          //           style: TextStyle
+                          //           (
+                          //             color: Colors.white,
+                          //             fontSize: 18,
+                          //             fontWeight: FontWeight.w500
+                          //           ),
+                          //         ),
+                          //     ),
+                          //   ),
+                          // )
+                          AnimatedButton()
                         ],
                       ),
                     ),
