@@ -98,8 +98,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                 height: 5,
               ),
               Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height*0.24,//->a10
+                // width: double.infinity,
+                // height: MediaQuery.of(context).size.height*0.24,//->a10
                 // height: MediaQuery.of(context).size.height*0.30,
                 child: Card(
                   shape: RoundedRectangleBorder(

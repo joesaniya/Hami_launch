@@ -1,10 +1,14 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hami_launch/side_launchpadlistScreens/add_token.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../Dialogbox/dialog_helper.dart';
+import '../profile_page/profile-screen.dart';
 import '../theme/appcolor.dart';
 
 class CreateToken extends StatefulWidget {
@@ -154,26 +158,39 @@ class _CreateTokenState extends State<CreateToken> {
                                 ),
                               ),
 
-                          Container
-                          (
-                            height: 40,
-                            width: 80,
-                            decoration: BoxDecoration
+                          GestureDetector(
+                            onTap: ()
+                              {
+                                log('message');
+                                Navigator.push(context, MaterialPageRoute(builder: ((context) => 
+                                 ProfileScreen()
+                                
+                                )
+                                
+                                )
+                                );
+                              },
+                            child: Container
                             (
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              color: Appcolor.darkviolte
-                            ),
-                            child: Center(
-                              child: Text
-                                (
-                                  'Help',
-                                  style: TextStyle
+                              height: 40,
+                              width: 80,
+                              decoration: BoxDecoration
+                              (
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                color: Appcolor.darkviolte
+                              ),
+                              child: Center(
+                                child: Text
                                   (
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500
+                                    'Help',
+                                    style: TextStyle
+                                    (
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500
+                                    ),
                                   ),
-                                ),
+                              ),
                             ),
                           )
                         ],
@@ -783,6 +800,51 @@ class _CreateTokenState extends State<CreateToken> {
                         ),
 
                         //router
+
+                         RichText(
+                          textAlign: TextAlign.justify,
+                          text: TextSpan(
+                              // style: TextStyle(color: Colors.black, fontSize: 36),
+                              children: <TextSpan>[
+                                TextSpan(text: 'Already have a token? ', style: TextStyle(color: Colors.white)),
+                                TextSpan
+                                (
+                                  recognizer: new TapGestureRecognizer()..onTap = () => {
+                                    log('add token clicked'),
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) => AddToken()),
+                                    )
+                                  },
+                                  text: 'Add your Token ',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900)
+                                ),
+                                TextSpan(text: 'to hami launchpad', style: TextStyle(color: Colors.white))
+                              ],
+                          ),
+                          // textScaleFactor: 0.5,
+                        ),
+                        SizedBox
+                        (
+                          height: 20,
+                        ),
+
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: FlatButton(
+                            // onPressed: _stepContinue,
+                            onPressed: ()
+                            {
+                              log('wallet connect');
+                              DialogHelper3.exit(context);
+                            },
+                            child: const Text('Connect',
+                            style: TextStyle(color: Colors.white)),
+                            color: Appcolor.darkviolte,
+                          ),
+                        ),
+                        SizedBox
+                        (
+                          height: 20,
+                        ),
 
                       ],
                     ),
