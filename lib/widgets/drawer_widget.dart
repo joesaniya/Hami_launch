@@ -6,6 +6,7 @@ import 'package:hami_launch/screen/Presale_screen.dart';
 import 'package:hami_launch/screen/create_token.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
 import 'package:hami_launch/screen/lock.dart';
+import 'package:hami_launch/screen/share_earn.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
 import 'package:hami_launch/screen/token_list.dart';
 import 'package:hami_launch/side_launchpadlistScreens/add_token.dart';
@@ -496,6 +497,14 @@ class MyWidget extends StatelessWidget {
                     [
                       ListTile
                         (
+                          onTap: ()
+                          {
+                            log('refer and earn clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ShareAndEarn())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Share and Earn',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),

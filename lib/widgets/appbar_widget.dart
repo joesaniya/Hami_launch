@@ -19,8 +19,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar
     (
       elevation: 0.0,
-      backgroundColor: Colors.red,
-      // backgroundColor: Appcolor.darkviolte6,
+      // backgroundColor: Colors.red,
+      backgroundColor: Appcolor.darkviolte6,
       automaticallyImplyLeading: false,
         leading: IconButton
         (
@@ -49,13 +49,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 class AppbarWidget extends StatelessWidget {
   // const AppbarWidget({Key? key}) : super(key: key);
-  // String? title;
-  // AppbarWidget
-  // (
-  //   {
-  //     this.title
-  //   }
-  // );
+  String? title;
+  AppbarWidget
+  (
+    {
+      this.title
+    }
+  );
 
   @override
   Widget build(BuildContext context) {

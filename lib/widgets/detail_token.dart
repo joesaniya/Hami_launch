@@ -1,222 +1,227 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hami_launch/models/job.dart';
-import 'package:hami_launch/screen/Presale_screen.dart';
-import 'package:hami_launch/screen/create_ad.dart';
-import 'package:hami_launch/screen/lock.dart';
-import 'package:hami_launch/screen/spotlight_screen.dart';
-import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:hami_launch/theme/appcolor.dart';
-import 'package:hami_launch/widgets/detail_token.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:timelines/timelines.dart';
-import 'package:underline_indicator/underline_indicator.dart';
 
-import '../Dialogbox/dialog_helper.dart';
-import '../profile_page/profile-screen.dart';
+import '../screen/Presale_screen.dart';
+import '../screen/create_ad.dart';
+import '../screen/lock.dart';
+import '../screen/spotlight_screen.dart';
+import '../screen/verifykyc_screen.dart';
 
-class ToenDetail extends StatefulWidget {
-   String? name;
-  // const ToenDetail
- ToenDetail ({
-    this.name,}
-  );
+
+class DetailToken extends StatefulWidget {
+  const DetailToken({Key? key}) : super(key: key);
 
   @override
-  State<ToenDetail> createState() => _ToenDetailState();
+  State<DetailToken> createState() => _DetailTokenState();
 }
 
-class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateMixin {
-  final _advancedDrawerController = AdvancedDrawerController();
-  TabController? _controller;
+class _DetailTokenState extends State<DetailToken> {
+  late ScrollController _scrollController;
+   var isVisible = false;
 
-  @override
+   @override
   void initState() {
     super.initState();
-    _controller = new TabController(length: 1, vsync: this);
+    _scrollController = ScrollController(initialScrollOffset: 0.0);
+    _scrollController.addListener(() {
+      changeAppBarColor(_scrollController);
+    });
   }
 
+    Color appBarColor = Colors.transparent;
 
-   void _handleMenuButtonPressed() {
-    _advancedDrawerController.showDrawer();
+  changeAppBarColor(ScrollController scrollController) {
+    if (scrollController.position.hasPixels) {
+      if (scrollController.position.pixels > 2.0) {
+        setState(() {
+          appBarColor = Appcolor.darkviolte6;
+        });
+      }
+      if (scrollController.position.pixels <= 2.0) {
+        setState(() {
+          appBarColor = Colors.transparent;
+        });
+      }
+    } else {
+      setState(() {
+        appBarColor = Colors.transparent;
+      });
+    }
   }
 
-  bool _expanded = false;
-  // var _test = "Full Screen";
-
-  var isVisible = false;
   
   @override
   Widget build(BuildContext context) {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          // 'Token Detail',
-          widget.name!,
-          style: TextStyle
-          (
-            color: Colors.white
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AnimatedContainer(
+          color: Colors.transparent,
+          duration: Duration(milliseconds: 200),
+          child: AppBar(
+            backgroundColor: Appcolor.darkviolte6,
+            brightness: Brightness.dark,
+            elevation: 0,
+            centerTitle: true,
+            title: Text('Recipe Details', 
+            style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            // actions: [
+            //   IconButton(onPressed: () {}, 
+            //   icon: SvgPicture.asset('assets/icons/bookmark.svg', color: Colors.white)),
+            // ],
           ),
         ),
       ),
-      body: SingleChildScrollView
+
+      body: ListView
       (
+        controller: _scrollController,
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
         physics: BouncingScrollPhysics(),
-        child:Padding(
-          padding: const EdgeInsets.only(left:10.0,right: 10),
-          child: Column
-          (
-            
-            children: 
-            [
-        
-              SizedBox
+        children: 
+        [
+          GestureDetector(
+            onTap: (){},
+            child: Container(
+              height: 280,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(image: DecorationImage
               (
-                height: 5,
+                image: AssetImage('assets/images/logo.png'), 
+                fit: BoxFit.cover)),
+              child: Container(
+                decoration: BoxDecoration
+                (
+                  gradient: Appcolor.linearBlackTop
+                ),
+                height: 280,
+                width: MediaQuery.of(context).size.width,
               ),
-              GestureDetector(
-                onTap: ()
-                                      {
-                                        log('Dummy');
-        
-                                        Navigator.push
-                                        (
-                                          context, MaterialPageRoute(builder:(context)=>DetailToken())
-                                        );
-                                      },
-                child: Container(
-                  // width: double.infinity,
-                  // height: MediaQuery.of(context).size.height*0.24,//->a10
-                  // height: MediaQuery.of(context).size.height*0.30,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    color: Appcolor.background,
-                    elevation: 10,
-                    child: Column
-                    (
-                      children: 
-                      [
-                        SizedBox
+            ),
+          ),
+
+          //
+          Container(
+                // width: double.infinity,
+                // height: MediaQuery.of(context).size.height*0.24,//->a10
+                // height: MediaQuery.of(context).size.height*0.30,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  color: Appcolor.background,
+                  elevation: 10,
+                  child: Column
+                  (
+                    children: 
+                    [
+                      SizedBox
+                            (
+                              height: 20,
+                            ),
+                      Padding(
+                        padding: const EdgeInsets.only(left:20.0,right: 20),
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            
+                            CircleAvatar
+                            (
+                              radius: 30,
+                              backgroundImage: AssetImage('assets/images/logo.png'),
+                            ),
+                            SizedBox
+                            (
+                              width: 20,
+                            ),
+                            Container
+                            (
+                              child: Column
                               (
-                                height: 20,
-                              ),
-                        Padding(
-                          padding: const EdgeInsets.only(left:20.0,right: 20),
-                          child: Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              
-                              CircleAvatar
-                              (
-                                radius: 30,
-                                backgroundImage: AssetImage('assets/images/logo.png'),
-                              ),
-                              SizedBox
-                              (
-                                width: 20,
-                              ),
-                              Container
-                              (
-                                child: Column
-                                (
-                                  children: 
-                                  [
-                                    Text
-                                    (
-                                      widget.name!,
-                                      // 'ABCD',
-                                      style: TextStyle
-                                      (
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900
-                                      ),
-                                    ),
-                                    SizedBox
-                                    (
-                                      height: 10,
-                                    ),
-                                    Text
-                                    (
-                                      'ABCD',
-                                      style: TextStyle
-                                      (
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      
-                        //
-                        Padding(
-                          padding: const EdgeInsets.all(30.0),
-                          child: Container
+                                children: 
+                                [
+                                  Text
                                   (
-                                    // width: 40,
-                                    // height: 30,
-                                    decoration: BoxDecoration
+                                    'widget.name!,',
+                                    // 'ABCD',
+                                    style: TextStyle
                                     (
-                                      color: Appcolor.darkviolte1,
-                                      borderRadius: BorderRadius.all(Radius.circular(5))
-                                    ),
-                                    child: Row
-                                    (
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: 
-                                      [
-                                        Image.asset('assets/images/lion_meta.png',height: 40,width: 50,),
-                                        SizedBox
-                                        (
-                                          width: 10,
-                                        ),
-                                        Text
-                                        (
-                                          'ADD TO METAMASK',
-                                          style: TextStyle
-                                          (
-                                            color: Colors.white,
-                                            fontSize: 15
-                                          ),
-                                        )
-                                      ],
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900
                                     ),
                                   ),
+                                  SizedBox
+                                  (
+                                    height: 10,
+                                  ),
+                                  Text
+                                  (
+                                    'ABCD',
+                                    style: TextStyle
+                                    (
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+        
+                      //
+                      Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Container
+                                (
+                                  // width: 40,
+                                  // height: 30,
+                                  decoration: BoxDecoration
+                                  (
+                                    color: Appcolor.darkviolte1,
+                                    borderRadius: BorderRadius.all(Radius.circular(5))
+                                  ),
+                                  child: Row
+                                  (
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: 
+                                    [
+                                      Image.asset('assets/images/lion_meta.png',height: 40,width: 50,),
+                                      SizedBox
+                                      (
+                                        width: 10,
+                                      ),
+                                      Text
+                                      (
+                                        'ADD TO METAMASK',
+                                        style: TextStyle
+                                        (
+                                          color: Colors.white,
+                                          fontSize: 15
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -481,293 +486,6 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         )
         
         
-                        //steps
-                        // Row
-                        // (
-                        //   children: 
-                        //   [
-                        //     Expanded(
-                        //       child: Container
-                        //       (
-                        //         width: double.infinity,
-                        //         height: MediaQuery.of(context).size.height*0.10,
-                        //         color: Colors.transparent,
-                        //         child: FittedBox(
-                        //           child: Row
-                        //           (
-                        //             mainAxisAlignment: MainAxisAlignment.start,
-                        //             crossAxisAlignment: CrossAxisAlignment.start,
-                        //             children: 
-                        //             [
-                        //               CircleAvatar
-                        //               (
-                        //                 radius: 10,
-                        //                 backgroundColor: Colors.grey,
-                        //                 child: Center
-                        //                 (
-                        //                   child: Icon
-                        //                   (
-                        //                     Icons.done,
-                        //                     size: 15,
-                        //                     color: Colors.white,
-                        //                   )
-                        //                 ),
-                        //               ),
-                        //               SizedBox
-                        //               (
-                        //                 width: 15,
-                        //               ),
-                        //               Column
-                        //               (
-                        //                 children: 
-                        //                 [
-                        //                   Text
-                        //                   (
-                        //                     'KYC verification',
-                        //                     style: TextStyle
-                        //                     (
-                        //                       color: Colors.white,
-                        //                       fontSize: 18,
-                        //                       fontWeight: FontWeight.w700
-                        //                     ),
-                        //                   ),
-                        //                   Text
-                        //                   (
-                        //                     'pending',
-                        //                     style: TextStyle
-                        //                     (
-                        //                       color: Colors.white,
-                        //                       fontSize: 16,
-                        //                       fontWeight: FontWeight.w500
-                        //                     ),
-                        //                   )
-                        //                 ],
-                        //               )
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-        
-                        //     SizedBox
-                        //     (
-                        //       width: 10,
-                        //     ),
-        
-                        //     //2
-                        //     Expanded(
-                        //       child: Container
-                        //       (
-                        //         width: double.infinity,
-                        //         height: MediaQuery.of(context).size.height*0.10,
-                        //         color: Colors.transparent,
-                        //         child: FittedBox(
-                        //           child: Row
-                        //           (
-                        //             mainAxisAlignment: MainAxisAlignment.start,
-                        //             crossAxisAlignment: CrossAxisAlignment.start,
-                        //             children: 
-                        //             [
-                        //               CircleAvatar
-                        //               (
-                        //                 radius: 10,
-                        //                 backgroundColor: Colors.grey,
-                        //                 child: Center
-                        //                 (
-                        //                   child: Icon
-                        //                   (
-                        //                     Icons.done,
-                        //                     size: 15,
-                        //                     color: Colors.white,
-                        //                   )
-                        //                 ),
-                        //               ),
-                        //               SizedBox
-                        //               (
-                        //                 width: 15,
-                        //               ),
-                        //               Column
-                        //               (
-                        //                 children: 
-                        //                 [
-                        //                   Text
-                        //                   (
-                        //                     'Smartcontract Audit',
-                        //                     style: TextStyle
-                        //                     (
-                        //                       color: Colors.white,
-                        //                       fontSize: 18,
-                        //                       fontWeight: FontWeight.w700
-                        //                     ),
-                        //                   ),
-                        //                   Text
-                        //                   (
-                        //                     'pending',
-                        //                     style: TextStyle
-                        //                     (
-                        //                       color: Colors.white,
-                        //                       fontSize: 16,
-                        //                       fontWeight: FontWeight.w500
-                        //                     ),
-                        //                   )
-                        //                 ],
-                        //               )
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-        
-                        //     SizedBox
-                        //     (
-                        //       width: 10,
-                        //     ),
-        
-                        //     //3
-                        //     Expanded(
-                        //       child: Container
-                        //       (
-                        //         width: double.infinity,
-                        //         height: MediaQuery.of(context).size.height*0.10,
-                        //         color: Colors.transparent,
-                        //         child: FittedBox(
-                        //           child: Row
-                        //           (
-                        //             mainAxisAlignment: MainAxisAlignment.start,
-                        //             crossAxisAlignment: CrossAxisAlignment.start,
-                        //             children: 
-                        //             [
-                        //               CircleAvatar
-                        //               (
-                        //                 radius: 10,
-                        //                 backgroundColor: Colors.grey,
-                        //                 child: Center
-                        //                 (
-                        //                   child: Icon
-                        //                   (
-                        //                     Icons.done,
-                        //                     size: 15,
-                        //                     color: Colors.white,
-                        //                   )
-                        //                 ),
-                        //               ),
-                        //               SizedBox
-                        //               (
-                        //                 width: 15,
-                        //               ),
-                        //               Column
-                        //               (
-                        //                 children: 
-                        //                 [
-                        //                   Text
-                        //                   (
-                        //                     'Presale Creation',
-                        //                     style: TextStyle
-                        //                     (
-                        //                       color: Colors.white,
-                        //                       fontSize: 18,
-                        //                       fontWeight: FontWeight.w700
-                        //                     ),
-                        //                   ),
-                        //                   Text
-                        //                   (
-                        //                     'pending',
-                        //                     style: TextStyle
-                        //                     (
-                        //                       color: Colors.white,
-                        //                       fontSize: 16,
-                        //                       fontWeight: FontWeight.w500
-                        //                     ),
-                        //                   )
-                        //                 ],
-                        //               )
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-        
-                        //     SizedBox
-                        //     (
-                        //       width: 10,
-                        //     ),
-        
-                        //     //4
-                        //     Expanded(
-                        //       child: Container
-                        //       (
-                        //         width: double.infinity,
-                        //         height: MediaQuery.of(context).size.height*0.10,
-                        //         color: Colors.transparent,
-                        //         child: FittedBox(
-                        //           child: Row
-                        //           (
-                        //             mainAxisAlignment: MainAxisAlignment.start,
-                        //             crossAxisAlignment: CrossAxisAlignment.start,
-                        //             children: 
-                        //             [
-                        //               CircleAvatar
-                        //               (
-                        //                 radius: 10,
-                        //                 backgroundColor: Colors.grey,
-                        //                 child: Center
-                        //                 (
-                        //                   child: Icon
-                        //                   (
-                        //                     Icons.done,
-                        //                     size: 15,
-                        //                     color: Colors.white,
-                        //                   )
-                        //                 ),
-                        //               ),
-                        //               SizedBox
-                        //               (
-                        //                 width: 15,
-                        //               ),
-                        //               Column
-                        //               (
-                        //                 children: 
-                        //                 [
-                        //                   Text
-                        //                   (
-                        //                     'KYC verification',
-                        //                     style: TextStyle
-                        //                     (
-                        //                       color: Colors.white,
-                        //                       fontSize: 18,
-                        //                       fontWeight: FontWeight.w700
-                        //                     ),
-                        //                   ),
-                        //                   Text
-                        //                   (
-                        //                     'pending',
-                        //                     style: TextStyle
-                        //                     (
-                        //                       color: Colors.white,
-                        //                       fontSize: 16,
-                        //                       fontWeight: FontWeight.w500
-                        //                     ),
-                        //                   )
-                        //                 ],
-                        //               )
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                            
-                        //   ],
-                        // )
                       ],
                     ),
                   ),
@@ -1798,142 +1516,7 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                     (
                       height: 20,
                     ),
-        
-              
-        
-              //cardexpan
-      //       Container(
-      //         decoration: BoxDecoration
-      //         (
-      //           borderRadius: BorderRadius.all(Radius.circular(10)),
-      //           color: Colors.green,
-      //         ),
-      //       child: ExpansionPanelList(
-      //       animationDuration: Duration(milliseconds: 2000),
-      //       children: [
-      //         ExpansionPanel(
-      //             headerBuilder: (context, isExpanded) {
-      //               return ListTile(
-      //                 title: Text('Click To Expand', style: TextStyle(color: Colors.black),),
-      //               );
-      //             },
-      //             body:ListTile(
-      //               title: Text('Description text',style: TextStyle(color: Colors.black)),
-      //             ),
-      //           isExpanded: _expanded,
-      //           canTapOnHeader: true,
-      //         ),
-      //       ],
-      //       dividerColor: Colors.grey,
-      //       expansionCallback: (panelIndex, isExpanded) {
-      //         _expanded = !_expanded;
-      //         setState(() {
-         
-      //         });
-      //       },
-      //   ),
-      //  ),
-        
-        
-        
-        
-              // SizedBox
-              // (
-              //   height: 5,
-              // ),
-              // Stack(
-              //     alignment: Alignment.center,
-              //     children: <Widget>[
-              //       Column
-              //       (
-              //         mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              //         Container(
-              //             width: double.infinity,
-              //             // width: MediaQuery.of(context).size.width * 0.9,
-              //             color: Appcolor.darkviolte6,
-              //             height: 200,
-              //               child: Card
-              //               (
-              //                 color: Appcolor.background,
-              //               ),
-              //             ),
-              //         Container(
-              //           width: double.infinity,
-              //             // width: MediaQuery.of(context).size.width * 0.9,
-              //             color: Colors.red,
-              //             height: 200),
-              //       ]),
-              //       Container(
-              //         width: 100,
-              //         height: 100,
-              //         decoration: BoxDecoration(
-              //             color: Appcolor.darkviolte6,shape: BoxShape.circle),
-              //         // child: Center(child: Text("or")
-              //         // ),
-              //         child: Image(image: AssetImage('assets/images/logo.png')),
-              //       ),
-              //     ],
-              //   )
-        
-        
-              // //demostepper
-              // Container(
-              //   height: 120,
-              //   alignment: Alignment.topCenter, 
-              //   child: Timeline.tileBuilder(
-              //     shrinkWrap: true,
-              //     padding: EdgeInsets.zero,
-              //     theme: TimelineThemeData(
-              //       direction: Axis.horizontal,
-              //       connectorTheme: ConnectorThemeData(space: 8.0, thickness: 2.0),
-              //     ),
-              //     builder: TimelineTileBuilder.connected(
-              //       connectionDirection: ConnectionDirection.before,
-              //       itemCount: 4,
-              //       itemExtentBuilder: (_, __) {
-              //         return (MediaQuery.of(context).size.width - 120) / 4.0;
-              //       },
-              //       oppositeContentsBuilder: (context, index) {
-              //         return Container();
-              //       },
-              //       contentsBuilder: (context, index) {
-              //         return Padding(
-              //           padding: const EdgeInsets.only(top: 15.0),
-              //           child: Text(
-              //             // _processes[index]
-              //             'hi'
-              //           ),
-              //         );
-              //       },
-              //       indicatorBuilder: (_, index) {    
-        
-              //         if (index <= 10) {
-              //           return DotIndicator(
-              //             size: 30.0,
-              //             color: Colors.green,                
-              //           );
-              //         } else {
-              //           return OutlinedDotIndicator(
-              //             borderWidth: 4.0,
-              //             color: Colors.green,
-              //           );
-              //         }
-              //       },
-              //       connectorBuilder: (_, index, type) {
-              //         if (index > 0) {
-              //           return SolidLineConnector(
-              //               color: Colors.green,
-              //             );
-              //         } else {
-              //           return null;
-              //         }
-              //       },
-              //     ),
-              //   ),
-              // )     
-            ],
-          ),
-        )
+        ],
       ),
     );
   }
