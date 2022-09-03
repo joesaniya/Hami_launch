@@ -12,6 +12,7 @@ import '../Dialogbox/dialog_helper.dart';
 import '../profile_page/profile-screen.dart';
 import '../theme/appcolor.dart';
 import '../widgets/animated_app.dart';
+import '../widgets/appbar_widget.dart';
 
 class CreateToken extends StatefulWidget {
   const CreateToken({Key? key}) : super(key: key);
@@ -63,32 +64,7 @@ class _CreateTokenState extends State<CreateToken> {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'Create Token',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
+      appBar: MyAppBar(title: 'Create Token',),
 
       body: SingleChildScrollView
       (

@@ -7,6 +7,7 @@ import '../models/job.dart';
 import '../side_launchpadlistScreens/side_Token.dart';
 import '../theme/appcolor.dart';
 import '../widgets/animated_button.dart';
+import '../widgets/appbar_widget.dart';
 
 class TokenSList extends StatefulWidget {
   const TokenSList({Key? key}) : super(key: key);
@@ -33,32 +34,7 @@ class _TokenSListState extends State<TokenSList> {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'Tokens List',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
+      appBar: MyAppBar(title: 'Tokens List',),
       body: SingleChildScrollView
       (
         child: Padding(

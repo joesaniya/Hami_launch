@@ -5,6 +5,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/appcolor.dart';
+import '../widgets/appbar_widget.dart';
 
 class AuditingPartners extends StatefulWidget {
   const AuditingPartners({Key? key}) : super(key: key);
@@ -88,33 +89,7 @@ class _AuditingPartnersState extends State<AuditingPartners> {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'Our Partners',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-        
-      ),
+      appBar: MyAppBar(title: 'Our Partners',),
 
       body: SingleChildScrollView
       (

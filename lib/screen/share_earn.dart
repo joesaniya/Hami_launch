@@ -1,43 +1,62 @@
+import 'dart:developer';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/theme/appcolor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class ShareAndEarn extends StatelessWidget {
+import '../widgets/appbar_widget.dart';
+
+enum SocialMedia 
+{
+  facebook,
+  email,
+  whatsapp,
+  linkedin
+}
+
+class ShareAndEarn extends StatefulWidget {
   const ShareAndEarn({Key? key}) : super(key: key);
 
+  @override
+  State<ShareAndEarn> createState() => _ShareAndEarnState();
+}
+
+class _ShareAndEarnState extends State<ShareAndEarn> {
+
+  Future Share(SocialMedia socialPlatform) async{
+    log('share opened');
+    final code = 'BDEF4587';
+    final text = 'Hami launch,refer nd earnn';
+    final urlShare=Uri.encodeComponent('https://youtu.be/-_k1xboISQ0');
+
+    final urls=
+    {
+      SocialMedia.email:'mailto:?subject=$code&body=$text',
+      SocialMedia.linkedin:'https://linkedin.com/shareArticle?mini=true&url=$urlShare',
+      SocialMedia.whatsapp:'https://youtu.be/2yNns0NiE2A',
+      // SocialMedia.whatsapp:'https:api.whatsapp.com/send?text=$text$urlShare'
+    };
+    final url = urls[socialPlatform]!;
+
+    if(await canLaunch(url))
+    {
+      await launch(url);
+    }
+    else
+    {
+      log('could not launch $url');
+      throw 'could not launch $url';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'Refer & Earn',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
+      appBar: MyAppBar(title: 'Refer & Earn',),
 
       body: ListView
       (
@@ -220,7 +239,11 @@ class ShareAndEarn extends StatelessWidget {
         SpeedDialChild(
           child: Icon(Icons.mail, color: Colors.white),
           backgroundColor: Colors.pinkAccent,
-          onTap: () => print('Pressed Write'),
+          onTap: () 
+          {
+            log('mail clicked');
+            Share(SocialMedia.email);
+          },
           label: 'Mail',
           labelStyle:
               TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
@@ -229,7 +252,12 @@ class ShareAndEarn extends StatelessWidget {
         SpeedDialChild(
           child: Icon(FontAwesomeIcons.linkedin, color: Colors.white),
           backgroundColor: Colors.pinkAccent,
-          onTap: () => print('Pressed Code'),
+          // onTap: () => print('Pressed Code'),
+          onTap: () 
+          {
+            log('linkedin clicked');
+            Share(SocialMedia.linkedin);
+          },
           label: 'LinkedIn',
           labelStyle:
               TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
@@ -238,7 +266,12 @@ class ShareAndEarn extends StatelessWidget {
         SpeedDialChild(
           child: Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
           backgroundColor: Colors.pinkAccent,
-          onTap: () => print('Pressed Code'),
+          // onTap: () => print('Pressed Code'),
+          onTap: () 
+          {
+            log('whatsapp clicked');
+            Share(SocialMedia.whatsapp);
+          },
           label: 'Whatsapp',
           labelStyle:
               TextStyle(fontWeight: FontWeight.w500, color: Colors.white),

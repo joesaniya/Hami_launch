@@ -10,6 +10,7 @@ import 'package:hami_launch/alertScreen/currentlylisted.dart';
 import '../side_launchpadlistScreens/All_LaunchBad.dart';
 import '../theme/appcolor.dart';
 import '../widgets/animated_button.dart';
+import '../widgets/appbar_widget.dart';
 
 class LaunchPadList extends StatefulWidget {
   const LaunchPadList({Key? key}) : super(key: key);
@@ -53,32 +54,7 @@ class _LaunchPadListState extends State<LaunchPadList> {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'Launchpad List',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
+      appBar: MyAppBar(title: 'LaunchPad List',),
       body: SingleChildScrollView
       (
         child: Padding(

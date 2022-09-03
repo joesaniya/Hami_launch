@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import '../Dialogbox/dialog_helper.dart';
 import '../theme/appcolor.dart';
 import '../widgets/animated_button.dart';
+import '../widgets/appbar_widget.dart';
 
 class CreateAd extends StatefulWidget {
   const CreateAd({Key? key}) : super(key: key);
@@ -1279,32 +1280,7 @@ class _CreateAdState extends State<CreateAd> {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'Advertise With Us',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
+      appBar: MyAppBar(title: 'Advertise with us'),
       body: SingleChildScrollView
       (
         child: Padding(

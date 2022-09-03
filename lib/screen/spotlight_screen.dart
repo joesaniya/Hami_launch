@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Dialogbox/dialog_helper.dart';
 import '../theme/appcolor.dart';
 import '../widgets/animated_button.dart';
+import '../widgets/appbar_widget.dart';
 
 class SpotLightScreen extends StatefulWidget {
   const SpotLightScreen({Key? key}) : super(key: key);
@@ -20,32 +21,7 @@ class _SpotLightScreenState extends State<SpotLightScreen> {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'Submit For Spotlight',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
+      appBar: MyAppBar(title: 'Submit For SpotLight',),
       body: SingleChildScrollView
       (
         child: Padding(

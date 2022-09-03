@@ -20,33 +20,33 @@ class _VerifyKYCState extends State<VerifyKYC> {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'Verify KYC',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
-      // appBar: MyAppBar(title: 'Verify KYC',),
+      // appBar: AppBar
+      // (
+      //   elevation: 0.0,
+      //   backgroundColor: Appcolor.darkviolte6,
+      //   automaticallyImplyLeading: false,
+      //   leading: IconButton
+      //   (
+      //     onPressed:()
+      //     {
+      //       Navigator.pop(context);
+      //     }, 
+      //     icon: Icon
+      //     (
+      //       Icons.arrow_back_ios,
+      //       color: Colors.white,
+      //     )
+      //   ),
+      //   title: Text
+      //   (
+      //     'Verify KYC',
+      //     style: TextStyle
+      //     (
+      //       color: Colors.white
+      //     ),
+      //   ),
+      // ),
+      appBar: MyAppBar(title: 'Verify KYC',),
       body: SingleChildScrollView
       (
         child: Padding(

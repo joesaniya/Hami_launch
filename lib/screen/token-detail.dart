@@ -18,6 +18,7 @@ import 'package:underline_indicator/underline_indicator.dart';
 
 import '../Dialogbox/dialog_helper.dart';
 import '../profile_page/profile-screen.dart';
+import '../widgets/appbar_widget.dart';
 
 class ToenDetail extends StatefulWidget {
    String? name;
@@ -56,33 +57,34 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
     (
       backgroundColor: Appcolor.darkviolte6,
       
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          // 'Token Detail',
-          widget.name!,
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
+      // appBar: AppBar
+      // (
+      //   elevation: 0.0,
+      //   backgroundColor: Appcolor.darkviolte6,
+      //   automaticallyImplyLeading: false,
+      //   leading: IconButton
+      //   (
+      //     onPressed:()
+      //     {
+      //       Navigator.pop(context);
+      //     }, 
+      //     icon: Icon
+      //     (
+      //       Icons.arrow_back_ios,
+      //       color: Colors.white,
+      //     )
+      //   ),
+      //   title: Text
+      //   (
+      //     // 'Token Detail',
+      //     widget.name!,
+      //     style: TextStyle
+      //     (
+      //       color: Colors.white
+      //     ),
+      //   ),
+      // ),
+      appBar: MyAppBar(title: widget.name),
       body: SingleChildScrollView
       (
         physics: BouncingScrollPhysics(),

@@ -5,6 +5,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import '../models/job.dart';
 import '../theme/appcolor.dart';
 import '../widgets/animated_button.dart';
+import '../widgets/appbar_widget.dart';
 
 class SideMenuSpotLight extends StatefulWidget {
   const SideMenuSpotLight({Key? key}) : super(key: key);
@@ -355,32 +356,7 @@ class _SideMenuSpotLightState extends State<SideMenuSpotLight> {
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
-      appBar: AppBar
-      (
-        elevation: 0.0,
-        backgroundColor: Appcolor.darkviolte6,
-        automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'SpotLight',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-      ),
+      appBar: MyAppBar(title: 'Spotlight',),
       body: SingleChildScrollView
       (
         child: Padding(

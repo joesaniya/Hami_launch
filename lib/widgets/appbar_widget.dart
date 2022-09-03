@@ -36,7 +36,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         title: Text
         (
-          'widget.name!',
+          title!,
           style: TextStyle
           (
             color: Colors.white
@@ -47,43 +47,43 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 
-class AppbarWidget extends StatelessWidget {
-  // const AppbarWidget({Key? key}) : super(key: key);
-  String? title;
-  AppbarWidget
-  (
-    {
-      this.title
-    }
-  );
+// class AppbarWidget extends StatelessWidget {
+//   // const AppbarWidget({Key? key}) : super(key: key);
+//   String? title;
+//   AppbarWidget
+//   (
+//     {
+//       this.title
+//     }
+//   );
 
-  @override
-  Widget build(BuildContext context) {
-    return AppBar
-    (
-      elevation: 0.0,
-      backgroundColor: Appcolor.darkviolte6,
-      automaticallyImplyLeading: false,
-        leading: IconButton
-        (
-          onPressed:()
-          {
-            Navigator.pop(context);
-          }, 
-          icon: Icon
-          (
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          )
-        ),
-        title: Text
-        (
-          'widget.title!',
-          style: TextStyle
-          (
-            color: Colors.white
-          ),
-        ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return AppBar
+//     (
+//       elevation: 0.0,
+//       backgroundColor: Appcolor.darkviolte6,
+//       automaticallyImplyLeading: false,
+//         leading: IconButton
+//         (
+//           onPressed:()
+//           {
+//             Navigator.pop(context);
+//           }, 
+//           icon: Icon
+//           (
+//             Icons.arrow_back_ios,
+//             color: Colors.white,
+//           )
+//         ),
+//         title: Text
+//         (
+//           title!,
+//           style: TextStyle
+//           (
+//             color: Colors.white
+//           ),
+//         ),
+//     );
+//   }
+// }
