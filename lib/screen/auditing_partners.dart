@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hami_launch/screen/partners_profile.dart';
 
 import '../theme/appcolor.dart';
 import '../widgets/appbar_widget.dart';
@@ -19,33 +21,39 @@ class _AuditingPartnersState extends State<AuditingPartners> {
   List<dynamic> _partners = [
     {
       'name': 'Test',
-      'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
+      'subtitle':'do',
       'avatar': 'assets/images/test.png',
+      'verify':'verified'
     },
     {
       'name': 'BlockAudit',
-      'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
+      'subtitle':'LaunchPad',
       'avatar': 'assets/images/BlockAudit.png',
+      'verify':'not verified'
     },
     {
       'name': 'Test',
       'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/test.png',
+      'verify':'not verified'
     },
     {
       'name': 'BlockAudit',
       'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/BlockAudit.png',
+      'verify':'verified'
     },
     {
       'name': 'Test',
       'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/test.png',
+      'verify':'not verified'
     },
     {
       'name': 'BlockAudit',
       'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/BlockAudit.png',
+      'verify':'verified'
     },
   ];
 
@@ -99,45 +107,45 @@ class _AuditingPartnersState extends State<AuditingPartners> {
           children: 
           [
 
-            Padding(
-              padding: const EdgeInsets.only(left:20.0,right: 20),
-              child: Container
-              (
-                // height: MediaQuery.of(context).size.height*0.20,
-                width: double.infinity,
-                decoration: BoxDecoration
-                (
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Appcolor.background
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox
-                    (
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left:20.0),
-                      child: Text
-                      (
-                        'Our Partners',
-                          style: TextStyle
-                            (
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w900
-                            ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    )
-                  ],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left:20.0,right: 20),
+            //   child: Container
+            //   (
+            //     // height: MediaQuery.of(context).size.height*0.20,
+            //     width: double.infinity,
+            //     decoration: BoxDecoration
+            //     (
+            //       borderRadius: BorderRadius.all(Radius.circular(10)),
+            //       color: Appcolor.background
+            //     ),
+            //     child: Column(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         SizedBox
+            //         (
+            //           height: 20,
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(left:20.0),
+            //           child: Text
+            //           (
+            //             'Our Partners',
+            //               style: TextStyle
+            //                 (
+            //                   color: Colors.white,
+            //                   fontSize: 20,
+            //                   fontWeight: FontWeight.w900
+            //                 ),
+            //           ),
+            //         ),
+            //         SizedBox(
+            //           height: 20,
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // ),
 
             //
             SizedBox(height: 50,),
@@ -279,17 +287,45 @@ class _AuditingPartnersState extends State<AuditingPartners> {
                             padding: const EdgeInsets.symmetric(vertical:20.0),
                             child: ListTile
                             (
+                              onTap: ()
+                              {
+                                log('Auditor clicked');
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) =>
+                                  PartnersDetailScreen()
+                                  )
+                                );
+                              },
                               leading:CircleAvatar
                               (
                                 radius: 30,
                                 backgroundColor: Colors.red[100],
                                 backgroundImage: AssetImage(_partners[index]['avatar']),
                               ),
-                              title: Text
-                              (
-                                _partners[index]['name'], style: TextStyle
-                                (
-                                  fontSize: 14, fontWeight: FontWeight.w600,color: Colors.white
+                              title: Container(
+                                child: Row(
+                                  children: [
+                                    Text
+                                    (
+                                      _partners[index]['name'], style: TextStyle
+                                      (
+                                        fontSize: 14, fontWeight: FontWeight.w600,color: Colors.white
+                                      ),
+                                    ),
+
+                                    // SizedBox
+                                    // (
+                                    //   width: 5,
+                                    // ),
+
+                                    // CircleAvatar
+                                    // (
+                                    //   radius: 8,
+                                    //   backgroundColor: Appcolor.darkviolte4,
+                                    //   child:  _partners[index]['name']=='verified'?Icon(Icons.cancel,color: Colors.amber,):SizedBox(),
+                                    // )
+                                  ],
                                 ),
                               ),
                               subtitle: Text

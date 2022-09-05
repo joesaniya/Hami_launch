@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import '../screen/token-detail.dart';
 import '/theme/appcolor.dart';
 
@@ -36,189 +37,242 @@ class _ButtonHomeState extends State<ButtonHome> {
     Widget buildLastJob(Shift shift){
     return Column(
       children: [
-        GestureDetector(
-          // onTap: ()
-          // {
-          //   log('animation');
-          //   Navigator.of(context).push(
-          //     PageRouteBuilder(
-          //       pageBuilder: (context, animation, secondaryAnimation) {
-          //         return ToenDetail(
-          //           transitionAnimation: animation,
-          //           name:shift.heading
-          //         );
-          //       },
-          //       transitionDuration: Duration(seconds: 1),
-          //     ),
-          //   );
-          // },
-          onTap: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(builder: ((context) => 
-                  // ToenDetail()
-                  ToenDetail(name:shift.heading)
-                  )
-                  
-                  )
-                  );
-                },
-          child: Container
+        Slidable(
+          startActionPane: ActionPane
           (
-            height: 40,
-            width: double.infinity,
-            color: Colors.transparent,
-            
-            child: Row
+            motion: StretchMotion(), 
+            children: 
+            [
+             SlidableAction
+             (
+              flex: 1,
+              onPressed: ((context)
+                {
+                  
+                }  
+              ),
+              icon: Icons.save,
+              backgroundColor: Colors.greenAccent,
+              label: 'Add Your Yoken',
+              spacing: 20,
+             ),
+             SlidableAction
+             (
+              flex: 2,
+              onPressed: ((context)
+                {
+                  
+                }  
+              ),
+              icon: Icons.wallet,
+              backgroundColor: Colors.pinkAccent,
+              label: 'Add Your Wallet',
+              spacing: 20,
+             ) 
+            ]
+          ),
+
+          endActionPane: ActionPane
+          (
+            motion: StretchMotion(), 
+            children: 
+            [
+             SlidableAction
+             (
+              onPressed: ((context)
+                {
+                  
+                }  
+              ),
+              icon: Icons.delete,
+              backgroundColor: Colors.redAccent,
+             ) 
+            ]
+          ),
+          child: GestureDetector(
+            // onTap: ()
+            // {
+            //   log('animation');
+            //   Navigator.of(context).push(
+            //     PageRouteBuilder(
+            //       pageBuilder: (context, animation, secondaryAnimation) {
+            //         return ToenDetail(
+            //           transitionAnimation: animation,
+            //           name:shift.heading
+            //         );
+            //       },
+            //       transitionDuration: Duration(seconds: 1),
+            //     ),
+            //   );
+            // },
+            onTap: ()
+                  {
+                    Navigator.push(context, MaterialPageRoute(builder: ((context) => 
+                    // ToenDetail()
+                    ToenDetail(name:shift.heading)
+                    )
+                    
+                    )
+                    );
+                  },
+            child: Container
             (
-              children: 
-              [
-                Container(
-                  height: 20,
-                  width: 40,
-                  color: Colors.transparent,
-                  child: Text
-                  (
-                    shift.heading,
-                    style: TextStyle
-                    (
-                      color: Colors.white
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Container
-                (
-                  height: 20,
-                  width: 40,
-                  decoration: BoxDecoration
-                  (
-                    color: Appcolor.darkviolte1,
-                    borderRadius: BorderRadius.all(Radius.circular(20))
-                  ),
-                  child: Center
-                  (
+              height: 40,
+              width: double.infinity,
+              color: Colors.transparent,
+              
+              child: Row
+              (
+                children: 
+                [
+                  Container(
+                    height: 20,
+                    width: 40,
+                    color: Colors.transparent,
                     child: Text
                     (
-                      shift.subheading,
-                      style: TextStyle(color: Colors.white),
-                    )
+                      shift.heading,
+                      style: TextStyle
+                      (
+                        color: Colors.white
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                ),
-                // Spacer(),
-                SizedBox
-                (
-                  width: 10,
-                ),
-                Container(
-                height: 30,
-                width: 60,
-                decoration: BoxDecoration
-                (
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.all(Radius.circular(5))
-                ),
-                child: Center(
-                  child: Text
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container
                   (
-                    shift.supply,
-                    style: TextStyle
+                    height: 20,
+                    width: 40,
+                    decoration: BoxDecoration
                     (
-                      color: Colors.white
+                      color: Appcolor.darkviolte1,
+                      borderRadius: BorderRadius.all(Radius.circular(20))
+                    ),
+                    child: Center
+                    (
+                      child: Text
+                      (
+                        shift.subheading,
+                        style: TextStyle(color: Colors.white),
+                      )
                     ),
                   ),
-                ),
-                ),
-                // Expanded(
-                //   child: Text
-                //   (
-                //     shift.supply,
-                //     style: TextStyle
-                //     (
-                //       color: Colors.white
-                //     ),
-                //   ),
-                // ),
-                // SizedBox
-                // (
-                //   width: 41,
-                // ),
-                Spacer(),
-
-                Material(
-        elevation: 10,
-        borderRadius: BorderRadius.circular(8.0),
-        child: InkWell(
-          onTap: () {},
-          child: Container(
-            padding: EdgeInsets.all(0.0),
-            height: 30.0,//MediaQuery.of(context).size.width * .08,
-            width: 80.0,//MediaQuery.of(context).size.width * .3,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0)
-            ),
-            child: Row(
-              children: <Widget>[
-                LayoutBuilder(builder: (context, constraints) {
-                  print(constraints);
-                  return Container(
-                    height: constraints.maxHeight,
-                    width: constraints.maxHeight,
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Icon(
-                      Icons.remove_red_eye_outlined,
-                      color: Colors.white,
-                    ),
-                  );
-                }),
-                Expanded(
-                  child: Text(
-                    'View',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
+                  // Spacer(),
+                  SizedBox
+                  (
+                    width: 10,
+                  ),
+                  Container(
+                  height: 30,
+                  width: 60,
+                  decoration: BoxDecoration
+                  (
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.all(Radius.circular(5))
+                  ),
+                  child: Center(
+                    child: Text
+                    (
+                      shift.supply,
+                      style: TextStyle
+                      (
+                        color: Colors.white
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  ),
+                  // Expanded(
+                  //   child: Text
+                  //   (
+                  //     shift.supply,
+                  //     style: TextStyle
+                  //     (
+                  //       color: Colors.white
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox
+                  // (
+                  //   width: 41,
+                  // ),
+                  Spacer(),
+        
+                  Material(
+          elevation: 10,
+          borderRadius: BorderRadius.circular(8.0),
+          child: InkWell(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.all(0.0),
+              height: 30.0,//MediaQuery.of(context).size.width * .08,
+              width: 80.0,//MediaQuery.of(context).size.width * .3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0)
+              ),
+              child: Row(
+                children: <Widget>[
+                  LayoutBuilder(builder: (context, constraints) {
+                    print(constraints);
+                    return Container(
+                      height: constraints.maxHeight,
+                      width: constraints.maxHeight,
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: Colors.white,
+                      ),
+                    );
+                  }),
+                  Expanded(
+                    child: Text(
+                      'View',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ),
-                // Container(
-                //   height: 30,
-                //   width: 40,
-                //   decoration: BoxDecoration
-                //   (
-                //     // color: Colors.pinkAccent,
-                //     color: shift.status=='Standard'?Colors.pinkAccent: Colors.grey,
-                //     borderRadius: BorderRadius.all(Radius.circular(30)),
-                //     border: Border.all
-                //     (
-                //       color: Appcolor.darkviolte3
-                //     )
-                //   ),
-                //   child: Center(
-                //     child: Text
-                //     (
-                //       'View',
-                //       style: TextStyle
-                //       (
-                //         color: Colors.white
-                //       ),
-                //     ),
-                //   ),
-                // ),
-            //      GlowingButton(
-            //   color1: Colors.orange,
-            //   color2: Colors.red,
-            // ),
-              ],
+              ),
+                  // Container(
+                  //   height: 30,
+                  //   width: 40,
+                  //   decoration: BoxDecoration
+                  //   (
+                  //     // color: Colors.pinkAccent,
+                  //     color: shift.status=='Standard'?Colors.pinkAccent: Colors.grey,
+                  //     borderRadius: BorderRadius.all(Radius.circular(30)),
+                  //     border: Border.all
+                  //     (
+                  //       color: Appcolor.darkviolte3
+                  //     )
+                  //   ),
+                  //   child: Center(
+                  //     child: Text
+                  //     (
+                  //       'View',
+                  //       style: TextStyle
+                  //       (
+                  //         color: Colors.white
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+              //      GlowingButton(
+              //   color1: Colors.orange,
+              //   color2: Colors.red,
+              // ),
+                ],
+              ),
             ),
           ),
         )
@@ -241,104 +295,157 @@ class _ButtonHomeState extends State<ButtonHome> {
     Widget buildLastJob1(Shift1 shift1){
     return Column(
       children: [
-        Container
-        (
-          height: 40,
-          width: double.infinity,
-          color: Colors.transparent,
-          child: Row
+        Slidable(
+          startActionPane: ActionPane
           (
+            motion: StretchMotion(), 
             children: 
             [
-              Container(
-                height: 20,
-                width: 40,
-                color:Colors.transparent,
-                child: Text
-                (
-                  shift1.heading,
-                  style: TextStyle
+             SlidableAction
+             (
+              flex: 1,
+              onPressed: ((context)
+                {
+                  
+                }  
+              ),
+              icon: Icons.save,
+              backgroundColor: Colors.greenAccent,
+              label: 'Add Your Yoken',
+              spacing: 20,
+             ),
+             SlidableAction
+             (
+              flex: 2,
+              onPressed: ((context)
+                {
+                  
+                }  
+              ),
+              icon: Icons.wallet,
+              backgroundColor: Colors.pinkAccent,
+              label: 'Add Your Wallet',
+              spacing: 20,
+             ) 
+            ]
+          ),
+
+          endActionPane: ActionPane
+          (
+            motion: StretchMotion(), 
+            children: 
+            [
+             SlidableAction
+             (
+              onPressed: ((context)
+                {
+                  
+                }  
+              ),
+              icon: Icons.delete,
+              backgroundColor: Colors.redAccent,
+             ) 
+            ]
+          ),
+          child: Container
+          (
+            height: 40,
+            width: double.infinity,
+            color: Colors.transparent,
+            child: Row
+            (
+              children: 
+              [
+                Container(
+                  height: 20,
+                  width: 40,
+                  color:Colors.transparent,
+                  child: Text
                   (
-                    color: Colors.white
+                    shift1.heading,
+                    style: TextStyle
+                    (
+                      color: Colors.white
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Container
-              (
-                height: 30,
-                width: 60,
-                decoration: BoxDecoration
-                (
-                  // color: shift1.sale=='Live'?Appcolor.darkviolte1:Shift1.sale=='Ended'?Colors.transparent:Colors.grey,
-                  // color: Appcolor.darkviolte1,
-                  color: shift1.status=='Live'?Colors.red:Colors.grey,
-                  borderRadius: BorderRadius.all(Radius.circular(20))
+                SizedBox(
+                  width: 20,
                 ),
-                child: Center
+                Container
                 (
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:8.0,right: 8),
-                    child: FittedBox(
+                  height: 30,
+                  width: 60,
+                  decoration: BoxDecoration
+                  (
+                    // color: shift1.sale=='Live'?Appcolor.darkviolte1:Shift1.sale=='Ended'?Colors.transparent:Colors.grey,
+                    // color: Appcolor.darkviolte1,
+                    color: shift1.status=='Live'?Colors.red:Colors.grey,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
+                  child: Center
+                  (
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:8.0,right: 8),
+                      child: FittedBox(
+                        child: Text
+                        (
+                          shift1.status,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    )
+                  ),
+                ),
+                // SizedBox
+                // (
+                //   width: 80,
+                //   // width:100
+                // ),
+                Spacer(),
+                Container(
+                  height: 20,
+                  width: 40,
+                  color:Colors.transparent,
+                  child: Text
+                  (
+                    shift1.supply,
+                    style: TextStyle
+                    (
+                      color: Colors.white
+                    ),
+                  ),
+                ),
+                // SizedBox
+                // (
+                //   width: 30,
+                // ),
+                Spacer(),
+                Container(
+                  height: 30,
+                  width: 60,
+                  decoration: BoxDecoration
+                  (
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.all(Radius.circular(30))
+                  ),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:8.0,right: 8),
                       child: Text
                       (
-                        shift1.status,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  )
-                ),
-              ),
-              // SizedBox
-              // (
-              //   width: 80,
-              //   // width:100
-              // ),
-              Spacer(),
-              Container(
-                height: 20,
-                width: 40,
-                color:Colors.transparent,
-                child: Text
-                (
-                  shift1.supply,
-                  style: TextStyle
-                  (
-                    color: Colors.white
-                  ),
-                ),
-              ),
-              // SizedBox
-              // (
-              //   width: 30,
-              // ),
-              Spacer(),
-              Container(
-                height: 30,
-                width: 60,
-                decoration: BoxDecoration
-                (
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.all(Radius.circular(30))
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:8.0,right: 8),
-                    child: Text
-                    (
-                      shift1.Ltime,
-                      style: TextStyle
-                      (
-                        color: Colors.white
+                        shift1.Ltime,
+                        style: TextStyle
+                        (
+                          color: Colors.white
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         )
       ],
