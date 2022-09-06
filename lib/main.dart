@@ -13,6 +13,7 @@ import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:hami_launch/skeleton_widget/reuseSkeleton.dart';
 import 'package:hami_launch/skeleton_widget/shimmer_skeleton.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 import '/profile_page/profile-screen.dart';
 import '/screen/AlertScreen.dart';
 import '/screen/NotificationPage.dart';
@@ -25,6 +26,7 @@ import 'package:line_icons/line_icons.dart';
 import '/widgets/drawer_widget.dart';
 
 import 'Dialogbox/dialog_helper.dart';
+import 'insta_profile/profile_base_screen.dart';
 
 void main() => runApp
 (
@@ -67,7 +69,11 @@ class RootPage extends StatefulWidget {
   _RootPageState createState() => _RootPageState();
 }
 
-class _RootPageState extends State<RootPage> {
+class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
+  Animation<double> linearAnimation;
+  AnimationController linearAnimationController;
+  double animationValue = 0;
+
   // List <BottomNavigationBarItem>items = [
   //   BottomNavigationBarItem
   //   (
@@ -122,6 +128,18 @@ class _RootPageState extends State<RootPage> {
         _isLoading = false;
       });
     });
+
+    linearAnimationController = AnimationController(
+        duration: const Duration(milliseconds: 1500), vsync: this);
+
+    linearAnimation =
+        CurvedAnimation(parent: linearAnimationController, curve: Curves.linear)
+          ..addListener(() {
+            setState(() {
+              animationValue = linearAnimation.value * 360;
+            });
+          });
+    linearAnimationController.repeat();
     super.initState();
   }
 
@@ -285,7 +303,8 @@ class _RootPageState extends State<RootPage> {
                   context,
                   MaterialPageRoute(builder: (context) =>
                   //  FbCloneProfileStful()
-                  Profile1()
+                  // Profile1()crt
+                  ProfileBaseScreen()
                   )
                   // ProfileScreen()),
                 );
@@ -313,6 +332,48 @@ class _RootPageState extends State<RootPage> {
 
         Center
         (
+//           child: SfRadialGauge
+//           (
+//             axes: <RadialAxis>[
+//   RadialAxis(
+//     minimum: 0,
+//     interval: 1,
+//     maximum: 10,
+//     showLabels: false,
+//     showTicks: true,
+//     showAxisLine: true,
+//     showLastLabel: false,
+//     ticksPosition: ElementsPosition.outside,
+//     offsetUnit: GaugeSizeUnit.factor,
+//     minorTicksPerInterval: 0,
+//     startAngle: 360 - animationValue,
+//     endAngle: (360 - animationValue) + 360,
+//     centerX: 0.36,
+//     centerY: 0.36,
+//     isInversed: false,
+//     radiusFactor: 0.35,
+//     majorTickStyle: MajorTickStyle(
+//       length: 0.2,
+//       thickness: 8,
+//       color: const Color(0xFF00A8B5),
+//       lengthUnit: GaugeSizeUnit.factor,
+//     ),
+//     axisLineStyle: AxisLineStyle(
+//       thickness: 0.3,
+//       color: const Color(0xFF00A8B5),
+//       thicknessUnit: GaugeSizeUnit.factor,
+//     ),
+//   ),
+//   RadialAxis(
+//     // ...,
+//     centerX: 0.6,
+//     centerY: 0.6,
+//     startAngle: animationValue,
+//     endAngle: animationValue + 360,
+//     // ...
+//   ),
+// ]
+//           ),
           child: SpinKitDualRing
           (
             color: Colors.pinkAccent.shade200,

@@ -56,6 +56,8 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
     return Scaffold
     (
       backgroundColor: Appcolor.darkviolte6,
+
+      
       
       // appBar: AppBar
       // (

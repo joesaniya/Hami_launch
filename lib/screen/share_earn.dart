@@ -26,6 +26,44 @@ class ShareAndEarn extends StatefulWidget {
 
 class _ShareAndEarnState extends State<ShareAndEarn> {
 
+  late Future<void> _launched;
+  String _launchUrl ='https://www.google.com';
+
+  Future<void> _launchInApp(String url) async
+  {
+    if(await canLaunch(url))
+    {
+      await launch
+      (
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        headers: <String, String>
+        {
+          'header_key':'header_value'
+        }
+      );
+    }
+    else
+    {
+      log('could not launch $url');
+      throw 'could not launch $url'
+;    }
+  }
+
+  Future<void> _launchUniversalLinkIos(String url) async {
+  if (await canLaunch(url)) {
+    final bool nativeAppLaunchSucceeded = await launch(
+      url,
+      forceSafariVC: false,
+      universalLinksOnly: true,
+    );
+    if (!nativeAppLaunchSucceeded) {
+      await launch(url, forceSafariVC: true);
+    }
+  }
+}
+
   Future Share(SocialMedia socialPlatform) async{
     log('share opened');
     final code = 'BDEF4587';
@@ -230,7 +268,11 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
         SpeedDialChild(
           child: Icon(Icons.copy, color: Colors.white),
           backgroundColor: Colors.pinkAccent,
-          onTap: () => print('Pressed Read Later'),
+          onTap: () 
+          {
+            log('read clicked');
+            _launchInApp(_launchUrl);
+          },
           label: 'Read',
           labelStyle:
               TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
