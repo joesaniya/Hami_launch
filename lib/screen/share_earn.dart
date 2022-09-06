@@ -74,14 +74,23 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
     {
       SocialMedia.email:'mailto:?subject=$code&body=$text',
       SocialMedia.linkedin:'https://linkedin.com/shareArticle?mini=true&url=$urlShare',
-      SocialMedia.whatsapp:'https://youtu.be/2yNns0NiE2A',
-      // SocialMedia.whatsapp:'https:api.whatsapp.com/send?text=$text$urlShare'
+      // SocialMedia.whatsapp:'https://youtu.be/2yNns0NiE2A',
+      SocialMedia.whatsapp:'https:api.whatsapp.com/send?text=$text$urlShare'
     };
     final url = urls[socialPlatform]!;
 
     if(await canLaunch(url))
     {
-      await launch(url);
+      await launch
+      (
+        url,
+        // forceSafariVC: true,
+        // forceWebView: true,
+        // headers: <String, String>
+        // {
+        //   'header_key':'header_value'
+        // }
+      );
     }
     else
     {
