@@ -15,6 +15,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:timelines/timelines.dart';
 import 'package:underline_indicator/underline_indicator.dart';
+import 'package:wave_transition/wave_transition.dart';
 
 import '../Dialogbox/dialog_helper.dart';
 import '../profile_page/profile-screen.dart';
@@ -102,14 +103,18 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
               ),
               GestureDetector(
                 onTap: ()
-                                      {
-                                        log('Dummy');
-        
-                                        Navigator.push
-                                        (
-                                          context, MaterialPageRoute(builder:(context)=>DetailToken())
-                                        );
-                                      },
+                {
+                  log('Dummy');
+                  Navigator.push(
+                    context,
+                    WaveTransition(
+                      child:  DetailToken(),
+                      center: FractionalOffset(0.90, 0.90),
+                      duration: Duration(milliseconds: 3000) // optional
+                    )
+                );
+                                        
+                },
                 child: Container(
                   // width: double.infinity,
                   // height: MediaQuery.of(context).size.height*0.24,//->a10
@@ -1636,14 +1641,17 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                       padding: const EdgeInsets.only(left:20.0),
                       child: GestureDetector(
                         onTap: ()
-                                      {
-                                        log('kyc verification');
-        
-                                        Navigator.push
-                                        (
-                                          context, MaterialPageRoute(builder:(context)=>VerifyKYC())
-                                        );
-                                      },
+                        {
+                          log('kyc verification');
+                          Navigator.push(
+                            context,
+                            WaveTransition(
+                              child:  VerifyKYC(),
+                              center: FractionalOffset(0.90, 0.90),
+                              duration: Duration(milliseconds: 3000) // optional
+                            )
+                        );
+                        },
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text
@@ -1673,10 +1681,14 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                           {
                             log('Spotlight Clicked');
         
-                            Navigator.push
-                              (
-                                context, MaterialPageRoute(builder:(context)=>SpotLightScreen())
-                              );
+                            Navigator.push(
+                              context,
+                              WaveTransition(
+                                child:  SpotLightScreen(),
+                                center: FractionalOffset(0.90, 0.90),
+                                duration: Duration(milliseconds: 3000) // optional
+                              )
+                          );
                           },
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -1706,10 +1718,14 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                           {
                             log('Launchpad Clicked');
         
-                            Navigator.push
-                              (
-                                context, MaterialPageRoute(builder:(context)=>Launchpad())
-                              );
+                            Navigator.push(
+                              context,
+                              WaveTransition(
+                                child:  Launchpad(),
+                                center: FractionalOffset(0.90, 0.90),
+                                duration: Duration(milliseconds: 3000) // optional
+                              )
+                          );
                           },
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -1739,10 +1755,14 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         {
                           log('Lockscreen Clicked');
         
-                            Navigator.push
-                              (
-                                context, MaterialPageRoute(builder:(context)=>CreateLock())
-                              );
+                          Navigator.push(
+                            context,
+                            WaveTransition(
+                              child:  CreateLock(),
+                              center: FractionalOffset(0.90, 0.90),
+                              duration: Duration(milliseconds: 3000) // optional
+                            )
+                        );
                         },
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -1772,10 +1792,14 @@ class _ToenDetailState extends State<ToenDetail> with SingleTickerProviderStateM
                         {
                           log('Ad Clicked');
         
-                          Navigator.push
-                            (
-                              context, MaterialPageRoute(builder:(context)=>CreateAd())
-                            );
+                          Navigator.push(
+                            context,
+                            WaveTransition(
+                              child:  CreateAd(),
+                              center: FractionalOffset(0.90, 0.90),
+                              duration: Duration(milliseconds: 3000) // optional
+                            )
+                        );
                         },
                         child: Align(
                           alignment: Alignment.centerLeft,

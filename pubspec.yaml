@@ -57,6 +57,9 @@ dependencies:
   align_positioned: ^3.0.0
   url_launcher: ^6.1.5
   flutter_slidable: ^2.0.0
+  motion: ^1.3.3
+  wave_transition: ^0.0.6
+  lottie: ^1.4.2
 
 dev_dependencies:
   flutter_test:
@@ -84,6 +87,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/lottie_anim/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:wave_transition/wave_transition.dart';
 import '../screen/token-detail.dart';
 import '/theme/appcolor.dart';
 
@@ -107,13 +108,23 @@ class _ButtonHomeState extends State<ButtonHome> {
             // },
             onTap: ()
                   {
-                    Navigator.push(context, MaterialPageRoute(builder: ((context) => 
-                    // ToenDetail()
-                    ToenDetail(name:shift.heading)
-                    )
-                    
-                    )
+
+                    log('token detail clicked');
+                    Navigator.push(
+                        context,
+                        WaveTransition(
+                          child:  ToenDetail(name:shift.heading),
+                          center: FractionalOffset(0.90, 0.90),
+                          duration: Duration(milliseconds: 3000) // optional
+                        )
                     );
+                    // Navigator.push(context, MaterialPageRoute(builder: ((context) => 
+                    // // ToenDetail()
+                    // ToenDetail(name:shift.heading)
+                    // )
+                    
+                    // )
+                    // );
                   },
             child: Container
             (

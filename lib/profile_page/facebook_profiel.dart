@@ -5,6 +5,7 @@ import 'package:hami_launch/profile_page/post.dart';
 import 'package:hami_launch/profile_page/projects.dart';
 import 'package:hami_launch/profile_page/token.dart';
 import 'package:hami_launch/theme/appcolor.dart';
+import 'package:wave_transition/wave_transition.dart';
 
 import 'facebook1.dart';
 
@@ -40,13 +41,13 @@ class _Profile1State extends State<Profile1> {
                 GestureDetector(
                   onTap:(){
                     Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>
-                   FbCloneProfileStful()
-                  // Profile1()
-                  )
-                  // ProfileScreen()),
-                );
+                    context,
+                    WaveTransition(
+                      child:  FbCloneProfileStful(),
+                      center: FractionalOffset(0.90, 0.90),
+                      duration: Duration(milliseconds: 3000) // optional
+                    )
+                  );
                   },
                   child: Container(
                     height: size.height * 0.40,

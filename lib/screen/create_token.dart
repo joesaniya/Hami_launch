@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/side_launchpadlistScreens/add_token.dart';
 import 'package:hami_launch/widgets/animated_button.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:wave_transition/wave_transition.dart';
 
 import '../Dialogbox/dialog_helper.dart';
 import '../profile_page/profile-screen.dart';
@@ -791,9 +792,14 @@ class _CreateTokenState extends State<CreateToken> {
                                 (
                                   recognizer: new TapGestureRecognizer()..onTap = () => {
                                     log('add token clicked'),
-                                    Navigator.push(context, MaterialPageRoute(
-                                        builder: (context) => AddToken()),
-                                    )
+                                    Navigator.push(
+                                      context,
+                                      WaveTransition(
+                                        child:  AddToken(),
+                                        center: FractionalOffset(0.90, 0.90),
+                                        duration: Duration(milliseconds: 3000) // optional
+                                      )
+                                  )
                                   },
                                   text: 'Add your Token ',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900)
                                 ),

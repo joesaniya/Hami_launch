@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/theme/appcolor.dart';
+import 'package:wave_transition/wave_transition.dart';
 
 import '../screen/Presale_screen.dart';
 import '../screen/create_ad.dart';
@@ -1355,10 +1356,14 @@ class _DetailTokenState extends State<DetailToken> {
                                       {
                                         log('kyc verification');
         
-                                        Navigator.push
-                                        (
-                                          context, MaterialPageRoute(builder:(context)=>VerifyKYC())
-                                        );
+                                        Navigator.push(
+                                        context,
+                                        WaveTransition(
+                                          child:  VerifyKYC(),
+                                          center: FractionalOffset(0.90, 0.90),
+                                          duration: Duration(milliseconds: 3000) // optional
+                                        )
+                                    );
                                       },
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -1389,10 +1394,14 @@ class _DetailTokenState extends State<DetailToken> {
                           {
                             log('Spotlight Clicked');
         
-                            Navigator.push
-                              (
-                                context, MaterialPageRoute(builder:(context)=>SpotLightScreen())
-                              );
+                            Navigator.push(
+                            context,
+                            WaveTransition(
+                              child:  SpotLightScreen(),
+                              center: FractionalOffset(0.90, 0.90),
+                              duration: Duration(milliseconds: 3000) // optional
+                            )
+                          );
                           },
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -1422,10 +1431,14 @@ class _DetailTokenState extends State<DetailToken> {
                           {
                             log('Launchpad Clicked');
         
-                            Navigator.push
-                              (
-                                context, MaterialPageRoute(builder:(context)=>Launchpad())
-                              );
+                            Navigator.push(
+                            context,
+                            WaveTransition(
+                              child:  Launchpad(),
+                              center: FractionalOffset(0.90, 0.90),
+                              duration: Duration(milliseconds: 3000) // optional
+                            )
+                        );
                           },
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -1455,10 +1468,14 @@ class _DetailTokenState extends State<DetailToken> {
                         {
                           log('Lockscreen Clicked');
         
-                            Navigator.push
-                              (
-                                context, MaterialPageRoute(builder:(context)=>CreateLock())
-                              );
+                            Navigator.push(
+                            context,
+                            WaveTransition(
+                              child:  CreateLock(),
+                              center: FractionalOffset(0.90, 0.90),
+                              duration: Duration(milliseconds: 3000) // optional
+                            )
+                        );
                         },
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -1488,10 +1505,14 @@ class _DetailTokenState extends State<DetailToken> {
                         {
                           log('Ad Clicked');
         
-                          Navigator.push
-                            (
-                              context, MaterialPageRoute(builder:(context)=>CreateAd())
-                            );
+                          Navigator.push(
+                            context,
+                            WaveTransition(
+                              child:  CreateAd(),
+                              center: FractionalOffset(0.90, 0.90),
+                              duration: Duration(milliseconds: 3000) // optional
+                            )
+                        );
                         },
                         child: Align(
                           alignment: Alignment.centerLeft,

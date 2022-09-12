@@ -7,6 +7,7 @@ import 'package:hami_launch/screen/auditing_partners.dart';
 import 'package:hami_launch/screen/create_token.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
 import 'package:hami_launch/screen/lock.dart';
+import 'package:hami_launch/screen/marketing_companies.dart';
 import 'package:hami_launch/screen/share_earn.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
 import 'package:hami_launch/screen/token_list.dart';
@@ -413,6 +414,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('Marketing Companies clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => MarketingCompanies())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Marketing Companies',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
