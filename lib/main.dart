@@ -69,11 +69,7 @@ class RootPage extends StatefulWidget {
   _RootPageState createState() => _RootPageState();
 }
 
-class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
-  Animation<double> linearAnimation;
-  AnimationController linearAnimationController;
-  double animationValue = 0;
-
+class _RootPageState extends State<RootPage> {
   // List <BottomNavigationBarItem>items = [
   //   BottomNavigationBarItem
   //   (
@@ -128,18 +124,6 @@ class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
         _isLoading = false;
       });
     });
-
-    linearAnimationController = AnimationController(
-        duration: const Duration(milliseconds: 1500), vsync: this);
-
-    linearAnimation =
-        CurvedAnimation(parent: linearAnimationController, curve: Curves.linear)
-          ..addListener(() {
-            setState(() {
-              animationValue = linearAnimation.value * 360;
-            });
-          });
-    linearAnimationController.repeat();
     super.initState();
   }
 
@@ -298,7 +282,6 @@ class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
               onPressed: ()
               {
                 log('Profile Page Clicked');
-                // DialogHelper.exit(context);
                 Navigator.push(
                     context,
                     WaveTransition(
@@ -313,6 +296,15 @@ class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
                 //   //  FbCloneProfileStful()
                 //   // Profile1()crt
                 //   ProfileBaseScreen()
+                //   )
+                //   // ProfileScreen()),
+                // );
+                // // DialogHelper.exit(context);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) =>
+                //   //  FbCloneProfileStful()
+                //   Profile1()
                 //   )
                 //   // ProfileScreen()),
                 // );
