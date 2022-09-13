@@ -55,7 +55,8 @@ class MyApp extends StatelessWidget {
           // textTheme: GoogleFonts.latoTextTheme(
           //   Theme.of(context).textTheme
           // ),
-          scaffoldBackgroundColor: Appcolor.darkviolte6
+          scaffoldBackgroundColor: Appcolor.darkviolte6,
+          errorColor: Colors.pinkAccent
         ),
         // home: VerifyKYC(),
       home: RootPage(),

@@ -86,16 +86,36 @@ class _CreateAdState extends State<CreateAd> {
       setState(() => _currentStep = step);
     }
 
-    
-    _stepContinue() {
-       _currentStep < 2 ? setState(() => _currentStep += 1) : null;
+    _stepContinue()
+    {
+      log('login fuction');
+      if(_formKey.currentState!.validate())
+      {
+        log('validated');
+        _formKey.currentState!.save();
+        try
+        {
+          log('try');
+          _currentStep < 2 ? setState(() => _currentStep += 1) : null;
+        }
+        catch(e)
+        {
+          log(e.toString());
+        }
+      }
     }
+
+    
+    // _stepContinue() {
+    //    _currentStep < 2 ? setState(() => _currentStep += 1) : null;
+    // }
 
     _stepCancel() {
       _currentStep > 0 ? setState(() => _currentStep -= 1) : null;
     }
 
   TextEditingController _address = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   List<Step> getPresale()=>
   [
@@ -111,626 +131,669 @@ class _CreateAdState extends State<CreateAd> {
               fontWeight: FontWeight.w900
             ),
        ),
-      content: Column
-      (
-        children: 
-        [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text
-            (
-              'Banner Image(728*90)*',
-              style: TextStyle
+      content: Form(
+        key: _formKey,
+        child: Column
+        (
+          children: 
+          [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text
               (
-                fontSize: 15,
-                color: Colors.white
-              ),
-            ),
-          ),
-          // Row
-          // (
-          //   children: 
-          //   [
-          //     FlatButton
-          //     (
-          //       color: Colors.white,
-          //       onPressed: getImagegallery,
-          //       // onPressed: ()
-          //       // {
-          //       //   getImagegallery().then((value) {setState(() {
-          //       //     _img.text=_image!.path.toString();
-          //       //     log(_img.text);
-          //       //   });});
-          //       // }, 
-          //       child: Text
-          //       (
-          //         'Choose File',
-          //         style: TextStyle
-          //         (
-          //           color: Colors.black,
-          //         ),
-          //       )
-          //     ),
-          //     Expanded
-          //     (
-          //       child: SizedBox(
-          //         height: 38,
-          //         child: TextFormField(
-          //           controller: _img,
-          //           // initialValue: initialValue.toString(),->wrong
-          //         // initialValue: _image.toString(),
-          //         style: TextStyle(color: Colors.white),
-          //         // onChanged: onDescriptionChange,
-          //         // onChanged: (String newValue)
-          //         // {
-          //         //   setState(() {
-          //         //     log('des');
-          //         //     _image = newValue as File?; 
-          //         //     log(_image!.path);
-          //         //   });
-          //         // },
-          //         decoration:const InputDecoration
-          //         (
-          //           // labelText: 'No File Chosen',
-          //           // labelStyle: TextStyle(
-                      
-          //           // ),
-          //           focusedBorder: OutlineInputBorder
-          //           (
-          //               borderSide: BorderSide
-          //               (
-          //                 color: Colors.white, width: 1.0
-          //               ),
-          //           ),
-          //           enabledBorder: OutlineInputBorder
-          //           (
-          //               borderSide: BorderSide
-          //               (
-          //                 color: Colors.white, width: 1.0
-          //               ),
-          //           ),
-          //           errorBorder: OutlineInputBorder
-          //           (
-          //             borderSide: BorderSide
-          //               (
-          //                 color: Colors.white, width: 1.0
-          //               ),
-          //           ),
-          //         )
-          //         // decoration: InputDecoration(labelText: "Description"),
-          //        ),
-          //       ),
-          //     )
-          //   ],
-          // ),
-          Container
-                      (
-                        height: MediaQuery.of(context).size.height*0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey,
-                          ),
-                          borderRadius: BorderRadius.all
-                          (
-                            Radius.circular(5)
-                          )
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left:5.0,right: 10.0,top: 5.0,bottom: 5.0),
-                          child: Row
-                          (
-                            children: 
-                            [
-                              FlatButton
-                              (
-                                splashColor: Colors.pinkAccent,
-                                hoverColor: Colors.purpleAccent,
-                                color: Colors.white,
-                                onPressed: getImagegallery,
-                                // onPressed: ()
-                                // {
-                                //   getImagegallery().then((value) {setState(() {
-                                //     _img.text=_image!.path.toString();
-                                //     log(_img.text);
-                                //   });});
-                                // }, 
-                                child: Text
-                                (
-                                  'Choose File',
-                                  style: TextStyle
-                                  (
-                                    color: Colors.black,
-                                  ),
-                                )
-                              ),
-
-                              SizedBox
-                              (
-                                width: 5,
-                              ),
-
-                              Expanded
-                              (
-                                child: SizedBox(
-                                  height: 38,
-                                  child: TextFormField(
-                                    controller: _img,
-                                    // initialValue: initialValue.toString(),->wrong
-                                  // initialValue: _image.toString(),
-                                  style: TextStyle(color: Colors.white),
-                                  // onChanged: onDescriptionChange,
-                                  // onChanged: (String newValue)
-                                  // {
-                                  //   setState(() {
-                                  //     log('des');
-                                  //     _image = newValue as File?; 
-                                  //     log(_image!.path);
-                                  //   });
-                                  // },
-                                  decoration:const InputDecoration
-                                  (
-                                    // contentPadding:
-                                    //         EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                                    border: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    enabledBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    disabledBorder: InputBorder.none,
-                                  )
-                                  // decoration: InputDecoration(labelText: "Description"),
-                                ),
-                                ),
-                              )
-
-                              
-                            ],
-                          ),
-                        ),
-                      ),
-          SizedBox
-          (
-            height: 20,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text
-            (
-              'Banner Image  Preview',
-              style: TextStyle
-              (
-                fontSize: 15,
-                color: Colors.white
-              ),
-            ),
-          ),
-          SizedBox
-          (
-            height: 10,
-          ),
-    
-          Container
-          (
-            height: 250,
-            width: double.infinity,
-            decoration: BoxDecoration
-            (
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              border: Border.all
-              (
-                color: Colors.white,width: 1
-              )
-            ),
-            child:(_image !=null)?Image.file(_image!,fit: BoxFit.cover,) :Icon
-            (
-              Icons.add_a_photo_sharp,
-              color: Colors.white,
-            ),
-          ),
-
-          SizedBox
-          (
-            height: 20,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text
-            (
-              'Ad Description*',
-              style: TextStyle
-              (
-                fontSize: 15,
-                color: Colors.white
-              ),
-            ),
-          ),
-
-          SizedBox
-          (
-            height: 10,
-          ),
-
-          TextFormField(
-                controller: _desccontroller,
-                minLines: 6,
-                maxLines: 7,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                  hintText: 'Ad Description',
-                  hintStyle: TextStyle(
-                    color: Colors.grey
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all
-                    (
-                      Radius.circular(4)
-                    ),
-                     borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all
-                    (
-                      Radius.circular(4)
-                    ),
-                     borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  ),
-                  
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all
-                    (
-                      Radius.circular(4)
-                    ),
-                     borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  )
+                'Banner Image(728*90)*',
+                style: TextStyle
+                (
+                  fontSize: 15,
+                  color: Colors.white
                 ),
               ),
-
-              SizedBox
-              (
-                height: 20,
-              ),
-
-
-              Align(
-            alignment: Alignment.centerLeft,
-            child: Text
-            (
-              'Square Image(250*250)*',
-              style: TextStyle
-              (
-                fontSize: 15,
-                color: Colors.white
-              ),
             ),
-          ),
-          // Row
-          // (
-          //   children: 
-          //   [
-          //     FlatButton
-          //     (
-          //       color: Colors.white,
-          //       onPressed: SquareImagegallery, 
-          //       child: Text
-          //       (
-          //         'Choose File',
-          //         style: TextStyle
-          //         (
-          //           color: Colors.black,
-          //         ),
-          //       )
-          //     ),
-          //     Expanded
-          //     (
-          //       child: SizedBox(
-          //         height: 38,
-          //         child: TextFormField(
-          //         // initialValue: _image1.toString(),
-          //         controller:_img,
-          //         onChanged: onDescriptionChange,
-          //         decoration:const InputDecoration
-          //         (
-          //           // labelText: 'No File Chosen',
-          //           // labelStyle: TextStyle(
-                      
-          //           // ),
-          //           focusedBorder: OutlineInputBorder
-          //           (
-          //               borderSide: BorderSide
-          //               (
-          //                 color: Colors.white, width: 1.0
-          //               ),
-          //           ),
-          //           enabledBorder: OutlineInputBorder
-          //           (
-          //               borderSide: BorderSide
-          //               (
-          //                 color: Colors.white, width: 1.0
-          //               ),
-          //           ),
-          //           errorBorder: OutlineInputBorder
-          //           (
-          //             borderSide: BorderSide
-          //               (
-          //                 color: Colors.white, width: 1.0
-          //               ),
-          //           ),
-          //         )
-          //         // decoration: InputDecoration(labelText: "Description"),
-          //        ),
-          //       ),
-          //     )
-          //   ],
-          // ),
-          Container
-                      (
-                        height: MediaQuery.of(context).size.height*0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey,
+            // Row
+            // (
+            //   children: 
+            //   [
+            //     FlatButton
+            //     (
+            //       color: Colors.white,
+            //       onPressed: getImagegallery,
+            //       // onPressed: ()
+            //       // {
+            //       //   getImagegallery().then((value) {setState(() {
+            //       //     _img.text=_image!.path.toString();
+            //       //     log(_img.text);
+            //       //   });});
+            //       // }, 
+            //       child: Text
+            //       (
+            //         'Choose File',
+            //         style: TextStyle
+            //         (
+            //           color: Colors.black,
+            //         ),
+            //       )
+            //     ),
+            //     Expanded
+            //     (
+            //       child: SizedBox(
+            //         height: 38,
+            //         child: TextFormField(
+            //           controller: _img,
+            //           // initialValue: initialValue.toString(),->wrong
+            //         // initialValue: _image.toString(),
+            //         style: TextStyle(color: Colors.white),
+            //         // onChanged: onDescriptionChange,
+            //         // onChanged: (String newValue)
+            //         // {
+            //         //   setState(() {
+            //         //     log('des');
+            //         //     _image = newValue as File?; 
+            //         //     log(_image!.path);
+            //         //   });
+            //         // },
+            //         decoration:const InputDecoration
+            //         (
+            //           // labelText: 'No File Chosen',
+            //           // labelStyle: TextStyle(
+                        
+            //           // ),
+            //           focusedBorder: OutlineInputBorder
+            //           (
+            //               borderSide: BorderSide
+            //               (
+            //                 color: Colors.white, width: 1.0
+            //               ),
+            //           ),
+            //           enabledBorder: OutlineInputBorder
+            //           (
+            //               borderSide: BorderSide
+            //               (
+            //                 color: Colors.white, width: 1.0
+            //               ),
+            //           ),
+            //           errorBorder: OutlineInputBorder
+            //           (
+            //             borderSide: BorderSide
+            //               (
+            //                 color: Colors.white, width: 1.0
+            //               ),
+            //           ),
+            //         )
+            //         // decoration: InputDecoration(labelText: "Description"),
+            //        ),
+            //       ),
+            //     )
+            //   ],
+            // ),
+            Container
+                        (
+                          height: MediaQuery.of(context).size.height*0.06,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
+                            borderRadius: BorderRadius.all
+                            (
+                              Radius.circular(5)
+                            )
                           ),
-                          borderRadius: BorderRadius.all
-                          (
-                            Radius.circular(5)
-                          )
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left:5.0,right: 10.0,top: 5.0,bottom: 5.0),
-                          child: Row
-                          (
-                            children: 
-                            [
-                              FlatButton
-                              (
-                                splashColor: Colors.pinkAccent,
-                                hoverColor: Colors.purpleAccent,
-                                color: Colors.white,
-                                onPressed: SquareImagegallery,
-                                // onPressed: ()
-                                // {
-                                //   getImagegallery().then((value) {setState(() {
-                                //     _img.text=_image!.path.toString();
-                                //     log(_img.text);
-                                //   });});
-                                // }, 
-                                child: Text
+                          child: Padding(
+                            padding: const EdgeInsets.only(left:5.0,right: 10.0,top: 5.0,bottom: 5.0),
+                            child: Row
+                            (
+                              children: 
+                              [
+                                FlatButton
                                 (
-                                  'Choose File',
-                                  style: TextStyle
+                                  splashColor: Colors.pinkAccent,
+                                  hoverColor: Colors.purpleAccent,
+                                  color: Colors.white,
+                                  onPressed: getImagegallery,
+                                  // onPressed: ()
+                                  // {
+                                  //   getImagegallery().then((value) {setState(() {
+                                  //     _img.text=_image!.path.toString();
+                                  //     log(_img.text);
+                                  //   });});
+                                  // }, 
+                                  child: Text
                                   (
-                                    color: Colors.black,
+                                    'Choose File',
+                                    style: TextStyle
+                                    (
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                ),
+      
+                                SizedBox
+                                (
+                                  width: 5,
+                                ),
+      
+                                Expanded
+                                (
+                                  child: SizedBox(
+                                    height: 38,
+                                    child: TextFormField(
+                                      validator: (String? img)
+                                      {
+                                        if(img!.isEmpty)
+                                        {
+                                          return '* Choose Your Image File';
+                                        }
+                                      },
+                                      controller: _img,
+                                      // initialValue: initialValue.toString(),->wrong
+                                    // initialValue: _image.toString(),
+                                    style: TextStyle(color: Colors.white),
+                                    // onChanged: onDescriptionChange,
+                                    // onChanged: (String newValue)
+                                    // {
+                                    //   setState(() {
+                                    //     log('des');
+                                    //     _image = newValue as File?; 
+                                    //     log(_image!.path);
+                                    //   });
+                                    // },
+                                    decoration:const InputDecoration
+                                    (
+                                      errorStyle: TextStyle(color:Colors.orange),
+                                      // contentPadding:
+                                      //         EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                    )
+                                    // decoration: InputDecoration(labelText: "Description"),
+                                  ),
                                   ),
                                 )
-                              ),
-
-                              SizedBox
-                              (
-                                width: 5,
-                              ),
-
-                              Expanded
-                              (
-                                child: SizedBox(
-                                  height: 38,
-                                  child: TextFormField(
-                                    controller: _img1,
-                                    // initialValue: initialValue.toString(),->wrong
-                                  // initialValue: _image.toString(),
-                                  style: TextStyle(color: Colors.white),
-                                  // onChanged: onDescriptionChange,
-                                  // onChanged: (String newValue)
-                                  // {
-                                  //   setState(() {
-                                  //     log('des');
-                                  //     _image = newValue as File?; 
-                                  //     log(_image!.path);
-                                  //   });
-                                  // },
-                                  decoration:const InputDecoration
-                                  (
-                                    // contentPadding:
-                                    //         EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                                    border: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    enabledBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    disabledBorder: InputBorder.none,
-                                  )
-                                  // decoration: InputDecoration(labelText: "Description"),
-                                ),
-                                ),
-                              )
-
-                              
-                            ],
+      
+                                
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-          SizedBox
-          (
-            height: 20,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text
-            (
-              'Square Image  Preview',
-              style: TextStyle
-              (
-                fontSize: 15,
-                color: Colors.white
-              ),
-            ),
-          ),
-          SizedBox
-          (
-            height: 10,
-          ),
-          
-          Container
-          (
-            height: 250,
-            width: double.infinity,
-            decoration: BoxDecoration
-            (
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              border: Border.all
-              (
-                color: Colors.white,width: 1
-              )
-            ),
-            child:(_image1 !=null)?Image.file(_image1!,fit: BoxFit.cover,) :Icon
-            (
-              Icons.add_a_photo_sharp,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox
-          (
-            height: 20,
-          ),
-
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text
-            (
-              'Ad Link*',
-              style: TextStyle
-              (
-                fontSize: 15,
-                color: Colors.white
-              ),
-            ),
-          ),
-
-          SizedBox
-          (
-            height: 10,
-          ),
-
-          TextFormField(
-                // controller: _desccontroller,
-                minLines: 1,
-                maxLines: 7,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                  hintText: 'Ad Link',
-                  hintStyle: TextStyle(
-                    color: Colors.grey
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all
-                    (
-                      Radius.circular(4)
-                    ),
-                     borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all
-                    (
-                      Radius.circular(4)
-                    ),
-                     borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  ),
-                  
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all
-                    (
-                      Radius.circular(4)
-                    ),
-                     borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  )
-                ),
-              ),
-          
-
-          
-            //
             SizedBox
             (
               height: 20,
             ),
-          Row(
-          children: [
-            Material(
-              child: Theme(
-                data: ThemeData(
-                    unselectedWidgetColor: Colors.white
-                ),
-                child: Checkbox(
-                  
-                  activeColor: Appcolor.darkviolte1,
-                  value: agree,
-                  onChanged: (value) {
-                    setState(() {
-                      agree = value ?? false;
-                    });
-                  },
-                ),
-              ),
-            ),
-            Expanded(
-              child: RichText(
-                textAlign: TextAlign.justify,
-                text: TextSpan(
-                    style: TextStyle(color: Colors.black, fontSize: 15),
-                    children: <TextSpan>[
-                      TextSpan(text: 'Before Creating, you agree to the', style: TextStyle(color: Colors.white)),
-                      TextSpan(text: 'Terms of Service',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900)),
-                      TextSpan(text: ' and',style: TextStyle(color: Colors.white,)),
-                      TextSpan(text: ' Advertisement Policy',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900)),
-                      TextSpan(text: '.*',style: TextStyle(color: Colors.white,)),
-                    ],
-                ),
-                // textScaleFactor: 0.5,
-              ),
-              // child: const Text(
-              //   'I have read and accept terms and conditions',
-              //   style: TextStyle
-              //   (
-              //     color: Colors.white,
-              //     fontSize: 15
-              //   ),
-              //   // overflow: TextOverflow.ellipsis,
-              // ),
-            )
-          ],
-                ),
-
-        SizedBox
-        (
-          height: 20,
-        ),
             Align(
-              alignment: Alignment.centerRight,
-              child: FlatButton(
-                // onPressed: _stepContinue,
-                onPressed: _stepContinue,
-                child: const Text('Next',
-                style: TextStyle(color: Colors.white)),
-                color: Appcolor.darkviolte,
+              alignment: Alignment.centerLeft,
+              child: Text
+              (
+                'Banner Image  Preview',
+                style: TextStyle
+                (
+                  fontSize: 15,
+                  color: Colors.white
+                ),
               ),
             ),
-        ],
+            SizedBox
+            (
+              height: 10,
+            ),
+          
+            Container
+            (
+              height: 250,
+              width: double.infinity,
+              decoration: BoxDecoration
+              (
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                border: Border.all
+                (
+                  color: Colors.white,width: 1
+                )
+              ),
+              child:(_image !=null)?Image.file(_image!,fit: BoxFit.cover,) :Icon
+              (
+                Icons.add_a_photo_sharp,
+                color: Colors.white,
+              ),
+            ),
+      
+            SizedBox
+            (
+              height: 20,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text
+              (
+                'Ad Description*',
+                style: TextStyle
+                (
+                  fontSize: 15,
+                  color: Colors.white
+                ),
+              ),
+            ),
+      
+            SizedBox
+            (
+              height: 10,
+            ),
+      
+            TextFormField(
+                  validator: (String? desc)
+                  {
+                    if(desc!.isEmpty)
+                                    {
+                                      return 'Please enter description';
+                                    }
+                  },
+                  style: TextStyle
+                  (
+                  
+                    color: Colors.white
+                  ),
+                  controller: _desccontroller,
+                  minLines: 6,
+                  maxLines: 7,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    errorStyle: TextStyle(color: Colors.orange),
+                    hintText: 'Ad Description',
+                    hintStyle: TextStyle(
+                      color: Colors.grey
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all
+                      (
+                        Radius.circular(4)
+                      ),
+                       borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all
+                      (
+                        Radius.circular(4)
+                      ),
+                       borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    ),
+                    
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all
+                      (
+                        Radius.circular(4)
+                      ),
+                       borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    )
+                  ),
+                ),
+      
+                SizedBox
+                (
+                  height: 20,
+                ),
+      
+      
+                Align(
+              alignment: Alignment.centerLeft,
+              child: Text
+              (
+                'Square Image(250*250)*',
+                style: TextStyle
+                (
+                  fontSize: 15,
+                  color: Colors.white
+                ),
+              ),
+            ),
+            // Row
+            // (
+            //   children: 
+            //   [
+            //     FlatButton
+            //     (
+            //       color: Colors.white,
+            //       onPressed: SquareImagegallery, 
+            //       child: Text
+            //       (
+            //         'Choose File',
+            //         style: TextStyle
+            //         (
+            //           color: Colors.black,
+            //         ),
+            //       )
+            //     ),
+            //     Expanded
+            //     (
+            //       child: SizedBox(
+            //         height: 38,
+            //         child: TextFormField(
+            //         // initialValue: _image1.toString(),
+            //         controller:_img,
+            //         onChanged: onDescriptionChange,
+            //         decoration:const InputDecoration
+            //         (
+            //           // labelText: 'No File Chosen',
+            //           // labelStyle: TextStyle(
+                        
+            //           // ),
+            //           focusedBorder: OutlineInputBorder
+            //           (
+            //               borderSide: BorderSide
+            //               (
+            //                 color: Colors.white, width: 1.0
+            //               ),
+            //           ),
+            //           enabledBorder: OutlineInputBorder
+            //           (
+            //               borderSide: BorderSide
+            //               (
+            //                 color: Colors.white, width: 1.0
+            //               ),
+            //           ),
+            //           errorBorder: OutlineInputBorder
+            //           (
+            //             borderSide: BorderSide
+            //               (
+            //                 color: Colors.white, width: 1.0
+            //               ),
+            //           ),
+            //         )
+            //         // decoration: InputDecoration(labelText: "Description"),
+            //        ),
+            //       ),
+            //     )
+            //   ],
+            // ),
+            Container
+                        (
+                          height: MediaQuery.of(context).size.height*0.06,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
+                            borderRadius: BorderRadius.all
+                            (
+                              Radius.circular(5)
+                            )
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left:5.0,right: 10.0,top: 5.0,bottom: 5.0),
+                            child: Row
+                            (
+                              children: 
+                              [
+                                FlatButton
+                                (
+                                  splashColor: Colors.pinkAccent,
+                                  hoverColor: Colors.purpleAccent,
+                                  color: Colors.white,
+                                  onPressed: SquareImagegallery,
+                                  // onPressed: ()
+                                  // {
+                                  //   getImagegallery().then((value) {setState(() {
+                                  //     _img.text=_image!.path.toString();
+                                  //     log(_img.text);
+                                  //   });});
+                                  // }, 
+                                  child: Text
+                                  (
+                                    'Choose File',
+                                    style: TextStyle
+                                    (
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                ),
+      
+                                SizedBox
+                                (
+                                  width: 5,
+                                ),
+      
+                                Expanded
+                                (
+                                  child: SizedBox(
+                                    height: 38,
+                                    child: TextFormField(
+                                      validator: (String? pic)
+                                      {
+                                        if(pic!.isEmpty)
+                                        {
+                                          return '* Choose Your Image';
+                                        }
+                                      },
+                                      controller: _img1,
+                                      // initialValue: initialValue.toString(),->wrong
+                                    // initialValue: _image.toString(),
+                                    style: TextStyle(color: Colors.white),
+                                    // onChanged: onDescriptionChange,
+                                    // onChanged: (String newValue)
+                                    // {
+                                    //   setState(() {
+                                    //     log('des');
+                                    //     _image = newValue as File?; 
+                                    //     log(_image!.path);
+                                    //   });
+                                    // },
+                                    decoration:const InputDecoration
+                                    (
+                                      // contentPadding:
+                                      //         EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                    )
+                                    // decoration: InputDecoration(labelText: "Description"),
+                                  ),
+                                  ),
+                                )
+      
+                                
+                              ],
+                            ),
+                          ),
+                        ),
+            SizedBox
+            (
+              height: 20,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text
+              (
+                'Square Image  Preview',
+                style: TextStyle
+                (
+                  fontSize: 15,
+                  color: Colors.white
+                ),
+              ),
+            ),
+            SizedBox
+            (
+              height: 10,
+            ),
+            
+            Container
+            (
+              height: 250,
+              width: double.infinity,
+              decoration: BoxDecoration
+              (
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                border: Border.all
+                (
+                  color: Colors.white,width: 1
+                )
+              ),
+              child:(_image1 !=null)?Image.file(_image1!,fit: BoxFit.cover,) :Icon
+              (
+                Icons.add_a_photo_sharp,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox
+            (
+              height: 20,
+            ),
+      
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text
+              (
+                'Ad Link*',
+                style: TextStyle
+                (
+                  fontSize: 15,
+                  color: Colors.white
+                ),
+              ),
+            ),
+      
+            SizedBox
+            (
+              height: 10,
+            ),
+      
+            TextFormField(
+              style: TextStyle
+                (
+                  color: Colors.white
+                ),
+              validator: (String? link)
+              {
+                if(link!.isEmpty)
+                 {
+                    return '* Please enter Ad Link';
+                 }
+              },
+                  // controller: _desccontroller,
+                  minLines: 1,
+                  maxLines: 7,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    errorStyle: TextStyle(color: Colors.orange),
+                    hintText: 'Ad Link',
+                    hintStyle: TextStyle(
+                      color: Colors.grey
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all
+                      (
+                        Radius.circular(4)
+                      ),
+                       borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all
+                      (
+                        Radius.circular(4)
+                      ),
+                       borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    ),
+                    
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all
+                      (
+                        Radius.circular(4)
+                      ),
+                       borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    )
+                  ),
+                ),
+            
+      
+            
+              //
+              SizedBox
+              (
+                height: 20,
+              ),
+            Row(
+            children: [
+              Material(
+                child: Theme(
+                  data: ThemeData(
+                      unselectedWidgetColor: Colors.white
+                  ),
+                  child: Checkbox(
+                    
+                    activeColor: Appcolor.darkviolte1,
+                    value: agree,
+                    onChanged: (value) {
+                      setState(() {
+                        agree = value ?? false;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Expanded(
+                child: RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                      children: <TextSpan>[
+                        TextSpan(text: 'Before Creating, you agree to the', style: TextStyle(color: Colors.white)),
+                        TextSpan(text: 'Terms of Service',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900)),
+                        TextSpan(text: ' and',style: TextStyle(color: Colors.white,)),
+                        TextSpan(text: ' Advertisement Policy',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900)),
+                        TextSpan(text: '.*',style: TextStyle(color: Colors.white,)),
+                      ],
+                  ),
+                  // textScaleFactor: 0.5,
+                ),
+                // child: const Text(
+                //   'I have read and accept terms and conditions',
+                //   style: TextStyle
+                //   (
+                //     color: Colors.white,
+                //     fontSize: 15
+                //   ),
+                //   // overflow: TextOverflow.ellipsis,
+                // ),
+              )
+            ],
+                  ),
+      
+          SizedBox
+          (
+            height: 20,
+          ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: FlatButton(
+                  // onPressed: _stepContinue,
+                  onPressed: _stepContinue,
+                  child: const Text('Next',
+                  style: TextStyle(color: Colors.white)),
+                  color: Appcolor.darkviolte,
+                ),
+              ),
+          ],
+        ),
       ),
       isActive: _currentStep >= 0,
       state: _currentStep >= 0? StepState.complete: StepState.disabled,
@@ -769,8 +832,20 @@ class _CreateAdState extends State<CreateAd> {
                         
                             TextFormField
                               (
+                                style: TextStyle
+                                (
+                                  color: Colors.white
+                                ),
+                                validator: (String? contactname)
+                                {
+                                  if(contactname!.isEmpty)
+                                  {
+                                    return 'Please enter contac person name';
+                                  }
+                                },
                                 decoration:const InputDecoration
                                   (
+                                    errorStyle: TextStyle(color: Colors.orange),
                                     focusedBorder: OutlineInputBorder
                                     (
                                         borderSide: BorderSide
@@ -828,8 +903,20 @@ class _CreateAdState extends State<CreateAd> {
                         
                             TextFormField
                               (
+                                style: TextStyle
+                                (
+                                  color: Colors.white
+                                ),
+                                validator: (String? tele)
+                                {
+                                  if(tele!.isEmpty)
+                                  {
+                                    return '* Please enter telegram id';
+                                  }
+                                },
                                 decoration:const InputDecoration
                                   (
+                                    errorStyle: TextStyle(color: Colors.orange),
                                     focusedBorder: OutlineInputBorder
                                     (
                                         borderSide: BorderSide
@@ -886,8 +973,20 @@ class _CreateAdState extends State<CreateAd> {
                         
                             TextFormField
                               (
+                                style: TextStyle
+                                (
+                                  color: Colors.white
+                                ),
+                                validator: (email)
+                                {
+                                  if(email!.isEmpty)
+                                  {
+                                    return '* Please enter email id';
+                                  }
+                                },
                                 decoration:const InputDecoration
                                   (
+                                    errorStyle: TextStyle(color: Colors.orange),
                                     focusedBorder: OutlineInputBorder
                                     (
                                         borderSide: BorderSide
@@ -1133,8 +1232,20 @@ class _CreateAdState extends State<CreateAd> {
                         
                             TextFormField
                               (
+                                style: TextStyle
+                                (
+                                  color: Colors.white
+                                ),
+                                validator: (amount)
+                                {
+                                  if(amount!.isEmpty)
+                                  {
+                                    return '* Please enter amount';
+                                  }
+                                },
                                 decoration:const InputDecoration
                                   (
+                                    errorStyle: TextStyle(color: Colors.orange),
                                     focusedBorder: OutlineInputBorder
                                     (
                                         borderSide: BorderSide
@@ -1192,6 +1303,17 @@ class _CreateAdState extends State<CreateAd> {
                         
                             TextFormField
                               (
+                                style: TextStyle
+                                (
+                                  color: Colors.white
+                                ),
+                                validator: (transacid)
+                                {
+                                  if(transacid!.isEmpty)
+                                  {
+                                    return '* Please enter transaction id';
+                                  }
+                                },
                                 decoration:const InputDecoration
                                   (
                                     focusedBorder: OutlineInputBorder

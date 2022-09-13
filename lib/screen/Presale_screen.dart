@@ -26,9 +26,55 @@ class _LaunchpadState extends State<Launchpad> {
   TextEditingController address = TextEditingController();
   TextEditingController pincode = TextEditingController();
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
 
   //
   TextEditingController _address = TextEditingController();
+
+  Connect()
+  {
+    log('connected');
+    if(_formKey.currentState!.validate())
+    {
+      log('validated');
+      _formKey.currentState!.save();
+      try{
+        log('wallet connect');
+        DialogHelper3.exit(context);
+
+      }
+      catch(e)
+      {
+        log(e.toString());
+        showError(e.toString());
+      }
+    }
+  }
+
+
+  //errror
+    showError(String errormessage) {
+    print('show error');
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('ERROR'),
+            content: Text(errormessage,style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600,color: Colors.white)),
+            backgroundColor: Colors.purple,
+            shape:
+          RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15)),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK',style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)))
+            ],
+          );
+        });
+  }
 
   List<Step> getPresale()=>
   [
@@ -44,78 +90,96 @@ class _LaunchpadState extends State<Launchpad> {
               fontWeight: FontWeight.w900
             ),
        ),
-      content: Column
-      (
-        children: 
-        [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text
-            (
-              'Smartcontract Address *',
-              style: TextStyle
-              (
-                fontSize: 18,
-                color: Colors.white
-              ),
-            ),
-          ),
-          SizedBox
-          (
-            height: 10,
-          ),
-          TextFormField
-            (
-              decoration:const InputDecoration
-                (
-                  focusedBorder: OutlineInputBorder
-                  (
-                      borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  ),
-                  enabledBorder: OutlineInputBorder
-                  (
-                      borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  ),
-                  errorBorder: OutlineInputBorder
-                  (
-                    borderSide: BorderSide
-                      (
-                        color: Colors.white, width: 1.0
-                      ),
-                  ),
-                  labelText: 'Smartcontract Address',
-                  labelStyle: TextStyle
-                  (
-                    color: Colors.white
-                  )
-                )
-            ),
-
-            SizedBox
-            (
-              height: 20,
-            ),
+      content: Form(
+        key: _formKey,
+        child: Column
+        (
+          children: 
+          [
             Align(
               alignment: Alignment.centerLeft,
-              child: FlatButton(
-                // onPressed: _stepContinue,
-                onPressed: ()
-                {
-                  log('wallet connect');
-                  DialogHelper3.exit(context);
-                },
-                child: const Text('Connect',
-                style: TextStyle(color: Colors.white)),
-                color: Appcolor.darkviolte,
+              child: Text
+              (
+                'Smartcontract Address *',
+                style: TextStyle
+                (
+                  fontSize: 18,
+                  color: Colors.white
+                ),
               ),
             ),
-        ],
+            SizedBox
+            (
+              height: 10,
+            ),
+            TextFormField
+              (
+                style: TextStyle
+                (
+                  color: Colors.white
+                ),
+                validator: (String? address)
+                {
+                  if(address!.isEmpty)
+                  {
+                    return 'Please enter SmartContract Address';
+                  }
+                },
+                decoration:const InputDecoration
+                  (
+                    errorStyle: TextStyle(color: Colors.orange),
+                    focusedBorder: OutlineInputBorder
+                    (
+                        borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder
+                    (
+                        borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    ),
+                    enabledBorder: OutlineInputBorder
+                    (
+                        borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    ),
+                    errorBorder: OutlineInputBorder
+                    (
+                      borderSide: BorderSide
+                        (
+                          color: Colors.white, width: 1.0
+                        ),
+                    ),
+                    labelText: 'Smartcontract Address',
+                    labelStyle: TextStyle
+                    (
+                      color: Colors.white
+                    )
+                  )
+              ),
+      
+              SizedBox
+              (
+                height: 20,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: FlatButton(
+                  // onPressed: _stepContinue,
+                  onPressed: Connect,
+                  child: const Text('Connect',
+                  style: TextStyle(color: Colors.white)),
+                  color: Appcolor.darkviolte,
+                ),
+              ),
+          ],
+        ),
       ),
       isActive: _currentStep >= 0,
       state: _currentStep >= 0? StepState.complete: StepState.disabled,
@@ -135,7 +199,9 @@ class _LaunchpadState extends State<Launchpad> {
                         content: Column(
                           children: [
                             TextFormField(
+                              
                               decoration: const InputDecoration(
+                                errorStyle: TextStyle(color: Colors.orange),
                                   labelText: 'You mobile number'),
                             ),
                           ],
@@ -161,6 +227,7 @@ class _LaunchpadState extends State<Launchpad> {
                           children: <Widget>[
                             TextFormField(
                               decoration: const InputDecoration(
+                                errorStyle: TextStyle(color: Colors.orange),
                                   labelText: 'Verification code'),
                             ),
                           ],
@@ -363,6 +430,7 @@ class _LaunchpadState extends State<Launchpad> {
   Widget build(BuildContext context) {
     return Scaffold
     (
+      resizeToAvoidBottomInset: false,
       backgroundColor: Appcolor.darkviolte6,
       appBar: MyAppBar(title: 'Create LaunchPad',),
 

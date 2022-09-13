@@ -5,6 +5,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hami_launch/screen/Presale_screen.dart';
 import 'package:hami_launch/screen/auditing_partners.dart';
 import 'package:hami_launch/screen/create_token.dart';
+import 'package:hami_launch/screen/exchange_listing.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
 import 'package:hami_launch/screen/lock.dart';
 import 'package:hami_launch/screen/marketing_companies.dart';
@@ -449,6 +450,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('MExchange Listing clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ExchangeListing())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Exchange Listing',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
