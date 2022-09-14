@@ -8,8 +8,34 @@ import '../theme/appcolor.dart';
 import '../widgets/animated_button.dart';
 import '../widgets/appbar_widget.dart';
 
-class AddToken extends StatelessWidget {
-  const AddToken({Key? key}) : super(key: key);
+class AddToken extends StatefulWidget {
+   AddToken({Key? key}) : super(key: key);
+
+  @override
+  State<AddToken> createState() => _AddTokenState();
+}
+
+class _AddTokenState extends State<AddToken> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Connect()
+  {
+    log('connected');
+    if(_formKey.currentState!.validate())
+    {
+      log('validated');
+      _formKey.currentState!.save();
+      try{
+        log('wallet connect');
+        DialogHelper3.exit(context);
+
+      }
+      catch(e)
+      {
+        log(e.toString());
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -157,8 +183,16 @@ class AddToken extends StatelessWidget {
                                 (
                                   color: Colors.white
                                 ),
+                                validator: (String? address)
+                                  {
+                                    if(address!.isEmpty)
+                                    {
+                                      return 'Please enter SmartContract Address';
+                                    }
+                                  },
                                 decoration:const InputDecoration
                                   (
+                                    errorStyle: TextStyle(color: Colors.orange),
                                     focusedBorder: OutlineInputBorder
                                     (
                                         borderSide: BorderSide
@@ -194,7 +228,7 @@ class AddToken extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerRight,
                               child: FlatButton(
-                                // onPressed: _stepContinue,
+                                // onPressed: Connect,
                                 onPressed: ()
                                 {
                                   log('wallet connect');

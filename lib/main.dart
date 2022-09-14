@@ -257,14 +257,17 @@ class _RootPageState extends State<RootPage> {
             SizedBox(width: 20,),
             // Icon(Icons.headphones),
             // Icon(FontAwesomeIcons.globe),
-            IconButton
-            (
-              onPressed: ()
-              {
-                log('networkicon');
-                DialogHelper1.exit(context);
-              }, 
-              icon: Icon(FontAwesomeIcons.globe)
+            InkWell(
+              splashColor: Colors.red,
+              child: IconButton
+              (
+                onPressed: ()
+                {
+                  log('networkicon');
+                  DialogHelper1.exit(context);
+                }, 
+                icon: Icon(FontAwesomeIcons.globe,size: 20,)
+              ),
             ),
             // SizedBox(width: 20,),
             IconButton
@@ -274,7 +277,7 @@ class _RootPageState extends State<RootPage> {
                 log('companyicon');
                 DialogHelper.exit(context);
               }, 
-              icon: Icon(FontAwesomeIcons.wallet)
+              icon: Icon(FontAwesomeIcons.wallet,size: 20,)
             ),
             // Icon(FontAwesomeIcons.connectdevelop,),
             // SizedBox(width: 20,),

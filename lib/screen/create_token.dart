@@ -24,6 +24,8 @@ class CreateToken extends StatefulWidget {
 
 class _CreateTokenState extends State<CreateToken> {
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
     //dropdown
   final List<String> items = [
     'Standard Token',

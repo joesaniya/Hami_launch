@@ -164,13 +164,37 @@ class _GalleryState extends State<Gallery> {
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _createPhotoTitle(),
-              Image.network(url, fit: BoxFit.fitWidth),
-              _createActionBar(),
-            ],
+          child: Container(
+            color: Appcolor.background,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _createPhotoTitle(),
+                // Image.asset(url, fit: BoxFit.fitWidth),
+                // Image.network(url, fit: BoxFit.fitWidth),
+                Divider
+                (
+                  color: Colors.grey,
+                ),
+                Container(
+                  height: 100,
+                  width: double.infinity,
+                  decoration: BoxDecoration
+                  (
+                    color: Appcolor.background
+                  ),
+                  child: CircleAvatar
+                    (
+                      backgroundImage: AssetImage(url),
+                    ),
+                ),
+                Divider
+                (
+                  color: Colors.grey,
+                ),
+                _createActionBar(),
+              ],
+            ),
           ),
         ),
       );

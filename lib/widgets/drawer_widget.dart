@@ -15,6 +15,8 @@ import 'package:hami_launch/screen/token_list.dart';
 import 'package:hami_launch/side_launchpadlistScreens/add_token.dart';
 import 'package:hami_launch/side_launchpadlistScreens/locked_lp_tokens.dart';
 
+import '../screen/Shillers.dart';
+import '../screen/WebDeveloper.dart';
 import '../screen/spotlight_screen.dart';
 import '../screen/verifykyc_screen.dart';
 import '../theme/appcolor.dart';
@@ -452,7 +454,7 @@ class MyWidget extends StatelessWidget {
                         (
                           onTap: ()
                           {
-                            log('MExchange Listing clicked');
+                            log('Exchange Listing clicked');
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => ExchangeListing())
@@ -467,8 +469,16 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('shillers clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Shillers())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
-                          title: Text('Shilliers',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
+                          title: Text('Shillers',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
                         SizedBox
                         (
@@ -485,6 +495,14 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: ()
+                          {
+                            log('WebDevelopers clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => WebDevelopers())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Web3 Developers',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
