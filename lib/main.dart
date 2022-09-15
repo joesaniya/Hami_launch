@@ -120,7 +120,7 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 10), () {
+    Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         _isLoading = false;
       });
