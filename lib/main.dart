@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -134,6 +135,8 @@ class _RootPageState extends State<RootPage> {
     _advancedDrawerController.showDrawer();
   }
 
+  bool _raiseNewIssueFormIsShown = false;
+
   @override
   Widget build(BuildContext context)
   {
@@ -188,7 +191,16 @@ class _RootPageState extends State<RootPage> {
         preferredSize: Size(double.infinity, 50),
         child: AppBar(
           centerTitle: false,
-
+          // title: FadeInLeft(
+          // preferences: const AnimationPreferences(
+          //   duration: Duration(milliseconds: 400),
+          // ),
+          // child: Text(
+          //   _raiseNewIssueFormIsShown
+          //       ? 'Raise an issue'
+          //       : 'ElectricalIssueTrackerApp.appName',
+          // ),
+          // ),
           leading: IconButton
           (
             color:Colors.white,

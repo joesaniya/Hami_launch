@@ -18,7 +18,7 @@ class AddToken extends StatefulWidget {
 class _AddTokenState extends State<AddToken> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  Connect()
+Connect()
   {
     log('connected');
     if(_formKey.currentState!.validate())
@@ -158,88 +158,99 @@ class _AddTokenState extends State<AddToken> {
                       ),
                     child: Padding(
                       padding: const EdgeInsets.only(left:20.0,right: 20),
-                      child: Column
-                      (
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: 
-                        [
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text
-                              (
-                                'Smartcontract Address *',
-                                style: TextStyle
+                      child: Form(
+                        key: _formKey,
+                        child: Column
+                        (
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: 
+                          [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text
                                 (
-                                  fontSize: 18,
-                                  color: Colors.white
-                                ),
-                              ),
-                            ),
-                            
-                            TextFormField
-                              (
-                                style: TextStyle
-                                (
-                                  color: Colors.white
-                                ),
-                                validator: (String? address)
-                                  {
-                                    if(address!.isEmpty)
-                                    {
-                                      return 'Please enter SmartContract Address';
-                                    }
-                                  },
-                                decoration:const InputDecoration
+                                  'Smartcontract Address *',
+                                  style: TextStyle
                                   (
-                                    errorStyle: TextStyle(color: Colors.orange),
-                                    focusedBorder: OutlineInputBorder
+                                    fontSize: 18,
+                                    color: Colors.white
+                                  ),
+                                ),
+                              ),
+                              
+                              TextFormField
+                                (
+                                  style: TextStyle
+                                  (
+                                    color: Colors.white
+                                  ),
+                                  validator: (address)
+                                    {
+                                      if(address!.isEmpty)
+                                      {
+                                        return 'Please enter SmartContract Address';
+                                      }
+                                    },
+                                  decoration:const InputDecoration
                                     (
+                                      errorStyle: TextStyle(color: Colors.orange),
+                                      focusedBorder: OutlineInputBorder
+                                      (
+                                          borderSide: BorderSide
+                                          (
+                                            color: Colors.grey, 
+                                            width: 1.0
+                                          ),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder
+                                      (
+                                          borderSide: BorderSide
+                                          (
+                                            color: Colors.grey, 
+                                            width: 1.0
+                                          ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder
+                                      (
+                                          borderSide: BorderSide
+                                          (
+                                            color: Colors.grey, 
+                                            width: 1.0
+                                          ),
+                                      ),
+                                      errorBorder: OutlineInputBorder
+                                      (
                                         borderSide: BorderSide
-                                        (
-                                          color: Colors.grey, 
-                                          width: 1.0
-                                        ),
-                                    ),
-                                    enabledBorder: OutlineInputBorder
-                                    (
-                                        borderSide: BorderSide
-                                        (
-                                          color: Colors.grey, 
-                                          width: 1.0
-                                        ),
-                                    ),
-                                    errorBorder: OutlineInputBorder
-                                    (
-                                      borderSide: BorderSide
-                                        (
-                                          color: Colors.grey, 
-                                          width: 1.0
-                                        ),
-                                    ),
-                                    labelText: 'Smartcontract Address',
-                                    labelStyle: TextStyle
-                                    (
-                                      color: Colors.grey
+                                          (
+                                            color: Colors.grey, 
+                                            width: 1.0
+                                          ),
+                                      ),
+                                      labelText: 'Smartcontract Address',
+                                      labelStyle: TextStyle
+                                      (
+                                        color: Colors.grey
+                                      )
                                     )
-                                  )
-                              ),
-
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: FlatButton(
-                                // onPressed: Connect,
-                                onPressed: ()
-                                {
-                                  log('wallet connect');
-                                  DialogHelper3.exit(context);
-                                },
-                                child: const Text('Connect',
-                                style: TextStyle(color: Colors.white)),
-                                color: Appcolor.darkviolte,
-                              ),
-                            )
-                        ],
+                                ),
+                      
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: FlatButton(
+                                  onPressed: Connect,
+                                  // onPressed: ()
+                                  // {
+                                  //   log('wallet connect');
+                                  //   DialogHelper3.exit(context);
+                                  // },
+                                  child: const Text('Connect',
+                                  style: TextStyle(color: Colors.white)),
+                                  color: Appcolor.darkviolte,
+                                ),
+                              )
+                          ],
+                        ),
                       ),
                     ),
                   ),
