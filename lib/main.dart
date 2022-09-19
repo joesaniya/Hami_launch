@@ -10,6 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/profile_page/facebook1.dart';
 import 'package:hami_launch/profile_page/facebook_profiel.dart';
+import 'package:hami_launch/screen/Detail_Auditing_Partners.dart';
 import 'package:hami_launch/screen/verifykyc_screen.dart';
 import 'package:hami_launch/skeleton_widget/reuseSkeleton.dart';
 import 'package:hami_launch/skeleton_widget/shimmer_skeleton.dart';
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Appcolor.darkviolte6,
           errorColor: Colors.pinkAccent
         ),
-        // home: VerifyKYC(),
+        // home: DetailAuditingPartners(),
       home: RootPage(),
     );
   }
@@ -198,7 +199,7 @@ class _RootPageState extends State<RootPage> {
           // child: Text(
           //   _raiseNewIssueFormIsShown
           //       ? 'Raise an issue'
-          //       : 'ElectricalIssueTrackerApp.appName',
+          //       : 66'ElectricalIssueTrackerApp.appName',
           // ),
           // ),
           leading: IconButton

@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:hami_launch/screen/Detail_Auditing_Partners.dart';
+import 'package:wave_transition/wave_transition.dart';
 
 import '../theme/appcolor.dart';
 import '../widgets/appbar_widget.dart';
@@ -269,39 +271,52 @@ class _AuditingPartnersState extends State<AuditingPartners> {
                     // ),
                     child: Column(
                       children: [
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          color: Appcolor.background,
-                          elevation: 10,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical:20.0),
-                            child: ListTile
-                            (
-                              leading:CircleAvatar
+                        GestureDetector(
+                          onTap: ()
+                          {
+                            Navigator.push(
+                            context,
+                            WaveTransition(
+                              child:  DetailAuditingPartners(),
+                              center: FractionalOffset(0.90, 0.90),
+                              duration: Duration(milliseconds: 3000) // optional
+                            )
+                        );
+                          },
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            color: Appcolor.background,
+                            elevation: 10,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical:20.0),
+                              child: ListTile
                               (
-                                radius: 30,
-                                backgroundColor: Colors.red[100],
-                                backgroundImage: AssetImage(_partners[index]['avatar']),
-                              ),
-                              title: Text
-                              (
-                                _partners[index]['name'], style: TextStyle
+                                leading:CircleAvatar
                                 (
-                                  fontSize: 14, fontWeight: FontWeight.w600,color: Colors.white
+                                  radius: 30,
+                                  backgroundColor: Colors.red[100],
+                                  backgroundImage: AssetImage(_partners[index]['avatar']),
                                 ),
+                                title: Text
+                                (
+                                  _partners[index]['name'], style: TextStyle
+                                  (
+                                    fontSize: 14, fontWeight: FontWeight.w600,color: Colors.white
+                                  ),
+                                ),
+                                subtitle: Text
+                                (
+                                  _partners[index]['subtitle'], style: TextStyle
+                                   (
+                                      fontSize: 12, fontWeight: FontWeight.w300,color: Colors.grey
+                                   ),
+                                  maxLines: 4,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                trailing: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 15,),
                               ),
-                              subtitle: Text
-                              (
-                                _partners[index]['subtitle'], style: TextStyle
-                                 (
-                                    fontSize: 12, fontWeight: FontWeight.w300,color: Colors.grey
-                                 ),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              trailing: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 15,),
                             ),
                           ),
                         ),

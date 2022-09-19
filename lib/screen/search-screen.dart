@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '/searchPage/sponsored.dart';
@@ -54,199 +56,215 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView
-    (
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      children: 
-      [
-        Container
-        (
-          width: MediaQuery.of(context).size.width,
-          height: 120,
-          // height: 300,
-          // color: Appcolor.darkviolte,
-          color: Colors.transparent,
-          child: Column
+    return RefreshIndicator(
+      displacement: 380,
+      backgroundColor: Appcolor.darkviolte,
+      color: Appcolor.darkviolte6,
+      strokeWidth: 3,
+      triggerMode: RefreshIndicatorTriggerMode.onEdge,
+      onRefresh: () async {
+        await Future.delayed(Duration(milliseconds: 1500));
+        setState(() {
+          // itemCount = itemCount + 1;
+          log('refresh');
+        });
+      },
+      child: Scaffold(
+        body:ListView
+      (
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        children: 
+        [
+          Container
           (
-            children: 
-            [
-              Padding
-              (
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 30),
-                child: Row
+            width: MediaQuery.of(context).size.width,
+            height: 120,
+            // height: 300,
+            // color: Appcolor.darkviolte,
+            color: Colors.transparent,
+            child: Column
+            (
+              children: 
+              [
+                Padding
                 (
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: 
-                  [
-                    Expanded
-                    (
-                      child: Container
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 30),
+                  child: Row
+                  (
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: 
+                    [
+                      Expanded
                       (
-                        height: 50,
-                        margin: EdgeInsets.only(right: 15),
-                        decoration: BoxDecoration
+                        child: Container
                         (
-                          borderRadius: BorderRadius.circular(10), 
-                          color: Appcolor.background
-                        ),
-                        child: TextField
-                        (
-                          onChanged: (value) => _runFilter(value),
-                          style: TextStyle
+                          height: 50,
+                          margin: EdgeInsets.only(right: 15),
+                          decoration: BoxDecoration
                           (
-                            color: Colors.white, 
-                            fontSize: 16, 
-                            fontWeight: FontWeight.w400
+                            borderRadius: BorderRadius.circular(10), 
+                            color: Appcolor.background
                           ),
-                          maxLines: 1,
-                          textInputAction: TextInputAction.search,
-                          decoration: InputDecoration
+                          child: TextField
                           (
-                            hintText: 'Search Your Partner Companies',
-                            hintStyle: TextStyle
+                            onChanged: (value) => _runFilter(value),
+                            style: TextStyle
                             (
-                              color: Colors.white.withOpacity(0.2)
+                              color: Colors.white, 
+                              fontSize: 16, 
+                              fontWeight: FontWeight.w400
                             ),
-                            prefixIconConstraints: BoxConstraints(maxHeight: 20),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 17),
-                            focusedBorder: InputBorder.none,
-                            border: InputBorder.none,
-                            prefixIcon: Visibility
+                            maxLines: 1,
+                            textInputAction: TextInputAction.search,
+                            decoration: InputDecoration
                             (
-                              visible: (searchInputController.text.isEmpty) ? true : false,
-                              child: Container(
-                                  margin: EdgeInsets.only(left: 10, right: 12),
-                                  child: SvgPicture.asset(
-                                    'assets/icons/search.svg',
-                                    width: 20,
-                                    height: 20,
-                                    color: Colors.white.withOpacity(0.2)
-                                    // color: Colors.white,
+                              hintText: 'Search Your Partner Companies',
+                              hintStyle: TextStyle
+                              (
+                                color: Colors.white.withOpacity(0.2)
+                              ),
+                              prefixIconConstraints: BoxConstraints(maxHeight: 20),
+                              contentPadding: EdgeInsets.symmetric(horizontal: 17),
+                              focusedBorder: InputBorder.none,
+                              border: InputBorder.none,
+                              prefixIcon: Visibility
+                              (
+                                visible: (searchInputController.text.isEmpty) ? true : false,
+                                child: Container(
+                                    margin: EdgeInsets.only(left: 10, right: 12),
+                                    child: SvgPicture.asset(
+                                      'assets/icons/search.svg',
+                                      width: 20,
+                                      height: 20,
+                                      color: Colors.white.withOpacity(0.2)
+                                      // color: Colors.white,
+                                    ),
                                   ),
-                                ),
-                            )
+                              )
+                            ),
+                          ),
+                        )
+                      ),
+                      //Filter Icon
+                      GestureDetector
+                      (
+                        onTap: (){},
+                        child: Container
+                        (
+                          width: 50,
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration
+                          (
+                            borderRadius: BorderRadius.circular(10),
+                            color: Appcolor.background
+                          ),
+                          child: SvgPicture.asset
+                          (
+                            'assets/icons/filter.svg',
+                            color: Colors.white.withOpacity(0.2)
                           ),
                         ),
                       )
-                    ),
-                    //Filter Icon
-                    GestureDetector
+                    ],
+                  ),
+                ),
+                // SponsoredTab()
+              ],
+            ),
+          ),
+    
+          //2
+    
+          foundCompany!.isNotEmpty
+          ?
+           Container
+            (
+              padding: EdgeInsets.all(16.0),
+              width: MediaQuery.of(context).size.width,
+              child: SingleChildScrollView
+              (
+                child: Column
+                (
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: 
+                  [
+                    Container
                     (
-                      onTap: (){},
-                      child: Container
+                      height: MediaQuery.of(context).size.height*0.060,
+                      width: double.infinity,
+                      color: Colors.transparent,
+                      child: Text
                       (
-                        width: 50,
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration
+                        'Sponsored Companies',
+                        style: TextStyle
                         (
-                          borderRadius: BorderRadius.circular(10),
-                          color: Appcolor.background
-                        ),
-                        child: SvgPicture.asset
-                        (
-                          'assets/icons/filter.svg',
-                          color: Colors.white.withOpacity(0.2)
+                          fontSize: 20,
+                          color: Colors.white
                         ),
                       ),
+                    ),
+                    // Container
+                    // (
+                    //   margin: EdgeInsets.only(bottom: 15),
+                    //   child: Text
+                    //   (
+                    //     'This is the result of your search..',
+                    //      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    //   ),
+                    // ),
+                    //listview
+                    ListView.separated
+                    (
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: foundCompany!.length,
+                      separatorBuilder: (context,index)
+                      {
+                        return SizedBox
+                        (
+                          height: 10,
+                        );
+                      },
+                      itemBuilder: (context,index)
+                      {
+                        // return Container();
+                        return CompanyTile
+                        (
+                          data: foundCompany![index],
+                        );
+                      }, 
                     )
                   ],
                 ),
               ),
-              // SponsoredTab()
-            ],
-          ),
-        ),
-
-        //2
-
-        foundCompany!.isNotEmpty
-        ?
-         Container
-          (
-            padding: EdgeInsets.all(16.0),
-            width: MediaQuery.of(context).size.width,
-            child: SingleChildScrollView
+            )
+    
+            :
+            Container
             (
-              child: Column
+              padding: EdgeInsets.symmetric(vertical: 70.0,horizontal: 40.0),
+              child: Center
               (
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: 
-                [
-                  Container
-                  (
-                    height: MediaQuery.of(context).size.height*0.060,
-                    width: double.infinity,
-                    color: Colors.transparent,
-                    child: Text
-                    (
-                      'Sponsored Companies',
-                      style: TextStyle
-                      (
-                        fontSize: 20,
-                        color: Colors.white
-                      ),
-                    ),
-                  ),
-                  // Container
-                  // (
-                  //   margin: EdgeInsets.only(bottom: 15),
-                  //   child: Text
-                  //   (
-                  //     'This is the result of your search..',
-                  //      style: TextStyle(color: Colors.grey, fontSize: 12),
-                  //   ),
-                  // ),
-                  //listview
-                  ListView.separated
-                  (
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: foundCompany!.length,
-                    separatorBuilder: (context,index)
-                    {
-                      return SizedBox
-                      (
-                        height: 10,
-                      );
-                    },
-                    itemBuilder: (context,index)
-                    {
-                      // return Container();
-                      return CompanyTile
-                      (
-                        data: foundCompany![index],
-                      );
-                    }, 
-                  )
-                ],
-              ),
-            ),
-          )
-
-          :
-          Container
-          (
-            padding: EdgeInsets.symmetric(vertical: 70.0,horizontal: 40.0),
-            child: Center
-            (
-              child: Text
-              (
-                'Oops!!,Sorry No Partner Companie\'s Found',
-                style: TextStyle
+                child: Text
                 (
-                  fontSize: 17,
-                  fontFamily: 'inter',
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey
+                  'Oops!!,Sorry No Partner Companie\'s Found',
+                  style: TextStyle
+                  (
+                    fontSize: 17,
+                    fontFamily: 'inter',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey
+                  ),
                 ),
               ),
             ),
-          ),
-          SponsoredTab()
-      ],
+            SponsoredTab()
+        ],
+      ),
+    )
     );
   }
 }

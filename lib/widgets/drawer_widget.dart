@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hami_launch/screen/Presale_screen.dart';
 import 'package:hami_launch/screen/auditing_partners.dart';
+import 'package:hami_launch/screen/create_ad.dart';
 import 'package:hami_launch/screen/create_token.dart';
 import 'package:hami_launch/screen/exchange_listing.dart';
+import 'package:hami_launch/screen/inst_connect_wallet.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
 import 'package:hami_launch/screen/lock.dart';
 import 'package:hami_launch/screen/marketing_companies.dart';
+import 'package:hami_launch/screen/partner_with_us.dart';
 import 'package:hami_launch/screen/share_earn.dart';
 import 'package:hami_launch/screen/smartContract-developers.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
@@ -410,6 +413,13 @@ class MyWidget extends StatelessWidget {
                     [
                       ListTile
                         (
+                          onTap: (){
+                            log('Advertise With us clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CreateAd())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Advertise With us',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
@@ -539,6 +549,13 @@ class MyWidget extends StatelessWidget {
                         ),
                         ListTile
                         (
+                          onTap: (){
+                            log('Partner With us clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => PartnerWithUs())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('Partner With Us',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),
@@ -588,6 +605,13 @@ class MyWidget extends StatelessWidget {
                     [
                       ListTile
                         (
+                          onTap: (){
+                            log('connect_wallet clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ConnectWallet())
+                            );
+                          },
                           leading: Icon(Icons.rectangle_outlined,color: Colors.white,),
                           title: Text('How to connect Wallet',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
                         ),

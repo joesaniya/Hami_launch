@@ -60,6 +60,8 @@ dependencies:
   motion: ^1.3.3
   wave_transition: ^0.0.6
   lottie: ^1.4.2
+  youtube_player_flutter: ^8.1.0
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:

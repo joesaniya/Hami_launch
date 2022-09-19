@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/theme/appcolor.dart';
@@ -280,7 +281,10 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
           onTap: () 
           {
             log('read clicked');
-            _launchInApp(_launchUrl);
+            // _launchInApp(_launchUrl);
+            Clipboard.setData(ClipboardData(text: 'BDEF4587')).then((_){
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Referral code copied to clipboard")));
+          });
           },
           label: 'Read',
           labelStyle:
