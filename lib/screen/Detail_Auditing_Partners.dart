@@ -1,6 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hami_launch/models/alertnetwork.dart';
+import 'package:hami_launch/screen/recent_reports.dart';
 import 'package:readmore/readmore.dart';
 
+import '../Dialogbox/dialog_helper.dart';
 import '../theme/appcolor.dart';
 import '../widgets/appbar_widget.dart';
 
@@ -12,6 +19,9 @@ class DetailAuditingPartners extends StatefulWidget {
 }
 
 class _DetailAuditingPartnersState extends State<DetailAuditingPartners> {
+  
+  List<Auditor>? Auddata;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold
@@ -134,34 +144,41 @@ class _DetailAuditingPartnersState extends State<DetailAuditingPartners> {
               padding: const EdgeInsets.only(left:20.0,right: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Container
-                (
-                  height: 30,
-                  width: 200,
-                  decoration: BoxDecoration
+                child: GestureDetector(
+                  onTap: ()
+                  {
+                    log('apply auditing clicked');
+                    DialogHelper.exit(context);
+                  },
+                  child: Container
                   (
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.deepPurple
-                  ),
-                  child: Row
-                  (
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: 
-                    [
-                      Icon(Icons.note_add,color: Colors.white,),
-                      Text
-                      (
-                        'APPLY FOR AUDITING',
-                        style: TextStyle
+                    height: 30,
+                    width: 200,
+                    decoration: BoxDecoration
+                    (
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.deepPurple
+                    ),
+                    child: Row
+                    (
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: 
+                      [
+                        Icon(Icons.note_add,color: Colors.white,),
+                        Text
                         (
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 18
-                          
+                          'APPLY FOR AUDITING',
+                          style: TextStyle
+                          (
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 18
+                            
+                          ),
+                          textAlign: TextAlign.left,
                         ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -264,12 +281,268 @@ class _DetailAuditingPartnersState extends State<DetailAuditingPartners> {
                           ),
                       ),
 
+                      
                       //reports
+
+                      
 
                       ],
                     ),
                   ),
-              )
+              ),
+
+              SizedBox
+              (
+                height: 20,
+              ),
+
+              Container
+              (
+                // height: MediaQuery.of(context).size.height*0.30,
+                width: double.infinity,
+                decoration: BoxDecoration
+                (
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  color: Appcolor.background
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column
+                  (
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: 
+                    [
+                      Row
+                      (
+                        children: 
+                        [
+                          Image.asset
+                          (
+                            'assets/images/report.png',
+                            height: 18,
+                            color: Colors.white,
+                          ),
+                          // Icon
+                          // (
+                          //   FontAwesomeIcons.file,
+                          //   color: Colors.white
+                          // ),
+                          SizedBox
+                          (
+                            width: 10,
+                          ),
+                          Text
+                          (
+                            'Recent Reports',
+                            style: TextStyle
+                            (
+                              color: Colors.white,
+                              fontSize: 18
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox
+                      (
+                        height: 10,
+                      ),
+                      Container
+                      (
+                        height: MediaQuery.of(context).size.height*0.005,
+                        width: double.infinity,
+                        color: Appcolor.darkviolte,
+                        child: Row
+                        (
+                          children: 
+                          [
+                            Container
+                            (
+                              height: MediaQuery.of(context).size.height*0.005,
+                              // width: 100,
+                              width: MediaQuery.of(context).size.width*0.40,
+                              color: Appcolor.darkviolte4,
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                      padding: EdgeInsets.all(16),
+                      width: MediaQuery.of(context).size.width,
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        itemCount: Auditor1.length,
+                        physics: NeverScrollableScrollPhysics(),
+                        separatorBuilder: (context, index) {
+                          return SizedBox(height: 16);
+                        },
+                        itemBuilder: (context, index) {
+
+                          return SingleChildScrollView(
+                            child: 
+                            // Auditor1.length==0?CircularProgressIndicator():
+                            GestureDetector(
+                              onTap: ()
+                              {
+                                log('report');
+                                log(Auditor1.length.toString());
+                              },
+                            // onTap: ()=>selectMeal(context),
+                            
+                            child: Container(
+                              // height: 90,
+                              height: 120,
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Appcolor.whiteSoft,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                children: [
+                                  // Recipe Photo
+                                  Container(
+                                    width: 70,
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.blueGrey,
+                                      image: DecorationImage(image: AssetImage(Auditor1[index].image,), fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                  // Recipe Info
+                                  Flexible(
+                                    child: Container(
+                                      margin: EdgeInsets.only(left: 10),
+                                      padding: EdgeInsets.symmetric(horizontal: 10),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          // Recipe title
+                                          Row
+                                          (
+                                            children: 
+                                            [
+                                              Container(
+                                                margin: EdgeInsets.only(bottom: 12),
+                                                child: Text(
+                                                  Auditor1[index].title,
+                                                  style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'inter',fontSize: 15),
+                                                ),
+                                              ),
+
+                                              SizedBox
+                                              (
+                                                width: 15,
+                                              ),
+
+                                              Container(
+                                                margin: EdgeInsets.only(bottom: 12),
+                                                child: Text(
+                                                  Auditor1[index].subtitle,
+                                                  style: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'inter',fontSize: 13,color: Colors.grey),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          // Recipe Calories and Time
+                                          
+                                          Padding(
+                                            padding: const EdgeInsets.only(bottom: 10.0),
+                                            child: Container(
+                                              margin: EdgeInsets.only(left: 5),
+                                              // child:Text(calories!=null?calories:'$calories'),
+                                              child: Text(
+                                                Auditor1[index].Description,
+                                                style: TextStyle(fontSize: 12),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          ),
+                                          
+
+                                          
+
+                                          //button
+                                          SizedBox(
+                                            width: MediaQuery.of(context).size.width,
+                                            height: 40,
+                                            child: OutlinedButton(
+                                              child: Text('view Report', style: TextStyle
+                                              (
+                                                color: Colors.deepPurpleAccent, 
+                                                fontSize: 16, 
+                                                fontWeight: FontWeight.w600, 
+                                                fontFamily: 'inter'
+                                              )
+                                              ),
+                                              onPressed: () {
+                                                // showModalBottomSheet(
+                                                //   context: context,
+                                                //   backgroundColor: Colors.white,
+                                                //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                                                //   isScrollControlled: true,
+                                                //   builder: (context) {
+                                                //     return LoginModal();
+                                                //   },
+                                                // );
+                                              },
+                                              style: OutlinedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                                side: BorderSide(color: Appcolor.secondary.withOpacity(0.5), width: 1),
+                                                primary: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+
+                                          
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+
+                                  
+
+
+                                ],
+                              ),
+                            ),
+                              ),
+                          );
+                        // return RecentReports(
+                        
+                        //   title: Auddata![index].title,
+                        //   subtitle: Auddata![index].subtitle,
+                        //   image: Auddata![index].image,
+                        //   Description: Auddata![index].Description,
+                        
+                        //   // removeItem: _removeMeal,
+                        // );
+                        },
+                      ),
+                    ),
+
+                    //no post
+                      // Container
+                      // (
+                      //   height: MediaQuery.of(context).size.height*0.20,
+                      //   width: double.infinity,
+                      //   color: Colors.transparent,
+                      //   child: Center(
+                      //     child: Text
+                      //     (
+                      //       'No Posts Found',
+                      //       style: TextStyle
+                      //       (
+                      //         fontSize: 18,
+                      //         color: Colors.white
+                      //       ),
+                      //     ),
+                      //   ),
+                      // )
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

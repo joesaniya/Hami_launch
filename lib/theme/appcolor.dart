@@ -16,6 +16,7 @@ class Appcolor
   static Color lightgreen=Color.fromARGB(255,33,192,90);
   static Color deepOrange=Color.fromARGB(255,196,67,12);
   static Color lightOrange=Color.fromARGB(255,246,113,22);
+  static Color whiteSoft = Color(0xFFF8F8F8);
   static LinearGradient linearBlackTop = LinearGradient(colors: [Colors.black.withOpacity(0.5), Colors.transparent], begin: Alignment.topCenter, end: Alignment.bottomCenter);
 }
 
