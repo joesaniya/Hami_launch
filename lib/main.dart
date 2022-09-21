@@ -2,33 +2,23 @@
 
 import 'dart:developer';
 
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hami_launch/profile_page/facebook1.dart';
-import 'package:hami_launch/profile_page/facebook_profiel.dart';
-import 'package:hami_launch/screen/Detail_Auditing_Partners.dart';
-import 'package:hami_launch/screen/verifykyc_screen.dart';
-import 'package:hami_launch/skeleton_widget/reuseSkeleton.dart';
-import 'package:hami_launch/skeleton_widget/shimmer_skeleton.dart';
+import 'package:hami_launch/screen/homepage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:wave_transition/wave_transition.dart';
-import '/profile_page/profile-screen.dart';
-import '/screen/AlertScreen.dart';
-import '/screen/NotificationPage.dart';
-import '/screen/alerts.dart';
-import '/screen/homepage.dart';
-import '/screen/search-screen.dart';
-import '/screen/search.dart';
 import '/theme/appcolor.dart';
 import 'package:line_icons/line_icons.dart';
 import '/widgets/drawer_widget.dart';
 
 import 'Dialogbox/dialog_helper.dart';
 import 'insta_profile/profile_base_screen.dart';
+import 'screen/NotificationPage.dart';
+import 'screen/alerts.dart';
+import 'screen/search-screen.dart';
 
 void main() => runApp
 (
@@ -66,6 +56,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Demo extends StatelessWidget {
+  const Demo({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold
+    (
+      body:Container
+      (
+        width:double.infinity,
+        height: 600,
+        color: Colors.red,
+      )
+    );
+  }
+}
+
 
 class RootPage extends StatefulWidget {
   @override
@@ -73,48 +80,23 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  // List <BottomNavigationBarItem>items = [
-  //   BottomNavigationBarItem
-  //   (
-  //     icon: SvgPicture.asset
-  //     (
-  //       'assets/icons/home-filled.svg', 
-  //         color: Colors.pinkAccent
-  //     ), 
-  //     label: 'Home'
-  //   ),
-  //   // BottomNavigationBarItem
-  //   // (
-  //   //   icon: Icon
-  //   //   (
-  //   //     LineIcons.home,
-  //   //     size: 27,
-  //   //   ),
-      
-  //   //   label: 'home'
-  //   // ),
-  //   BottomNavigationBarItem(icon: Icon(LineIcons.search,size: 27,),
-  //   label: 'search'
-  //   // title:Padding(
-  //   //   padding: const EdgeInsets.only(top: 8),
-  //   //   child: Text("Search",style: TextStyle(fontSize: 12,fontWeight: FontWeight.w500),),
-  //   // )
-  //   ),
-  //   BottomNavigationBarItem(icon: Icon(LineIcons.bell,size: 27),
-  //   label: 'notifications'
-  //   ),
-  //   BottomNavigationBarItem(icon: Icon(Icons.alarm,size: 27),
-  //   label: 'Alerts'
-  //   )
-  // ];
+
   int selectedIndex = 0;
   List <Widget> pages = [
-    Homepage(),
-    // Search(),->tab
-    SearchScreen(),
+    const Homepage(),
+    const SearchScreen(),
     NotificationPage(),
-    // AlertScreen()
-    AlertPage()
+    const AlertPage(),
+    
+    // Container
+    // (
+    //   height: 400,
+    //   color: Colors.yellow,
+    // ),
+    // Homepage(),
+    // const SearchScreen(),
+    // NotificationPage(),
+    // const AlertPage()
   ];
 
    bool _isLoading;
@@ -136,12 +118,12 @@ class _RootPageState extends State<RootPage> {
     _advancedDrawerController.showDrawer();
   }
 
-  bool _raiseNewIssueFormIsShown = false;
+  final bool _raiseNewIssueFormIsShown = false;
 
   @override
   Widget build(BuildContext context)
   {
-    final _scaffoldKey = GlobalKey<ScaffoldState>();
+    final scaffoldKey = GlobalKey<ScaffoldState>();
     return WillPopScope
     (
       child: AdvancedDrawer
@@ -162,15 +144,15 @@ class _RootPageState extends State<RootPage> {
                             color: Appcolor.secondary,
                             blurRadius: 20.0,
                             spreadRadius: 5.0,
-                            offset: Offset(-20.0, 0.0),
+                            offset: const Offset(-20.0, 0.0),
                           ),
                         ],
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30), 
                       ),
 
                       drawer: MyDrawer(),
       child:Scaffold(
-      key:  _scaffoldKey,
+      key:  scaffoldKey,
       // drawer: MyDrawer(),
       //myyy
       // drawer: Drawer
@@ -189,7 +171,7 @@ class _RootPageState extends State<RootPage> {
     
       appBar:
       PreferredSize(
-        preferredSize: Size(double.infinity, 50),
+        preferredSize: const Size(double.infinity, 50),
         child: AppBar(
           centerTitle: false,
           // title: FadeInLeft(
@@ -212,7 +194,7 @@ class _RootPageState extends State<RootPage> {
               {
                 return AnimatedSwitcher
                 (
-                  duration: Duration(microseconds: 250),
+                  duration: const Duration(microseconds: 250),
                   child: Icon
                   (
                     value.visible ?Iconsax.close_square : Iconsax.menu,
@@ -267,7 +249,7 @@ class _RootPageState extends State<RootPage> {
             //    height: 20,
             //    color: Colors.white,
             // ),
-            SizedBox(width: 20,),
+            const SizedBox(width: 20,),
             // Icon(Icons.headphones),
             // Icon(FontAwesomeIcons.globe),
             InkWell(
@@ -279,7 +261,7 @@ class _RootPageState extends State<RootPage> {
                   log('networkicon');
                   DialogHelper1.exit(context);
                 }, 
-                icon: Icon(FontAwesomeIcons.globe,size: 20,)
+                icon: const Icon(FontAwesomeIcons.globe,size: 20,)
               ),
             ),
             // SizedBox(width: 20,),
@@ -290,7 +272,7 @@ class _RootPageState extends State<RootPage> {
                 log('companyicon');
                 DialogHelper.exit(context);
               }, 
-              icon: Icon(FontAwesomeIcons.wallet,size: 20,)
+              icon: const Icon(FontAwesomeIcons.wallet,size: 20,)
             ),
             // Icon(FontAwesomeIcons.connectdevelop,),
             // SizedBox(width: 20,),
@@ -303,8 +285,8 @@ class _RootPageState extends State<RootPage> {
                     context,
                     WaveTransition(
                       child:  ProfileBaseScreen(),
-                      center: FractionalOffset(0.90, 0.90),
-                      duration: Duration(milliseconds: 3000) // optional
+                      center: const FractionalOffset(0.90, 0.90),
+                      duration: const Duration(milliseconds: 3000) // optional
                     )
                 );
                 // Navigator.push(
@@ -326,7 +308,7 @@ class _RootPageState extends State<RootPage> {
                 //   // ProfileScreen()),
                 // );
               }, 
-              icon: Icon(LineIcons.user)
+              icon: const Icon(LineIcons.user)
             ),
            ],
         ),
@@ -394,7 +376,7 @@ class _RootPageState extends State<RootPage> {
                     label: 'Search'
                   ),
               (selectedIndex == 2)
-                  ? BottomNavigationBarItem
+                  ? const BottomNavigationBarItem
                   (
                     // icon: Image.asset('assets/images/notifications-filled.png',height: 28,width: 26,color: Colors.pinkAccent,),
                     icon: Icon(LineIcons.bell,color: Colors.pinkAccent,size: 27,),

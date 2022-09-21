@@ -1,8 +1,5 @@
-import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
-import '/theme/appcolor.dart';
 
-import '../models/banner_model.dart';
 
 
 
@@ -19,9 +16,10 @@ class BnnerWidget extends StatelessWidget {
   {
     return Container
     (
-      height: 100,
+      height: 180,
+      //height:100
       width: double.infinity,
-      decoration: BoxDecoration
+      decoration: const BoxDecoration
       (
         borderRadius: BorderRadius.all(Radius.circular(10)),
         image: DecorationImage
@@ -30,19 +28,23 @@ class BnnerWidget extends StatelessWidget {
           fit: BoxFit.cover
         )
       ),
-      child: Carousel(
-                dotSize: 6.0,
-                dotSpacing: 15.0,
-                dotPosition: DotPosition.bottomCenter,
-                images: [
-                  Image.asset('assets/images/launch1_banner.png', fit: BoxFit.cover),
-                  Image.asset('assets/images/launch_banner2.png', fit: BoxFit.cover),
-                  Image.asset('assets/images/lauch_image3.png', fit: BoxFit.cover),
-                  Image.asset('assets/images/launch_banner2.png', fit: BoxFit.cover),
-                  Image.asset('assets/images/launch_banner2.png', fit: BoxFit.cover),
-                  Image.asset('assets/images/launch_banner2.png', fit: BoxFit.cover),
-                ],
-              ),
+    
+
+
+      //crt
+      // child: Carousel(
+      //           dotSize: 6.0,
+      //           dotSpacing: 15.0,
+      //           dotPosition: DotPosition.bottomCenter,
+      //           images: [
+      //             Image.asset('assets/images/launch1_banner.png', fit: BoxFit.cover),
+      //             Image.asset('assets/images/launch_banner2.png', fit: BoxFit.cover),
+      //             Image.asset('assets/images/lauch_image3.png', fit: BoxFit.cover),
+      //             Image.asset('assets/images/launch_banner2.png', fit: BoxFit.cover),
+      //             Image.asset('assets/images/launch_banner2.png', fit: BoxFit.cover),
+      //             Image.asset('assets/images/launch_banner2.png', fit: BoxFit.cover),
+      //           ],
+      //         ),
     );
   }
 

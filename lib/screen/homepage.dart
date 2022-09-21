@@ -26,7 +26,7 @@ class _HomepageState extends State<Homepage> {
       strokeWidth: 3,
       triggerMode: RefreshIndicatorTriggerMode.onEdge,
       onRefresh: () async {
-        await Future.delayed(Duration(milliseconds: 1500));
+        await Future.delayed(const Duration(milliseconds: 1500));
         setState(() {
           // itemCount = itemCount + 1;
           log('refresh');
@@ -40,7 +40,7 @@ class _HomepageState extends State<Homepage> {
           (
             children: 
             [
-              SizedBox
+              const SizedBox
               (
                 height: 20,
               ),
@@ -49,7 +49,7 @@ class _HomepageState extends State<Homepage> {
                 child: BnnerWidget(size: size),
               ),
       
-              SizedBox
+              const SizedBox
               (
                 height: 5,
               ),
@@ -68,15 +68,15 @@ class _HomepageState extends State<Homepage> {
                     ],
                   ))
               ),
-              SizedBox
+              const SizedBox
               (
                 height: 20,
               ),
       
               //header
-              IconHeade(),
+              const IconHeade(),
       
-              SizedBox
+              const SizedBox
               (
                 height: 20,
               ),
@@ -87,7 +87,7 @@ class _HomepageState extends State<Homepage> {
                 child: TradingAndSponsored(),
               ),
       
-              SizedBox
+              const SizedBox
               (
                 height: 20,
               ),
