@@ -4,7 +4,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -59,14 +58,26 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Hami App',
       // themeMode: _themeManager.themeMode,
-      themeMode: currentTheme.currenTheme(),
-      theme: ThemeData(
-          // textTheme: GoogleFonts.latoTextTheme(
-          //   Theme.of(context).textTheme
-          // ),
+      // themeMode: currentTheme.currenTheme(),
+      // theme: currentTheme.isDark ? ThemeData.dark() : ThemeData.light(),
+      theme: currentTheme.isDark
+          ? ThemeData(
+              // textTheme: GoogleFonts.latoTextTheme(
+              //   Theme.of(context).textTheme
+              // ),
 
-          scaffoldBackgroundColor: Appcolor.darkviolte6,
-          errorColor: Colors.pinkAccent),
+              scaffoldBackgroundColor: Appcolor.darkviolte6,
+              errorColor: Colors.pinkAccent)
+          : ThemeData(
+              // textTheme: GoogleFonts.latoTextTheme(
+              //   Theme.of(context).textTheme
+              // ),
+              textTheme: const TextTheme().apply(
+                bodyColor: Colors.orange,
+                displayColor: Colors.blue,
+              ),
+              scaffoldBackgroundColor: Appcolor.darkviolte,
+              errorColor: Colors.pinkAccent),
       // home: DetailAuditingPartners(),
       home: RootPage(),
     );
@@ -106,7 +117,7 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  bool _flag = true;
+  final bool _flag = true;
   int selectedIndex = 0;
   List<Widget> pages = [
     const Homepage(),
@@ -206,7 +217,8 @@ class _RootPageState extends State<RootPage> {
                 // ),
                 // ),
                 leading: IconButton(
-                  color: Colors.white,
+                  // color: Colors.white,
+                  color: currentTheme.isDark ? Colors.white : Colors.black,
                   onPressed: _handleMenuButtonPressed,
                   icon: ValueListenableBuilder(
                       valueListenable: _advancedDrawerController,
@@ -293,14 +305,14 @@ class _RootPageState extends State<RootPage> {
                   //       _themeManager.toggleTheme(newValue);
                   //     }),
                   IconButton(
-                      // onPressed: () {
-                      //   currentTheme.switchTheme();
-                      // },
-
                       onPressed: () {
-                        log('drawer');
-                        scaffoldKey.currentState.openEndDrawer();
+                        currentTheme.switchTheme();
                       },
+
+                      // onPressed: () {
+                      //   log('drawer');
+                      //   scaffoldKey.currentState.openEndDrawer();
+                      // },
 
                       // onPressed: () => MyApp.of(context).changeTheme(ThemeMode.dark),
                       icon: const Icon(FontAwesomeIcons.moon)),
@@ -460,50 +472,71 @@ class _RootPageState extends State<RootPage> {
                 FloatingActionButtonLocation.centerDocked,
             floatingActionButton: FloatingActionButton(
               backgroundColor: Colors.deepPurple,
-              child: _flag
-                  ? const Icon(Icons.add)
-                  : const Icon(FontAwesomeIcons.close),
-              // child: const Icon(Icons.add),
-              onPressed: () {
-                setState(() {
-                  _flag = !_flag;
-                });
-                log('message');
-                _flag ? _showPopUpMenu() : const SizedBox();
-              },
+              child: PopupMenuButton<int>(
+                color: Colors.yellow,
+                itemBuilder: (context) => [
+                  const PopupMenuItem(
+                      value: 1,
+                      child: Text(
+                        'Edit',
+                        style: TextStyle(color: Colors.black),
+                      )),
+                  const PopupMenuItem(
+                      value: 2,
+                      child: Text(
+                        'Delete',
+                        style: TextStyle(color: Colors.black),
+                      ))
+                ],
+                // icon: Icon(Icons.library_add),
+                //   child: _flag
+                //       ? const Icon(Icons.add)
+                //       : const Icon(FontAwesomeIcons.close),
+                icon: _flag
+                    ? const Icon(Icons.add)
+                    : const Icon(FontAwesomeIcons.close),
+                // icon: const Icon(
+                //   FontAwesomeIcons.ellipsis,
+                //   color: Colors.white,
+                // ),
+                // offset: const Offset(0, -50),
+                offset: Offset.zero,
+                onCanceled: () {
+                  log('cancelled');
+                },
+                onSelected: (value) {
+                  log('value: $value');
+                },
+              ),
             ),
+            // floatingActionButton: GestureDetector(
+            //   onTapDown: (details) {
+            //     setState(() {
+            //       _flag = !_flag;
+            //       _flag
+            //           ? const SizedBox()
+            //           : _showPopupMenu(details.globalPosition);
+            //     });
+            //   },
+            //   child: FloatingActionButton(
+            //     backgroundColor: Colors.deepPurple,
+            //     // child: const Icon(Icons.add),
+            //     // onPressed: () {
+
+            //     //   log('message');
+            //     //   // _flag ? _showPopUpMenu() : const SizedBox();
+            //     // },
+            //     onPressed: null,
+            //     child: _flag
+            //         ? const Icon(Icons.add)
+            //         : const Icon(FontAwesomeIcons.close),
+            //   ),
+            // ),
+
             // floatingActionButtonLocation:
             //     FloatingActionButtonLocation.centerDocked,
             // floatingActionButton: buildSpeedDial()
           )),
-    );
-  }
-
-  SpeedDial buildSpeedDial() {
-    return SpeedDial(
-      // animatedIcon: AnimatedIcons.menu_close,
-      // AnimatedIcons.menu_close,
-      icon: Icons.add, //icon on Floating action button
-      activeIcon: Icons.close,
-      animatedIconTheme: const IconThemeData(size: 28.0),
-      backgroundColor: Colors.deepPurple,
-      overlayColor: Colors.black,
-      overlayOpacity: 0.4,
-      // visible: true,
-      // curve: Curves.bounceInOut,
-      children: [
-        SpeedDialChild(
-          child: const Icon(Icons.copy, color: Colors.white),
-          backgroundColor: Colors.pinkAccent,
-          onTap: () {
-            log('read clicked');
-          },
-          label: 'Read',
-          labelStyle:
-              const TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
-          labelBackgroundColor: Colors.black,
-        ),
-      ],
     );
   }
 
@@ -534,34 +567,47 @@ class _RootPageState extends State<RootPage> {
   //     }
   //   });
   // }
-  _showPopUpMenu() {
-    PopupMenuButton<int>(
-      itemBuilder: (context) => [
-        const PopupMenuItem(
-            value: 1,
-            child: Text(
-              'Edit',
-              style: TextStyle(color: Colors.black),
-            )),
-        const PopupMenuItem(
-            value: 2,
-            child: Text(
-              'Delete',
-              style: TextStyle(color: Colors.black),
-            ))
+
+  void _showPopupMenu(Offset offset) async {
+    await showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(offset.dx, offset.dy, 100, 100),
+      items: [
+        const PopupMenuItem<String>(value: 'Doge', child: Text('Doge')),
+        const PopupMenuItem<String>(value: 'Lion', child: Text('Lion')),
       ],
-      // icon: Icon(Icons.library_add),
-      icon: const Icon(
-        FontAwesomeIcons.ellipsis,
-        color: Colors.white,
-      ),
-      offset: const Offset(0, 50),
-      onCanceled: () {
-        log('cancelled');
-      },
-      onSelected: (value) {
-        log('value: $value');
-      },
+      elevation: 8.0,
     );
   }
+  // _showPopUpMenu() {
+  //   PopupMenuButton<int>(
+  //     color: Colors.yellow,
+  //     itemBuilder: (context) => [
+  //       const PopupMenuItem(
+  //           value: 1,
+  //           child: Text(
+  //             'Edit',
+  //             style: TextStyle(color: Colors.black),
+  //           )),
+  //       const PopupMenuItem(
+  //           value: 2,
+  //           child: Text(
+  //             'Delete',
+  //             style: TextStyle(color: Colors.black),
+  //           ))
+  //     ],
+  //     // icon: Icon(Icons.library_add),
+  //     icon: const Icon(
+  //       FontAwesomeIcons.ellipsis,
+  //       color: Colors.white,
+  //     ),
+  //     offset: const Offset(0, 50),
+  //     onCanceled: () {
+  //       log('cancelled');
+  //     },
+  //     onSelected: (value) {
+  //       log('value: $value');
+  //     },
+  //   );
+  // }
 }
