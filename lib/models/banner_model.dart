@@ -25,10 +25,24 @@ class BannerModel {
 
 List<BannerModel> banner = <BannerModel>[
   BannerModel(
-    title: 'Trending',
-    subtitle:'Ethereum',
+    title: 'Spot Light',
+    subtitle: 'Ethereum',
     subtitle1: 'ETH',
-    image:'assets/images/award.png',
+    Subimage: 'assets/images/subimage1.png',
+    image: 'assets/images/rocket.png',
+    imageBanner: 'assets/images/spot.png',
+    topImage: 'assets/images/trend_logo.png',
+    gradientColor: LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      colors: [Appcolor.darkviolte6, Appcolor.darkviolte2],
+    ),
+  ),
+  BannerModel(
+    title: 'Trending',
+    subtitle: 'Ethereum',
+    subtitle1: 'ETH',
+    image: 'assets/images/award.png',
     imageBanner: 'assets/images/trend1.png',
     topImage: 'assets/images/trend_logo.png',
     Subimage: 'assets/images/subimage1.png',
@@ -45,36 +59,16 @@ List<BannerModel> banner = <BannerModel>[
   ),
   BannerModel(
     title: 'Sponsored',
-    subtitle:'Ethereum',
+    subtitle: 'Ethereum',
     subtitle1: 'ETH',
-    image:'assets/images/fire.png',
+    image: 'assets/images/fire.png',
     Subimage: 'assets/images/subimage1.png',
     imageBanner: 'assets/images/sponsored_logo.png',
     topImage: 'assets/images/trend_logo.png',
-    gradientColor:  LinearGradient(
+    gradientColor: LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
-      colors: [
-        Appcolor.darkviolte1,
-        Appcolor.darkviolte3
-      ],
-    ),
-  ),
-  BannerModel(
-    title: 'Spot Light',
-    subtitle:'Ethereum',
-    subtitle1: 'ETH',
-    Subimage: 'assets/images/subimage1.png',
-    image:'assets/images/rocket.png',
-    imageBanner: 'assets/images/spot.png',
-    topImage: 'assets/images/trend_logo.png',
-    gradientColor:  LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-      colors: [
-        Appcolor.darkviolte6,
-        Appcolor.darkviolte2
-      ],
+      colors: [Appcolor.darkviolte1, Appcolor.darkviolte3],
     ),
   ),
 ];

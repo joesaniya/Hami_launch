@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:wave_transition/wave_transition.dart';
@@ -8,7 +7,6 @@ import '../screen/token-detail.dart';
 import '/theme/appcolor.dart';
 
 import '../models/job.dart';
-import 'Glowing_button.dart';
 
 class ButtonHome extends StatefulWidget {
   const ButtonHome({Key? key}) : super(key: key);
@@ -23,11 +21,11 @@ class ButtonHome extends StatefulWidget {
 }
 
 class _ButtonHomeState extends State<ButtonHome> {
-  bool _flag =true;
+  bool _flag = true;
   //token
   List<Shift> shift = getShift();
 
-  List<Widget> buildLastJobs(){
+  List<Widget> buildLastJobs() {
     List<Widget> list = [];
     for (var i = shift.length - 1; i > -1; i--) {
       list.add(buildLastJob(shift[i]));
@@ -35,254 +33,209 @@ class _ButtonHomeState extends State<ButtonHome> {
     return list;
   }
 
-    Widget buildLastJob(Shift shift){
+  Widget buildLastJob(Shift shift) {
     return Column(
       children: [
-        Slidable(
-          startActionPane: ActionPane
-          (
-            motion: StretchMotion(), 
-            children: 
-            [
-             SlidableAction
-             (
-              flex: 1,
-              onPressed: ((context)
-                {
-                  
-                }  
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+          child: Slidable(
+            startActionPane:
+                ActionPane(motion: const StretchMotion(), children: [
+              SlidableAction(
+                flex: 1,
+                onPressed: ((context) {}),
+                icon: Icons.save,
+                backgroundColor: Colors.greenAccent,
+                label: 'Add Your Token',
+                spacing: 20,
               ),
-              icon: Icons.save,
-              backgroundColor: Colors.greenAccent,
-              label: 'Add Your Yoken',
-              spacing: 20,
-             ),
-             SlidableAction
-             (
-              flex: 2,
-              onPressed: ((context)
-                {
-                  
-                }  
-              ),
-              icon: Icons.wallet,
-              backgroundColor: Colors.pinkAccent,
-              label: 'Add Your Wallet',
-              spacing: 20,
-             ) 
-            ]
-          ),
+              SlidableAction(
+                flex: 2,
+                onPressed: ((context) {}),
+                icon: Icons.wallet,
+                backgroundColor: Colors.pinkAccent,
+                label: 'Add Your Wallet',
+                spacing: 20,
+              )
+            ]),
+            endActionPane: ActionPane(motion: const StretchMotion(), children: [
+              SlidableAction(
+                onPressed: ((context) {}),
+                icon: Icons.delete,
+                backgroundColor: Colors.redAccent,
+              )
+            ]),
+            child: GestureDetector(
+              // onTap: ()
+              // {
+              //   log('animation');
+              //   Navigator.of(context).push(
+              //     PageRouteBuilder(
+              //       pageBuilder: (context, animation, secondaryAnimation) {
+              //         return ToenDetail(
+              //           transitionAnimation: animation,
+              //           name:shift.heading
+              //         );
+              //       },
+              //       transitionDuration: Duration(seconds: 1),
+              //     ),
+              //   );
+              // },
+              onTap: () {
+                log('token detail clicked');
+                Navigator.push(
+                    context,
+                    WaveTransition(
+                        child: ToenDetail(name: shift.heading),
+                        center: const FractionalOffset(0.90, 0.90),
+                        duration: const Duration(milliseconds: 3000) // optional
+                        ));
+                // Navigator.push(context, MaterialPageRoute(builder: ((context) =>
+                // // ToenDetail()
+                // ToenDetail(name:shift.heading)
+                // )
 
-          endActionPane: ActionPane
-          (
-            motion: StretchMotion(), 
-            children: 
-            [
-             SlidableAction
-             (
-              onPressed: ((context)
-                {
-                  
-                }  
-              ),
-              icon: Icons.delete,
-              backgroundColor: Colors.redAccent,
-             ) 
-            ]
-          ),
-          child: GestureDetector(
-            // onTap: ()
-            // {
-            //   log('animation');
-            //   Navigator.of(context).push(
-            //     PageRouteBuilder(
-            //       pageBuilder: (context, animation, secondaryAnimation) {
-            //         return ToenDetail(
-            //           transitionAnimation: animation,
-            //           name:shift.heading
-            //         );
-            //       },
-            //       transitionDuration: Duration(seconds: 1),
-            //     ),
-            //   );
-            // },
-            onTap: ()
-                  {
-
-                    log('token detail clicked');
-                    Navigator.push(
-                        context,
-                        WaveTransition(
-                          child:  ToenDetail(name:shift.heading),
-                          center: FractionalOffset(0.90, 0.90),
-                          duration: Duration(milliseconds: 3000) // optional
-                        )
-                    );
-                    // Navigator.push(context, MaterialPageRoute(builder: ((context) => 
-                    // // ToenDetail()
-                    // ToenDetail(name:shift.heading)
-                    // )
-                    
-                    // )
-                    // );
-                  },
-            child: Container
-            (
-              height: 40,
-              width: double.infinity,
-              color: Colors.transparent,
-              
-              child: Row
-              (
-                children: 
-                [
-                  Container(
-                    height: 20,
-                    width: 40,
-                    color: Colors.transparent,
-                    child: Text
-                    (
-                      shift.heading,
-                      style: TextStyle
-                      (
-                        color: Colors.white
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Container
-                  (
-                    height: 20,
-                    width: 40,
-                    decoration: BoxDecoration
-                    (
-                      color: Appcolor.darkviolte1,
-                      borderRadius: BorderRadius.all(Radius.circular(20))
-                    ),
-                    child: Center
-                    (
-                      child: Text
-                      (
-                        shift.subheading,
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ),
-                  ),
-                  // Spacer(),
-                  SizedBox
-                  (
-                    width: 10,
-                  ),
-                  Container(
-                  height: 30,
-                  width: 60,
-                  decoration: BoxDecoration
-                  (
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.all(Radius.circular(5))
-                  ),
-                  child: Center(
-                    child: Text
-                    (
-                      shift.supply,
-                      style: TextStyle
-                      (
-                        color: Colors.white
+                // )
+                // );
+              },
+              child: Container(
+                height: 40,
+                width: double.infinity,
+                color: Colors.transparent,
+                child: Row(
+                  children: [
+                    Container(
+                      height: 20,
+                      width: 40,
+                      color: Colors.transparent,
+                      child: Text(
+                        shift.heading,
+                        style: const TextStyle(color: Colors.white),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ),
-                  ),
-                  // Expanded(
-                  //   child: Text
-                  //   (
-                  //     shift.supply,
-                  //     style: TextStyle
-                  //     (
-                  //       color: Colors.white
-                  //     ),
-                  //   ),
-                  // ),
-                  // SizedBox
-                  // (
-                  //   width: 41,
-                  // ),
-                  Spacer(),
-        
-                  Material(
-          elevation: 10,
-          borderRadius: BorderRadius.circular(8.0),
-          child: InkWell(
-            onTap: () {},
-            child: Container(
-              padding: EdgeInsets.all(0.0),
-              height: 30.0,//MediaQuery.of(context).size.width * .08,
-              width: 80.0,//MediaQuery.of(context).size.width * .3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0)
-              ),
-              child: Row(
-                children: <Widget>[
-                  LayoutBuilder(builder: (context, constraints) {
-                    print(constraints);
-                    return Container(
-                      height: constraints.maxHeight,
-                      width: constraints.maxHeight,
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Container(
+                      height: 20,
+                      width: 40,
                       decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Icon(
-                        Icons.remove_red_eye_outlined,
-                        color: Colors.white,
-                      ),
-                    );
-                  }),
-                  Expanded(
-                    child: Text(
-                      'View',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 15,
+                          color: Appcolor.darkviolte1,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20))),
+                      child: Center(
+                          child: Text(
+                        shift.subheading,
+                        style: const TextStyle(color: Colors.white),
+                      )),
+                    ),
+                    // Spacer(),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      height: 30,
+                      width: 60,
+                      decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.all(Radius.circular(5))),
+                      child: Center(
+                        child: Text(
+                          shift.supply,
+                          style: const TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-              ),
-                  // Container(
-                  //   height: 30,
-                  //   width: 40,
-                  //   decoration: BoxDecoration
-                  //   (
-                  //     // color: Colors.pinkAccent,
-                  //     color: shift.status=='Standard'?Colors.pinkAccent: Colors.grey,
-                  //     borderRadius: BorderRadius.all(Radius.circular(30)),
-                  //     border: Border.all
-                  //     (
-                  //       color: Appcolor.darkviolte3
-                  //     )
-                  //   ),
-                  //   child: Center(
-                  //     child: Text
-                  //     (
-                  //       'View',
-                  //       style: TextStyle
-                  //       (
-                  //         color: Colors.white
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-              //      GlowingButton(
-              //   color1: Colors.orange,
-              //   color2: Colors.red,
-              // ),
-                ],
+                    // Expanded(
+                    //   child: Text
+                    //   (
+                    //     shift.supply,
+                    //     style: TextStyle
+                    //     (
+                    //       color: Colors.white
+                    //     ),
+                    //   ),
+                    // ),
+                    // SizedBox
+                    // (
+                    //   width: 41,
+                    // ),
+                    const Spacer(),
+
+                    Material(
+                      elevation: 10,
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          padding: const EdgeInsets.all(0.0),
+                          height:
+                              30.0, //MediaQuery.of(context).size.width * .08,
+                          width: 80.0, //MediaQuery.of(context).size.width * .3,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0)),
+                          child: Row(
+                            children: <Widget>[
+                              LayoutBuilder(builder: (context, constraints) {
+                                print(constraints);
+                                return Container(
+                                  height: constraints.maxHeight,
+                                  width: constraints.maxHeight,
+                                  decoration: BoxDecoration(
+                                    color: Colors.deepPurple,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: const Icon(
+                                    Icons.remove_red_eye_outlined,
+                                    color: Colors.white,
+                                  ),
+                                );
+                              }),
+                              const Expanded(
+                                child: Text(
+                                  'View',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Container(
+                    //   height: 30,
+                    //   width: 40,
+                    //   decoration: BoxDecoration
+                    //   (
+                    //     // color: Colors.pinkAccent,
+                    //     color: shift.status=='Standard'?Colors.pinkAccent: Colors.grey,
+                    //     borderRadius: BorderRadius.all(Radius.circular(30)),
+                    //     border: Border.all
+                    //     (
+                    //       color: Appcolor.darkviolte3
+                    //     )
+                    //   ),
+                    //   child: Center(
+                    //     child: Text
+                    //     (
+                    //       'View',
+                    //       style: TextStyle
+                    //       (
+                    //         color: Colors.white
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    //      GlowingButton(
+                    //   color1: Colors.orange,
+                    //   color2: Colors.red,
+                    // ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -291,11 +244,10 @@ class _ButtonHomeState extends State<ButtonHome> {
     );
   }
 
-
   //project
-   List<Shift1> shift1 = getShift1();
+  List<Shift1> shift1 = getShift1();
 
-  List<Widget> buildLastJobs1(){
+  List<Widget> buildLastJobs1() {
     List<Widget> list = [];
     for (var i = shift1.length - 1; i > -1; i--) {
       list.add(buildLastJob1(shift1[i]));
@@ -303,154 +255,106 @@ class _ButtonHomeState extends State<ButtonHome> {
     return list;
   }
 
-    Widget buildLastJob1(Shift1 shift1){
+  Widget buildLastJob1(Shift1 shift1) {
     return Column(
       children: [
         Slidable(
-          startActionPane: ActionPane
-          (
-            motion: StretchMotion(), 
-            children: 
-            [
-             SlidableAction
-             (
+          startActionPane: ActionPane(motion: const StretchMotion(), children: [
+            SlidableAction(
               flex: 1,
-              onPressed: ((context)
-                {
-                  
-                }  
-              ),
+              onPressed: ((context) {}),
               icon: Icons.save,
               backgroundColor: Colors.greenAccent,
               label: 'Add Your Yoken',
               spacing: 20,
-             ),
-             SlidableAction
-             (
+            ),
+            SlidableAction(
               flex: 2,
-              onPressed: ((context)
-                {
-                  
-                }  
-              ),
+              onPressed: ((context) {}),
               icon: Icons.wallet,
               backgroundColor: Colors.pinkAccent,
               label: 'Add Your Wallet',
               spacing: 20,
-             ) 
-            ]
-          ),
-
-          endActionPane: ActionPane
-          (
-            motion: StretchMotion(), 
-            children: 
-            [
-             SlidableAction
-             (
-              onPressed: ((context)
-                {
-                  
-                }  
-              ),
+            )
+          ]),
+          endActionPane: ActionPane(motion: const StretchMotion(), children: [
+            SlidableAction(
+              onPressed: ((context) {}),
               icon: Icons.delete,
               backgroundColor: Colors.redAccent,
-             ) 
-            ]
-          ),
-          child: Container
-          (
+            )
+          ]),
+          child: Container(
             height: 40,
             width: double.infinity,
             color: Colors.transparent,
-            child: Row
-            (
-              children: 
-              [
+            child: Row(
+              children: [
                 Container(
                   height: 20,
                   width: 40,
-                  color:Colors.transparent,
-                  child: Text
-                  (
+                  color: Colors.transparent,
+                  child: Text(
                     shift1.heading,
-                    style: TextStyle
-                    (
-                      color: Colors.white
-                    ),
+                    style: const TextStyle(color: Colors.white),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
-                Container
-                (
+                Container(
                   height: 30,
                   width: 60,
-                  decoration: BoxDecoration
-                  (
-                    // color: shift1.sale=='Live'?Appcolor.darkviolte1:Shift1.sale=='Ended'?Colors.transparent:Colors.grey,
-                    // color: Appcolor.darkviolte1,
-                    color: shift1.status=='Live'?Colors.red:Colors.grey,
-                    borderRadius: BorderRadius.all(Radius.circular(20))
-                  ),
-                  child: Center
-                  (
-                    child: Padding(
-                      padding: const EdgeInsets.only(left:8.0,right: 8),
-                      child: FittedBox(
-                        child: Text
-                        (
-                          shift1.status,
-                          style: TextStyle(color: Colors.white),
-                        ),
+                  decoration: BoxDecoration(
+                      // color: shift1.sale=='Live'?Appcolor.darkviolte1:Shift1.sale=='Ended'?Colors.transparent:Colors.grey,
+                      // color: Appcolor.darkviolte1,
+                      color: shift1.status == 'Live' ? Colors.red : Colors.grey,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20))),
+                  child: Center(
+                      child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8),
+                    child: FittedBox(
+                      child: Text(
+                        shift1.status,
+                        style: const TextStyle(color: Colors.white),
                       ),
-                    )
-                  ),
+                    ),
+                  )),
                 ),
                 // SizedBox
                 // (
                 //   width: 80,
                 //   // width:100
                 // ),
-                Spacer(),
+                const Spacer(),
                 Container(
                   height: 20,
                   width: 40,
-                  color:Colors.transparent,
-                  child: Text
-                  (
+                  color: Colors.transparent,
+                  child: Text(
                     shift1.supply,
-                    style: TextStyle
-                    (
-                      color: Colors.white
-                    ),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
                 // SizedBox
                 // (
                 //   width: 30,
                 // ),
-                Spacer(),
+                const Spacer(),
                 Container(
                   height: 30,
                   width: 60,
-                  decoration: BoxDecoration
-                  (
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.all(Radius.circular(30))
-                  ),
+                  decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(30))),
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(left:8.0,right: 8),
-                      child: Text
-                      (
+                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      child: Text(
                         shift1.Ltime,
-                        style: TextStyle
-                        (
-                          color: Colors.white
-                        ),
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
@@ -463,89 +367,72 @@ class _ButtonHomeState extends State<ButtonHome> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox
-          (
+          SizedBox(
             height: 30,
             width: double.infinity,
             // color: Colors.red,
-            child: Row
-            (
-              children: 
-              [
-                SizedBox
-                (
+            child: Row(
+              children: [
+                const SizedBox(
                   width: 10,
                 ),
                 GestureDetector(
-                  onTap: ()
-                  {
+                  onTap: () {
                     setState(() {
                       _flag = !_flag;
                     });
                   },
-                  child: Container
-                  (
+                  child: Container(
                     height: 30,
                     width: 70,
-                    decoration: BoxDecoration
-                    (
-                      // color: Appcolor.background,
-                      color: _flag?Appcolor.background:Colors.transparent,
-                      borderRadius: BorderRadius.all(Radius.circular(10))
-                    ),
+                    decoration: BoxDecoration(
+                        // color: Appcolor.background,
+                        color: _flag ? Appcolor.background : Colors.transparent,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10))),
                     child: Center(
-                      child: Text
-                      (
+                      child: Text(
                         'Tokens',
-                        style: TextStyle
-                        (
-                          color: _flag?Colors.white:Colors.grey,
+                        style: TextStyle(
+                          color: _flag ? Colors.white : Colors.grey,
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox
-                (
+                const SizedBox(
                   width: 20,
                 ),
-                
+
                 //2
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     log('Projects clicked');
-                                  setState(() {
-                                    log('Projects setstate');
-                                    _flag = !_flag;
-                                  });
-                                  // buildLastJob(Pay[]);
-    
-                                },
-                  child: Container
-                  (
+                    setState(() {
+                      log('Projects setstate');
+                      _flag = !_flag;
+                    });
+                    // buildLastJob(Pay[]);
+                  },
+                  child: Container(
                     height: 30,
                     width: 70,
-                    decoration: BoxDecoration
-                    (
-                      color: _flag ? Colors.transparent : Appcolor.background,
-                      // color: Appcolor.background,
-                      borderRadius: BorderRadius.all(Radius.circular(10))
-                    ),
+                    decoration: BoxDecoration(
+                        color: _flag ? Colors.transparent : Appcolor.background,
+                        // color: Appcolor.background,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10))),
                     child: Center(
-                      child: Text
-                      (
+                      child: Text(
                         'Projects',
-                        style: TextStyle
-                        (
-                          // color: _flag?Appcolor.secondary:Colors.white
-                          color: _flag?Colors.grey:Colors.white
-                        ),
+                        style: TextStyle(
+                            // color: _flag?Appcolor.secondary:Colors.white
+                            color: _flag ? Colors.grey : Colors.white),
                       ),
                     ),
                   ),
@@ -555,166 +442,114 @@ class _ButtonHomeState extends State<ButtonHome> {
           ),
 
           //scroll
-          SingleChildScrollView
-          (
-            child: _flag?
-            Column
-            (
-              children: 
-              [
-                SizedBox
-                (
-                  height: 20,
-                ),
-                Container
-                (
-                  height: 20,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: Row
-                  (
-                    children: 
-                    [
-                      Expanded(
-                        child: FittedBox(
-                          child: Text
-                          (
-                            'TOKEN NAME',
-                            style: TextStyle
-                            (
-                              color: Colors.grey
-                            ),
-                          ),
+          SingleChildScrollView(
+              child: _flag
+                  ? Column(
+                      children: [
+                        const SizedBox(
+                          height: 20,
                         ),
-                      ),
-                      // Spacer
-                      // (
+                        Container(
+                          height: 20,
+                          width: double.infinity,
+                          color: Colors.transparent,
+                          child: Row(
+                            children: const [
+                              Expanded(
+                                child: FittedBox(
+                                  child: Text(
+                                    'TOKEN NAME',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ),
+                              ),
+                              // Spacer
+                              // (
 
-                      // ),
-                    SizedBox
-                    (
-                      width: 20,
-                    ),
-                      Expanded(
-                        child: FittedBox(
-                          child: Text
-                          (
-                            'TOKEN SUPPLY',
-                            style: TextStyle
-                            (
-                              color: Colors.grey
-                            ),
+                              // ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Expanded(
+                                child: FittedBox(
+                                  child: Text(
+                                    'TOKEN SUPPLY',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Expanded(
+                                child: FittedBox(
+                                  child: Text(
+                                    'TOKEN TYPE',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: FittedBox(
+                                  child: Text(
+                                    'VIEW TOKEN',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                       SizedBox
-                    (
-                      width: 20,
-                    ),
-                      Expanded(
-                        child: FittedBox(
-                          child: Text
-                          (
-                            'TOKEN TYPE',
-                            style: TextStyle
-                            (
-                              color: Colors.grey
-                            ),
-                          ),
+                        ...buildLastJobs()
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        const SizedBox(
+                          height: 20,
                         ),
-                      ),
-                      SizedBox
-                    (
-                      width: 10,
-                    ),
-                      Expanded(
-                        child: FittedBox(
-                          child: Text
-                          (
-                            'VIEW TOKEN',
-                            style: TextStyle
-                            (
-                              color: Colors.grey
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                ...buildLastJobs()
-              ],
-              )
-              :
-              Column
-            (
-              children: 
-              [
-                SizedBox
-                (
-                  height: 20,
-                ),
-                Container
-                (
-                  height: 20,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: Row
-                  (
-                    children: 
-                    [
-                      Text
-                      (
-                        'PROJECT NAME',
-                        style: TextStyle
-                        (
-                          color: Colors.grey
-                        ),
-                      ),
-                      // Spacer
-                      // (
+                        Container(
+                          height: 20,
+                          width: double.infinity,
+                          color: Colors.transparent,
+                          child: Row(
+                            children: const [
+                              Text(
+                                'PROJECT NAME',
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              // Spacer
+                              // (
 
-                      // ),
-                      Spacer(),
-                      Text
-                      (
-                        'LIQUIDITY %',
-                        style: TextStyle
-                        (
-                          color: Colors.grey
+                              // ),
+                              Spacer(),
+                              Text(
+                                'LIQUIDITY %',
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              //   SizedBox
+                              // (
+                              //   width: 10,
+                              // ),
+                              Spacer(),
+                              Text(
+                                'LOCKUP TIME',
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    //   SizedBox
-                    // (
-                    //   width: 10,
-                    // ),
-                    Spacer(),
-                      Text
-                      (
-                        'LOCKUP TIME',
-                        style: TextStyle
-                        (
-                          color: Colors.grey
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                ...buildLastJobs1()
-              ],
-              )
-          )
+                        ...buildLastJobs1()
+                      ],
+                    ))
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import '../screen/token-detail.dart';
@@ -756,7 +591,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                   Navigator.push(context, MaterialPageRoute(builder: ((context) => ToenDetail()
 //                   // ToenDetail('name':shift.heading)
 //                   )
-                  
+
 //                   ));
 //                 },
 //           child: Container
@@ -764,10 +599,10 @@ class _ButtonHomeState extends State<ButtonHome> {
 //             height: 40,
 //             width: double.infinity,
 //             color: Colors.transparent,
-            
+
 //             child: Row
 //             (
-//               children: 
+//               children:
 //               [
 //                 Container(
 //                   height: 20,
@@ -875,7 +710,6 @@ class _ButtonHomeState extends State<ButtonHome> {
 //     );
 //   }
 
-
 //   //project
 //    List<Shift1> shift1 = getShift1();
 
@@ -899,7 +733,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //           (
 //             mainAxisAlignment: MainAxisAlignment.spaceAround,
 //             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: 
+//             children:
 //             [
 //               Expanded(
 //                 child: Container(
@@ -1055,7 +889,6 @@ class _ButtonHomeState extends State<ButtonHome> {
 //     );
 //   }
 
-
 //   @override
 //   Widget build(BuildContext context) {
 //     return SingleChildScrollView(
@@ -1068,7 +901,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //             // color: Colors.red,
 //             child: Row
 //             (
-//               children: 
+//               children:
 //               [
 //                 SizedBox
 //                 (
@@ -1107,7 +940,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                 (
 //                   width: 20,
 //                 ),
-                
+
 //                 //2
 //                 GestureDetector(
 //                   onTap: (){
@@ -1115,7 +948,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                                     _flag = !_flag;
 //                                   });
 //                                   // buildLastJob(Pay[]);
-    
+
 //                                 },
 //                   child: Container
 //                   (
@@ -1150,7 +983,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //             child: _flag?
 //             Column
 //             (
-//               children: 
+//               children:
 //               [
 //                 SizedBox
 //                 (
@@ -1163,7 +996,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                   color: Colors.transparent,
 //                   child: Row
 //                   (
-//                     children: 
+//                     children:
 //                     [
 //                       Expanded(
 //                         child: FittedBox(
@@ -1238,7 +1071,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //               :
 //               Column
 //             (
-//               children: 
+//               children:
 //               [
 //                 SizedBox
 //                 (
@@ -1252,7 +1085,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                   child: Row
 //                   (
 //                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                     children: 
+//                     children:
 //                     [
 //                       Expanded(
 //                         child: Text
@@ -1269,7 +1102,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                       (
 //                         width: 10,
 //                       ),
-                      
+
 //                       Expanded(
 //                         child: Text
 //                         (
@@ -1284,7 +1117,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                     (
 //                       width: 10,
 //                     ),
-                    
+
 //                       Expanded(
 //                         child: Text
 //                         (
@@ -1299,7 +1132,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                       (
 //                         width: 10,
 //                       ),
-                      
+
 //                       Expanded(
 //                         child: Text
 //                         (
@@ -1310,7 +1143,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                           ),
 //                         ),
 //                       ),
-                      
+
 //                       // SizedBox
 //                       // (
 //                       //   width: 20,
@@ -1346,7 +1179,7 @@ class _ButtonHomeState extends State<ButtonHome> {
 //                 //   color: Colors.transparent,
 //                 //   child: Row
 //                 //   (
-//                 //     children: 
+//                 //     children:
 //                 //     [
 //                 //       Expanded(
 //                 //         child: FittedBox(

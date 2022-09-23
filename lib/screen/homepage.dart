@@ -33,71 +33,83 @@ class _HomepageState extends State<Homepage> {
         });
       },
       child: Scaffold(
-        body: SingleChildScrollView
-        (
+        body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Column
-          (
-            children: 
-            [
-              const SizedBox
-              (
+          child: Column(
+            children: [
+              const SizedBox(
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(left:20.0,right: 20),
+                padding: const EdgeInsets.only(left: 20.0, right: 20),
                 child: BnnerWidget(size: size),
               ),
-      
-              const SizedBox
-              (
-                height: 5,
+
+              SizedBox(
+                // height: 5,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
-      
+
               //text
               Padding(
-                padding: const EdgeInsets.only(left:20.0,right: 20),
-                child: SizedBox
-                (
-                  height: 20,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text('Lorem Ipsum is simply dummy text.',style: TextStyle(fontSize: 15,color: Colors.grey),),
-                      Icon(Icons.menu,color: Colors.grey,)
-                    ],
-                  ))
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  child: SizedBox(
+                      height: 20,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Lorem Ipsum is simply dummy text.',
+                            style: TextStyle(fontSize: 15, color: Colors.grey),
+                          ),
+                          Icon(
+                            Icons.menu,
+                            color: Colors.grey,
+                          )
+                        ],
+                      ))),
+              SizedBox(
+                // height: 20,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
-              const SizedBox
-              (
-                height: 20,
-              ),
-      
+
               //header
               const IconHeade(),
-      
-              const SizedBox
-              (
-                height: 20,
+
+              SizedBox(
+                // height: 20,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
-      
+
               //
               const Padding(
-                padding: EdgeInsets.only(left:20.0,right: 20),
+                padding: EdgeInsets.only(left: 20.0, right: 20),
                 child: TradingAndSponsored(),
               ),
-      
-              const SizedBox
-              (
-                height: 20,
+
+              // SizedBox(
+              //   height: 100,
+              //   width: 400,
+              //   child: ListView.builder(
+              //       itemExtent: 550,
+              //       scrollDirection: Axis.horizontal,
+              //       itemBuilder: (context, index) => Container(
+              //             margin: const EdgeInsets.all(5.0),
+              //             color: Colors.orangeAccent,
+              //           ),
+              //       itemCount: 20),
+              // ),
+
+              SizedBox(
+                // height: 20,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
-      
+
               //button
               const Padding(
-                padding: EdgeInsets.only(left:20.0,right: 20),
+                padding: EdgeInsets.only(left: 20.0, right: 20),
                 child: ButtonHome(),
               )
-      
             ],
           ),
         ),
