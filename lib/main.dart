@@ -19,7 +19,6 @@ import '/widgets/drawer_widget.dart';
 import 'Dialogbox/dialog_helper.dart';
 import 'insta_profile/profile_base_screen.dart';
 import 'screen/search-screen.dart';
-import 'screen/simpleaccountmenu.dart';
 import 'theme/theme_manager.dart';
 
 void main() => runApp(MyApp());
@@ -119,7 +118,7 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  final bool _flag = true;
+  bool _flag = true;
   int selectedIndex = 0;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   List<Widget> pages = [
@@ -554,47 +553,47 @@ class _RootPageState extends State<RootPage> {
             //   ),
             // ),
 
-            floatingActionButton: FloatingActionButton(
-              backgroundColor: const Color.fromRGBO(103, 58, 183, 1),
-              child: Container(
-                  child: SimpleAccountMenu(
-                icons: const [
-                  Icon(Icons.person),
-                  Icon(Icons.settings),
-                  Icon(Icons.credit_card),
-                ],
-                iconColor: Colors.white,
-                onChange: (index) {
-                  print(index);
-                },
-              )),
-            ),
-
-            //crt
-            // floatingActionButton: GestureDetector(
-            //   onTapDown: (details) {
-            //     setState(() {
-            //       _flag = !_flag;
-            //       _flag
-            //           ? const SizedBox()
-            //           // : _showPopUpMenu(details.globalPosition);
-            //           : _showPopupMenu(details.globalPosition);
-            //     });
-            //   },
-            //   child: FloatingActionButton(
-            //     backgroundColor: Colors.deepPurple,
-            //     // child: const Icon(Icons.add),
-            //     // onPressed: () {
-
-            //     //   log('message');
-            //     //   // _flag ? _showPopUpMenu() : const SizedBox();
-            //     // },
-            //     onPressed: null,
-            //     child: _flag
-            //         ? const Icon(Icons.add)
-            //         : const Icon(FontAwesomeIcons.close),
-            //   ),
+            // floatingActionButton: FloatingActionButton(
+            //   backgroundColor: const Color.fromRGBO(103, 58, 183, 1),
+            //   child: Container(
+            //       child: SimpleAccountMenu(
+            //     icons: const [
+            //       Icon(Icons.person),
+            //       Icon(Icons.settings),
+            //       Icon(Icons.credit_card),
+            //     ],
+            //     iconColor: Colors.white,
+            //     onChange: (index) {
+            //       print(index);
+            //     },
+            //   )),
             // ),
+
+            // crt
+            floatingActionButton: GestureDetector(
+              onTapDown: (details) {
+                setState(() {
+                  _flag = !_flag;
+                  _flag
+                      ? const SizedBox()
+                      // : _showPopUpMenu(details.globalPosition);
+                      : _showPopupMenu(details.globalPosition);
+                });
+              },
+              child: FloatingActionButton(
+                backgroundColor: Colors.deepPurple,
+                // child: const Icon(Icons.add),
+                // onPressed: () {
+
+                //   log('message');
+                //   // _flag ? _showPopUpMenu() : const SizedBox();
+                // },
+                onPressed: null,
+                child: _flag
+                    ? const Icon(Icons.add)
+                    : const Icon(FontAwesomeIcons.close),
+              ),
+            ),
 
             // floatingActionButtonLocation:
             //     FloatingActionButtonLocation.centerDocked,
