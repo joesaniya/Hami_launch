@@ -85,35 +85,26 @@ class _GalleryState extends State<Gallery> {
             Overlay.of(context)!.insert(_popupDialog);
           },
           onLongPressEnd: (details) => _popupDialog.remove(),
-          child: Container
-          (
-            height: 30,
-            decoration: BoxDecoration
-            (
-              color: Appcolor.background,
-              borderRadius: BorderRadius.all(Radius.circular(10))
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // Image.asset(url, fit: BoxFit.cover),
-                CircleAvatar
-                (
-                  backgroundImage: AssetImage(url),
-                ),
-                // Image.network(url, fit: BoxFit.cover),
-                // SizedBox(height: 20,),
-                Text
-                (
-                  name.first,
-                  style: TextStyle
-                  (
-                    color: Colors.white
+          child: Container(
+              height: 30,
+              decoration: BoxDecoration(
+                  color: Appcolor.background,
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Image.asset(url, fit: BoxFit.cover),
+                  CircleAvatar(
+                    backgroundImage: AssetImage(url),
                   ),
-                )
-              ],
-            )
-          ),
+                  // Image.network(url, fit: BoxFit.cover),
+                  // SizedBox(height: 20,),
+                  Text(
+                    name.first,
+                    style: const TextStyle(color: Colors.white),
+                  )
+                ],
+              )),
         ),
       );
 
@@ -128,7 +119,7 @@ class _GalleryState extends State<Gallery> {
   Widget _createPhotoTitle() => Container(
       width: double.infinity,
       color: Appcolor.background,
-      child: ListTile(
+      child: const ListTile(
         leading: CircleAvatar(
           backgroundImage: NetworkImage('https://placeimg.com/640/480/people'),
         ),
@@ -139,11 +130,11 @@ class _GalleryState extends State<Gallery> {
       ));
 
   Widget _createActionBar() => Container(
-        padding: EdgeInsets.symmetric(vertical: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
         color: Appcolor.background,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
+          children: const [
             Icon(
               Icons.favorite_border,
               color: Colors.white,
@@ -161,7 +152,7 @@ class _GalleryState extends State<Gallery> {
       );
 
   Widget _createPopupContent(String url) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16.0),
           child: Container(
@@ -172,24 +163,18 @@ class _GalleryState extends State<Gallery> {
                 _createPhotoTitle(),
                 // Image.asset(url, fit: BoxFit.fitWidth),
                 // Image.network(url, fit: BoxFit.fitWidth),
-                Divider
-                (
+                const Divider(
                   color: Colors.grey,
                 ),
                 Container(
                   height: 100,
                   width: double.infinity,
-                  decoration: BoxDecoration
-                  (
-                    color: Appcolor.background
+                  decoration: BoxDecoration(color: Appcolor.background),
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage(url),
                   ),
-                  child: CircleAvatar
-                    (
-                      backgroundImage: AssetImage(url),
-                    ),
                 ),
-                Divider
-                (
+                const Divider(
                   color: Colors.grey,
                 ),
                 _createActionBar(),

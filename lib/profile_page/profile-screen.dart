@@ -6,6 +6,7 @@ import 'package:hami_launch/profile_page/post.dart';
 import 'package:hami_launch/profile_page/projects.dart';
 import 'package:hami_launch/profile_page/token.dart';
 
+import '../config.dart';
 import '../theme/appcolor.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -13,244 +14,210 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold
-    (
-      body: CustomScrollView
-      (
-        slivers: 
-        [
-          SliverAppBar
-          (
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
             // backgroundColor: Colors.white,
             backgroundColor: Appcolor.darkviolte,
-            flexibleSpace: FlexibleSpaceBar
-            (
-              title: Text
-              (
-                'Hami LaunchPad'
-              ),
+            flexibleSpace: FlexibleSpaceBar(
+              title: const Text('Hami LaunchPad'),
               background: Image.asset('assets/images/logo.png'),
             ),
-            actions: 
-            [
-              IconButton
-              (
-                onPressed: ()
-                {
-                  log('logout clicked');
-                }, 
-                icon: Icon(Icons.logout)
-                )
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    log('logout clicked');
+                  },
+                  icon: const Icon(Icons.logout))
             ],
             pinned: true,
-            expandedHeight: MediaQuery.of(context).size.height*0.305,
+            expandedHeight: MediaQuery.of(context).size.height * 0.305,
           ),
-          SliverList
-          (
-            delegate: SliverChildListDelegate
-            (
-              [
-                Container
-                (
-                  height: MediaQuery.of(context).size.height*0.900,
-                  width: double.infinity,
-                  // height: 650,
-                  // width: 100,
-                  decoration: BoxDecoration
-                  (
-                    color: Appcolor.background,
-                    // color: Colors.yellow,
-                    // border: Border.all
-                    // (
-                    //   color: Colors.black,
-                    //   width: 2.0
-                    // )
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Container(
+              height: MediaQuery.of(context).size.height * 0.900,
+              width: double.infinity,
+              // height: 650,
+              // width: 100,
+              decoration: BoxDecoration(
+                color: Appcolor.background,
+                // color: Colors.yellow,
+                // border: Border.all
+                // (
+                //   color: Colors.black,
+                //   width: 2.0
+                // )
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 30,
                   ),
-                  child: Column
-                  (
-                    children: 
-                    [
-                      SizedBox
-                      (
-                        height: 30,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left:10.0,right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CircleAvatar
-                            (
-                              backgroundColor: Appcolor.darkviolte,
-                              radius: 40,
-                              backgroundImage: AssetImage('assets/images/lion_meta.png'),
-                            ),
-                            SizedBox
-                            (
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Container
-                              (
-                                height: 70,
-                                width: 300,
-                                
-                                decoration: BoxDecoration
-                                (
-                                  color: Appcolor.darkviolte6,
-                                  borderRadius: BorderRadius.all(Radius.circular(10))
-                                ),
-                                child: Row
-                                (
-                                  children: 
-                                  [
-                                    Expanded(
-                                      child: Container(
-                                        height: 50,
-                                        // width: double.infinity,
-                                        color: Colors.transparent,
-                                        child: Column(
-                                          children: [
-                                            Text
-                                            (
-                                              'Tokens',
-                                              style: TextStyle
-                                              (
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontFamily: 'Inter'
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left:10.0,right: 10),
-                                              child: Divider
-                                              (
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                            Text
-                                            (
-                                              '0 Tokens',
-                                              style: TextStyle
-                                              (
-                                                fontWeight: FontWeight.w800,
-                                                color: Colors.white.withOpacity(0.9)
-                                                // color: Colors.grey.withOpacity(0.4)
-                                              )
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: const EdgeInsets.symmetric(vertical: 10),
-                                      color: Colors.grey.shade600,
-                                      width: 1,
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        height: 50,
-                                        // width: double.infinity,
-                                        color: Colors.transparent,
-                                        child: Column(
-                                          children: [
-                                            Text
-                                            (
-                                              'Projects',
-                                              style: TextStyle
-                                              (
-                                                color: Colors.white,
-                                                fontFamily: 'inter',
-                                                fontSize: 15
-                                              ),
-                                            ),
-                                
-                                            Padding(
-                                              padding: const EdgeInsets.only(left:10.0,right: 10),
-                                              child: Divider
-                                              (
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                            Text
-                                            (
-                                              '0 Projects',
-                                              style: TextStyle
-                                              (
-                                                fontWeight: FontWeight.w800,
-                                                color: Colors.white.withOpacity(0.9)
-                                                // color: Colors.grey.withOpacity(0.4)
-                                              )
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Appcolor.darkviolte,
+                          radius: 40,
+                          backgroundImage:
+                              const AssetImage('assets/images/lion_meta.png'),
                         ),
-                      ),
-                  
-                      SizedBox
-                      (
-                        height: 60,
-                      ),
-                      Container
-                      (
-                        height: MediaQuery.of(context).size.height*0.500,
-                        width: double.infinity,
-                        color: Colors.transparent,
-                        child: DefaultTabController(
-                          length: 3,
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                constraints: BoxConstraints.expand(height: 50),
-                                child: TabBar(
-                                  indicatorColor: Colors.pinkAccent,
-                                  // indicator: UnderlineTabIndicator(
-                                  //   borderSide: BorderSide
-                                  //   (
-                                  //     width: 1.0,
-                                  //     color: Colors.pinkAccent
-                                  //   ),
-                                  //   insets: EdgeInsets.symmetric(horizontal:16.0)
-                                  // ),
-                                  // indicatorPadding: EdgeInsets.all(80),
-                                  tabs: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 70,
+                            width: 300,
+                            decoration: BoxDecoration(
+                                color: Appcolor.darkviolte6,
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10))),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 50,
+                                    // width: double.infinity,
+                                    color: Colors.transparent,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Tokens',
+                                          style: TextStyle(
+                                              color: currentTheme.isDark
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                              fontSize: 15,
+                                              fontFamily: 'Inter'),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 10.0, right: 10),
+                                          child: Divider(
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        Text('0 Tokens',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w800,
+                                              // color: Colors.white.withOpacity(0.9)
+                                              color: currentTheme.isDark
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                              // color: Colors.grey.withOpacity(0.4)
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  color: Colors.grey.shade600,
+                                  width: 1,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    height: 50,
+                                    // width: double.infinity,
+                                    color: Colors.transparent,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Projects',
+                                          style: TextStyle(
+                                              color: currentTheme.isDark
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                              fontFamily: 'inter',
+                                              fontSize: 15),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 10.0, right: 10),
+                                          child: Divider(
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        Text('0 Projects',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w800,
+                                                // color: Colors.white.withOpacity(0.9)
+                                                color: currentTheme.isDark
+                                                    ? Colors.white
+                                                    : Colors.black
+                                                // color: Colors.grey.withOpacity(0.4)
+                                                )),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.500,
+                    width: double.infinity,
+                    color: Colors.transparent,
+                    child: DefaultTabController(
+                      length: 3,
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            constraints:
+                                const BoxConstraints.expand(height: 50),
+                            child: const TabBar(
+                                indicatorColor: Colors.pinkAccent,
+                                // indicator: UnderlineTabIndicator(
+                                //   borderSide: BorderSide
+                                //   (
+                                //     width: 1.0,
+                                //     color: Colors.pinkAccent
+                                //   ),
+                                //   insets: EdgeInsets.symmetric(horizontal:16.0)
+                                // ),
+                                // indicatorPadding: EdgeInsets.all(80),
+                                tabs: [
                                   Tab(text: "Token"),
                                   Tab(text: "Projects"),
                                   Tab(text: "Posts"),
                                 ]),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  child: TabBarView(children: [
-                                    Tokens(),
-                                    Projects(),
-                                    Posts()
-                                    // Container(
-                                    //   child: Text("Articles Body"),
-                                    // ),
-                                    // Container(
-                                    //   child: Text("User Body"),
-                                    // ),
-                                  ]),
-                                ),
-                              )
-                            ],
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ]
-            )
-          )
+                          Expanded(
+                            child: Container(
+                              child: TabBarView(children: [
+                                Tokens(),
+                                Projects(),
+                                Posts()
+                                // Container(
+                                //   child: Text("Articles Body"),
+                                // ),
+                                // Container(
+                                //   child: Text("User Body"),
+                                // ),
+                              ]),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ]))
         ],
       ),
     );

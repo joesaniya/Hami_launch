@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:wave_transition/wave_transition.dart';
+import '../config.dart';
 import '../screen/token-detail.dart';
 import '/theme/appcolor.dart';
 
@@ -110,7 +111,10 @@ class _ButtonHomeState extends State<ButtonHome> {
                       color: Colors.transparent,
                       child: Text(
                         shift.heading,
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color:
+                              currentTheme.isDark ? Colors.white : Colors.black,
+                        ),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -127,6 +131,7 @@ class _ButtonHomeState extends State<ButtonHome> {
                       child: Center(
                           child: Text(
                         shift.subheading,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(color: Colors.white),
                       )),
                     ),
@@ -143,7 +148,11 @@ class _ButtonHomeState extends State<ButtonHome> {
                       child: Center(
                         child: Text(
                           shift.supply,
-                          style: const TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                          ),
                         ),
                       ),
                     ),
@@ -165,6 +174,9 @@ class _ButtonHomeState extends State<ButtonHome> {
 
                     Material(
                       elevation: 10,
+                      color: currentTheme.isDark
+                          ? Colors.deepPurple.shade100
+                          : Colors.deepPurple.shade100,
                       borderRadius: BorderRadius.circular(8.0),
                       child: InkWell(
                         onTap: () {},
@@ -197,8 +209,8 @@ class _ButtonHomeState extends State<ButtonHome> {
                                   'View',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: 15,
-                                  ),
+                                      fontSize: 15,
+                                      color: Colors.deepPurpleAccent),
                                 ),
                               ),
                             ],
@@ -299,7 +311,10 @@ class _ButtonHomeState extends State<ButtonHome> {
                     color: Colors.transparent,
                     child: Text(
                       shift1.heading,
-                      style: const TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color:
+                            currentTheme.isDark ? Colors.white : Colors.black,
+                      ),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -339,7 +354,10 @@ class _ButtonHomeState extends State<ButtonHome> {
                     color: Colors.transparent,
                     child: Text(
                       shift1.supply,
-                      style: const TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color:
+                            currentTheme.isDark ? Colors.white : Colors.black,
+                      ),
                     ),
                   ),
                   // SizedBox
@@ -358,7 +376,11 @@ class _ButtonHomeState extends State<ButtonHome> {
                         padding: const EdgeInsets.only(left: 8.0, right: 8),
                         child: Text(
                           shift1.Ltime,
-                          style: const TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                          ),
                         ),
                       ),
                     ),

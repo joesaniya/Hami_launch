@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:hami_launch/screen/Detail_Auditing_Partners.dart';
 import 'package:wave_transition/wave_transition.dart';
 
+import '../config.dart';
 import '../theme/appcolor.dart';
 import '../widgets/appbar_widget.dart';
 
@@ -17,36 +18,41 @@ class AuditingPartners extends StatefulWidget {
 }
 
 class _AuditingPartnersState extends State<AuditingPartners> {
-
-  List<dynamic> _partners = [
+  final List<dynamic> _partners = [
     {
       'name': 'Test',
-      'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
+      'subtitle':
+          'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/test.png',
     },
     {
       'name': 'BlockAudit',
-      'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
+      'subtitle':
+          'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/BlockAudit.png',
     },
     {
       'name': 'Test',
-      'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
+      'subtitle':
+          'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/test.png',
     },
     {
       'name': 'BlockAudit',
-      'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
+      'subtitle':
+          'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/BlockAudit.png',
     },
     {
       'name': 'Test',
-      'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
+      'subtitle':
+          'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/test.png',
     },
     {
       'name': 'BlockAudit',
-      'subtitle':'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
+      'subtitle':
+          'BlockAudit 2022 is only leading company which performs audit in every technical field of any computer language. HTML, PHP, JS, Node, React, Native, Solidity, Rust, Web3 etc are main framework for DApps, DeFi, GameFi and Metaverse. BlockAudit one of the best Audit Company you can get with a team of engineers and analysts, specialised technology having a great and wide experience in crypto market. We provide the most budget and investor friendly Audit Report.',
       'avatar': 'assets/images/BlockAudit.png',
     },
   ];
@@ -54,21 +60,21 @@ class _AuditingPartnersState extends State<AuditingPartners> {
   user(int index, double number) {
     index = number ~/ 60;
     return FadeInRight(
-      delay: Duration(seconds: 1),
+      delay: const Duration(seconds: 1),
       duration: Duration(milliseconds: (index * 100) + 500),
       child: GestureDetector(
         onTap: () {
-          // Navigator.push(context, 
+          // Navigator.push(context,
           //   MaterialPageRoute(
           //     builder: (context) => ContactPay(
-          //       name: _partners[index]['name'], 
+          //       name: _partners[index]['name'],
           //       avatar: _partners[index]['avatar']
           //     )
           //   )
           // );
         },
         child: Container(
-          margin: EdgeInsets.only(right: 20),
+          margin: const EdgeInsets.only(right: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -86,54 +92,46 @@ class _AuditingPartnersState extends State<AuditingPartners> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold
-    (
+    return Scaffold(
       backgroundColor: Appcolor.darkviolte6,
-      appBar: MyAppBar(title: 'Our Partners',),
-
-      body: SingleChildScrollView
-      (
-        physics: BouncingScrollPhysics(),
-        child: Column
-        (
-          children: 
-          [
-
+      appBar: MyAppBar(
+        title: 'Our Partners',
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
             Padding(
-              padding: const EdgeInsets.only(left:20.0,right: 20),
-              child: Container
-              (
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
+              child: Container(
                 // height: MediaQuery.of(context).size.height*0.20,
                 width: double.infinity,
-                decoration: BoxDecoration
-                (
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Appcolor.background
-                ),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    color: Appcolor.background),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox
-                    (
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left:20.0),
-                      child: Text
-                      (
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Text(
                         'Our Partners',
-                          style: TextStyle
-                            (
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w900
-                            ),
+                        style: TextStyle(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     )
                   ],
@@ -142,13 +140,15 @@ class _AuditingPartnersState extends State<AuditingPartners> {
             ),
 
             //
-            SizedBox(height: 50,),
+            const SizedBox(
+              height: 50,
+            ),
             FadeInUp(
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               child: Container(
                 width: double.infinity,
                 height: 300,
-                padding: EdgeInsets.all(90.0),
+                padding: const EdgeInsets.all(90.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.grey.shade200, width: 1.0),
@@ -156,56 +156,62 @@ class _AuditingPartnersState extends State<AuditingPartners> {
                 child: Stack(
                   children: [
                     for (double i = 0; i < 360; i += 60)
-                      AnimChain(
-                        initialDelay: Duration(milliseconds: i.toInt())
-                      )
-                      .next(
-                        wait: Duration(milliseconds: 1000),
-                        widget: AnimatedAlignPositioned(
-                          dx: 0,
-                          dy: 150,
-                          duration: Duration(seconds: 1),
-                          rotateDegrees: 0,
-                          touch: Touch.middle,
-                          child: user(0, i),
-                        ),
-                      )
-                      .next(
-                        wait: Duration(seconds: 2),
-                        widget: AnimatedAlignPositioned(
-                          dx: i / 360,
-                          dy: 150,
-                          duration: Duration(seconds: 1),
-                          rotateDegrees: i,
-                          touch: Touch.middle,
-                          child: user(0, i),
-                        ),
-                      ),
+                      AnimChain(initialDelay: Duration(milliseconds: i.toInt()))
+                          .next(
+                            wait: const Duration(milliseconds: 1000),
+                            widget: AnimatedAlignPositioned(
+                              dx: 0,
+                              dy: 150,
+                              duration: const Duration(seconds: 1),
+                              rotateDegrees: 0,
+                              touch: Touch.middle,
+                              child: user(0, i),
+                            ),
+                          )
+                          .next(
+                            wait: const Duration(seconds: 2),
+                            widget: AnimatedAlignPositioned(
+                              dx: i / 360,
+                              dy: 150,
+                              duration: const Duration(seconds: 1),
+                              rotateDegrees: i,
+                              touch: Touch.middle,
+                              child: user(0, i),
+                            ),
+                          ),
                   ],
                 ),
               ),
             ),
 
-
             //
-            SizedBox(height: 30,),
+            const SizedBox(
+              height: 30,
+            ),
             FadeInRight(
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               child: Padding(
-                padding: const EdgeInsets.only(left: 20.0, bottom: 15.0, top: 10.0),
+                padding:
+                    const EdgeInsets.only(left: 20.0, bottom: 15.0, top: 10.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('All Partners', style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
-                  // textAlign: TextAlign.centerLeft,
+                  child: Text(
+                    'All Partners',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color:
+                            currentTheme.isDark ? Colors.white : Colors.black,
+                        fontWeight: FontWeight.w500),
+                    // textAlign: TextAlign.centerLeft,
                   ),
                 ),
               ),
             ),
             Container(
               height: MediaQuery.of(context).size.height - 200,
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: _partners.length,
                 itemBuilder: (context, index) {
                   return FadeInRight(
@@ -238,7 +244,7 @@ class _AuditingPartnersState extends State<AuditingPartners> {
                     //               ),
                     //               Text
                     //               (
-                                    
+
                     //                 _partners[index]['subtitle'], style: TextStyle
                     //                 (
                     //                   fontSize: 12, fontWeight: FontWeight.w300,color: Colors.grey
@@ -253,13 +259,13 @@ class _AuditingPartnersState extends State<AuditingPartners> {
                     //       Spacer(),
                     //       IconButton(
                     //         icon: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 15,),
-                    //         onPressed: () 
+                    //         onPressed: ()
                     //         {
                     //           log('Partns detail');
-                    //           // Navigator.push(context, 
+                    //           // Navigator.push(context,
                     //           //   MaterialPageRoute(
                     //           //     builder: (context) => ContactPay(
-                    //           //       name: _partners[index]['name'], 
+                    //           //       name: _partners[index]['name'],
                     //           //       avatar: _partners[index]['avatar']
                     //           //     )
                     //           //   )
@@ -272,16 +278,15 @@ class _AuditingPartnersState extends State<AuditingPartners> {
                     child: Column(
                       children: [
                         GestureDetector(
-                          onTap: ()
-                          {
+                          onTap: () {
                             Navigator.push(
-                            context,
-                            WaveTransition(
-                              child:  DetailAuditingPartners(),
-                              center: FractionalOffset(0.90, 0.90),
-                              duration: Duration(milliseconds: 3000) // optional
-                            )
-                        );
+                                context,
+                                WaveTransition(
+                                    child: const DetailAuditingPartners(),
+                                    center: const FractionalOffset(0.90, 0.90),
+                                    duration: const Duration(
+                                        milliseconds: 3000) // optional
+                                    ));
                           },
                           child: Card(
                             shape: RoundedRectangleBorder(
@@ -290,48 +295,53 @@ class _AuditingPartnersState extends State<AuditingPartners> {
                             color: Appcolor.background,
                             elevation: 10,
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical:20.0),
-                              child: ListTile
-                              (
-                                leading:CircleAvatar
-                                (
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 20.0),
+                              child: ListTile(
+                                leading: CircleAvatar(
                                   radius: 30,
                                   backgroundColor: Colors.red[100],
-                                  backgroundImage: AssetImage(_partners[index]['avatar']),
+                                  backgroundImage:
+                                      AssetImage(_partners[index]['avatar']),
                                 ),
-                                title: Text
-                                (
-                                  _partners[index]['name'], style: TextStyle
-                                  (
-                                    fontSize: 14, fontWeight: FontWeight.w600,color: Colors.white
-                                  ),
+                                title: Text(
+                                  _partners[index]['name'],
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: currentTheme.isDark
+                                          ? Colors.white
+                                          : Colors.black),
                                 ),
-                                subtitle: Text
-                                (
-                                  _partners[index]['subtitle'], style: TextStyle
-                                   (
-                                      fontSize: 12, fontWeight: FontWeight.w300,color: Colors.grey
-                                   ),
+                                subtitle: Text(
+                                  _partners[index]['subtitle'],
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w300,
+                                      color: Colors.grey),
                                   maxLines: 4,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                trailing: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 15,),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
+                                  size: 15,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                        SizedBox
-                        (
+                        const SizedBox(
                           height: 20,
                         )
                       ],
                     ),
-                    
                   );
                 },
               ),
             ),
-
           ],
         ),
       ),

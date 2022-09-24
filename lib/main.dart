@@ -8,6 +8,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/config.dart';
+import 'package:hami_launch/screen/AllLaunch.dart';
 import 'package:hami_launch/screen/homepage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:wave_transition/wave_transition.dart';
@@ -17,9 +18,8 @@ import '/widgets/drawer_widget.dart';
 
 import 'Dialogbox/dialog_helper.dart';
 import 'insta_profile/profile_base_screen.dart';
-import 'screen/NotificationPage.dart';
-import 'screen/alerts.dart';
 import 'screen/search-screen.dart';
+import 'screen/simpleaccountmenu.dart';
 import 'theme/theme_manager.dart';
 
 void main() => runApp(MyApp());
@@ -59,27 +59,29 @@ class _MyAppState extends State<MyApp> {
       title: 'Hami App',
       // themeMode: _themeManager.themeMode,
       // themeMode: currentTheme.currenTheme(),
-      // theme: currentTheme.isDark ? ThemeData.dark() : ThemeData.light(),
-      theme: currentTheme.isDark
-          ? ThemeData(
-              // textTheme: GoogleFonts.latoTextTheme(
-              //   Theme.of(context).textTheme
-              // ),
+      theme: currentTheme.isDark ? ThemeData.dark() : ThemeData.light(),
+      // theme: currentTheme.isDark
+      //     ? ThemeData(
+      //         // textTheme: GoogleFonts.latoTextTheme(
+      //         //   Theme.of(context).textTheme
+      //         // ),
 
-              scaffoldBackgroundColor: Appcolor.darkviolte6,
-              errorColor: Colors.pinkAccent)
-          : ThemeData(
-              // textTheme: GoogleFonts.latoTextTheme(
-              //   Theme.of(context).textTheme
-              // ),
-              textTheme: const TextTheme().apply(
-                bodyColor: Colors.orange,
-                displayColor: Colors.blue,
-              ),
-              scaffoldBackgroundColor: Appcolor.darkviolte,
-              errorColor: Colors.pinkAccent),
-      // home: DetailAuditingPartners(),
+      //         // scaffoldBackgroundColor: Appcolor.darkviolte6,
+      //         scaffoldBackgroundColor: Appcolor.whiteSoft,
+      //         errorColor: Colors.pinkAccent)
+      //     : ThemeData(
+      //         // textTheme: GoogleFonts.latoTextTheme(
+      //         //   Theme.of(context).textTheme
+      //         // ),
+      //         textTheme: const TextTheme().apply(
+      //           bodyColor: Colors.orange,
+      //           displayColor: Colors.blue,
+      //         ),
+      //         scaffoldBackgroundColor: Appcolor.darkviolte,
+      //         errorColor: Colors.pinkAccent),
+
       home: RootPage(),
+      // home: Home(),
     );
   }
 }
@@ -119,11 +121,13 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   final bool _flag = true;
   int selectedIndex = 0;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   List<Widget> pages = [
     const Homepage(),
     const SearchScreen(),
-    NotificationPage(),
-    const AlertPage(),
+    // NotificationPage(),
+    const LaunchPads(),
+    // const AlertPage(),
 
     // Container
     // (
@@ -157,6 +161,16 @@ class _RootPageState extends State<RootPage> {
 
   final bool _raiseNewIssueFormIsShown = false;
 
+  void _onItemTapped(int index) {
+    index == 3
+        ?
+        // scaffoldKey.of(context).openDrawer()
+        scaffoldKey.currentState.openEndDrawer()
+        : setState(() {
+            selectedIndex = index;
+          });
+  }
+
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -185,6 +199,7 @@ class _RootPageState extends State<RootPage> {
           ),
           drawer: MyDrawer(),
           child: Scaffold(
+            endDrawer: const Drawer(),
             key: scaffoldKey,
             // drawer: MyDrawer(),
             //myyy
@@ -282,19 +297,26 @@ class _RootPageState extends State<RootPage> {
                           log('networkicon');
                           DialogHelper1.exit(context);
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           FontAwesomeIcons.globe,
+                          color:
+                              currentTheme.isDark ? Colors.white : Colors.black,
                           size: 20,
                         )),
                   ),
                   // SizedBox(width: 20,),
                   IconButton(
                       onPressed: () {
-                        log('companyicon');
-                        DialogHelper.exit(context);
+                        // log('companyicon');
+                        // DialogHelper.exit(context);
+                        log('open');
+                        scaffoldKey.currentState.openEndDrawer();
+                        // Scaffold.of(context).openEndDrawer();
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         FontAwesomeIcons.wallet,
+                        color:
+                            currentTheme.isDark ? Colors.white : Colors.black,
                         size: 20,
                       )),
 
@@ -315,7 +337,10 @@ class _RootPageState extends State<RootPage> {
                       // },
 
                       // onPressed: () => MyApp.of(context).changeTheme(ThemeMode.dark),
-                      icon: const Icon(FontAwesomeIcons.moon)),
+                      icon: Icon(FontAwesomeIcons.moon,
+                          color: currentTheme.isDark
+                              ? Colors.white
+                              : Colors.black)),
                   IconButton(
                       onPressed: () {
                         log('Profile Page Clicked');
@@ -346,7 +371,10 @@ class _RootPageState extends State<RootPage> {
                         //   // ProfileScreen()),
                         // );
                       },
-                      icon: const Icon(LineIcons.user)),
+                      icon: Icon(LineIcons.user,
+                          color: currentTheme.isDark
+                              ? Colors.white
+                              : Colors.black)),
                 ],
               ),
             ),
@@ -354,7 +382,8 @@ class _RootPageState extends State<RootPage> {
             bottomNavigationBar: Theme(
               data: Theme.of(context).copyWith(
                 // sets the background color of the `BottomNavigationBar`
-                canvasColor: Appcolor.darkviolte6,
+                // canvasColor: Appcolor.darkviolte6,
+                canvasColor: Colors.yellow,
                 splashColor: Colors.pinkAccent,
                 highlightColor: Colors.purpleAccent,
                 hoverColor: Colors.deepPurple,
@@ -376,145 +405,179 @@ class _RootPageState extends State<RootPage> {
                   //         separatorBuilder: (context, index) =>
                   //             const SizedBox(height: 16),
                   //       )
-                  : BottomNavigationBar(
-                      elevation: 0.0,
-                      selectedItemColor: Colors.pinkAccent.shade200,
-                      backgroundColor: Appcolor.darkviolte6,
-                      unselectedFontSize: 15.0,
-                      selectedFontSize: 18.0,
-                      showSelectedLabels: true,
-                      showUnselectedLabels: true,
-                      // selectedIconTheme: Theme.of(context).copyWith(),
-                      // items: items,
-                      onTap: (index) {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                      },
-                      items: [
-                        (selectedIndex == 0)
-                            ? BottomNavigationBarItem(
-                                icon: SvgPicture.asset(
-                                    'assets/icons/home-filled.svg',
-                                    color: Colors.pinkAccent),
-                                label: 'Home')
-                            : BottomNavigationBarItem(
-                                icon: SvgPicture.asset('assets/icons/home.svg',
-                                    color: Colors.grey[600]),
-                                label: 'Home'),
-                        (selectedIndex == 1)
-                            ? BottomNavigationBarItem(
-                                icon: SvgPicture.asset(
-                                    'assets/icons/search-filled.svg',
-                                    color: Colors.pinkAccent,
-                                    height: 28,
-                                    width: 26),
-                                // icon: Icon(LineIcons.search,color: Colors.pinkAccent,size: 27,),
-                                label: 'Search')
-                            : BottomNavigationBarItem(
-                                icon: Icon(
-                                  LineIcons.search,
-                                  color: Colors.grey[600],
-                                  size: 27,
-                                ),
-                                // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600], height: 28, width: 26),
-                                label: 'Search'),
-                        (selectedIndex == 2)
-                            ? const BottomNavigationBarItem(
-                                // icon: Image.asset('assets/images/notifications-filled.png',height: 28,width: 26,color: Colors.pinkAccent,),
-                                icon: Icon(
-                                  LineIcons.bell,
-                                  color: Colors.pinkAccent,
-                                  size: 27,
-                                ),
-                                // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
-                                label: 'Notifications')
-                            : BottomNavigationBarItem(
-                                // icon: Image.asset('assets/images/notifications.png',height: 28,width: 26,color: Colors.grey[600],),
-                                icon: Icon(
-                                  LineIcons.bell,
-                                  color: Colors.grey[600],
-                                  size: 27,
-                                ),
-                                // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
-                                label: 'Notifications'),
-                        (selectedIndex == 3)
-                            ? BottomNavigationBarItem(
-                                icon: Image.asset(
-                                  'assets/images/alerts-fillled.png',
-                                  height: 28,
-                                  width: 26,
-                                  color: Colors.pinkAccent,
-                                ),
-                                // icon: Icon(Icons.alarm,color: Colors.pinkAccent,size: 27,),
-                                // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
-                                label: 'Alerts')
-                            : BottomNavigationBarItem(
-                                icon: Image.asset(
-                                  'assets/images/alerts.png',
-                                  height: 28,
-                                  width: 26,
-                                  color: Colors.grey[600],
-                                ),
-                                // icon: Icon(Icons.alarm,color: Colors.grey[600],size: 27,),
-                                // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
-                                label: 'Alerts'),
-                      ],
+                  : ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(40),
+                        topLeft: Radius.circular(40),
+                      ),
+                      child: BottomNavigationBar(
+                        elevation: 0.0,
+                        selectedItemColor: Colors.pinkAccent.shade200,
+                        backgroundColor:
+                            currentTheme.isDark ? Colors.black : Colors.white,
+                        // backgroundColor: Appcolor.darkviolte6,
+                        unselectedFontSize: 15.0,
+                        selectedFontSize: 18.0,
+                        showSelectedLabels: true,
+                        showUnselectedLabels: true,
+                        // selectedIconTheme: Theme.of(context).copyWith(),
+                        // items: items,
 
-                      // selectedItemColor: Appcolor.darkviolte4,
-                      unselectedItemColor: Colors.grey,
-                      // showUnselectedLabels: true,
-                      currentIndex: selectedIndex,
-                      type: BottomNavigationBarType.fixed,
+                        //crt
+                        // onTap: (index) {
+                        //   setState(() {
+                        //     selectedIndex = index;
+                        //   });
+                        // },
+                        onTap: _onItemTapped,
+                        items: [
+                          (selectedIndex == 0)
+                              ? BottomNavigationBarItem(
+                                  icon: SvgPicture.asset(
+                                      'assets/icons/home-filled.svg',
+                                      color: Colors.pinkAccent),
+                                  label: 'Home')
+                              : BottomNavigationBarItem(
+                                  icon: SvgPicture.asset(
+                                      'assets/icons/home.svg',
+                                      color: Colors.grey[600]),
+                                  label: 'Home'),
+                          (selectedIndex == 1)
+                              ? BottomNavigationBarItem(
+                                  icon: SvgPicture.asset(
+                                      'assets/icons/search-filled.svg',
+                                      color: Colors.pinkAccent,
+                                      height: 28,
+                                      width: 26),
+                                  // icon: Icon(LineIcons.search,color: Colors.pinkAccent,size: 27,),
+                                  label: 'Search')
+                              : BottomNavigationBarItem(
+                                  icon: Icon(
+                                    LineIcons.search,
+                                    color: Colors.grey[600],
+                                    size: 27,
+                                  ),
+                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600], height: 28, width: 26),
+                                  label: 'Search'),
+                          (selectedIndex == 2)
+                              ? const BottomNavigationBarItem(
+                                  // icon: Image.asset('assets/images/notifications-filled.png',height: 28,width: 26,color: Colors.pinkAccent,),
+                                  icon: Icon(
+                                    LineIcons.bell,
+                                    color: Colors.pinkAccent,
+                                    size: 27,
+                                  ),
+                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
+                                  label: 'Notifications')
+                              : BottomNavigationBarItem(
+                                  // icon: Image.asset('assets/images/notifications.png',height: 28,width: 26,color: Colors.grey[600],),
+                                  icon: Icon(
+                                    LineIcons.bell,
+                                    color: Colors.grey[600],
+                                    size: 27,
+                                  ),
+                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
+                                  label: 'Notifications'),
+                          (selectedIndex == 3)
+                              ? BottomNavigationBarItem(
+                                  icon: Image.asset(
+                                    'assets/images/alerts-fillled.png',
+                                    height: 28,
+                                    width: 26,
+                                    color: Colors.pinkAccent,
+                                  ),
+                                  // icon: Icon(Icons.alarm,color: Colors.pinkAccent,size: 27,),
+                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
+                                  label: 'Alerts')
+                              : BottomNavigationBarItem(
+                                  icon: Image.asset(
+                                    'assets/images/alerts.png',
+                                    height: 28,
+                                    width: 26,
+                                    color: Colors.grey[600],
+                                  ),
+                                  // icon: Icon(Icons.alarm,color: Colors.grey[600],size: 27,),
+                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
+                                  label: 'Alerts'),
+                        ],
+
+                        // selectedItemColor: Appcolor.darkviolte4,
+                        unselectedItemColor: Colors.grey,
+                        // showUnselectedLabels: true,
+                        currentIndex: selectedIndex,
+                        type: BottomNavigationBarType.fixed,
+                      ),
                     ),
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
+            // floatingActionButton: FloatingActionButton(
+            //   backgroundColor: Colors.deepPurple,
+            //   child: Positioned(
+            //     bottom: 500,
+            //     child: PopupMenuButton<int>(
+            //       color: Colors.yellow,
+            //       itemBuilder: (context) => [
+            //         const PopupMenuItem(
+            //             value: 1,
+            //             child: Text(
+            //               'Edit',
+            //               style: TextStyle(color: Colors.black),
+            //             )),
+            //         const PopupMenuItem(
+            //             value: 2,
+            //             child: Text(
+            //               'Delete',
+            //               style: TextStyle(color: Colors.black),
+            //             ))
+            //       ],
+            //       // icon: Icon(Icons.library_add),
+            //       //   child: _flag
+            //       //       ? const Icon(Icons.add)
+            //       //       : const Icon(FontAwesomeIcons.close),
+            //       icon: _flag
+            //           ? const Icon(Icons.add)
+            //           : const Icon(FontAwesomeIcons.close),
+            //       // icon: const Icon(
+            //       //   FontAwesomeIcons.ellipsis,
+            //       //   color: Colors.white,
+            //       // ),
+            //       // offset: const Offset(0, -50),
+            //       offset: Offset.zero,
+            //       onCanceled: () {
+            //         log('cancelled');
+            //       },
+            //       onSelected: (value) {
+            //         log('value: $value');
+            //       },
+            //     ),
+            //   ),
+            // ),
+
             floatingActionButton: FloatingActionButton(
-              backgroundColor: Colors.deepPurple,
-              child: PopupMenuButton<int>(
-                color: Colors.yellow,
-                itemBuilder: (context) => [
-                  const PopupMenuItem(
-                      value: 1,
-                      child: Text(
-                        'Edit',
-                        style: TextStyle(color: Colors.black),
-                      )),
-                  const PopupMenuItem(
-                      value: 2,
-                      child: Text(
-                        'Delete',
-                        style: TextStyle(color: Colors.black),
-                      ))
+              backgroundColor: const Color.fromRGBO(103, 58, 183, 1),
+              child: Container(
+                  child: SimpleAccountMenu(
+                icons: const [
+                  Icon(Icons.person),
+                  Icon(Icons.settings),
+                  Icon(Icons.credit_card),
                 ],
-                // icon: Icon(Icons.library_add),
-                //   child: _flag
-                //       ? const Icon(Icons.add)
-                //       : const Icon(FontAwesomeIcons.close),
-                icon: _flag
-                    ? const Icon(Icons.add)
-                    : const Icon(FontAwesomeIcons.close),
-                // icon: const Icon(
-                //   FontAwesomeIcons.ellipsis,
-                //   color: Colors.white,
-                // ),
-                // offset: const Offset(0, -50),
-                offset: Offset.zero,
-                onCanceled: () {
-                  log('cancelled');
+                iconColor: Colors.white,
+                onChange: (index) {
+                  print(index);
                 },
-                onSelected: (value) {
-                  log('value: $value');
-                },
-              ),
+              )),
             ),
+
+            //crt
             // floatingActionButton: GestureDetector(
             //   onTapDown: (details) {
             //     setState(() {
             //       _flag = !_flag;
             //       _flag
             //           ? const SizedBox()
+            //           // : _showPopUpMenu(details.globalPosition);
             //           : _showPopupMenu(details.globalPosition);
             //     });
             //   },
@@ -544,16 +607,17 @@ class _RootPageState extends State<RootPage> {
     return pages.elementAt(selectedIndex);
   }
 
-  // _showPopUpMenu() async {
+  // _showPopUpMenu(Offset offset) async {
   //   final screenSize = MediaQuery.of(context).size;
-  //   // double left = offset.dx;
-  //   // double top = offset.dy;
-  //   // double right = screenSize.width - offset.dx;
-  //   // double bottom = screenSize.height - offset.dy;
+  //   double left = offset.dx;
+  //   double top = offset.dy;
+  //   double right = screenSize.width - offset.dx;
+  //   double bottom = screenSize.height - offset.dy;
 
   //   await showMenu<MenuItemType>(
   //     context: context,
-  //     position: const RelativeRect.fromLTRB(20, 20, 20, 20),
+  //     position: const RelativeRect.fromLTRB(0, 650, 0, 20),
+  //     // position: const RelativeRect.fromLTRB(50, 700, 20, 20),
   //     // position: RelativeRect.fromLTRB(left, top, right, bottom),
   //     items: MenuItemType.values
   //         .map((MenuItemType menuItemType) => PopupMenuItem<MenuItemType>(
@@ -568,6 +632,7 @@ class _RootPageState extends State<RootPage> {
   //   });
   // }
 
+//crt
   void _showPopupMenu(Offset offset) async {
     await showMenu(
       context: context,
@@ -579,35 +644,4 @@ class _RootPageState extends State<RootPage> {
       elevation: 8.0,
     );
   }
-  // _showPopUpMenu() {
-  //   PopupMenuButton<int>(
-  //     color: Colors.yellow,
-  //     itemBuilder: (context) => [
-  //       const PopupMenuItem(
-  //           value: 1,
-  //           child: Text(
-  //             'Edit',
-  //             style: TextStyle(color: Colors.black),
-  //           )),
-  //       const PopupMenuItem(
-  //           value: 2,
-  //           child: Text(
-  //             'Delete',
-  //             style: TextStyle(color: Colors.black),
-  //           ))
-  //     ],
-  //     // icon: Icon(Icons.library_add),
-  //     icon: const Icon(
-  //       FontAwesomeIcons.ellipsis,
-  //       color: Colors.white,
-  //     ),
-  //     offset: const Offset(0, 50),
-  //     onCanceled: () {
-  //       log('cancelled');
-  //     },
-  //     onSelected: (value) {
-  //       log('value: $value');
-  //     },
-  //   );
-  // }
 }

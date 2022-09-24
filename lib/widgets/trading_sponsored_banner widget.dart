@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '/theme/appcolor.dart';
 
+import '../config.dart';
 import '../models/banner_model.dart';
 
 class TradingAndSponsored extends StatefulWidget {
@@ -30,8 +30,12 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                 height: 260,
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    // color: Colors.orangeAccent,
-                    color: Appcolor.background),
+                    // color: Colors.grey.shade200,
+                    color: currentTheme.isDark
+                        ? Colors.deepPurple.shade100
+                        : Colors.grey.shade200
+                    // color: Appcolor.background
+                    ),
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -77,9 +81,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             ),
                             Text(
                               banner[index].title,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 20,
-                                  color: Colors.white,
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
                                   fontWeight: FontWeight.w900),
                             ),
                           ],
@@ -114,9 +120,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             ),
                             Text(
                               banner[index].subtitle,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.white,
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
                                   fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(
@@ -125,9 +133,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             FittedBox(
                               child: Text(
                                 banner[index].subtitle1,
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 10,
-                                    color: Colors.white,
+                                    color: currentTheme.isDark
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontWeight: FontWeight.w200),
                               ),
                             ),
@@ -158,9 +168,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             ),
                             Text(
                               banner[index].subtitle,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.white,
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
                                   fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(
@@ -169,9 +181,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             FittedBox(
                               child: Text(
                                 banner[index].subtitle1,
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 10,
-                                    color: Colors.white,
+                                    color: currentTheme.isDark
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontWeight: FontWeight.w200),
                               ),
                             ),
@@ -202,9 +216,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             ),
                             Text(
                               banner[index].subtitle,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.white,
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
                                   fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(
@@ -213,9 +229,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             FittedBox(
                               child: Text(
                                 banner[index].subtitle1,
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 10,
-                                    color: Colors.white,
+                                    color: currentTheme.isDark
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontWeight: FontWeight.w200),
                               ),
                             ),
@@ -246,9 +264,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             ),
                             Text(
                               banner[index].subtitle,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.white,
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
                                   fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(
@@ -257,9 +277,11 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             FittedBox(
                               child: Text(
                                 banner[index].subtitle1,
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 10,
-                                    color: Colors.white,
+                                    color: currentTheme.isDark
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontWeight: FontWeight.w200),
                               ),
                             ),
