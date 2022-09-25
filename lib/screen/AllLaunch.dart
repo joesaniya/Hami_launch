@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:hami_launch/screen/notification_widget.dart';
@@ -65,6 +67,7 @@ class _LaunchPadsState extends State<LaunchPads> {
   ];
 
   String? selectedValue;
+  String dropdownValue = 'ALL';
 
   @override
   Widget build(BuildContext context) {
@@ -133,29 +136,39 @@ class _LaunchPadsState extends State<LaunchPads> {
                 }
                 return null;
               },
-              onChanged: (value) {
-                //Do something when changing the item if you want.
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownValue = newValue!;
+                  log(newValue);
+                });
               },
-              onSaved: (value) {
-                selectedValue = value.toString();
-              },
+              // onChanged: (value) {
+              //   //Do something when changing the item if you want.
+              // },
+              // onSaved: (value) {
+              //   selectedValue = value.toString();
+              // },
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            const NotificationWidget(),
-            // Expanded(
-            //     child: selectedValue == 'All'
-            //         ? const NotificationWidget()
-            //         : selectedValue == 'Trending'
-            //             ? const NotificationWidget()
-            //             : selectedValue == 'Recent'
-            //                 ? const NotificationWidget()
-            //                 : selectedValue == 'Upcoming'
-            //                     ? const NotificationWidget()
-            //                     : Container(
-            //                         height: 400,
-            //                         width: double.infinity,
-            //                         color: Colors.black,
-            //                       )),
+            // const NotificationWidget(),
+            Expanded(
+                child: dropdownValue == 'All'
+                    ? const NotificationWidget()
+                    : dropdownValue == 'Trending'
+                        ? const NotificationWidget()
+                        : dropdownValue == 'Recent'
+                            ? const NotificationWidget()
+                            : dropdownValue == 'Upcoming'
+                                ? Container(
+                                    height: 400,
+                                    width: double.infinity,
+                                    color: Colors.blue,
+                                  )
+                                : Container(
+                                    height: 400,
+                                    width: double.infinity,
+                                    color: Colors.black,
+                                  )),
             // Container(
             //   height: 500,
             //   width: double.infinity,
