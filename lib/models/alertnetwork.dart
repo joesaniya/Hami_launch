@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import '/theme/appcolor.dart';
-
-class  NetworkModel{
+class NetworkModel {
   final String title;
   final String subtitle;
   final String image;
@@ -16,21 +13,17 @@ class  NetworkModel{
 List<NetworkModel> network = <NetworkModel>[
   NetworkModel(
     title: 'Binance Smart Chain',
-    subtitle:'',
+    subtitle: '',
     image: 'https://app.hami.live/static/media/bnb.36582179573789d51ad3.png',
-    ),
-  
+  ),
   NetworkModel(
     title: 'Ethurum',
-    subtitle:'Coming Soon',
+    subtitle: 'Coming Soon',
     image: 'https://app.hami.live/static/media/bnb.36582179573789d51ad3.png',
-    ),
+  ),
 ];
 
-
-
-
-class  TestModel{
+class TestModel {
   final String title;
   final String subtitle;
   final String image;
@@ -45,14 +38,12 @@ class  TestModel{
 List<TestModel> test = <TestModel>[
   TestModel(
     title: 'Binance Smart Chain',
-    subtitle:'',
+    subtitle: '',
     image: 'https://app.hami.live/static/media/bnb.36582179573789d51ad3.png',
-    ),
-
+  ),
 ];
 
-
-class  WebDe{
+class WebDe {
   final String title;
   final String subtitle;
   final String image;
@@ -67,14 +58,12 @@ class  WebDe{
 List<WebDe> WebDevelopers1 = <WebDe>[
   WebDe(
     title: 'Crypto Hive',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/terra.png',
-    ),
-  
-  
+  ),
 ];
 
-class  TokenName{
+class TokenName {
   final String title;
   final String subtitle;
   final String image;
@@ -89,178 +78,175 @@ class  TokenName{
 List<TokenName> Tname = <TokenName>[
   TokenName(
     title: 'Crypto Hive',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/terra.png',
-    ),
-  
+  ),
+
   //2
   TokenName(
     title: 'Polygan',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/polygan.png',
-    ),
+  ),
 
-    //3
-    TokenName(
+  //3
+  TokenName(
     title: 'LUNC',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/luna.png',
-    ),
+  ),
 
-    //4
-    TokenName(
+  //4
+  TokenName(
     title: 'WETH',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/weth.png',
-    ),
+  ),
 
-    //5
-    TokenName(
+  //5
+  TokenName(
     title: 'Etherium',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/ethirum.jpg',
-    ),
+  ),
 
-    //6
-    TokenName(
+  //6
+  TokenName(
     title: 'Cryto.com',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/crypto.jpg',
-    ),
+  ),
 
-    //7
-    TokenName(
+  //7
+  TokenName(
     title: 'Ledger',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/ledger.png',
-    ),
+  ),
 
-    //8
-    TokenName(
+  //8
+  TokenName(
     title: 'Tokenary',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/tokenary.jpg',
-    ),
+  ),
 
-    //9
-    TokenName(
+  //9
+  TokenName(
     title: 'Infinity Wallet',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/infinity_wallet.png',
-    ),
+  ),
 
-    //10
-    TokenName(
+  //10
+  TokenName(
     title: 'Wallet 3',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/wallet3.jpg',
-    ),
+  ),
 
-    //11
-    TokenName(
+  //11
+  TokenName(
     title: 'SecuX',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/secux.png',
-    ),
+  ),
 
-    //12
-    TokenName(
+  //12
+  TokenName(
     title: 'Ambire',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/ambire.jpg',
-    ),
+  ),
 
-    //13
-    TokenName(
+  //13
+  TokenName(
     title: 'Fireblocks',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/fireblocks.png',
-    ),
+  ),
 
-    //14
-    TokenName(
+  //14
+  TokenName(
     title: 'RICE Wallet',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/ricewallet.png',
-    ),
+  ),
 
-    //15
-    TokenName(
+  //15
+  TokenName(
     title: 'Vision',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/vision.png',
-    ),
+  ),
 
-    //16
-    TokenName(
+  //16
+  TokenName(
     title: 'KEYRING PRO',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/keyringpro.jpg',
-    ),
+  ),
 
-    //17
-    TokenName(
+  //17
+  TokenName(
     title: 'Paper',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/paper.png',
-    ),
+  ),
 
-    //18
-    TokenName(
+  //18
+  TokenName(
     title: 'Wallet3',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/wallet3_2.png',
-    ),
+  ),
 
-    //19
-    TokenName(
+  //19
+  TokenName(
     title: 'ApolloX',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/apollox.png',
-    ),
+  ),
 
-    //20
-    TokenName(
+  //20
+  TokenName(
     title: 'Zerion',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/zerion.png',
-    ),
+  ),
 
-    //21
-    TokenName(
+  //21
+  TokenName(
     title: 'Sequence',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/sequence.png',
-    ),
+  ),
 
-    //22
-    TokenName(
+  //22
+  TokenName(
     title: 'PunkWallet',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/punkwallet.png',
-    ),
+  ),
 
-
-    //23
-    TokenName(
+  //23
+  TokenName(
     title: 'KryptoGo',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/kryptogo.png',
-    ),
+  ),
 
-    //24
-    TokenName(
+  //24
+  TokenName(
     title: 'NFT',
-    subtitle:'',
+    subtitle: '',
     image: 'assets/images/nft.jpg',
-    ),
-  
+  ),
 ];
-
 
 //auditor
 
-class  Auditor{
+class Auditor {
   final String title;
   final String subtitle;
   final String image;
@@ -276,53 +262,78 @@ class  Auditor{
 
 List<Auditor> Auditor1 = <Auditor>[
   Auditor(
-    title: 'NKI TOKEN',
-    subtitle:'NKI',
-    image: 'assets/images/question.jpg',
-    Description: 'NKI token is an asset of a coffee-based company (Agricul-ture) in Indonesia under the brand name "Ngombe Kopi Indo-nesia".Our vision is to produce 100% quality Arabica coffee products. We will build a coffee industry development for token.'
-    ),
+      title: 'NKI TOKEN',
+      subtitle: 'NKI',
+      image: 'assets/images/question.jpg',
+      Description:
+          'NKI token is an asset of a coffee-based company (Agricul-ture) in Indonesia under the brand name "Ngombe Kopi Indo-nesia".Our vision is to produce 100% quality Arabica coffee products. We will build a coffee industry development for token.'),
   Auditor(
-    title: 'BrightyPad',
-    subtitle:'BYP',
-    image: 'assets/images/question.jpg',
-    Description: 'BrightyPad Is A Brand-New Design That Goes Far Beyond Just Than Being A Launchpad Platform.BrightyPad is a brand-new design that goes a great distance beyond than just being a launchpad utility. BrightyPad is a well-crafted and non se...'
-    ),
+      title: 'BrightyPad',
+      subtitle: 'BYP',
+      image: 'assets/images/question.jpg',
+      Description:
+          'BrightyPad Is A Brand-New Design That Goes Far Beyond Just Than Being A Launchpad Platform.BrightyPad is a brand-new design that goes a great distance beyond than just being a launchpad utility. BrightyPad is a well-crafted and non se...'),
   Auditor(
-    title: 'SHIB GOLD',
-    subtitle:'SHIB GOLD',
-    image: 'assets/images/question.jpg',
-    Description: 'Shib Gold was launched on August 15, 2022 in the Binance Smart Chain network. It was born out of the love of the team to bring a token that even common people can relate. The primary goal of Shib Gold is to bring more e...'
-    ),
+      title: 'SHIB GOLD',
+      subtitle: 'SHIB GOLD',
+      image: 'assets/images/question.jpg',
+      Description:
+          'Shib Gold was launched on August 15, 2022 in the Binance Smart Chain network. It was born out of the love of the team to bring a token that even common people can relate. The primary goal of Shib Gold is to bring more e...'),
   Auditor(
-    title: 'BikeNrun',
-    subtitle:'BNR',
-    image: 'assets/images/question.jpg',
-    Description: 'Bike n Run is the first bike-to-earn community-based plat-form, a web3fitness application that encourages users to have a healthy lifestyle andearn rewards while exercising.Bike n Run runs on the Binance Smart Chain network ...'
-    ),
+      title: 'BikeNrun',
+      subtitle: 'BNR',
+      image: 'assets/images/question.jpg',
+      Description:
+          'Bike n Run is the first bike-to-earn community-based plat-form, a web3fitness application that encourages users to have a healthy lifestyle andearn rewards while exercising.Bike n Run runs on the Binance Smart Chain network ...'),
   Auditor(
-    title: 'DIGICHAIN COIN',
-    subtitle:'DIGICHAIN',
-    image: 'assets/images/question.jpg',
-    Description: 'Digichain is a cryptocurrency token that was already con-ceptualize since March 2021, Digichain team are very optimist that Digichain will be the future of cryptocurrency, Digichain provides various offerings and solutions to problems ...'
-    ),
+      title: 'DIGICHAIN COIN',
+      subtitle: 'DIGICHAIN',
+      image: 'assets/images/question.jpg',
+      Description:
+          'Digichain is a cryptocurrency token that was already con-ceptualize since March 2021, Digichain team are very optimist that Digichain will be the future of cryptocurrency, Digichain provides various offerings and solutions to problems ...'),
   Auditor(
-    title: 'MoneyHeis',
-    subtitle:'HEIST',
-    image: 'assets/images/question.jpg',
-    Description: 'LET THE HEIST BEGIN Stick together as a team, not only to market and spread this new coin but to successfully win the prize. The prize inside the vault will be so large that it will be internationally sought after!! With larger payouts and smaller pa...'
-    ),
+      title: 'MoneyHeis',
+      subtitle: 'HEIST',
+      image: 'assets/images/question.jpg',
+      Description:
+          'LET THE HEIST BEGIN Stick together as a team, not only to market and spread this new coin but to successfully win the prize. The prize inside the vault will be so large that it will be internationally sought after!! With larger payouts and smaller pa...'),
   Auditor(
-    title: 'MetaF1',
-    subtitle:'F1T',
-    image: 'assets/images/question.jpg',
-    Description: 'MetaF1 builds a bridge between Formula1 and the open metaverse, offering gamers,developers and investors innovative ways to connect and provide opportunities for every gamer, whether casual or professional, to make money by doing what they love, than...'
-    ),
+      title: 'MetaF1',
+      subtitle: 'F1T',
+      image: 'assets/images/question.jpg',
+      Description:
+          'MetaF1 builds a bridge between Formula1 and the open metaverse, offering gamers,developers and investors innovative ways to connect and provide opportunities for every gamer, whether casual or professional, to make money by doing what they love, than...'),
   Auditor(
-    title: 'KALISSA',
-    subtitle:'KALI',
-    image: 'assets/images/question.jpg',
-    Description: 'Kalissa is a young French startup that uses blockchain technology to guarantee luxury products for life. Luxury products are finally seeing a revolution that will change the way you consume. Through the Kalissa ecosystem, you will be able to invest i...'
-    ),
-  
+      title: 'KALISSA',
+      subtitle: 'KALI',
+      image: 'assets/images/question.jpg',
+      Description:
+          'Kalissa is a young French startup that uses blockchain technology to guarantee luxury products for life. Luxury products are finally seeing a revolution that will change the way you consume. Through the Kalissa ecosystem, you will be able to invest i...'),
 ];
 
+//auditor
+
+class Vesting {
+  final String Period;
+  final String Percentage;
+  final String Time;
+
+  Vesting({
+    required this.Period,
+    required this.Percentage,
+    required this.Time,
+  });
+}
+
+List<Vesting> Vesting1 = <Vesting>[
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+  Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
+];

@@ -21,7 +21,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   @override
   void initState() {
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () async {
       setState(() {
         _isLoading = false;
       });
@@ -62,8 +62,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 10,
                               ),
                             )),
-                        child: const ClipRRect(
-                          borderRadius: BorderRadius.only(
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(
                               10,
                             ),
@@ -71,9 +71,49 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                               10,
                             ),
                           ),
-                          child: Image(
-                            image: AssetImage('assets/images/launch_bg.jpg'),
-                            fit: BoxFit.cover,
+                          child: Stack(
+                            children: [
+                              const Image(
+                                image:
+                                    AssetImage('assets/images/launch_bg.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                              Positioned(
+                                // The Positioned widget is used to position the text inside the Stack widget
+                                top: 10,
+                                right: 40,
+
+                                child: Container(
+                                  // We use this Container to create a black box that wraps the white text so that the user can read the text even when the image is white
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.orangeAccent.shade100,
+                                  ),
+                                  padding: const EdgeInsets.all(10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height: 10,
+                                        width: 10,
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.red),
+                                      ),
+                                      const Text(
+                                        'Active',
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.red),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                         // child: const Center(
@@ -104,13 +144,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                  Text(
                                     'HAMI',
                                     style: TextStyle(
-                                        // color: currentTheme.isDark
-                                        //     ? Colors.black
-                                        //     : Colors.black,
-                                        color: Colors.black,
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                        // color: Colors.black,
                                         fontSize: 20),
                                   ),
                                   const SizedBox(

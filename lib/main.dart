@@ -5,9 +5,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/config.dart';
+import 'package:hami_launch/drawerEnd.dart';
 import 'package:hami_launch/screen/AllLaunch.dart';
 import 'package:hami_launch/screen/homepage.dart';
 import 'package:iconsax/iconsax.dart';
@@ -80,7 +80,7 @@ class _MyAppState extends State<MyApp> {
       //         errorColor: Colors.pinkAccent),
 
       home: RootPage(),
-      // home: Home(),
+      // home: const ToeknWidget1(),
     );
   }
 }
@@ -153,7 +153,7 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () async {
       setState(() {
         _isLoading = false;
       });
@@ -207,7 +207,7 @@ class _RootPageState extends State<RootPage> {
           ),
           drawer: MyDrawer(),
           child: Scaffold(
-            endDrawer: const Drawer(),
+            endDrawer: const DrawerEnd(),
             key: scaffoldKey,
             // drawer: MyDrawer(),
             //myyy
@@ -447,7 +447,7 @@ class _RootPageState extends State<RootPage> {
                       // ),
                       child: BottomNavigationBar(
                         elevation: 0.0,
-                        selectedItemColor: Colors.pinkAccent.shade200,
+                        selectedItemColor: Colors.deepPurple,
                         backgroundColor:
                             currentTheme.isDark ? Colors.black : Colors.white,
                         // backgroundColor: Appcolor.darkviolte6,
@@ -478,23 +478,38 @@ class _RootPageState extends State<RootPage> {
                         // onTap: _onItemTapped,
                         items: [
                           (selectedIndex == 0)
-                              ? BottomNavigationBarItem(
-                                  icon: SvgPicture.asset(
-                                      'assets/icons/home-filled.svg',
-                                      color: Colors.pinkAccent),
+                              ? const BottomNavigationBarItem(
+                                  icon: Icon(
+                                    LineIcons.home,
+                                    color: Colors.deepPurple,
+                                    size: 27,
+                                  ),
+                                  // icon: SvgPicture.asset(
+                                  //     'assets/icons/home-filled.svg',
+                                  //     color: Colors.pinkAccent),
                                   label: 'Home')
                               : BottomNavigationBarItem(
-                                  icon: SvgPicture.asset(
-                                      'assets/icons/home.svg',
-                                      color: Colors.grey[600]),
+                                  icon: Icon(
+                                    LineIcons.home,
+                                    color: Colors.grey[600],
+                                    size: 27,
+                                  ),
+                                  // icon: SvgPicture.asset(
+                                  //     'assets/icons/home.svg',
+                                  //     color: Colors.grey[600]),
                                   label: 'Home'),
                           (selectedIndex == 1)
-                              ? BottomNavigationBarItem(
-                                  icon: SvgPicture.asset(
-                                      'assets/icons/search-filled.svg',
-                                      color: Colors.pinkAccent,
-                                      height: 28,
-                                      width: 26),
+                              ? const BottomNavigationBarItem(
+                                  icon: Icon(
+                                    LineIcons.search,
+                                    color: Colors.deepPurple,
+                                    size: 27,
+                                  ),
+                                  // icon: SvgPicture.asset(
+                                  //     'assets/icons/search-filled.svg',
+                                  //     color: Colors.pinkAccent,
+                                  //     height: 28,
+                                  //     width: 26),
                                   // icon: Icon(LineIcons.search,color: Colors.pinkAccent,size: 27,),
                                   label: 'Search')
                               : BottomNavigationBarItem(
@@ -509,40 +524,51 @@ class _RootPageState extends State<RootPage> {
                               ? const BottomNavigationBarItem(
                                   // icon: Image.asset('assets/images/notifications-filled.png',height: 28,width: 26,color: Colors.pinkAccent,),
                                   icon: Icon(
-                                    LineIcons.bell,
-                                    color: Colors.pinkAccent,
+                                    // FontAwesomeIcons.rocket,
+                                    // LineIcons.bell,
+                                    LineIcons.rocket,
+                                    color: Colors.deepPurple,
                                     size: 27,
                                   ),
                                   // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
-                                  label: 'Notifications')
+                                  label: 'Launchpads')
                               : BottomNavigationBarItem(
                                   // icon: Image.asset('assets/images/notifications.png',height: 28,width: 26,color: Colors.grey[600],),
                                   icon: Icon(
-                                    LineIcons.bell,
+                                    LineIcons.rocket,
+                                    // FontAwesomeIcons.rocket,
                                     color: Colors.grey[600],
                                     size: 27,
                                   ),
                                   // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
-                                  label: 'Notifications'),
+                                  label: 'Launchpads'),
                           (selectedIndex == 3)
-                              ? BottomNavigationBarItem(
-                                  icon: Image.asset(
-                                    'assets/images/alerts-fillled.png',
-                                    height: 28,
-                                    width: 26,
+                              ? const BottomNavigationBarItem(
+                                  // icon: Image.asset(
+                                  //   'assets/images/alerts-fillled.png',
+                                  //   height: 28,
+                                  //   width: 26,
+                                  //   color: Colors.pinkAccent,
+                                  // ),
+                                  icon: Icon(
+                                    FontAwesomeIcons.boltLightning,
                                     color: Colors.pinkAccent,
+                                    size: 27,
                                   ),
-                                  // icon: Icon(Icons.alarm,color: Colors.pinkAccent,size: 27,),
                                   // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
                                   label: 'Alerts')
                               : BottomNavigationBarItem(
-                                  icon: Image.asset(
-                                    'assets/images/alerts.png',
-                                    height: 28,
-                                    width: 26,
+                                  // icon: Image.asset(
+                                  //   'assets/images/alerts.png',
+                                  //   height: 28,
+                                  //   width: 26,
+                                  //   color: Colors.grey[600],
+                                  // ),
+                                  icon: Icon(
+                                    FontAwesomeIcons.boltLightning,
                                     color: Colors.grey[600],
+                                    size: 27,
                                   ),
-                                  // icon: Icon(Icons.alarm,color: Colors.grey[600],size: 27,),
                                   // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
                                   label: 'Alerts'),
                         ],

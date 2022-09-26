@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Appcolor {
+  static Color Citextbg = const Color.fromARGB(255, 231, 236, 242);
   static Color grey = const Color.fromARGB(255, 235, 235, 235);
   static Color background = const Color.fromARGB(255, 36, 0, 70);
   static Color darkviolte = const Color.fromARGB(255, 90, 24, 154);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../config.dart';
 import '../models/banner_model.dart';
@@ -65,16 +66,21 @@ class _TradingAndSponsoredState extends State<TradingAndSponsored> {
                             //   backgroundImage:
                             //       AssetImage('assets/images/award.png'),
                             // ),
+                            // Lottie.asset(banner[index].image,
+                            //     // 'assets/lottie_anim/nodata_box.json',
+                            //     repeat: true),
                             Container(
                               width: 50,
                               height: 50,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Colors.deepPurple),
-                              child: Image(
-                                  image: AssetImage(
-                                banner[index].image,
-                              )),
+                              child: Lottie.asset(banner[index].image,
+                                  repeat: true),
+                              // child: Image(
+                              //     image: AssetImage(
+                              //   banner[index].image,
+                              // )),
                             ),
                             const SizedBox(
                               width: 20,

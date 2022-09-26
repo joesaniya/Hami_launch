@@ -22,7 +22,7 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
   @override
   void initState() {
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () async {
       setState(() {
         _isLoading = false;
       });
@@ -130,11 +130,13 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
                                   //Hami
                                   Row(
                                     children: [
-                                      const Text(
+                                      Text(
                                         'HAMI',
                                         style: TextStyle(
                                             fontSize: 20,
-                                            color: Colors.black,
+                                            color: currentTheme.isDark
+                                                ? Colors.white
+                                                : Colors.black,
                                             fontWeight: FontWeight.w900),
                                       ),
                                       const SizedBox(
@@ -232,18 +234,20 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
                                         MainAxisAlignment.spaceAround,
                                     children: [
                                       Column(
-                                        children: const [
+                                        children: [
                                           Text(
                                             '120M',
                                             style: TextStyle(
-                                                color: Colors.black,
+                                                color: currentTheme.isDark
+                                                    ? Colors.white
+                                                    : Colors.black,
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w900),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
-                                          Text(
+                                          const Text(
                                             'Total Supply',
                                             style: TextStyle(
                                                 color: Colors.grey,
@@ -255,18 +259,20 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
 
                                       //deci
                                       Column(
-                                        children: const [
+                                        children: [
                                           Text(
                                             '18',
                                             style: TextStyle(
-                                                color: Colors.black,
+                                                color: currentTheme.isDark
+                                                    ? Colors.white
+                                                    : Colors.black,
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w900),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
-                                          Text(
+                                          const Text(
                                             'Decimal',
                                             style: TextStyle(
                                                 color: Colors.grey,
@@ -276,18 +282,20 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
                                         ],
                                       ),
                                       Column(
-                                        children: const [
+                                        children: [
                                           Text(
                                             '9',
                                             style: TextStyle(
-                                                color: Colors.black,
+                                                color: currentTheme.isDark
+                                                    ? Colors.white
+                                                    : Colors.black,
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w900),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
-                                          Text(
+                                          const Text(
                                             'Likes',
                                             style: TextStyle(
                                                 color: Colors.grey,
