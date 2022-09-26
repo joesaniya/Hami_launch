@@ -121,6 +121,15 @@ class _RootPageState extends State<RootPage> {
   bool _flag = true;
   int selectedIndex = 0;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  int _currentSelected = 0;
+  void onTappedBar(int index) {
+    index == 3
+        ? scaffoldKey.currentState.openDrawer()
+        : setState(() {
+            _currentSelected = index;
+          });
+  }
+
   List<Widget> pages = [
     const Homepage(),
     const SearchScreen(),
@@ -163,7 +172,7 @@ class _RootPageState extends State<RootPage> {
   void _onItemTapped(int index) {
     index == 3
         ?
-        // scaffoldKey.of(context).openDrawer()
+        // scaffoldKey.of(context).openEndDrawer()
         scaffoldKey.currentState.openEndDrawer()
         : setState(() {
             selectedIndex = index;
@@ -306,10 +315,10 @@ class _RootPageState extends State<RootPage> {
                   // SizedBox(width: 20,),
                   IconButton(
                       onPressed: () {
-                        // log('companyicon');
-                        // DialogHelper.exit(context);
-                        log('open');
-                        scaffoldKey.currentState.openEndDrawer();
+                        log('companyicon');
+                        DialogHelper.exit(context);
+                        // log('open');
+                        // scaffoldKey.currentState.openEndDrawer();
                         // Scaffold.of(context).openEndDrawer();
                       },
                       icon: Icon(
@@ -409,6 +418,33 @@ class _RootPageState extends State<RootPage> {
                         topRight: Radius.circular(40),
                         topLeft: Radius.circular(40),
                       ),
+                      // child: BottomNavigationBar(
+                      //   backgroundColor: Colors.blueGrey[900],
+                      //   type: BottomNavigationBarType.fixed,
+                      //   // onTap: onTappedBar,
+                      //   onTap: (int index) {
+                      //     index == 3
+                      //         ? scaffoldKey.currentState.openEndDrawer()
+                      //         : setState(() {
+                      //             _currentSelected = index;
+                      //           });
+                      //   },
+                      //   currentIndex: _currentSelected,
+                      //   showUnselectedLabels: true,
+                      //   unselectedItemColor: Colors.white,
+                      //   selectedItemColor:
+                      //       const Color.fromRGBO(10, 135, 255, 1),
+                      //   items: const <BottomNavigationBarItem>[
+                      //     BottomNavigationBarItem(
+                      //         icon: Icon(Icons.home), label: 'Home'),
+                      //     BottomNavigationBarItem(
+                      //         icon: Icon(Icons.search), label: 'Explore'),
+                      //     BottomNavigationBarItem(
+                      //         icon: Icon(Icons.device_hub), label: 'Channels'),
+                      //     BottomNavigationBarItem(
+                      //         icon: Icon(Icons.dehaze), label: 'More'),
+                      //   ],
+                      // ),
                       child: BottomNavigationBar(
                         elevation: 0.0,
                         selectedItemColor: Colors.pinkAccent.shade200,
@@ -428,7 +464,18 @@ class _RootPageState extends State<RootPage> {
                         //     selectedIndex = index;
                         //   });
                         // },
-                        onTap: _onItemTapped,
+
+                        onTap: (int index) {
+                          index == 3
+                              ?
+                              // scaffoldKey.of(context).openEndDrawer()
+                              scaffoldKey.currentState.openEndDrawer()
+                              : setState(() {
+                                  selectedIndex = index;
+                                });
+                        },
+
+                        // onTap: _onItemTapped,
                         items: [
                           (selectedIndex == 0)
                               ? BottomNavigationBarItem(
@@ -577,7 +624,13 @@ class _RootPageState extends State<RootPage> {
                   _flag
                       ? const SizedBox()
                       // : _showPopUpMenu(details.globalPosition);
-                      : _showPopupMenu(details.globalPosition);
+                      :
+                      // _showPopUpMenu(Offset.fromDirection(double.maxFinite));
+
+                      // const MyMenu(
+                      //     title: 'Menu at bottom',
+                      //     alignment: Alignment.bottomCenter);
+                      _showPopupMenu1(details.globalPosition);
                 });
               },
               child: FloatingActionButton(
@@ -606,41 +659,102 @@ class _RootPageState extends State<RootPage> {
     return pages.elementAt(selectedIndex);
   }
 
-  // _showPopUpMenu(Offset offset) async {
-  //   final screenSize = MediaQuery.of(context).size;
-  //   double left = offset.dx;
-  //   double top = offset.dy;
-  //   double right = screenSize.width - offset.dx;
-  //   double bottom = screenSize.height - offset.dy;
+  _showPopUpMenu(Offset offset) async {
+    final screenSize = MediaQuery.of(context).size;
+    double left = offset.dx;
+    double top = offset.dy;
+    double right = screenSize.width - offset.dx;
+    double bottom = screenSize.height - offset.dy;
 
-  //   await showMenu<MenuItemType>(
-  //     context: context,
-  //     position: const RelativeRect.fromLTRB(0, 650, 0, 20),
-  //     // position: const RelativeRect.fromLTRB(50, 700, 20, 20),
-  //     // position: RelativeRect.fromLTRB(left, top, right, bottom),
-  //     items: MenuItemType.values
-  //         .map((MenuItemType menuItemType) => PopupMenuItem<MenuItemType>(
-  //               value: menuItemType,
-  //               child: Text(getMenuItemString(menuItemType)),
-  //             ))
-  //         .toList(),
-  //   ).then((MenuItemType item) {
-  //     if (item == MenuItemType.EDIT) {
-  //       // here set your route
-  //     }
-  //   });
-  // }
+    await showMenu<MenuItemType>(
+      context: context,
+      position: const RelativeRect.fromLTRB(0, 650, 0, 20),
+      // position: const RelativeRect.fromLTRB(50, 700, 20, 20),
+      // position: RelativeRect.fromLTRB(left, top, right, bottom),
+      items: MenuItemType.values
+          .map((MenuItemType menuItemType) => PopupMenuItem<MenuItemType>(
+                value: menuItemType,
+                child: Text(getMenuItemString(menuItemType)),
+              ))
+          .toList(),
+    ).then((MenuItemType item) {
+      if (item == MenuItemType.EDIT) {
+        // here set your route
+      }
+    });
+  }
 
 //crt
-  void _showPopupMenu(Offset offset) async {
+  void _showPopupMenu1(Offset offset) async {
+    final screenSize = MediaQuery.of(context).size;
+    double left = offset.dx;
+    double top = offset.dy;
+    double right = screenSize.width - offset.dx;
+    double bottom = screenSize.height - offset.dy;
+    // final RenderBox renderBox =
+    //     scaffoldKey.currentContext?.findRenderObject() as RenderBox;
+    // final Size size = renderBox.size;
+    // final Offset offset = renderBox.localToGlobal(Offset.zero);
     await showMenu(
       context: context,
-      position: RelativeRect.fromLTRB(offset.dx, offset.dy, 100, 100),
+      //   position: RelativeRect.fromLTRB(
+      //   details.globalPosition.dx,
+      //   details.globalPosition.dy,
+      //   details.globalPosition.dx,
+      //   details.globalPosition.dy,
+      // ),
+      // position: RelativeRect.fromLTRB(offset.dx, offset.dy + size.height,
+      //     offset.dx + size.width, offset.dy + size.height),
+
+      position: const RelativeRect.fromLTRB(0, 650, 0, 20),
+
+      // position: RelativeRect.fromLTRB(offset.dx, offset.dy, 100, 100),
       items: [
         const PopupMenuItem<String>(value: 'Doge', child: Text('Doge')),
         const PopupMenuItem<String>(value: 'Lion', child: Text('Lion')),
       ],
       elevation: 8.0,
+    );
+  }
+}
+
+class MyMenu extends StatelessWidget {
+  final String title;
+  final Alignment alignment;
+  final Offset offset;
+  const MyMenu({
+    this.title,
+    this.alignment,
+    this.offset = const Offset(0, 0),
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: alignment,
+      child: PopupMenuButton<int>(
+        offset: offset,
+        itemBuilder: (context) => const [
+          PopupMenuItem<int>(
+              value: 0,
+              child: Text(
+                'Item 0',
+              )),
+          PopupMenuItem<int>(
+              value: 1,
+              child: Text(
+                'Item 1',
+              )),
+          PopupMenuItem<int>(
+              value: 2,
+              child: Text(
+                'Item 2',
+              )),
+        ],
+        child: Text(
+          title,
+          style: const TextStyle(color: Colors.red),
+        ),
+      ),
     );
   }
 }
