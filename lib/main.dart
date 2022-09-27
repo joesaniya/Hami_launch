@@ -118,6 +118,9 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  Offset buttonPosition;
+  Size buttonSize;
+
   bool _flag = true;
   int selectedIndex = 0;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -656,7 +659,29 @@ class _RootPageState extends State<RootPage> {
                       // const MyMenu(
                       //     title: 'Menu at bottom',
                       //     alignment: Alignment.bottomCenter);
+
                       _showPopupMenu1(details.globalPosition);
+                  // PopupMenuButton<int>(
+                  //     offset: const Offset(0, -380),
+                  //     itemBuilder: (context) => [
+                  //       const PopupMenuItem<int>(
+                  //           value: 0, child: Text('data')),
+                  //       const PopupMenuItem<int>(
+                  //           value: 1, child: Text('data')),
+                  //       const PopupMenuItem<int>(
+                  //           value: 2, child: Text('data')),
+                  //       const PopupMenuItem<int>(
+                  //           value: 3, child: Text('data')),
+                  //     ],
+                  //     child: Column(
+                  //       mainAxisSize: MainAxisSize.min,
+                  //       children: const <Widget>[
+                  //         Icon(Icons.more_vert, color: Colors.white60),
+                  //         // Text(translate('more'),
+                  //         //     style: Theme.of(context).textTheme.caption)
+                  //       ],
+                  //     ),
+                  //   );
                 });
               },
               child: FloatingActionButton(

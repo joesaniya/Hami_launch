@@ -24,8 +24,8 @@ class _TabwidgetState extends State<Tabwidget> with TickerProviderStateMixin {
     TabController tabController = TabController(length: 6, vsync: this);
     return Container(
       // height: 1600,
-      height: 500,
-      // height: MediaQuery.of(context).size.height * 0.99,
+      // height: 500,
+      height: MediaQuery.of(context).size.height * 0.7,
       width: double.infinity,
       color: currentTheme.isDark ? Colors.black : Colors.white,
       child: Column(

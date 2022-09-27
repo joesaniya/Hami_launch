@@ -391,6 +391,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                     ),
                                     //
                                     Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
