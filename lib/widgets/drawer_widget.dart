@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:hami_launch/Create/AMA_apply.dart';
 import 'package:hami_launch/Create/Lock_create.dart';
 import 'package:hami_launch/screen/Presale_screen.dart';
 import 'package:hami_launch/screen/auditing_partners.dart';
@@ -294,11 +295,11 @@ class MyWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20.0),
                   child: ListTile(
                     onTap: () {
-                      log('spotlight clicked');
+                      log('Apply For AMA clicked');
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SpotLightScreen()));
+                              builder: (context) => const AMAApply()));
                     },
                     leading: const Icon(
                       Icons.remove,
