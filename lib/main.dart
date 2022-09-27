@@ -738,13 +738,13 @@ class _RootPageState extends State<RootPage> {
 //crt
   void _showPopupMenu1(Offset offset) async {
     final screenSize = MediaQuery.of(context).size;
-    double left = offset.dx;
-    double top = offset.dy;
-    double right = screenSize.width - offset.dx;
-    double bottom = screenSize.height - offset.dy;
+    // double left = offset.dx;
+    // double top = offset.dy;
+    // double right = screenSize.width - offset.dx;
+    // double bottom = screenSize.height - offset.dy;
     // final RenderBox renderBox =
     //     scaffoldKey.currentContext?.findRenderObject() as RenderBox;
-    // final Size size = renderBox.size;
+    // // // final Size size = renderBox.size;
     // final Offset offset = renderBox.localToGlobal(Offset.zero);
     await showMenu(
       context: context,
@@ -754,10 +754,10 @@ class _RootPageState extends State<RootPage> {
       //   details.globalPosition.dx,
       //   details.globalPosition.dy,
       // ),
-      // position: RelativeRect.fromLTRB(offset.dx, offset.dy + size.height,
-      //     offset.dx + size.width, offset.dy + size.height),
+      position:
+          RelativeRect.fromLTRB(offset.dx - 75, offset.dy - 150, 125, 150),
 
-      position: const RelativeRect.fromLTRB(0, 650, 0, 20),
+      // position: const RelativeRect.fromLTRB(0, 0, 0, 20),
 
       // position: RelativeRect.fromLTRB(offset.dx, offset.dy, 100, 100),
       items: [
