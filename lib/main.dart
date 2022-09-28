@@ -16,8 +16,12 @@ import 'package:wave_transition/wave_transition.dart';
 import '/theme/appcolor.dart';
 import 'package:line_icons/line_icons.dart';
 
+import 'Create/AMA_apply.dart';
+import 'Create/LaunchPad_create.dart';
+import 'Create/Lock_create.dart';
 import 'Dialogbox/dialog_helper.dart';
 import 'insta_profile/profile_base_screen.dart';
+import 'screen/create_token.dart';
 import 'screen/search-screen.dart';
 import 'theme/theme_manager.dart';
 
@@ -767,45 +771,71 @@ class _RootPageState extends State<RootPage> {
 
       // position: RelativeRect.fromLTRB(offset.dx, offset.dy, 100, 100),
       items: [
-        const PopupMenuItem<String>(
+        PopupMenuItem<String>(
             value: 'Create Launchpad',
             child: ListTile(
-              leading: Icon(LineIcons.rocket),
-              title: Text('Create Launchpad',
+              onTap: () {
+                log('Create Launchpad clicked');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LaunchPadCreate()));
+              },
+              leading: const Icon(LineIcons.rocket),
+              title: const Text('Create Launchpad',
                   style: TextStyle(color: Colors.grey, height: 1.5
                       // decoration: TextDecoration.underline
                       )),
             )),
         //2
-        const PopupMenuItem<String>(
+        PopupMenuItem<String>(
             value: 'Create Token',
             child: ListTile(
-              leading: Icon(
+              onTap: () {
+                log('Create Token clicked');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CreateToken()));
+              },
+              leading: const Icon(
                 Icons.token_outlined,
               ),
-              title: Text('Create Token',
+              title: const Text('Create Token',
                   style: TextStyle(color: Colors.grey, height: 1.5
                       // decoration: TextDecoration.underline
                       )),
             )),
 
         //3
-        const PopupMenuItem<String>(
+        PopupMenuItem<String>(
             value: 'Create Lock',
             child: ListTile(
-              leading: Icon(LineIcons.lock),
-              title: Text('Create Lock',
+              onTap: () {
+                log('1st Create Lock clicked');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LockCreate()));
+              },
+              leading: const Icon(LineIcons.lock),
+              title: const Text('Create Lock',
                   style: TextStyle(color: Colors.grey, height: 1.5
                       // decoration: TextDecoration.underline
                       )),
             )),
 
         //4
-        const PopupMenuItem<String>(
+        PopupMenuItem<String>(
             value: 'Apply For AMA',
             child: ListTile(
-              leading: Icon(Icons.help),
-              title: Text('Apply For AMA',
+              onTap: () {
+                log('Apply For AMA clicked');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const AMAApply()));
+              },
+              leading: const Icon(Icons.help),
+              title: const Text('Apply For AMA',
                   style: TextStyle(color: Colors.grey, height: 1.5
                       // decoration: TextDecoration.underline
                       )),
