@@ -1,11 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:hami_launch/widgets/appbar_widget.dart';
 
 import '../Dialogbox/dialog_helper.dart';
+import '../config.dart';
 import '../theme/appcolor.dart';
-import '../widgets/animated_button.dart';
 
 class VerifyKYC extends StatefulWidget {
   const VerifyKYC({Key? key}) : super(key: key);
@@ -17,159 +16,122 @@ class VerifyKYC extends StatefulWidget {
 class _VerifyKYCState extends State<VerifyKYC> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold
-    (
-      backgroundColor: Appcolor.darkviolte6,
-    
-      appBar: MyAppBar(title: 'Verify KYC',),
-      body: SingleChildScrollView
-      (
+    return Scaffold(
+      // backgroundColor: Appcolor.darkviolte6,
+
+      // appBar: MyAppBar(title: 'Verify KYC',),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.grey.shade200,
+              ),
+            ),
+          ),
+          child: AppBar(
+            backgroundColor: currentTheme.isDark ? Colors.black : Colors.white,
+            // backgroundColor: Appcolor.darkviolte6,
+            // backgroundColor: currentTheme.isDark ? Colors.white : Colors.black,
+            title: Text(
+              "Verify KYC",
+              style: TextStyle(
+                  color: currentTheme.isDark ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.w600),
+            ),
+            centerTitle: false,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+            ),
+            elevation: 0,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.only(left:20.0,right: 20),
-          child: Column
-          (
-            children: 
-            [
-              Container
-              (
-                height: MediaQuery.of(context).size.height*0.20,
-                width: double.infinity,
-                decoration: BoxDecoration
-                (
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Appcolor.background
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left:20.0),
-                  child: Column
-                  (
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: 
-                    [
-                      Row
-                      (
-                        children: 
-                        [
-                          Icon
-                          (
-                            Icons.verified_outlined,
-                            color: Appcolor.darkviolte3,
-                          ),
-                          SizedBox
-                          (
-                            width: 10,
-                          ),
-                          Text
-                          (
-                            'Verify KYC',
-                            style: TextStyle
-                            (
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w900
-                            ),
-                          ),
-                          SizedBox
-                          (
-                            width: 5,
-                          ),
-                          Icon
-                          (
-                            Icons.help,
-                            color: Colors.grey,
-                          )
-                        ],
-                      ),
-                      Text
-                          (
-                            'Verify KYC',
-                            style: TextStyle
-                            (
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500
-                            ),
-                          ),
-
-                          AnimatedButton()
-
-                      // Container
-                      // (
-                      //   height: 40,
-                      //   width: 80,
-                      //   decoration: BoxDecoration
-                      //   (
-                      //     borderRadius: BorderRadius.all(Radius.circular(10)),
-                      //     color: Appcolor.darkviolte
-                      //   ),
-                      //   child: Center(
-                      //     child: Text
-                      //       (
-                      //         'Help',
-                      //         style: TextStyle
-                      //         (
-                      //           color: Colors.white,
-                      //           fontSize: 18,
-                      //           fontWeight: FontWeight.w500
-                      //         ),
-                      //       ),
-                      //   ),
-                      // )
-                    ],
-                  ),
-                ),
+          padding: const EdgeInsets.only(left: 20.0, right: 20),
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
               ),
-
-              SizedBox
-              (
-                height: 20,
-              ),
-              Container
-              (
-                height: MediaQuery.of(context).size.height*0.10,
+              Container(
+                height: MediaQuery.of(context).size.height * 0.10,
                 width: double.infinity,
-                decoration: BoxDecoration
-                (
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Appcolor.background
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  // color: Appcolor.background
+                  color: currentTheme.isDark ? Colors.black : Colors.white,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     GestureDetector(
-                      onTap: ()
-                      {
+                      onTap: () {
                         log('connectWallet');
                         DialogHelper.exit(context);
                       },
-                      child: Container
-                      (
+                      child: Container(
                         height: 40,
                         width: 160,
-                        decoration: BoxDecoration
-                          (
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Appcolor.darkviolte
-                          ),
-                          child: Center(
-                            child: Text
-                            (
-                              'Connect Wallet',
-                              style: TextStyle
-                              (
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: Appcolor.darkviolte),
+                        child: const Center(
+                          child: Text(
+                            'Connect Wallet',
+                            style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
-                                fontWeight: FontWeight.w500
-                              ),
-                            ),
+                                fontWeight: FontWeight.w500),
                           ),
+                        ),
                       ),
                     ),
                   ],
                 ),
-              )
+              ),
+
+              //dis
+              SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+
+              //disclaimer
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  // style: const TextStyle(color: Colors.black, fontSize: 36),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Disclaimer:',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            height: 1.5)),
+                    // const TextSpan(text: 'dot '),
+                    const TextSpan(
+                        text:
+                            'The information provided shall not in any way constitute a recommendation as to whether you should invest in any product discussed. We accept no liability for any loss occasioned to any person acting or refraining from action as a result of any material provided or published.',
+                        style: TextStyle(
+                            color: Colors.grey, fontSize: 16, height: 1.5
+                            // decoration: TextDecoration.underline
+                            ))
+                  ],
+                ),
+                // textScaleFactor: 0.5,
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.09),
             ],
           ),
         ),
@@ -177,5 +139,3 @@ class _VerifyKYCState extends State<VerifyKYC> {
     );
   }
 }
-
-

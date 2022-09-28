@@ -10,11 +10,11 @@ import 'package:hami_launch/config.dart';
 import 'package:hami_launch/drawerEnd.dart';
 import 'package:hami_launch/screen/AllLaunch.dart';
 import 'package:hami_launch/screen/homepage.dart';
+import 'package:hami_launch/widgets/Leading_drawer.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:wave_transition/wave_transition.dart';
 import '/theme/appcolor.dart';
 import 'package:line_icons/line_icons.dart';
-import '/widgets/drawer_widget.dart';
 
 import 'Dialogbox/dialog_helper.dart';
 import 'insta_profile/profile_base_screen.dart';
@@ -208,7 +208,8 @@ class _RootPageState extends State<RootPage> {
             ],
             borderRadius: BorderRadius.circular(30),
           ),
-          drawer: MyDrawer(),
+          drawer: const LeadingDrawer(),
+          // drawer: MyDrawer(),
           child: Scaffold(
             endDrawer: const DrawerEnd(),
             key: scaffoldKey,
@@ -754,17 +755,63 @@ class _RootPageState extends State<RootPage> {
       //   details.globalPosition.dx,
       //   details.globalPosition.dy,
       // ),
+
       position:
-          RelativeRect.fromLTRB(offset.dx - 75, offset.dy - 150, 125, 150),
+          RelativeRect.fromLTRB(offset.dx - 75, offset.dy - 280, 125, 150),
+
+      //crt
+      // position:
+      //     RelativeRect.fromLTRB(offset.dx - 75, offset.dy - 150, 125, 150),
 
       // position: const RelativeRect.fromLTRB(0, 0, 0, 20),
 
       // position: RelativeRect.fromLTRB(offset.dx, offset.dy, 100, 100),
       items: [
-        const PopupMenuItem<String>(value: 'Doge', child: Text('Doge')),
-        const PopupMenuItem<String>(value: 'Lion', child: Text('Lion')),
+        const PopupMenuItem<String>(
+            value: 'Create Launchpad',
+            child: ListTile(
+              leading: Icon(LineIcons.rocket),
+              title: Text('Create Launchpad',
+                  style: TextStyle(color: Colors.grey, height: 1.5
+                      // decoration: TextDecoration.underline
+                      )),
+            )),
+        //2
+        const PopupMenuItem<String>(
+            value: 'Create Token',
+            child: ListTile(
+              leading: Icon(
+                Icons.token_outlined,
+              ),
+              title: Text('Create Token',
+                  style: TextStyle(color: Colors.grey, height: 1.5
+                      // decoration: TextDecoration.underline
+                      )),
+            )),
+
+        //3
+        const PopupMenuItem<String>(
+            value: 'Create Lock',
+            child: ListTile(
+              leading: Icon(LineIcons.lock),
+              title: Text('Create Lock',
+                  style: TextStyle(color: Colors.grey, height: 1.5
+                      // decoration: TextDecoration.underline
+                      )),
+            )),
+
+        //4
+        const PopupMenuItem<String>(
+            value: 'Apply For AMA',
+            child: ListTile(
+              leading: Icon(Icons.help),
+              title: Text('Apply For AMA',
+                  style: TextStyle(color: Colors.grey, height: 1.5
+                      // decoration: TextDecoration.underline
+                      )),
+            )),
       ],
-      elevation: 8.0,
+      elevation: 2.0,
     );
   }
 }

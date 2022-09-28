@@ -63,8 +63,263 @@ class _AMAApplyState extends State<AMAApply> {
       setState(() {
         //for rebuilding the ui
         _selectedDate = pickedDate;
+        // log(_selectedDate.);
       });
     });
+  }
+
+  String? _setTime, _setDate;
+
+  String? _hour, _minute, _time;
+
+  String? dateTime;
+
+  DateTime selectedDate = DateTime.now();
+
+  TextEditingController timeinput = TextEditingController();
+  TextEditingController venue =
+      TextEditingController(text: 'Hami Telegram Group');
+  //text editing controller for text field
+
+  @override
+  void initState() {
+    timeinput.text = ""; //set the initial value of text field
+    super.initState();
+  }
+
+  var isVisible = false;
+
+  // TimeOfDay selectedTime = const TimeOfDay(hour: 00, minute: 00);
+
+  // final TextEditingController _dateController = TextEditingController();
+  // final TextEditingController _timeController = TextEditingController();
+
+  // //date
+  // Future<void> _selectDate(BuildContext context) async {
+  //   final DateTime? picked = await showDatePicker(
+  //       context: context,
+  //       initialDate: selectedDate,
+  //       initialDatePickerMode: DatePickerMode.day,
+  //       firstDate: DateTime(2015),
+  //       lastDate: DateTime(2101));
+  //   if (picked != null) {
+  //     setState(() {
+  //       selectedDate = picked;
+  //       _dateController.text = DateFormat.yMd().format(selectedDate);
+  //     });
+  //   }
+  // }
+
+  TextEditingController intialdateval = TextEditingController();
+  Future _selectDate() async {
+    DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2020),
+        lastDate: DateTime(2030));
+    if (picked != null) {
+      setState(() {
+        intialdateval.text = picked.toString();
+        log(intialdateval.text);
+      });
+    }
+    //  setState(
+    //    () => { data.registrationdate = picked.toString(),
+    //    intialdateval.text = picked.toString()
+    //    }
+    //  )
+  }
+
+  // //
+  // dateTimePickerWidget(BuildContext context) {
+  //   return DatePicker.showDatePicker(
+  //     context,
+  //     dateFormat: 'dd MMMM yyyy HH:mm',
+  //     initialDateTime: DateTime.now(),
+  //     minDateTime: DateTime(2000),
+  //     maxDateTime: DateTime(3000),
+  //     onMonthChangeStartWithFirstDate: true,
+  //     onConfirm: (dateTime, List<int> index) {
+  //       DateTime selectdate = dateTime;
+  //       final selIOS = DateFormat('dd-MMM-yyyy - HH:mm').format(selectdate);
+  //       print(selIOS);
+  //       log(selIOS);
+  //     },
+  //   );
+  // }
+
+  //add
+  final List<Widget> _cardList = [];
+
+  void _addCardWidget() {
+    setState(() {
+      log('add');
+      _cardList.add(_card());
+    });
+  }
+
+  Widget _card() {
+    return Container(
+      height: 500,
+      width: double.infinity,
+      color: Colors.transparent,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Guest 1 name*',
+              style: TextStyle(
+                fontSize: 18,
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+          TextFormField(
+              style: TextStyle(
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+              validator: (String? gname) {
+                if (gname!.isEmpty) {
+                  return '* Please enter Guest name';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                  errorStyle: TextStyle(color: Colors.orange),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  labelText: 'Guest1 Name',
+                  labelStyle: TextStyle(color: Colors.grey))),
+
+          //role
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Guest 1 Role*',
+              style: TextStyle(
+                fontSize: 18,
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+          TextFormField(
+              style: TextStyle(
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+              validator: (String? rname) {
+                if (rname!.isEmpty) {
+                  return '* Please enter role name';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                  errorStyle: TextStyle(color: Colors.orange),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  labelText: 'Guest1 Role',
+                  labelStyle: TextStyle(color: Colors.grey))),
+
+          //3
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Guest 1 Telegram Link*',
+              style: TextStyle(
+                fontSize: 18,
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+          TextFormField(
+              style: TextStyle(
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+              validator: (String? tename) {
+                if (tename!.isEmpty) {
+                  return '* Please enter Guest 1 Telegram Link';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                  errorStyle: TextStyle(color: Colors.orange),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  labelText: 'Guest 1 Telegram Link',
+                  labelStyle: TextStyle(color: Colors.grey))),
+
+          //4
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Guest 1 Twitter Link *',
+              style: TextStyle(
+                fontSize: 18,
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+          TextFormField(
+              style: TextStyle(
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+              validator: (String? tname) {
+                if (tname!.isEmpty) {
+                  return '* Please enter Guest name';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                  errorStyle: TextStyle(color: Colors.orange),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  labelText: 'Guest1 Twitter Link',
+                  labelStyle: TextStyle(color: Colors.grey))),
+        ],
+      ),
+    );
   }
 
   @override
@@ -115,7 +370,9 @@ class _AMAApplyState extends State<AMAApply> {
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.80,
+                  height: 1500,
+
+                  // height: MediaQuery.of(context).size.height * 0.80,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: currentTheme.isDark ? Colors.black : Colors.white,
@@ -221,6 +478,252 @@ class _AMAApplyState extends State<AMAApply> {
                               // },
                             ),
 
+                            //adddefa
+                            Container(
+                              height: 500,
+                              width: double.infinity,
+                              color: Colors.transparent,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Guest 1 name*',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  TextFormField(
+                                      style: TextStyle(
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                      validator: (String? gname) {
+                                        if (gname!.isEmpty) {
+                                          return '* Please enter Guest name';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: const InputDecoration(
+                                          errorStyle:
+                                              TextStyle(color: Colors.orange),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          labelText: 'Guest1 Name',
+                                          labelStyle:
+                                              TextStyle(color: Colors.grey))),
+
+                                  //role
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Guest 1 Role*',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  TextFormField(
+                                      style: TextStyle(
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                      validator: (String? rname) {
+                                        if (rname!.isEmpty) {
+                                          return '* Please enter role name';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: const InputDecoration(
+                                          errorStyle:
+                                              TextStyle(color: Colors.orange),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          labelText: 'Guest1 Role',
+                                          labelStyle:
+                                              TextStyle(color: Colors.grey))),
+
+                                  //3
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Guest 1 Telegram Link*',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  TextFormField(
+                                      style: TextStyle(
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                      validator: (String? tename) {
+                                        if (tename!.isEmpty) {
+                                          return '* Please enter Guest 1 Telegram Link';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: const InputDecoration(
+                                          errorStyle:
+                                              TextStyle(color: Colors.orange),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          labelText: 'Guest 1 Telegram Link',
+                                          labelStyle:
+                                              TextStyle(color: Colors.grey))),
+
+                                  //4
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Guest 1 Twitter Link *',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  TextFormField(
+                                      style: TextStyle(
+                                        color: currentTheme.isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                      validator: (String? tname) {
+                                        if (tname!.isEmpty) {
+                                          return '* Please enter Guest name';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: const InputDecoration(
+                                          errorStyle:
+                                              TextStyle(color: Colors.orange),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          labelText: 'Guest1 Twitter Link',
+                                          labelStyle:
+                                              TextStyle(color: Colors.grey))),
+                                ],
+                              ),
+                            ),
+
+                            //add
+
+                            Visibility(
+                              visible: isVisible,
+                              child: Container(
+                                height: 500,
+                                width: double.infinity,
+                                color: Colors.transparent,
+                                child: ListView.builder(
+                                    physics: const ScrollPhysics(),
+                                    itemCount: _cardList.length,
+                                    itemBuilder: (context, index) {
+                                      return _cardList[index];
+                                    }),
+                              ),
+                            ),
+
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isVisible = true;
+                                });
+                                _addCardWidget();
+                              },
+                              // onTap: _addCardWidget,
+                              // onTap: (){
+
+                              // },
+                              child: const Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  'Add another Guest',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.deepPurple),
+                                ),
+                              ),
+                            ),
+
                             //date
                             Align(
                               alignment: Alignment.centerLeft,
@@ -243,65 +746,78 @@ class _AMAApplyState extends State<AMAApply> {
                               ),
                             ),
 
-                            GestureDetector(
-                              onTap: _pickDateDialog,
-                              child: Container(
-                                width: double.infinity,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border:
-                                      Border.all(width: 2, color: Colors.grey),
-                                  color: Colors.transparent,
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      _selectedDate ==
-                                              null //ternary expression to check if date is null
-                                          ? 'No date was chosen!'
-                                          :
-                                          // 'Your Selected Date: $_selectedDate',
-                                          'Picked Date: ',
-                                      // ${DateFormat.yMMMd().format(_selectedDate)}',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: currentTheme.isDark
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    ),
-                                    // Text(
-                                    //   'Hami Telegram Group',
-                                    //   style: TextStyle(
-                                    //     fontSize: 18,
-                                    //     color: currentTheme.isDark
-                                    //         ? Colors.white
-                                    //         : Colors.black,
-                                    //   ),
-                                    // ),
-                                    const Icon(
-                                      Icons.arrow_circle_down,
-                                      color: Colors.grey,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
+                            // GestureDetector(
+                            //   onTap: _pickDateDialog,
+                            //   // onTap: dateTimePickerWidget(context),
+                            //   child: Container(
+                            //     width: double.infinity,
+                            //     height: 45,
+                            //     decoration: BoxDecoration(
+                            //       borderRadius: BorderRadius.circular(8),
+                            //       border:
+                            //           Border.all(width: 2, color: Colors.grey),
+                            //       color: Colors.transparent,
+                            //     ),
+                            //     padding: const EdgeInsets.all(10),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceBetween,
+                            //       children: [
+                            //         Text(
+                            //           // _selectedDate ==
+                            //           //         null //ternary expression to check if date is null
+                            //           //     ? 'No date was chosen!'
+                            //           //     :
+                            //           //     // 'Your Selected Date: $_selectedDate',
+                            //           //     'Picked Date: ',
+                            //           // // ${DateFormat.yMMMd().format(_selectedDate)}',
+                            //           'hi',
+                            //           style: TextStyle(
+                            //             fontSize: 18,
+                            //             color: currentTheme.isDark
+                            //                 ? Colors.white
+                            //                 : Colors.black,
+                            //           ),
+                            //         ),
+                            //         // Text(
+                            //         //   'Hami Telegram Group',
+                            //         //   style: TextStyle(
+                            //         //     fontSize: 18,
+                            //         //     color: currentTheme.isDark
+                            //         //         ? Colors.white
+                            //         //         : Colors.black,
+                            //         //   ),
+                            //         // ),
+                            //         const Icon(
+                            //           Icons.arrow_circle_down,
+                            //           color: Colors.grey,
+                            //         )
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
 
+                            //date
                             TextFormField(
-                                controller: _datecont,
-                                style: TextStyle(
-                                  color: currentTheme.isDark
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                                validator: (String? address) {
-                                  if (address!.isEmpty) {
-                                    return '* Please enter date and time';
+                                // focusNode: _focusNode,
+                                keyboardType: TextInputType.phone,
+                                autocorrect: false,
+                                controller: intialdateval,
+                                onSaved: (value) {
+                                  intialdateval =
+                                      value as TextEditingController;
+                                  //  data.registrationdate = value;
+                                },
+                                onTap: () {
+                                  _selectDate();
+                                  FocusScope.of(context)
+                                      .requestFocus(FocusNode());
+                                },
+                                maxLines: 1,
+                                //initialValue: 'Aseem Wangoo',
+                                validator: (date) {
+                                  if (date!.isEmpty || date.isEmpty) {
+                                    return 'Choose Date';
                                   }
                                   return null;
                                 },
@@ -323,7 +839,92 @@ class _AMAApplyState extends State<AMAApply> {
                                       borderSide: BorderSide(
                                           color: Colors.grey, width: 1.0),
                                     ),
-                                    labelText: 'Transaction Id',
+                                    labelText: 'Enter date',
+                                    labelStyle: TextStyle(color: Colors.grey))),
+
+                            //time
+                            TextFormField(
+                                // focusNode: _focusNode,
+                                keyboardType: TextInputType.phone,
+                                autocorrect: false,
+                                controller: timeinput,
+                                onSaved: (value) {
+                                  timeinput = value as TextEditingController;
+                                  //  data.registrationdate = value;
+                                },
+                                onTap: () {
+                                  // _selectDate();
+                                  showTimePicker(
+                                          context: context,
+                                          initialTime: TimeOfDay.now())
+                                      .then((dynamic value) {
+                                    setState(() {
+                                      timeinput.text = value.format(context);
+                                      log(value.format(context).toString());
+                                    });
+                                  });
+                                  FocusScope.of(context)
+                                      .requestFocus(FocusNode());
+                                },
+                                // onTap: () async {
+                                //   TimeOfDay? pickedTime = await showTimePicker(
+                                //     initialTime: TimeOfDay.now(),
+                                //     context: context,
+                                //   );
+                                //   if (pickedTime != null) {
+                                //     log('pi');
+                                //     print(pickedTime
+                                //         .format(context)); //output 10:51 PM
+                                //     DateTime parsedTime = DateFormat.jm().parse(
+                                //         pickedTime.format(context).toString());
+                                //     //converting to DateTime so that we can further format on different pattern.
+                                //     print(
+                                //         parsedTime); //output 1970-01-01 22:53:00.000
+                                //     String formattedTime =
+                                //         DateFormat('HH:mm:ss')
+                                //             .format(parsedTime);
+                                //     print(formattedTime); //output 14:59:00
+                                //     //DateFormat() is from intl package, you can format the time on any pattern you need.
+
+                                //     setState(() {
+                                //       timeinput.text =
+                                //           formattedTime; //set the value of text field.
+                                //       log(timeinput.text);
+                                //     });
+                                //   } else {
+                                //     print("Time is not selected");
+                                //   }
+                                //   // _selectDate();
+                                //   FocusScope.of(context)
+                                //       .requestFocus(FocusNode());
+                                // },
+                                maxLines: 1,
+                                //initialValue: 'Aseem Wangoo',
+                                validator: (date) {
+                                  if (date!.isEmpty || date.isEmpty) {
+                                    return 'Choose Time';
+                                  }
+                                  return null;
+                                },
+                                decoration: const InputDecoration(
+                                    errorStyle: TextStyle(color: Colors.orange),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    labelText: 'Enter date',
                                     labelStyle: TextStyle(color: Colors.grey))),
                             //venue
                             Align(
@@ -338,26 +939,69 @@ class _AMAApplyState extends State<AMAApply> {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: double.infinity,
-                              height: 45,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border:
-                                    Border.all(width: 2, color: Colors.grey),
-                                color: Colors.transparent,
-                              ),
-                              padding: const EdgeInsets.all(10),
-                              child: Text(
-                                'Hami Telegram Group',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: currentTheme.isDark
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                              ),
-                            ),
+
+                            TextFormField(
+                                // focusNode: _focusNode,
+                                //keyboardType: TextInputType.phone,
+                                autocorrect: false,
+                                controller: venue,
+                                onSaved: (value) {
+                                  venue = value as TextEditingController;
+                                  //  data.registrationdate = value;
+                                },
+                                onTap: () {
+                                  // _selectDate();
+                                  // FocusScope.of(context)
+                                  //     .requestFocus(FocusNode());
+                                },
+                                maxLines: 1,
+                                //initialValue: 'Aseem Wangoo',
+                                validator: (date) {
+                                  if (date!.isEmpty || date.isEmpty) {
+                                    return 'Choose Date';
+                                  }
+                                  return null;
+                                },
+                                decoration: const InputDecoration(
+                                    errorStyle: TextStyle(color: Colors.orange),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0),
+                                    ),
+                                    // labelText: 'Enter date',
+                                    labelStyle: TextStyle(color: Colors.grey))),
+                            // Container(
+                            //   width: double.infinity,
+                            //   height: 45,
+                            //   decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(8),
+                            //     border:
+                            //         Border.all(width: 2, color: Colors.grey),
+                            //     color: Colors.transparent,
+                            //   ),
+                            //   padding: const EdgeInsets.all(10),
+                            //   child: Text(
+                            //     'Hami Telegram Group',
+                            //     style: TextStyle(
+                            //       fontSize: 18,
+                            //       color: currentTheme.isDark
+                            //           ? Colors.white
+                            //           : Colors.black,
+                            //     ),
+                            //   ),
+                            // ),
 
                             //tr
                             Align(
