@@ -19,13 +19,16 @@ class _DrawerEndState extends State<DrawerEnd> {
     return Drawer(
       child: Column(
         children: [
-          const SizedBox(
-            height: 25,
+          // const SizedBox(
+          //   height: 25,
+          // ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
           ),
           Container(
             height: 30,
             width: double.infinity,
-            color: Colors.grey,
+            color: Colors.grey.shade100,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

@@ -2,9 +2,9 @@
 
 import 'dart:developer';
 
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/config.dart';
 import 'package:hami_launch/drawerEnd.dart';
@@ -21,7 +21,6 @@ import 'Create/AMA_apply.dart';
 import 'Create/LaunchPad_create.dart';
 import 'Create/Lock_create.dart';
 import 'Dialogbox/dialog_helper.dart';
-import 'insta_profile/profile_base_screen.dart';
 import 'screen/create_token.dart';
 import 'screen/search-screen.dart';
 import 'theme/theme_manager.dart';
@@ -378,199 +377,243 @@ class _RootPageState extends State<RootPage> {
               ),
             ),
             body: getBody(),
-            bottomNavigationBar: Theme(
-              data: Theme.of(context).copyWith(
-                // sets the background color of the `BottomNavigationBar`
-                // canvasColor: Appcolor.darkviolte6,
-                canvasColor: Colors.yellow,
-                splashColor: Colors.pinkAccent,
-                highlightColor: Colors.purpleAccent,
-                hoverColor: Colors.deepPurple,
-              ),
-              child: _isLoading
-                  ?
+            // bottomNavigationBar: Theme(
+            //   data: Theme.of(context).copyWith(
+            //     // sets the background color of the `BottomNavigationBar`
+            //     // canvasColor: Appcolor.darkviolte6,
+            //     canvasColor: Colors.yellow,
+            //     splashColor: Colors.pinkAccent,
+            //     highlightColor: Colors.purpleAccent,
+            //     hoverColor: Colors.deepPurple,
+            //   ),
+            //   child: _isLoading
+            //       ?
 
-                  // ShimmerSkeleton()->shimmer
+            //       // ShimmerSkeleton()->shimmer
 
-                  Center(
-                      child: SpinKitDualRing(
-                        color: Colors.pinkAccent.shade200,
-                      ),
-                    )
+            //       Center(
+            //           child: SpinKitDualRing(
+            //             color: Colors.pinkAccent.shade200,
+            //           ),
+            //         )
 
-                  // ListView.separated(
-                  //         itemCount: 5,
-                  //         itemBuilder: (context, index) => ReuseSkelton(),
-                  //         separatorBuilder: (context, index) =>
-                  //             const SizedBox(height: 16),
-                  //       )
-                  : ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(40),
-                        topLeft: Radius.circular(40),
-                      ),
-                      // child: BottomNavigationBar(
-                      //   backgroundColor: Colors.blueGrey[900],
-                      //   type: BottomNavigationBarType.fixed,
-                      //   // onTap: onTappedBar,
-                      //   onTap: (int index) {
-                      //     index == 3
-                      //         ? scaffoldKey.currentState.openEndDrawer()
-                      //         : setState(() {
-                      //             _currentSelected = index;
-                      //           });
-                      //   },
-                      //   currentIndex: _currentSelected,
-                      //   showUnselectedLabels: true,
-                      //   unselectedItemColor: Colors.white,
-                      //   selectedItemColor:
-                      //       const Color.fromRGBO(10, 135, 255, 1),
-                      //   items: const <BottomNavigationBarItem>[
-                      //     BottomNavigationBarItem(
-                      //         icon: Icon(Icons.home), label: 'Home'),
-                      //     BottomNavigationBarItem(
-                      //         icon: Icon(Icons.search), label: 'Explore'),
-                      //     BottomNavigationBarItem(
-                      //         icon: Icon(Icons.device_hub), label: 'Channels'),
-                      //     BottomNavigationBarItem(
-                      //         icon: Icon(Icons.dehaze), label: 'More'),
-                      //   ],
-                      // ),
-                      child: BottomNavigationBar(
-                        elevation: 0.0,
-                        selectedItemColor: Colors.deepPurple,
-                        backgroundColor:
-                            currentTheme.isDark ? Colors.black : Colors.white,
-                        // backgroundColor: Appcolor.darkviolte6,
-                        unselectedFontSize: 15.0,
-                        selectedFontSize: 18.0,
-                        showSelectedLabels: true,
-                        showUnselectedLabels: true,
-                        // selectedIconTheme: Theme.of(context).copyWith(),
-                        // items: items,
+            //       // ListView.separated(
+            //       //         itemCount: 5,
+            //       //         itemBuilder: (context, index) => ReuseSkelton(),
+            //       //         separatorBuilder: (context, index) =>
+            //       //             const SizedBox(height: 16),
+            //       //       )
+            //       : ClipRRect(
+            //           borderRadius: const BorderRadius.only(
+            //             topRight: Radius.circular(40),
+            //             topLeft: Radius.circular(40),
+            //           ),
+            //           // child: BottomNavigationBar(
+            //           //   backgroundColor: Colors.blueGrey[900],
+            //           //   type: BottomNavigationBarType.fixed,
+            //           //   // onTap: onTappedBar,
+            //           //   onTap: (int index) {
+            //           //     index == 3
+            //           //         ? scaffoldKey.currentState.openEndDrawer()
+            //           //         : setState(() {
+            //           //             _currentSelected = index;
+            //           //           });
+            //           //   },
+            //           //   currentIndex: _currentSelected,
+            //           //   showUnselectedLabels: true,
+            //           //   unselectedItemColor: Colors.white,
+            //           //   selectedItemColor:
+            //           //       const Color.fromRGBO(10, 135, 255, 1),
+            //           //   items: const <BottomNavigationBarItem>[
+            //           //     BottomNavigationBarItem(
+            //           //         icon: Icon(Icons.home), label: 'Home'),
+            //           //     BottomNavigationBarItem(
+            //           //         icon: Icon(Icons.search), label: 'Explore'),
+            //           //     BottomNavigationBarItem(
+            //           //         icon: Icon(Icons.device_hub), label: 'Channels'),
+            //           //     BottomNavigationBarItem(
+            //           //         icon: Icon(Icons.dehaze), label: 'More'),
+            //           //   ],
+            //           // ),
+            //           child: BottomNavigationBar(
+            //             elevation: 0.0,
+            //             selectedItemColor: Colors.deepPurple,
+            //             backgroundColor:
+            //                 currentTheme.isDark ? Colors.black : Colors.white,
+            //             // backgroundColor: Appcolor.darkviolte6,
+            //             unselectedFontSize: 15.0,
+            //             selectedFontSize: 18.0,
+            //             showSelectedLabels: true,
+            //             showUnselectedLabels: true,
+            //             // selectedIconTheme: Theme.of(context).copyWith(),
+            //             // items: items,
 
-                        //crt
-                        // onTap: (index) {
-                        //   setState(() {
-                        //     selectedIndex = index;
-                        //   });
-                        // },
+            //             //crt
+            //             // onTap: (index) {
+            //             //   setState(() {
+            //             //     selectedIndex = index;
+            //             //   });
+            //             // },
 
-                        onTap: (int index) {
-                          index == 3
-                              ?
-                              // scaffoldKey.of(context).openEndDrawer()
-                              scaffoldKey.currentState.openEndDrawer()
-                              : setState(() {
-                                  selectedIndex = index;
-                                });
-                        },
+            //             onTap: (int index) {
+            //               index == 3
+            //                   ?
+            //                   // scaffoldKey.of(context).openEndDrawer()
+            //                   scaffoldKey.currentState.openEndDrawer()
+            //                   : setState(() {
+            //                       selectedIndex = index;
+            //                     });
+            //             },
 
-                        // onTap: _onItemTapped,
-                        items: [
-                          (selectedIndex == 0)
-                              ? const BottomNavigationBarItem(
-                                  icon: Icon(
-                                    LineIcons.home,
-                                    color: Colors.deepPurple,
-                                    size: 27,
-                                  ),
-                                  // icon: SvgPicture.asset(
-                                  //     'assets/icons/home-filled.svg',
-                                  //     color: Colors.pinkAccent),
-                                  label: 'Home')
-                              : BottomNavigationBarItem(
-                                  icon: Icon(
-                                    LineIcons.home,
-                                    color: Colors.grey[600],
-                                    size: 27,
-                                  ),
-                                  // icon: SvgPicture.asset(
-                                  //     'assets/icons/home.svg',
-                                  //     color: Colors.grey[600]),
-                                  label: 'Home'),
-                          (selectedIndex == 1)
-                              ? const BottomNavigationBarItem(
-                                  icon: Icon(
-                                    LineIcons.search,
-                                    color: Colors.deepPurple,
-                                    size: 27,
-                                  ),
-                                  // icon: SvgPicture.asset(
-                                  //     'assets/icons/search-filled.svg',
-                                  //     color: Colors.pinkAccent,
-                                  //     height: 28,
-                                  //     width: 26),
-                                  // icon: Icon(LineIcons.search,color: Colors.pinkAccent,size: 27,),
-                                  label: 'Search')
-                              : BottomNavigationBarItem(
-                                  icon: Icon(
-                                    LineIcons.search,
-                                    color: Colors.grey[600],
-                                    size: 27,
-                                  ),
-                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600], height: 28, width: 26),
-                                  label: 'Search'),
-                          (selectedIndex == 2)
-                              ? const BottomNavigationBarItem(
-                                  // icon: Image.asset('assets/images/notifications-filled.png',height: 28,width: 26,color: Colors.pinkAccent,),
-                                  icon: Icon(
-                                    // FontAwesomeIcons.rocket,
-                                    // LineIcons.bell,
-                                    LineIcons.rocket,
-                                    color: Colors.deepPurple,
-                                    size: 27,
-                                  ),
-                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
-                                  label: 'Launchpads')
-                              : BottomNavigationBarItem(
-                                  // icon: Image.asset('assets/images/notifications.png',height: 28,width: 26,color: Colors.grey[600],),
-                                  icon: Icon(
-                                    LineIcons.rocket,
-                                    // FontAwesomeIcons.rocket,
-                                    color: Colors.grey[600],
-                                    size: 27,
-                                  ),
-                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
-                                  label: 'Launchpads'),
-                          (selectedIndex == 3)
-                              ? const BottomNavigationBarItem(
-                                  // icon: Image.asset(
-                                  //   'assets/images/alerts-fillled.png',
-                                  //   height: 28,
-                                  //   width: 26,
-                                  //   color: Colors.pinkAccent,
-                                  // ),
-                                  icon: Icon(
-                                    FontAwesomeIcons.boltLightning,
-                                    color: Colors.pinkAccent,
-                                    size: 27,
-                                  ),
-                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
-                                  label: 'Alerts')
-                              : BottomNavigationBarItem(
-                                  // icon: Image.asset(
-                                  //   'assets/images/alerts.png',
-                                  //   height: 28,
-                                  //   width: 26,
-                                  //   color: Colors.grey[600],
-                                  // ),
-                                  icon: Icon(
-                                    FontAwesomeIcons.boltLightning,
-                                    color: Colors.grey[600],
-                                    size: 27,
-                                  ),
-                                  // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
-                                  label: 'Alerts'),
-                        ],
+            //             // onTap: _onItemTapped,
+            //             items: [
+            //               (selectedIndex == 0)
+            //                   ? const BottomNavigationBarItem(
+            //                       icon: Icon(
+            //                         LineIcons.home,
+            //                         color: Colors.deepPurple,
+            //                         size: 27,
+            //                       ),
+            //                       // icon: SvgPicture.asset(
+            //                       //     'assets/icons/home-filled.svg',
+            //                       //     color: Colors.pinkAccent),
+            //                       label: 'Home')
+            //                   : BottomNavigationBarItem(
+            //                       icon: Icon(
+            //                         LineIcons.home,
+            //                         color: Colors.grey[600],
+            //                         size: 27,
+            //                       ),
+            //                       // icon: SvgPicture.asset(
+            //                       //     'assets/icons/home.svg',
+            //                       //     color: Colors.grey[600]),
+            //                       label: 'Home'),
+            //               (selectedIndex == 1)
+            //                   ? const BottomNavigationBarItem(
+            //                       icon: Icon(
+            //                         LineIcons.search,
+            //                         color: Colors.deepPurple,
+            //                         size: 27,
+            //                       ),
+            //                       // icon: SvgPicture.asset(
+            //                       //     'assets/icons/search-filled.svg',
+            //                       //     color: Colors.pinkAccent,
+            //                       //     height: 28,
+            //                       //     width: 26),
+            //                       // icon: Icon(LineIcons.search,color: Colors.pinkAccent,size: 27,),
+            //                       label: 'Search')
+            //                   : BottomNavigationBarItem(
+            //                       icon: Icon(
+            //                         LineIcons.search,
+            //                         color: Colors.grey[600],
+            //                         size: 27,
+            //                       ),
+            //                       // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600], height: 28, width: 26),
+            //                       label: 'Search'),
+            //               (selectedIndex == 2)
+            //                   ? const BottomNavigationBarItem(
+            //                       // icon: Image.asset('assets/images/notifications-filled.png',height: 28,width: 26,color: Colors.pinkAccent,),
+            //                       icon: Icon(
+            //                         // FontAwesomeIcons.rocket,
+            //                         // LineIcons.bell,
+            //                         LineIcons.rocket,
+            //                         color: Colors.deepPurple,
+            //                         size: 27,
+            //                       ),
+            //                       // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
+            //                       label: 'Launchpads')
+            //                   : BottomNavigationBarItem(
+            //                       // icon: Image.asset('assets/images/notifications.png',height: 28,width: 26,color: Colors.grey[600],),
+            //                       icon: Icon(
+            //                         LineIcons.rocket,
+            //                         // FontAwesomeIcons.rocket,
+            //                         color: Colors.grey[600],
+            //                         size: 27,
+            //                       ),
+            //                       // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
+            //                       label: 'Launchpads'),
+            //               (selectedIndex == 3)
+            //                   ? const BottomNavigationBarItem(
+            //                       // icon: Image.asset(
+            //                       //   'assets/images/alerts-fillled.png',
+            //                       //   height: 28,
+            //                       //   width: 26,
+            //                       //   color: Colors.pinkAccent,
+            //                       // ),
+            //                       icon: Icon(
+            //                         FontAwesomeIcons.boltLightning,
+            //                         color: Colors.pinkAccent,
+            //                         size: 27,
+            //                       ),
+            //                       // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.pinkAccent),
+            //                       label: 'Alerts')
+            //                   : BottomNavigationBarItem(
+            //                       // icon: Image.asset(
+            //                       //   'assets/images/alerts.png',
+            //                       //   height: 28,
+            //                       //   width: 26,
+            //                       //   color: Colors.grey[600],
+            //                       // ),
+            //                       icon: Icon(
+            //                         FontAwesomeIcons.boltLightning,
+            //                         color: Colors.grey[600],
+            //                         size: 27,
+            //                       ),
+            //                       // icon: SvgPicture.asset('assets/icons/home-filled.svg', color: Colors.grey[600]),
+            //                       label: 'Alerts'),
+            //             ],
 
-                        // selectedItemColor: Appcolor.darkviolte4,
-                        unselectedItemColor: Colors.grey,
-                        // showUnselectedLabels: true,
-                        currentIndex: selectedIndex,
-                        type: BottomNavigationBarType.fixed,
-                      ),
-                    ),
+            //             // selectedItemColor: Appcolor.darkviolte4,
+            //             unselectedItemColor: Colors.grey,
+            //             // showUnselectedLabels: true,
+            //             currentIndex: selectedIndex,
+            //             type: BottomNavigationBarType.fixed,
+            //           ),
+            //         ),
+            // ),
+            bottomNavigationBar: BottomNavyBar(
+              items: <BottomNavyBarItem>[
+                BottomNavyBarItem(
+                  activeColor: Colors.deepPurple,
+                  inactiveColor: Colors.grey,
+                  icon: const Icon(Icons.home),
+                  title: const Text('Home'),
+                ),
+                BottomNavyBarItem(
+                  activeColor: Colors.deepPurple,
+                  inactiveColor: Colors.grey,
+                  icon: const Icon(Icons.search),
+                  title: const Text('Search'),
+                ),
+                BottomNavyBarItem(
+                  activeColor: Colors.deepPurple,
+                  inactiveColor: Colors.grey,
+                  icon: const Icon(
+                    LineIcons.rocket,
+                  ),
+                  title: const Text('Launchpads'),
+                ),
+                BottomNavyBarItem(
+                  activeColor: Colors.deepPurple,
+                  inactiveColor: Colors.grey,
+                  icon: const Icon(
+                    FontAwesomeIcons.boltLightning,
+                  ),
+                  title: const Text('Alerts'),
+                  // activeColor: Colors.deepPurple,
+                  // inactiveColor: Colors.lightGreenAccent,
+                ),
+              ],
+              selectedIndex: selectedIndex,
+              onItemSelected: (int index) {
+                index == 3
+                    ?
+                    // scaffoldKey.of(context).openEndDrawer()
+                    scaffoldKey.currentState.openEndDrawer()
+                    : setState(() {
+                        selectedIndex = index;
+                      });
+              },
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
