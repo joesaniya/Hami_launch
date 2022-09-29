@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:wave_transition/wave_transition.dart';
 import '../config.dart';
 import '../screen/token-detail.dart';
+import '../screen/view_detail_token.dart';
 import '/theme/appcolor.dart';
 
 import '../models/job.dart';
@@ -39,215 +39,214 @@ class _ButtonHomeState extends State<ButtonHome> {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 8.0, bottom: 8),
-          child: Slidable(
-            startActionPane:
-                ActionPane(motion: const StretchMotion(), children: [
-              SlidableAction(
-                flex: 1,
-                onPressed: ((context) {}),
-                icon: Icons.save,
-                backgroundColor: Colors.greenAccent,
-                label: 'Add Your Token',
-                spacing: 20,
-              ),
-              SlidableAction(
-                flex: 2,
-                onPressed: ((context) {}),
-                icon: Icons.wallet,
-                backgroundColor: Colors.pinkAccent,
-                label: 'Add Your Wallet',
-                spacing: 20,
-              )
-            ]),
-            endActionPane: ActionPane(motion: const StretchMotion(), children: [
-              SlidableAction(
-                onPressed: ((context) {}),
-                icon: Icons.delete,
-                backgroundColor: Colors.redAccent,
-              )
-            ]),
-            child: GestureDetector(
-              // onTap: ()
-              // {
-              //   log('animation');
-              //   Navigator.of(context).push(
-              //     PageRouteBuilder(
-              //       pageBuilder: (context, animation, secondaryAnimation) {
-              //         return ToenDetail(
-              //           transitionAnimation: animation,
-              //           name:shift.heading
-              //         );
-              //       },
-              //       transitionDuration: Duration(seconds: 1),
-              //     ),
-              //   );
-              // },
-              onTap: () {
-                log('token detail clicked');
-                Navigator.push(
-                    context,
-                    WaveTransition(
-                        child: ToenDetail(name: shift.heading),
-                        center: const FractionalOffset(0.90, 0.90),
-                        duration: const Duration(milliseconds: 3000) // optional
-                        ));
-                // Navigator.push(context, MaterialPageRoute(builder: ((context) =>
-                // // ToenDetail()
-                // ToenDetail(name:shift.heading)
-                // )
+          // startActionPane:
+          //       ActionPane(motion: const StretchMotion(), children: [
+          //     SlidableAction(
+          //       flex: 1,
+          //       onPressed: ((context) {}),
+          //       icon: Icons.save,
+          //       backgroundColor: Colors.greenAccent,
+          //       label: 'Add Your Token',
+          //       spacing: 20,
+          //     ),
+          //     SlidableAction(
+          //       flex: 2,
+          //       onPressed: ((context) {}),
+          //       icon: Icons.wallet,
+          //       backgroundColor: Colors.pinkAccent,
+          //       label: 'Add Your Wallet',
+          //       spacing: 20,
+          //     )
+          //   ]),
+          //   endActionPane: ActionPane(motion: const StretchMotion(), children: [
+          //     SlidableAction(
+          //       onPressed: ((context) {}),
+          //       icon: Icons.delete,
+          //       backgroundColor: Colors.redAccent,
+          //     )
+          //   ]),
+          child: GestureDetector(
+            // onTap: ()
+            // {
+            //   log('animation');
+            //   Navigator.of(context).push(
+            //     PageRouteBuilder(
+            //       pageBuilder: (context, animation, secondaryAnimation) {
+            //         return ToenDetail(
+            //           transitionAnimation: animation,
+            //           name:shift.heading
+            //         );
+            //       },
+            //       transitionDuration: Duration(seconds: 1),
+            //     ),
+            //   );
+            // },
+            onTap: () {
+              log('token detail clicked');
+              Navigator.push(
+                  context,
+                  WaveTransition(
+                      child: const ViewToken(),
+                      // child: ToenDetail(name: shift.heading),
+                      center: const FractionalOffset(0.90, 0.90),
+                      duration: const Duration(seconds: 1
+                          // milliseconds: 3000
+                          ) // optional
+                      ));
+              // Navigator.push(context, MaterialPageRoute(builder: ((context) =>
+              // // ToenDetail()
+              // ToenDetail(name:shift.heading)
+              // )
 
-                // )
-                // );
-              },
-              child: Container(
-                height: 40,
-                width: double.infinity,
-                color: Colors.transparent,
-                child: Row(
-                  children: [
-                    Container(
-                      height: 20,
-                      width: 40,
-                      color: Colors.transparent,
+              // )
+              // );
+            },
+            child: Container(
+              height: 40,
+              width: double.infinity,
+              color: Colors.transparent,
+              child: Row(
+                children: [
+                  Container(
+                    height: 20,
+                    width: 40,
+                    color: Colors.transparent,
+                    child: Text(
+                      shift.heading,
+                      style: TextStyle(
+                        color:
+                            currentTheme.isDark ? Colors.white : Colors.black,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    height: 20,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        color: Appcolor.darkviolte1,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20))),
+                    child: Center(
+                        child: Text(
+                      shift.subheading,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(color: Colors.white),
+                    )),
+                  ),
+                  // Spacer(),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 30,
+                    width: 60,
+                    decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                    child: Center(
                       child: Text(
-                        shift.heading,
+                        shift.supply,
                         style: TextStyle(
                           color:
                               currentTheme.isDark ? Colors.white : Colors.black,
                         ),
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Container(
-                      height: 20,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: Appcolor.darkviolte1,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(20))),
-                      child: Center(
-                          child: Text(
-                        shift.subheading,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(color: Colors.white),
-                      )),
-                    ),
-                    // Spacer(),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      height: 30,
-                      width: 60,
-                      decoration: const BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.all(Radius.circular(5))),
-                      child: Center(
-                        child: Text(
-                          shift.supply,
-                          style: TextStyle(
-                            color: currentTheme.isDark
-                                ? Colors.white
-                                : Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Expanded(
-                    //   child: Text
-                    //   (
-                    //     shift.supply,
-                    //     style: TextStyle
-                    //     (
-                    //       color: Colors.white
-                    //     ),
-                    //   ),
-                    // ),
-                    // SizedBox
-                    // (
-                    //   width: 41,
-                    // ),
-                    const Spacer(),
+                  ),
+                  // Expanded(
+                  //   child: Text
+                  //   (
+                  //     shift.supply,
+                  //     style: TextStyle
+                  //     (
+                  //       color: Colors.white
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox
+                  // (
+                  //   width: 41,
+                  // ),
+                  const Spacer(),
 
-                    Material(
-                      elevation: 10,
-                      color: currentTheme.isDark
-                          ? Colors.deepPurple.shade100
-                          : Colors.deepPurple.shade100,
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: InkWell(
-                        onTap: () {},
-                        child: Container(
-                          padding: const EdgeInsets.all(0.0),
-                          height:
-                              30.0, //MediaQuery.of(context).size.width * .08,
-                          width: 80.0, //MediaQuery.of(context).size.width * .3,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0)),
-                          child: Row(
-                            children: <Widget>[
-                              LayoutBuilder(builder: (context, constraints) {
-                                print(constraints);
-                                return Container(
-                                  height: constraints.maxHeight,
-                                  width: constraints.maxHeight,
-                                  decoration: BoxDecoration(
-                                    color: Colors.deepPurple,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: const Icon(
-                                    Icons.remove_red_eye_outlined,
-                                    color: Colors.white,
-                                  ),
-                                );
-                              }),
-                              const Expanded(
-                                child: Text(
-                                  'View',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.deepPurpleAccent),
+                  Material(
+                    elevation: 10,
+                    color: currentTheme.isDark
+                        ? Colors.deepPurple.shade100
+                        : Colors.deepPurple.shade100,
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: const EdgeInsets.all(0.0),
+                        height: 30.0, //MediaQuery.of(context).size.width * .08,
+                        width: 80.0, //MediaQuery.of(context).size.width * .3,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0)),
+                        child: Row(
+                          children: <Widget>[
+                            LayoutBuilder(builder: (context, constraints) {
+                              print(constraints);
+                              return Container(
+                                height: constraints.maxHeight,
+                                width: constraints.maxHeight,
+                                decoration: BoxDecoration(
+                                  color: Colors.deepPurple,
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
+                                child: const Icon(
+                                  Icons.remove_red_eye_outlined,
+                                  color: Colors.white,
+                                ),
+                              );
+                            }),
+                            const Expanded(
+                              child: Text(
+                                'View',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.deepPurpleAccent),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    // Container(
-                    //   height: 30,
-                    //   width: 40,
-                    //   decoration: BoxDecoration
-                    //   (
-                    //     // color: Colors.pinkAccent,
-                    //     color: shift.status=='Standard'?Colors.pinkAccent: Colors.grey,
-                    //     borderRadius: BorderRadius.all(Radius.circular(30)),
-                    //     border: Border.all
-                    //     (
-                    //       color: Appcolor.darkviolte3
-                    //     )
-                    //   ),
-                    //   child: Center(
-                    //     child: Text
-                    //     (
-                    //       'View',
-                    //       style: TextStyle
-                    //       (
-                    //         color: Colors.white
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                    //      GlowingButton(
-                    //   color1: Colors.orange,
-                    //   color2: Colors.red,
-                    // ),
-                  ],
-                ),
+                  ),
+                  // Container(
+                  //   height: 30,
+                  //   width: 40,
+                  //   decoration: BoxDecoration
+                  //   (
+                  //     // color: Colors.pinkAccent,
+                  //     color: shift.status=='Standard'?Colors.pinkAccent: Colors.grey,
+                  //     borderRadius: BorderRadius.all(Radius.circular(30)),
+                  //     border: Border.all
+                  //     (
+                  //       color: Appcolor.darkviolte3
+                  //     )
+                  //   ),
+                  //   child: Center(
+                  //     child: Text
+                  //     (
+                  //       'View',
+                  //       style: TextStyle
+                  //       (
+                  //         color: Colors.white
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  //      GlowingButton(
+                  //   color1: Colors.orange,
+                  //   color2: Colors.red,
+                  // ),
+                ],
               ),
             ),
           ),
@@ -272,121 +271,89 @@ class _ButtonHomeState extends State<ButtonHome> {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 8.0, bottom: 8),
-          child: Slidable(
-            startActionPane:
-                ActionPane(motion: const StretchMotion(), children: [
-              SlidableAction(
-                flex: 1,
-                onPressed: ((context) {}),
-                icon: Icons.save,
-                backgroundColor: Colors.greenAccent,
-                label: 'Add Your Yoken',
-                spacing: 20,
-              ),
-              SlidableAction(
-                flex: 2,
-                onPressed: ((context) {}),
-                icon: Icons.wallet,
-                backgroundColor: Colors.pinkAccent,
-                label: 'Add Your Wallet',
-                spacing: 20,
-              )
-            ]),
-            endActionPane: ActionPane(motion: const StretchMotion(), children: [
-              SlidableAction(
-                onPressed: ((context) {}),
-                icon: Icons.delete,
-                backgroundColor: Colors.redAccent,
-              )
-            ]),
-            child: Container(
-              height: 40,
-              width: double.infinity,
-              color: Colors.transparent,
-              child: Row(
-                children: [
-                  Container(
-                    height: 20,
-                    width: 40,
-                    color: Colors.transparent,
-                    child: Text(
-                      shift1.heading,
-                      style: TextStyle(
-                        color:
-                            currentTheme.isDark ? Colors.white : Colors.black,
-                      ),
-                      overflow: TextOverflow.ellipsis,
+          child: Container(
+            height: 40,
+            width: double.infinity,
+            color: Colors.transparent,
+            child: Row(
+              children: [
+                Container(
+                  height: 20,
+                  width: 40,
+                  color: Colors.transparent,
+                  child: Text(
+                    shift1.heading,
+                    style: TextStyle(
+                      color: currentTheme.isDark ? Colors.white : Colors.black,
                     ),
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    height: 30,
-                    width: 60,
-                    decoration: BoxDecoration(
-                        // color: shift1.sale=='Live'?Appcolor.darkviolte1:Shift1.sale=='Ended'?Colors.transparent:Colors.grey,
-                        // color: Appcolor.darkviolte1,
-                        color:
-                            shift1.status == 'Live' ? Colors.red : Colors.grey,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20))),
-                    child: Center(
-                        child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
-                      child: FittedBox(
-                        child: Text(
-                          shift1.status,
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    )),
-                  ),
-                  // SizedBox
-                  // (
-                  //   width: 80,
-                  //   // width:100
-                  // ),
-                  const Spacer(),
-                  Container(
-                    height: 20,
-                    width: 40,
-                    color: Colors.transparent,
-                    child: Text(
-                      shift1.supply,
-                      style: TextStyle(
-                        color:
-                            currentTheme.isDark ? Colors.white : Colors.black,
-                      ),
-                    ),
-                  ),
-                  // SizedBox
-                  // (
-                  //   width: 30,
-                  // ),
-                  const Spacer(),
-                  Container(
-                    height: 30,
-                    width: 60,
-                    decoration: const BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Center(
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  height: 30,
+                  width: 60,
+                  decoration: BoxDecoration(
+                      // color: shift1.sale=='Live'?Appcolor.darkviolte1:Shift1.sale=='Ended'?Colors.transparent:Colors.grey,
+                      // color: Appcolor.darkviolte1,
+                      color: shift1.status == 'Live' ? Colors.red : Colors.grey,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20))),
+                  child: Center(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 8),
-                        child: Text(
-                          shift1.Ltime,
-                          style: TextStyle(
-                            color: currentTheme.isDark
-                                ? Colors.white
-                                : Colors.black,
-                          ),
+                    padding: const EdgeInsets.only(left: 8.0, right: 8),
+                    child: FittedBox(
+                      child: Text(
+                        shift1.status,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )),
+                ),
+                // SizedBox
+                // (
+                //   width: 80,
+                //   // width:100
+                // ),
+                const Spacer(),
+                Container(
+                  height: 20,
+                  width: 40,
+                  color: Colors.transparent,
+                  child: Text(
+                    shift1.supply,
+                    style: TextStyle(
+                      color: currentTheme.isDark ? Colors.white : Colors.black,
+                    ),
+                  ),
+                ),
+                // SizedBox
+                // (
+                //   width: 30,
+                // ),
+                const Spacer(),
+                Container(
+                  height: 30,
+                  width: 60,
+                  decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(30))),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      child: Text(
+                        shift1.Ltime,
+                        style: TextStyle(
+                          color:
+                              currentTheme.isDark ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         )

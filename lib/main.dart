@@ -10,6 +10,7 @@ import 'package:hami_launch/config.dart';
 import 'package:hami_launch/drawerEnd.dart';
 import 'package:hami_launch/screen/AllLaunch.dart';
 import 'package:hami_launch/screen/homepage.dart';
+import 'package:hami_launch/user_Profile.dart';
 import 'package:hami_launch/widgets/Leading_drawer.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:wave_transition/wave_transition.dart';
@@ -363,29 +364,11 @@ class _RootPageState extends State<RootPage> {
                         Navigator.push(
                             context,
                             WaveTransition(
-                                child: ProfileBaseScreen(),
+                                child: const UserProfile(),
                                 center: const FractionalOffset(0.90, 0.90),
                                 duration: const Duration(
                                     milliseconds: 3000) // optional
                                 ));
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) =>
-                        //   //  FbCloneProfileStful()
-                        //   // Profile1()crt
-                        //   ProfileBaseScreen()
-                        //   )
-                        //   // ProfileScreen()),
-                        // );
-                        // // DialogHelper.exit(context);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) =>
-                        //   //  FbCloneProfileStful()
-                        //   Profile1()
-                        //   )
-                        //   // ProfileScreen()),
-                        // );
                       },
                       icon: Icon(LineIcons.user,
                           color: currentTheme.isDark

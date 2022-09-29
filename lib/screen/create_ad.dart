@@ -3,13 +3,10 @@ import 'dart:io';
 
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../config.dart';
 import '../theme/appcolor.dart';
-import '../widgets/animated_button.dart';
-import '../widgets/appbar_widget.dart';
 
 class CreateAd extends StatefulWidget {
   const CreateAd({Key? key}) : super(key: key);
@@ -223,7 +220,7 @@ class _CreateAdState extends State<CreateAd> {
                         FlatButton(
                             splashColor: Colors.pinkAccent,
                             hoverColor: Colors.purpleAccent,
-                            color: Colors.white,
+                            color: Colors.deepPurple.shade100,
                             onPressed: getImagegallery,
                             // onPressed: ()
                             // {
@@ -254,7 +251,11 @@ class _CreateAdState extends State<CreateAd> {
                                 controller: _img,
                                 // initialValue: initialValue.toString(),->wrong
                                 // initialValue: _image.toString(),
-                                style: const TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
                                 // onChanged: onDescriptionChange,
                                 // onChanged: (String newValue)
                                 // {
@@ -285,11 +286,14 @@ class _CreateAdState extends State<CreateAd> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Banner Image  Preview',
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: currentTheme.isDark ? Colors.white : Colors.black,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -301,26 +305,33 @@ class _CreateAdState extends State<CreateAd> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      border: Border.all(color: Colors.white, width: 1)),
+                      border: Border.all(
+                          color:
+                              currentTheme.isDark ? Colors.white : Colors.black,
+                          width: 1)),
                   child: (_image != null)
                       ? Image.file(
                           _image!,
                           fit: BoxFit.cover,
                         )
-                      : const Icon(
+                      : Icon(
                           Icons.add_a_photo_sharp,
-                          color: Colors.white,
+                          color:
+                              currentTheme.isDark ? Colors.white : Colors.black,
                         ),
                 ),
 
                 const SizedBox(
                   height: 20,
                 ),
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Ad Description*',
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: currentTheme.isDark ? Colors.white : Colors.black,
+                    ),
                   ),
                 ),
 
@@ -335,26 +346,43 @@ class _CreateAdState extends State<CreateAd> {
                     }
                     return null;
                   },
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: currentTheme.isDark ? Colors.white : Colors.black,
+                  ),
                   controller: _desccontroller,
                   minLines: 6,
                   maxLines: 7,
                   keyboardType: TextInputType.multiline,
-                  decoration: const InputDecoration(
-                      errorStyle: TextStyle(color: Colors.orange),
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(color: Colors.orange),
                       hintText: 'Ad Description',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: const TextStyle(color: Colors.grey),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(color: Colors.white, width: 1.0),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(color: Colors.white, width: 1.0),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(color: Colors.white, width: 1.0),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       )),
                 ),
 
@@ -362,11 +390,14 @@ class _CreateAdState extends State<CreateAd> {
                   height: 20,
                 ),
 
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Square Image(250*250)*',
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: currentTheme.isDark ? Colors.white : Colors.black,
+                    ),
                   ),
                 ),
                 // Row
@@ -433,7 +464,8 @@ class _CreateAdState extends State<CreateAd> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.grey,
+                        color:
+                            currentTheme.isDark ? Colors.white : Colors.black,
                       ),
                       borderRadius: const BorderRadius.all(Radius.circular(5))),
                   child: Padding(
@@ -444,7 +476,7 @@ class _CreateAdState extends State<CreateAd> {
                         FlatButton(
                             splashColor: Colors.pinkAccent,
                             hoverColor: Colors.purpleAccent,
-                            color: Colors.white,
+                            color: Colors.deepPurple.shade100,
                             onPressed: SquareImagegallery,
                             // onPressed: ()
                             // {
@@ -475,7 +507,11 @@ class _CreateAdState extends State<CreateAd> {
                                 controller: _img1,
                                 // initialValue: initialValue.toString(),->wrong
                                 // initialValue: _image.toString(),
-                                style: const TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
                                 // onChanged: onDescriptionChange,
                                 // onChanged: (String newValue)
                                 // {
@@ -505,11 +541,14 @@ class _CreateAdState extends State<CreateAd> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Square Image  Preview',
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: currentTheme.isDark ? Colors.white : Colors.black,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -521,26 +560,33 @@ class _CreateAdState extends State<CreateAd> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      border: Border.all(color: Colors.white, width: 1)),
+                      border: Border.all(
+                          color:
+                              currentTheme.isDark ? Colors.white : Colors.black,
+                          width: 1)),
                   child: (_image1 != null)
                       ? Image.file(
                           _image1!,
                           fit: BoxFit.cover,
                         )
-                      : const Icon(
+                      : Icon(
                           Icons.add_a_photo_sharp,
-                          color: Colors.white,
+                          color:
+                              currentTheme.isDark ? Colors.white : Colors.black,
                         ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
 
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Ad Link*',
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: currentTheme.isDark ? Colors.white : Colors.black,
+                    ),
                   ),
                 ),
 
@@ -549,7 +595,9 @@ class _CreateAdState extends State<CreateAd> {
                 ),
 
                 TextFormField(
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: currentTheme.isDark ? Colors.white : Colors.black,
+                  ),
                   validator: (String? link) {
                     if (link!.isEmpty) {
                       return '* Please enter Ad Link';
@@ -560,21 +608,36 @@ class _CreateAdState extends State<CreateAd> {
                   minLines: 1,
                   maxLines: 7,
                   keyboardType: TextInputType.multiline,
-                  decoration: const InputDecoration(
-                      errorStyle: TextStyle(color: Colors.orange),
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(color: Colors.orange),
                       hintText: 'Ad Link',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: const TextStyle(color: Colors.grey),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(color: Colors.white, width: 1.0),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(color: Colors.white, width: 1.0),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(color: Colors.white, width: 1.0),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       )),
                 ),
 
@@ -586,7 +649,10 @@ class _CreateAdState extends State<CreateAd> {
                   children: [
                     Material(
                       child: Theme(
-                        data: ThemeData(unselectedWidgetColor: Colors.white),
+                        data: ThemeData(
+                          unselectedWidgetColor:
+                              currentTheme.isDark ? Colors.white : Colors.black,
+                        ),
                         child: Checkbox(
                           activeColor: Appcolor.darkviolte1,
                           value: agree,
@@ -601,23 +667,35 @@ class _CreateAdState extends State<CreateAd> {
                     Expanded(
                       child: RichText(
                         textAlign: TextAlign.justify,
-                        text: const TextSpan(
-                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        text: TextSpan(
+                          style: TextStyle(
+                              color: currentTheme.isDark
+                                  ? Colors.white
+                                  : Colors.black,
+                              fontSize: 15),
                           children: <TextSpan>[
                             TextSpan(
                                 text: 'Before Creating, you agree to the',
-                                style: TextStyle(color: Colors.white)),
+                                style: TextStyle(
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
+                                )),
                             TextSpan(
                                 text: 'Terms of Service',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: currentTheme.isDark
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontWeight: FontWeight.w900)),
                             TextSpan(
                                 text: ' and',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
                                 )),
-                            TextSpan(
+                            const TextSpan(
                                 text: ' Advertisement Policy',
                                 style: TextStyle(
                                     color: Colors.white,
@@ -625,7 +703,9 @@ class _CreateAdState extends State<CreateAd> {
                             TextSpan(
                                 text: '.*',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: currentTheme.isDark
+                                      ? Colors.white
+                                      : Colors.black,
                                 )),
                           ],
                         ),
@@ -665,112 +745,165 @@ class _CreateAdState extends State<CreateAd> {
         ),
         // The second step: Phone number
         Step(
-          title: const Text(
+          title: Text(
             'Contact Details',
             style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.w900),
           ),
           content: Column(
             children: [
-              const Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Contact Person Name *',
-                  style: TextStyle(fontSize: 15, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: currentTheme.isDark ? Colors.white : Colors.black,
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 10,
               ),
               TextFormField(
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: currentTheme.isDark ? Colors.white : Colors.black,
+                  ),
                   validator: (String? contactname) {
                     if (contactname!.isEmpty) {
                       return 'Please enter contac person name';
                     }
                     return null;
                   },
-                  decoration: const InputDecoration(
-                      errorStyle: TextStyle(color: Colors.orange),
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(color: Colors.orange),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       labelText: 'Contact Person Name*',
-                      labelStyle: TextStyle(color: Colors.grey))),
+                      labelStyle: const TextStyle(color: Colors.grey))),
               const SizedBox(
                 height: 20,
               ),
-              const Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Telegram *',
-                  style: TextStyle(fontSize: 15, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: currentTheme.isDark ? Colors.white : Colors.black,
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 10,
               ),
               TextFormField(
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: currentTheme.isDark ? Colors.white : Colors.black,
+                  ),
                   validator: (String? tele) {
                     if (tele!.isEmpty) {
                       return '* Please enter telegram id';
                     }
                     return null;
                   },
-                  decoration: const InputDecoration(
-                      errorStyle: TextStyle(color: Colors.orange),
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(color: Colors.orange),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       labelText: 'Telegram*',
-                      labelStyle: TextStyle(color: Colors.grey))),
+                      labelStyle: const TextStyle(color: Colors.grey))),
               const SizedBox(
                 height: 20,
               ),
-              const Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Email Address *',
-                  style: TextStyle(fontSize: 15, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: currentTheme.isDark ? Colors.white : Colors.black,
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 10,
               ),
               TextFormField(
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: currentTheme.isDark ? Colors.white : Colors.black,
+                  ),
                   validator: (email) {
                     if (email!.isEmpty) {
                       return '* Please enter email id';
                     }
                     return null;
                   },
-                  decoration: const InputDecoration(
-                      errorStyle: TextStyle(color: Colors.orange),
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(color: Colors.orange),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        borderSide: BorderSide(
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            width: 1.0),
                       ),
                       labelText: 'Email Address*',
-                      labelStyle: TextStyle(color: Colors.grey))),
+                      labelStyle: const TextStyle(color: Colors.grey))),
               const SizedBox(
                 height: 20,
               ),
@@ -780,7 +913,7 @@ class _CreateAdState extends State<CreateAd> {
                 children: [
                   FlatButton(
                     onPressed: _stepCancel,
-                    color: Colors.transparent,
+                    color: Colors.deepPurple.shade100,
                     child: const Text('Back',
                         style: TextStyle(color: Colors.white)),
                   ),
@@ -802,10 +935,12 @@ class _CreateAdState extends State<CreateAd> {
         ),
         // The third step: Verify phone number
         Step(
-          title: const Text(
+          title: Text(
             'Payment Details',
             style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.w900),
           ),
           content: Column(
             children: <Widget>[
@@ -951,12 +1086,16 @@ class _CreateAdState extends State<CreateAd> {
                         child: Container(
                       child: Column(
                         children: [
-                          const Align(
+                          Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Amount *',
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.white),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: currentTheme.isDark
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
                             ),
                           ),
 
@@ -965,7 +1104,11 @@ class _CreateAdState extends State<CreateAd> {
                           ),
 
                           TextFormField(
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                color: currentTheme.isDark
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
                               validator: (amount) {
                                 if (amount!.isEmpty) {
                                   return '* Please enter amount';
@@ -993,12 +1136,16 @@ class _CreateAdState extends State<CreateAd> {
                             height: 20,
                           ),
 
-                          const Align(
+                          Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Transaction Id',
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.white),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: currentTheme.isDark
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
                             ),
                           ),
 
@@ -1007,7 +1154,11 @@ class _CreateAdState extends State<CreateAd> {
                           ),
 
                           TextFormField(
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                color: currentTheme.isDark
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
                               validator: (transacid) {
                                 if (transacid!.isEmpty) {
                                   return '* Please enter transaction id';
@@ -1075,106 +1226,69 @@ class _CreateAdState extends State<CreateAd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Appcolor.darkviolte6,
-      appBar: MyAppBar(title: 'Advertise with us'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.grey.shade200,
+              ),
+            ),
+          ),
+          child: AppBar(
+            backgroundColor: currentTheme.isDark ? Colors.black : Colors.white,
+            // backgroundColor: Appcolor.darkviolte6,
+            // backgroundColor: currentTheme.isDark ? Colors.white : Colors.black,
+            title: Text(
+              "Advertise With Us",
+              style: TextStyle(
+                  color: currentTheme.isDark ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.w600),
+            ),
+            centerTitle: false,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+            ),
+            elevation: 0,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.20,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    color: Appcolor.background),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.lightbulb,
-                            color: Appcolor.darkviolte3,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            'Advertise With Us',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w900),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          const Icon(
-                            Icons.help,
-                            color: Colors.grey,
-                          )
-                        ],
-                      ),
-                      const Text(
-                        'This is Advertise With Us',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500),
-                      ),
-
-                      AnimatedButton()
-
-                      // Container
-                      // (
-                      //   height: 40,
-                      //   width: 80,
-                      //   decoration: BoxDecoration
-                      //   (
-                      //     borderRadius: BorderRadius.all(Radius.circular(10)),
-                      //     color: Appcolor.darkviolte
-                      //   ),
-                      //   child: Center(
-                      //     child: Text
-                      //       (
-                      //         'Help',
-                      //         style: TextStyle
-                      //         (
-                      //           color: Colors.white,
-                      //           fontSize: 18,
-                      //           fontWeight: FontWeight.w500
-                      //         ),
-                      //       ),
-                      //   ),
-                      // )
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
               ),
               Container(
                 // width: double.infinity,
                 // height: MediaQuery.of(context).size.height*0.90,
                 // height: 900,
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(15)),
-                  color: Appcolor.background,
+                  color: currentTheme.isDark ? Colors.black : Colors.white,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8)),
                 ),
                 child: Theme(
                   data: ThemeData(
-                      canvasColor: Appcolor.background,
-                      colorScheme: Theme.of(context).colorScheme.copyWith(
-                          primary: Colors.green, onPrimary: Colors.pink
-                          // background: Appcolor.darkviolte,
-                          // secondary: Colors.green,
-                          )
+                      canvasColor:
+                          currentTheme.isDark ? Colors.black : Colors.white,
+                      colorScheme: Theme.of(context)
+                          .colorScheme
+                          .copyWith(primary: Colors.pink, onPrimary: Colors.pink
+                              // background: Appcolor.darkviolte,
+                              // secondary: Colors.green,
+                              )
                       // .copyWith(primarySwatch: Colors.orange, secondary: Colors.orange),
                       ),
                   child: PageTransitionSwitcher(
@@ -1240,6 +1354,36 @@ class _CreateAdState extends State<CreateAd> {
                   ),
                 ),
               ),
+
+              SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+
+              //disclaimer
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  // style: const TextStyle(color: Colors.black, fontSize: 36),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Disclaimer:',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: currentTheme.isDark
+                                ? Colors.white
+                                : Colors.black,
+                            height: 1.5)),
+                    // const TextSpan(text: 'dot '),
+                    const TextSpan(
+                        text:
+                            'The information provided shall not in any way constitute a recommendation as to whether you should invest in any product discussed. We accept no liability for any loss occasioned to any person acting or refraining from action as a result of any material provided or published.',
+                        style: TextStyle(
+                            color: Colors.grey, fontSize: 16, height: 1.5
+                            // decoration: TextDecoration.underline
+                            ))
+                  ],
+                ),
+                // textScaleFactor: 0.5,
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.09),
             ],
           ),
         ),

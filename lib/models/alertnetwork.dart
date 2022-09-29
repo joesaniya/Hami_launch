@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
+import '../theme/appcolor.dart';
+
 class NetworkModel {
   final String title;
   final String subtitle;
@@ -337,3 +341,181 @@ List<Vesting> Vesting1 = <Vesting>[
   Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
   Vesting(Period: 'Claim -1', Percentage: 'Claim -8%', Time: 'July 21,2023'),
 ];
+
+class tokenlist {
+  // final String bannerimage;
+  // final Color color;
+  final gradientColor;
+  final String Profileimage;
+  final String title;
+  final String subtitle;
+  final String address;
+  final String Supply;
+  final String supplyno;
+  final String decimals;
+  final String decno;
+  final String type;
+  final String Typename;
+  final String heart;
+  final String tnamese;
+
+  tokenlist(
+      {
+      // required this.color,
+      // required this.bannerimage,
+      required this.gradientColor,
+      required this.Profileimage,
+      required this.title,
+      required this.subtitle,
+      required this.address,
+      required this.Supply,
+      required this.supplyno,
+      required this.decimals,
+      required this.decno,
+      required this.type,
+      required this.Typename,
+      required this.heart,
+      required this.tnamese});
+}
+
+List<tokenlist> TLIst = <tokenlist>[
+  tokenlist(
+      gradientColor: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [Appcolor.bannercolor, Appcolor.bannercolor],
+      ),
+      // color: Colors.red,
+      // bannerimage: '',
+      Profileimage: 'assets/images/spin.jpeg',
+      title: 'Corgi',
+      subtitle: 'CRG',
+      address: '0xCd0cb0FB6FFd21Ba22d7650fCa640b672EfAA28A',
+      Supply: 'Total Supply',
+      supplyno: '100M',
+      decimals: 'Decimals',
+      decno: '18',
+      type: 'Token Type',
+      Typename: '--',
+      heart: '0',
+      tnamese: 'Trending'),
+
+  //2
+  tokenlist(
+      gradientColor: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [Appcolor.bannercolor, Appcolor.bannercolor],
+      ),
+      // color: Colors.red,
+      // bannerimage: '',
+      Profileimage: 'assets/images/spin.jpeg',
+      title: 'Corgi',
+      subtitle: 'CRG',
+      address: '0xCd0cb0FB6FFd21Ba22d7650fCa640b672EfAA28A',
+      Supply: 'Total Supply',
+      supplyno: '100M',
+      decimals: 'Decimals',
+      decno: '18',
+      type: 'Token Type',
+      Typename: '--',
+      heart: '0',
+      tnamese: 'Trending'),
+
+  //3
+  tokenlist(
+      gradientColor: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [Appcolor.bannercolor, Appcolor.bannercolor],
+      ),
+      // color: Colors.red,
+      // bannerimage: '',
+      Profileimage: 'assets/images/spin.jpeg',
+      title: 'Corgi',
+      subtitle: 'CRG',
+      address: '0xCd0cb0FB6FFd21Ba22d7650fCa640b672EfAA28A',
+      Supply: 'Total Supply',
+      supplyno: '100M',
+      decimals: 'Decimals',
+      decno: '18',
+      type: 'Token Type',
+      Typename: '--',
+      heart: '0',
+      tnamese: 'Trending'),
+];
+
+class Locked {
+  final String Profileimage;
+  final String title;
+  final String subtitle;
+  final String Supply;
+  final String locked;
+  final String date;
+  Locked(
+      {required this.Profileimage,
+      required this.title,
+      required this.subtitle,
+      required this.Supply,
+      required this.locked,
+      required this.date});
+}
+
+List<Locked> locked = <Locked>[
+  Locked(
+      Profileimage: 'assets/images/spin.jpeg',
+      title: 'OApply Rich Token',
+      subtitle: 'ART',
+      Supply: '1000000000',
+      locked: '14',
+      date: 'Sep 22,2022'),
+
+  //2
+  Locked(
+      Profileimage: 'assets/images/spin.jpeg',
+      title: 'OApply Rich Token',
+      subtitle: 'ART',
+      Supply: '1000000000',
+      locked: '14',
+      date: 'Sep 22,2022'),
+  Locked(
+      Profileimage: 'assets/images/spin.jpeg',
+      title: 'OApply Rich Token',
+      subtitle: 'ART',
+      Supply: '1000000000',
+      locked: '14',
+      date: 'Sep 22,2022'),
+  Locked(
+      Profileimage: 'assets/images/spin.jpeg',
+      title: 'OApply Rich Token',
+      subtitle: 'ART',
+      Supply: '1000000000',
+      locked: '14',
+      date: 'Sep 22,2022'),
+  Locked(
+      Profileimage: 'assets/images/spin.jpeg',
+      title: 'OApply Rich Token',
+      subtitle: 'ART',
+      Supply: '1000000000',
+      locked: '14',
+      date: 'Sep 22,2022'),
+];
+
+//lp
+class LP {
+  final String Profileimage;
+  final String title;
+  final String subtitle;
+  final String Supply;
+  final String locked;
+  final String date;
+  LP(
+      {required this.Profileimage,
+      required this.title,
+      required this.subtitle,
+      required this.Supply,
+      required this.locked,
+      required this.date});
+}
+
+List<LP> lp = <LP>[];

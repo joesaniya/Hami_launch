@@ -5,18 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hami_launch/theme/appcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../widgets/appbar_widget.dart';
+import '../config.dart';
 
-enum SocialMedia 
-{
-  facebook,
-  email,
-  whatsapp,
-  linkedin
-}
+enum SocialMedia { facebook, email, whatsapp, linkedin }
 
 class ShareAndEarn extends StatefulWidget {
   const ShareAndEarn({Key? key}) : super(key: key);
@@ -26,64 +19,51 @@ class ShareAndEarn extends StatefulWidget {
 }
 
 class _ShareAndEarnState extends State<ShareAndEarn> {
-
   late Future<void> _launched;
-  String _launchUrl ='https://www.google.com';
+  final String _launchUrl = 'https://www.google.com';
 
-  Future<void> _launchInApp(String url) async
-  {
-    if(await canLaunch(url))
-    {
-      await launch
-      (
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        headers: <String, String>
-        {
-          'header_key':'header_value'
-        }
-      );
-    }
-    else
-    {
+  Future<void> _launchInApp(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url,
+          forceSafariVC: true,
+          forceWebView: true,
+          headers: <String, String>{'header_key': 'header_value'});
+    } else {
       log('could not launch $url');
-      throw 'could not launch $url'
-;    }
+      throw 'could not launch $url';
+    }
   }
 
   Future<void> _launchUniversalLinkIos(String url) async {
-  if (await canLaunch(url)) {
-    final bool nativeAppLaunchSucceeded = await launch(
-      url,
-      forceSafariVC: false,
-      universalLinksOnly: true,
-    );
-    if (!nativeAppLaunchSucceeded) {
-      await launch(url, forceSafariVC: true);
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceeded = await launch(
+        url,
+        forceSafariVC: false,
+        universalLinksOnly: true,
+      );
+      if (!nativeAppLaunchSucceeded) {
+        await launch(url, forceSafariVC: true);
+      }
     }
   }
-}
 
-  Future Share(SocialMedia socialPlatform) async{
+  Future Share(SocialMedia socialPlatform) async {
     log('share opened');
-    final code = 'BDEF4587';
-    final text = 'Hami launch,refer nd earnn';
-    final urlShare=Uri.encodeComponent('https://youtu.be/-_k1xboISQ0');
+    const code = 'BDEF4587';
+    const text = 'Hami launch,refer nd earnn';
+    final urlShare = Uri.encodeComponent('https://youtu.be/-_k1xboISQ0');
 
-    final urls=
-    {
-      SocialMedia.email:'mailto:?subject=$code&body=$text',
-      SocialMedia.linkedin:'https://linkedin.com/shareArticle?mini=true&url=$urlShare',
+    final urls = {
+      SocialMedia.email: 'mailto:?subject=$code&body=$text',
+      SocialMedia.linkedin:
+          'https://linkedin.com/shareArticle?mini=true&url=$urlShare',
       // SocialMedia.whatsapp:'https://youtu.be/2yNns0NiE2A',
-      SocialMedia.whatsapp:'https:api.whatsapp.com/send?text=$text$urlShare'
+      SocialMedia.whatsapp: 'https:api.whatsapp.com/send?text=$text$urlShare'
     };
     final url = urls[socialPlatform]!;
 
-    if(await canLaunch(url))
-    {
-      await launch
-      (
+    if (await canLaunch(url)) {
+      await launch(
         url,
         // forceSafariVC: true,
         // forceWebView: true,
@@ -92,141 +72,176 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
         //   'header_key':'header_value'
         // }
       );
-    }
-    else
-    {
+    } else {
       log('could not launch $url');
       throw 'could not launch $url';
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold
-    (
-      backgroundColor: Appcolor.darkviolte6,
-      appBar: MyAppBar(title: 'Refer & Earn',),
-
-      body: ListView
-      (
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        children: 
-        [
-          SizedBox
-          (
-            height: 40,
-          ),
-
-          Container
-          (
-            // height: 150,
-            // width: 100,
-            // width: double.infinity,
-            child: Image(image: AssetImage('assets/images/piggy.png'),),
-          ),
-
-          SizedBox
-          (
-            height: 40,
-          ),
-
-          Text
-          (
-            'PIGIBANK CASH',
-            style: TextStyle
-            (
-              fontSize: 20,
-              color: Colors.white,
-              fontWeight: FontWeight.w900,
-              fontStyle: FontStyle.italic
-            ),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox
-          (
-            height: 20,
-          ),
-
-          Text
-          (
-            '\$ 0.00',
-            style: TextStyle
-            (
-              fontSize: 20,
-              color: Color.fromARGB(255, 218, 212, 212),
-              fontWeight: FontWeight.w500,
-              fontStyle: FontStyle.italic
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          SizedBox
-          (
-            height: 40,
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(left:40.0,right: 40),
-            child: Text
-            (
-              'Copy and Paste your referal Links on any social Media platforms and Earn BNB while your Refered user Creates a Token or a Presale. Also Earn 1% of total BNB raised by any Presale or Fairlaunch you refered . get 0.03 BNB per tokens Created and get 0.20 BNB on Every presale that have created using your Referal Link. Here you can see how many people have joined and your earnings',
-              style: TextStyle
-              (
-                fontSize: 15,
-                color: Colors.grey,
-                // fontWeight: FontWeight.w500,
-                fontStyle: FontStyle.italic,
-                letterSpacing: 1.0
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.grey.shade200,
               ),
-              textAlign: TextAlign.center,
-              // textScaleFactor: 0.5,
             ),
           ),
-
-          SizedBox
-          (
-            height: 40,
-          ),
-          Text
-          (
-            'YOUR REFERRAL CODE',
-            style: TextStyle
-            (
-              color: Colors.white,
-              fontSize: 15,
-              fontWeight: FontWeight.w900
+          child: AppBar(
+            backgroundColor: currentTheme.isDark ? Colors.black : Colors.white,
+            // backgroundColor: Appcolor.darkviolte6,
+            // backgroundColor: currentTheme.isDark ? Colors.white : Colors.black,
+            title: Text(
+              "Share And Earn",
+              style: TextStyle(
+                  color: currentTheme.isDark ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.w600),
             ),
-            textAlign: TextAlign.center,
+            centerTitle: false,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: currentTheme.isDark ? Colors.white : Colors.black,
+              ),
+            ),
+            elevation: 0,
+          ),
+        ),
+      ),
+
+      body: ListView(
+        shrinkWrap: true,
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.only(left: 20.0, right: 20),
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.03,
           ),
 
-          SizedBox
-          (
-            height: 20,
-          ),
-
-          Center(
-            child: DottedBorder(
-              color: Colors.pinkAccent,
-              strokeWidth: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  'BDEF4587',
-                  style: TextStyle
-                  (
-                    color: Colors.pinkAccent,
-                    fontSize: 25
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
+              color: currentTheme.isDark ? Colors.black : Colors.white,
+            ),
+            child: Column(
+              children: [
+                Container(
+                  // height: 150,
+                  // width: 100,
+                  // width: double.infinity,
+                  child: const Image(
+                    image: AssetImage('assets/images/sh.png'),
                   ),
                 ),
-              ),
-              // child: FlutterLogo(size: 148),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.06,
+                ),
+                Text(
+                  'PIGIBANK CASH',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: currentTheme.isDark ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.w900,
+                      fontStyle: FontStyle.italic),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  '\$ 0.00',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 218, 212, 212),
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.italic),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 40.0, right: 40),
+                  child: Text(
+                    'Copy and Paste your referal Links on any social Media platforms and Earn BNB while your Refered user Creates a Token or a Presale. Also Earn 1% of total BNB raised by any Presale or Fairlaunch you refered . get 0.03 BNB per tokens Created and get 0.20 BNB on Every presale that have created using your Referal Link. Here you can see how many people have joined and your earnings',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey,
+                        // fontWeight: FontWeight.w500,
+                        fontStyle: FontStyle.italic,
+                        letterSpacing: 1.0),
+                    textAlign: TextAlign.center,
+                    // textScaleFactor: 0.5,
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                const Text(
+                  'YOUR REFERRAL CODE',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w900),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: DottedBorder(
+                    color: Colors.pinkAccent,
+                    strokeWidth: 1,
+                    child: const Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Text(
+                        'BDEF4587',
+                        style:
+                            TextStyle(color: Colors.pinkAccent, fontSize: 25),
+                      ),
+                    ),
+                    // child: FlutterLogo(size: 148),
+                  ),
+                ),
+              ],
             ),
           ),
 
-          SizedBox
-          (
-            height: 40,
+          SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+
+          //disclaimer
+          RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              // style: const TextStyle(color: Colors.black, fontSize: 36),
+              children: <TextSpan>[
+                TextSpan(
+                    text: 'Disclaimer:',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color:
+                            currentTheme.isDark ? Colors.white : Colors.black,
+                        height: 1.5)),
+                // const TextSpan(text: 'dot '),
+                const TextSpan(
+                    text:
+                        'The information provided shall not in any way constitute a recommendation as to whether you should invest in any product discussed. We accept no liability for any loss occasioned to any person acting or refraining from action as a result of any material provided or published.',
+                    style:
+                        TextStyle(color: Colors.grey, fontSize: 16, height: 1.5
+                            // decoration: TextDecoration.underline
+                            ))
+              ],
+            ),
+            // textScaleFactor: 0.5,
           ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.09),
           // Padding(
           //   padding: const EdgeInsets.only(right:25.0),
           //   child: Align(
@@ -239,15 +254,10 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
           //       tooltip: 'share',
           //       elevation: 5,
           //       splashColor: Colors.grey,
-            
+
           //     ),
           //   ),
           // ),
-
-          SizedBox
-          (
-            height: 100,
-          ),
         ],
       ),
       // floatingActionButton: FloatingActionButton(
@@ -260,7 +270,6 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
       // ),
       // // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: buildSpeedDial(),
-
     );
   }
 
@@ -268,7 +277,7 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
     return SpeedDial(
       animatedIcon: AnimatedIcons.menu_close,
       // AnimatedIcons.menu_close,
-      animatedIconTheme: IconThemeData(size: 28.0),
+      animatedIconTheme: const IconThemeData(size: 28.0),
       backgroundColor: Colors.pinkAccent,
       overlayColor: Colors.black,
       overlayOpacity: 0.4,
@@ -276,60 +285,57 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
       // curve: Curves.bounceInOut,
       children: [
         SpeedDialChild(
-          child: Icon(Icons.copy, color: Colors.white),
+          child: const Icon(Icons.copy, color: Colors.white),
           backgroundColor: Colors.pinkAccent,
-          onTap: () 
-          {
+          onTap: () {
             log('read clicked');
             // _launchInApp(_launchUrl);
-            Clipboard.setData(ClipboardData(text: 'BDEF4587')).then((_){
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Referral code copied to clipboard")));
-          });
+            Clipboard.setData(const ClipboardData(text: 'BDEF4587')).then((_) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("Referral code copied to clipboard")));
+            });
           },
           label: 'Read',
           labelStyle:
-              TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+              const TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
           labelBackgroundColor: Colors.black,
         ),
         SpeedDialChild(
-          child: Icon(Icons.mail, color: Colors.white),
+          child: const Icon(Icons.mail, color: Colors.white),
           backgroundColor: Colors.pinkAccent,
-          onTap: () 
-          {
+          onTap: () {
             log('mail clicked');
             Share(SocialMedia.email);
           },
           label: 'Mail',
           labelStyle:
-              TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+              const TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
           labelBackgroundColor: Colors.black,
         ),
         SpeedDialChild(
-          child: Icon(FontAwesomeIcons.linkedin, color: Colors.white),
+          child: const Icon(FontAwesomeIcons.linkedin, color: Colors.white),
           backgroundColor: Colors.pinkAccent,
           // onTap: () => print('Pressed Code'),
-          onTap: () 
-          {
+          onTap: () {
             log('linkedin clicked');
             Share(SocialMedia.linkedin);
           },
           label: 'LinkedIn',
           labelStyle:
-              TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+              const TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
           labelBackgroundColor: Colors.black,
         ),
         SpeedDialChild(
-          child: Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
+          child: const Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
           backgroundColor: Colors.pinkAccent,
           // onTap: () => print('Pressed Code'),
-          onTap: () 
-          {
+          onTap: () {
             log('whatsapp clicked');
             Share(SocialMedia.whatsapp);
           },
-          label: 'Whatsapp', 
+          label: 'Whatsapp',
           labelStyle:
-              TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+              const TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
           labelBackgroundColor: Colors.black,
         ),
       ],

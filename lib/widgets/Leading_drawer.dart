@@ -5,26 +5,17 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hami_launch/Create/AMA_apply.dart';
 import 'package:hami_launch/Create/LaunchPad_create.dart';
 import 'package:hami_launch/Create/Lock_create.dart';
-import 'package:hami_launch/screen/auditing_partners.dart';
 import 'package:hami_launch/screen/create_ad.dart';
 import 'package:hami_launch/screen/create_token.dart';
-import 'package:hami_launch/screen/exchange_listing.dart';
-import 'package:hami_launch/screen/inst_connect_wallet.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
-import 'package:hami_launch/screen/lock.dart';
-import 'package:hami_launch/screen/marketing_companies.dart';
+import 'package:hami_launch/screen/locked_tokens.dart';
 import 'package:hami_launch/screen/partner_with_us.dart';
 import 'package:hami_launch/screen/share_earn.dart';
-import 'package:hami_launch/screen/smartContract-developers.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
 import 'package:hami_launch/screen/token_list.dart';
-import 'package:hami_launch/screen/twitter_promoters.dart';
-import 'package:hami_launch/side_launchpadlistScreens/add_token.dart';
 import 'package:hami_launch/side_launchpadlistScreens/locked_lp_tokens.dart';
 
 import '../Create/create_token_profile.dart';
-import '../screen/Shillers.dart';
-import '../screen/WebDeveloper.dart';
 import '../screen/spotlight_screen.dart';
 import '../screen/verifykyc_screen.dart';
 import '../theme/appcolor.dart';
@@ -422,52 +413,52 @@ class LeadingDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('Create Token clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CreateToken()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Create Token',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('Import token clicked');
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AddToken()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Import Token',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('Create Token clicked');
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => const CreateToken()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Create Token',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('Import token clicked');
+                //       Navigator.push(context,
+                //           MaterialPageRoute(builder: (context) => AddToken()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Import Token',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
               ],
               // trailing: ,
             ),
@@ -486,14 +477,21 @@ class LeadingDrawer extends StatelessWidget {
                     TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
               ),
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
                   child: ListTile(
-                    leading: Icon(
+                    onTap: () {
+                      log('LockedIp clicked');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TokedTokens()));
+                    },
+                    leading: const Icon(
                       Icons.remove,
                       color: Colors.white,
                     ),
-                    title: Text(
+                    title: const Text(
                       'Locked Tokens',
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w400),
@@ -519,32 +517,6 @@ class LeadingDrawer extends StatelessWidget {
                     ),
                     title: const Text(
                       'Locked IP Tokens',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('Create lock clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  // const LockCreate()
-                                  const CreateLock()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Create Lock',
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w400),
                     ),
@@ -590,180 +562,180 @@ class LeadingDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('Marketing Companies clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const MarketingCompanies()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Marketing Companies',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('Auditing partners clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AuditingPartners()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Auditing Partners',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                //
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('Exchange Listing clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ExchangeListing()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Exchange Listing',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('shillers clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Shillers()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Shillers',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('smartContract developers clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const SmartContractDevelopers()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Smartcontract Developers',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('WebDevelopers clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => WebDevelopers()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Web3 Developers',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('Twitter Promoters clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const TwitterPromotors()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Twitter Promoters',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('Marketing Companies clicked');
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) =>
+                //                   const MarketingCompanies()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Marketing Companies',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('Auditing partners clicked');
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => const AuditingPartners()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Auditing Partners',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
+                // //
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('Exchange Listing clicked');
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => const ExchangeListing()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Exchange Listing',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('shillers clicked');
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => const Shillers()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Shillers',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('smartContract developers clicked');
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) =>
+                //                   const SmartContractDevelopers()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Smartcontract Developers',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('WebDevelopers clicked');
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => WebDevelopers()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Web3 Developers',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20.0),
+                //   child: ListTile(
+                //     onTap: () {
+                //       log('Twitter Promoters clicked');
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => const TwitterPromotors()));
+                //     },
+                //     leading: const Icon(
+                //       Icons.remove,
+                //       color: Colors.white,
+                //     ),
+                //     title: const Text(
+                //       'Twitter Promoters',
+                //       style: TextStyle(
+                //           color: Colors.white, fontWeight: FontWeight.w400),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: ListTile(
@@ -828,112 +800,112 @@ class LeadingDrawer extends StatelessWidget {
               // trailing: ,
             ),
             // const Divider(color: Colors.grey, thickness: 1,),
-            //5
-            ExpansionTile(
-              leading: const Icon(
-                Icons.notes,
-                color: Colors.white,
-              ),
-              iconColor: Colors.white,
-              collapsedIconColor: Colors.white,
-              title: const Text(
-                'Instructions',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
-              ),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('connect_wallet clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ConnectWallet()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'How to connect Wallet',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'How to create Token',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'How to create Smart Lock',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'How to Participate in Launch',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'How to REdeem Token',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-              ],
-              // trailing: ,
-            ),
+            // //5
+            // ExpansionTile(
+            //   leading: const Icon(
+            //     Icons.notes,
+            //     color: Colors.white,
+            //   ),
+            //   iconColor: Colors.white,
+            //   collapsedIconColor: Colors.white,
+            //   title: const Text(
+            //     'Instructions',
+            //     style:
+            //         TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+            //   ),
+            //   children: [
+            //     Padding(
+            //       padding: const EdgeInsets.only(left: 20.0),
+            //       child: ListTile(
+            //         onTap: () {
+            //           log('connect_wallet clicked');
+            //           Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                   builder: (context) => const ConnectWallet()));
+            //         },
+            //         leading: const Icon(
+            //           Icons.remove,
+            //           color: Colors.white,
+            //         ),
+            //         title: const Text(
+            //           'How to connect Wallet',
+            //           style: TextStyle(
+            //               color: Colors.white, fontWeight: FontWeight.w400),
+            //         ),
+            //       ),
+            //     ),
+            //     const SizedBox(
+            //       width: 4,
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.only(left: 20.0),
+            //       child: ListTile(
+            //         leading: Icon(
+            //           Icons.remove,
+            //           color: Colors.white,
+            //         ),
+            //         title: Text(
+            //           'How to create Token',
+            //           style: TextStyle(
+            //               color: Colors.white, fontWeight: FontWeight.w400),
+            //         ),
+            //       ),
+            //     ),
+            //     const SizedBox(
+            //       width: 4,
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.only(left: 20.0),
+            //       child: ListTile(
+            //         leading: Icon(
+            //           Icons.remove,
+            //           color: Colors.white,
+            //         ),
+            //         title: Text(
+            //           'How to create Smart Lock',
+            //           style: TextStyle(
+            //               color: Colors.white, fontWeight: FontWeight.w400),
+            //         ),
+            //       ),
+            //     ),
+            //     const SizedBox(
+            //       width: 4,
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.only(left: 20.0),
+            //       child: ListTile(
+            //         leading: Icon(
+            //           Icons.remove,
+            //           color: Colors.white,
+            //         ),
+            //         title: Text(
+            //           'How to Participate in Launch',
+            //           style: TextStyle(
+            //               color: Colors.white, fontWeight: FontWeight.w400),
+            //         ),
+            //       ),
+            //     ),
+            //     const SizedBox(
+            //       width: 4,
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.only(left: 20.0),
+            //       child: ListTile(
+            //         leading: Icon(
+            //           Icons.remove,
+            //           color: Colors.white,
+            //         ),
+            //         title: Text(
+            //           'How to REdeem Token',
+            //           style: TextStyle(
+            //               color: Colors.white, fontWeight: FontWeight.w400),
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            //   // trailing: ,
+            // ),
             // const Divider(color: Colors.grey, thickness: 1,),
 
             //5
