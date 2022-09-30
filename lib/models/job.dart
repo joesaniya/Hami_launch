@@ -394,3 +394,20 @@ List<Token> getToken() {
         '0xCd0cb0FB6FFd21Ba22d7650fCa640b672EfAA28A', 'Ended')
   ];
 }
+
+class Aud {
+  String profileimg;
+  String title;
+  String desc;
+  Aud({required this.profileimg, required this.title, required this.desc});
+}
+
+List<Aud> getAud() {
+  return <Aud>[
+    Aud(
+        profileimg: 'assets/images/aud1.png',
+        title: 'Expelee Audits',
+        desc:
+            'Expelee Audits By thoroughly analyzing your system\'s architecture & smart contract codebase, We assure the legitimacy of your smart contract.'),
+  ];
+}

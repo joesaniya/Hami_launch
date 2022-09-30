@@ -5,17 +5,18 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hami_launch/Create/AMA_apply.dart';
 import 'package:hami_launch/Create/LaunchPad_create.dart';
 import 'package:hami_launch/Create/Lock_create.dart';
-import 'package:hami_launch/screen/create_ad.dart';
 import 'package:hami_launch/screen/create_token.dart';
 import 'package:hami_launch/screen/launchpad_list.dart';
 import 'package:hami_launch/screen/locked_tokens.dart';
-import 'package:hami_launch/screen/partner_with_us.dart';
 import 'package:hami_launch/screen/share_earn.dart';
 import 'package:hami_launch/screen/spotlight_sidemenu.dart';
 import 'package:hami_launch/screen/token_list.dart';
 import 'package:hami_launch/side_launchpadlistScreens/locked_lp_tokens.dart';
 
 import '../Create/create_token_profile.dart';
+import '../screen/auditing_partners.dart';
+import '../screen/create_ad.dart';
+import '../screen/partner_with_us.dart';
 import '../screen/spotlight_screen.dart';
 import '../screen/verifykyc_screen.dart';
 import '../theme/appcolor.dart';
@@ -527,6 +528,68 @@ class LeadingDrawer extends StatelessWidget {
             ),
 
             // const Divider(color: Colors.grey, thickness: 1,),
+
+            //4
+            ExpansionTile(
+              leading: const Icon(
+                Icons.person_add,
+                color: Colors.white,
+              ),
+              iconColor: Colors.white,
+              collapsedIconColor: Colors.white,
+              title: const Text(
+                'Referal',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+              ),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: ListTile(
+                    onTap: () {
+                      log('refer and earn clicked');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ShareAndEarn()));
+                    },
+                    leading: const Icon(
+                      Icons.remove,
+                      color: Colors.white,
+                    ),
+                    title: const Text(
+                      'Share and Earn',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+              ],
+              // trailing: ,
+            ),
+
+            //audit
+            ListTile(
+              leading: const Icon(
+                Icons.shield,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Auditing Partners',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+              ),
+              // trailing: const Icon(Icons.arrow_forward_ios),
+              // onTap: settings,
+              onTap: () {
+                log('Auditing partners clicked');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PartnersAuditing()));
+              },
+            ),
+
             //3
             ExpansionTile(
               leading: const Icon(
@@ -752,45 +815,6 @@ class LeadingDrawer extends StatelessWidget {
                     ),
                     title: const Text(
                       'Partner With Us',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-              ],
-              // trailing: ,
-            ),
-
-            //4
-            ExpansionTile(
-              leading: const Icon(
-                Icons.person_add,
-                color: Colors.white,
-              ),
-              iconColor: Colors.white,
-              collapsedIconColor: Colors.white,
-              title: const Text(
-                'Referal',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
-              ),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: ListTile(
-                    onTap: () {
-                      log('refer and earn clicked');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ShareAndEarn()));
-                    },
-                    leading: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Share and Earn',
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w400),
                     ),
