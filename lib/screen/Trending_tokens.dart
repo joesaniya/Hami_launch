@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:wave_transition/wave_transition.dart';
 
@@ -19,6 +21,7 @@ class TrendingTokens extends StatefulWidget {
 
 class _TrendingTokensState extends State<TrendingTokens> {
   late bool _isLoading;
+  final toast = FToast();
 
   @override
   void initState() {
@@ -29,6 +32,8 @@ class _TrendingTokensState extends State<TrendingTokens> {
       });
     });
     super.initState();
+
+    toast.init(context);
   }
 
   @override
@@ -164,10 +169,26 @@ class _TrendingTokensState extends State<TrendingTokens> {
                                         const SizedBox(
                                           width: 10,
                                         ),
-                                        const Icon(
-                                          Iconsax.copy,
-                                          color: Colors.grey,
-                                        )
+
+                                        IconButton(
+                                            onPressed: () {
+                                              log('read clicked');
+
+                                              Clipboard.setData(const ClipboardData(
+                                                      text:
+                                                          '0xC19C2db89e5A8c49570fE52B988376C8057993d8'))
+                                                  .then((_) {
+                                                showtoptoast();
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.copy,
+                                              color: Colors.grey,
+                                            ))
+                                        // const Icon(
+                                        //   Iconsax.copy,
+                                        //   color: Colors.grey,
+                                        // )
                                       ],
                                     ),
 
@@ -398,4 +419,31 @@ class _TrendingTokensState extends State<TrendingTokens> {
                 },
               ));
   }
+
+  void showtoptoast() {
+    log('showtotoat');
+    toast.showToast(child: buildToast(), gravity: ToastGravity.BOTTOM);
+  }
+
+  Widget buildToast() => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        decoration: BoxDecoration(
+            color: Colors.deepPurple, borderRadius: BorderRadius.circular(30)),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Icon(
+              EvaIcons.doneAll,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 12,
+            ),
+            Text(
+              'Referal Code Copied',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            )
+          ],
+        ),
+      );
 }

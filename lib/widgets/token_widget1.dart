@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hami_launch/Dialogbox/dialog_helper.dart';
 import 'package:hami_launch/config.dart';
@@ -19,6 +22,8 @@ class ToeknWidget1 extends StatefulWidget {
 class _ToeknWidget1State extends State<ToeknWidget1> {
   late bool _isLoading;
 
+  final toast = FToast();
+
   @override
   void initState() {
     _isLoading = true;
@@ -28,6 +33,7 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
       });
     });
     super.initState();
+    toast.init(context);
   }
 
   @override
@@ -190,9 +196,10 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
 
                                   //code
                                   Row(
-                                    children: const [
-                                      Text(
-                                        '0xc19999988888666',
+                                    children: [
+                                      const Text(
+                                        '0xC19C2db',
+                                        // '0xC19C2db89e5A8c49570fE52B988376C8057993d8',
                                         //                     data.split(path.extension(data))[0],
                                         // maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
@@ -201,13 +208,24 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
                                             color: Colors.grey,
                                             fontWeight: FontWeight.w500),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
-                                      Icon(
-                                        Icons.copy,
-                                        color: Colors.grey,
-                                      )
+                                      IconButton(
+                                          onPressed: () {
+                                            log('read clicked');
+
+                                            Clipboard.setData(const ClipboardData(
+                                                    text:
+                                                        '0xC19C2db89e5A8c49570fE52B988376C8057993d8'))
+                                                .then((_) {
+                                              showtoptoast();
+                                            });
+                                          },
+                                          icon: const Icon(
+                                            Icons.copy,
+                                            color: Colors.grey,
+                                          ))
                                     ],
                                   ),
 
@@ -216,6 +234,7 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
                                     'HAMI, also known as Hybrid Autonomous Monetary Infrastructure, is a Blockchain-based project which helps Anyone to Invest, Send or Receive Crypto Instantly without any technical knowledge. HAMI also has Decentralized Crypto Projects, which include NFT Marketplace, Decentralized Exchange, Launchpad, Token Generators, etc. HAMI\'s Ultimate goal is to Create its own Blockchain Network known as Hami Network',
                                     trimLines: 3,
                                     style: TextStyle(
+                                      height: 1.5,
                                       color: Colors.grey,
                                       // fontWeight: FontWeight.w800,
                                       fontSize: 18,
@@ -375,4 +394,31 @@ class _ToeknWidget1State extends State<ToeknWidget1> {
             ),
     );
   }
+
+  void showtoptoast() {
+    log('showtotoat');
+    toast.showToast(child: buildToast(), gravity: ToastGravity.BOTTOM);
+  }
+
+  Widget buildToast() => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        decoration: BoxDecoration(
+            color: Colors.deepPurple, borderRadius: BorderRadius.circular(30)),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Icon(
+              EvaIcons.doneAll,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 12,
+            ),
+            Text(
+              'Referal Code Copied',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            )
+          ],
+        ),
+      );
 }

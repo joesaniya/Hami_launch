@@ -715,7 +715,7 @@ class _RootPageState extends State<RootPage> {
                   //   );
                 });
               },
-              child: FloatingActionButton(
+              child: FloatingActionButton.small(
                 backgroundColor: Colors.deepPurple,
                 // child: const Icon(Icons.add),
                 // onPressed: () {

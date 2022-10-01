@@ -1,11 +1,13 @@
 import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../config.dart';
 
@@ -19,6 +21,14 @@ class ShareAndEarn extends StatefulWidget {
 }
 
 class _ShareAndEarnState extends State<ShareAndEarn> {
+//   FlutterToast flutterToast;
+
+// @override
+// void initState() {
+//     super.initState();
+//     flutterToast = FlutterToast(context);
+// }
+
   late Future<void> _launched;
   final String _launchUrl = 'https://www.google.com';
 
@@ -76,6 +86,14 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
       log('could not launch $url');
       throw 'could not launch $url';
     }
+  }
+
+  final toast = FToast();
+
+  @override
+  void initState() {
+    super.initState();
+    toast.init(context);
   }
 
   @override
@@ -210,6 +228,9 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
                     // child: FlutterLogo(size: 148),
                   ),
                 ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.03,
+                ),
               ],
             ),
           ),
@@ -278,7 +299,7 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
       animatedIcon: AnimatedIcons.menu_close,
       // AnimatedIcons.menu_close,
       animatedIconTheme: const IconThemeData(size: 28.0),
-      backgroundColor: Colors.pinkAccent,
+      backgroundColor: Colors.deepPurple,
       overlayColor: Colors.black,
       overlayOpacity: 0.4,
       // visible: true,
@@ -286,13 +307,16 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
       children: [
         SpeedDialChild(
           child: const Icon(Icons.copy, color: Colors.white),
-          backgroundColor: Colors.pinkAccent,
+          backgroundColor: Colors.deepPurple,
           onTap: () {
             log('read clicked');
             // _launchInApp(_launchUrl);
             Clipboard.setData(const ClipboardData(text: 'BDEF4587')).then((_) {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text("Referral code copied to clipboard")));
+              // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              //     content: Text("Referral code copied to clipboard")));
+
+              // const Toaster();
+              showtoptoast();
             });
           },
           label: 'Read',
@@ -302,7 +326,7 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
         ),
         SpeedDialChild(
           child: const Icon(Icons.mail, color: Colors.white),
-          backgroundColor: Colors.pinkAccent,
+          backgroundColor: Colors.deepPurple,
           onTap: () {
             log('mail clicked');
             Share(SocialMedia.email);
@@ -314,7 +338,7 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
         ),
         SpeedDialChild(
           child: const Icon(FontAwesomeIcons.linkedin, color: Colors.white),
-          backgroundColor: Colors.pinkAccent,
+          backgroundColor: Colors.deepPurple,
           // onTap: () => print('Pressed Code'),
           onTap: () {
             log('linkedin clicked');
@@ -327,7 +351,7 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
         ),
         SpeedDialChild(
           child: const Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
-          backgroundColor: Colors.pinkAccent,
+          backgroundColor: Colors.deepPurple,
           // onTap: () => print('Pressed Code'),
           onTap: () {
             log('whatsapp clicked');
@@ -341,4 +365,65 @@ class _ShareAndEarnState extends State<ShareAndEarn> {
       ],
     );
   }
+
+//   _showToast() {
+//     // this will be our toast UI
+//     Widget toast = Container(
+//         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+//         decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(25.0),
+//         color: Colors.greenAccent,
+//         ),
+//         child: Row(
+//         mainAxisSize: MainAxisSize.min,
+//         children: [
+//             Icon(Icons.check),
+//             SizedBox(
+//             width: 12.0,
+//             ),
+//             Text("This is a Custom Toast"),
+//         ],
+//         ),
+//     );
+
+//     flutterToast.showToast(
+//         child: toast,
+//         gravity: ToastGravity.BOTTOM,
+//         toastDuration: Duration(seconds: 2),
+//     );
+// }
+
+  void showToast() => Fluttertoast.showToast(
+      msg: 'copied',
+      fontSize: 18,
+      gravity: ToastGravity.TOP,
+      backgroundColor: Colors.deepPurple,
+      textColor: Colors.white);
+
+  void showtoptoast() {
+    log('showtotoat');
+    toast.showToast(child: buildToast(), gravity: ToastGravity.BOTTOM);
+  }
+
+  Widget buildToast() => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        decoration: BoxDecoration(
+            color: Colors.deepPurple, borderRadius: BorderRadius.circular(30)),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Icon(
+              EvaIcons.doneAll,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 12,
+            ),
+            Text(
+              'Referal Code Copied',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            )
+          ],
+        ),
+      );
 }
